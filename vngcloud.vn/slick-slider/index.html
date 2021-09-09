@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slick Slider</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-slider.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section id="s-vclc-customer-ss" class="s-slick-slider">
+        <div class="s-margin-height">&nbsp;</div>
+        <div class="cloud-container text-center t-xs-left">
+            <p class="v-cloud-title mb-1"><strong>Success</strong> Stories</p>
+            <p class="v-cloud-desc" style="opacity: 1;">How vCloudcam support our customers?</p>
+        </div>
+        <div class="cloud-container v-section-inner">
+            <div class="vclc-customer-ss">
+                <div>
+                    <div class="customer-img bg-cover lazyload transition-all"
+                        data-bgset="/documents/20126/1341802/vcloudcam-customer-qsr-xs.jpg [(max-width: 576px)] | /documents/20126/1341802/vcloudcam-customer-qsr.jpg [(max-width: 1600px)] | /documents/20126/1341802/vcloudcam-customer-qsr-lg.jpg"
+                        data-logo="/documents/20126/1132451/qsr.svg">&nbsp;</div>
+                </div>
+
+                <div>
+                    <div class="customer-img bg-cover lazyload transition-all"
+                        data-bgset="/documents/20126/1341802/vcloudcam-phu-my-hung-xs.jpg [(max-width: 576px)] | /documents/20126/1341802/vcloudcam-phu-my-hung.jpg [(max-width: 1600px)] | /documents/20126/1341802/vcloudcam-phu-my-hung-lg.jpg"
+                        data-logo="/documents/20126/1028520/about-vng-cloud-phu-my-hung-logo.png">&nbsp;</div>
+                </div>
+
+                <div data-href="/product/vcloudcam/success-stories?article=1147343">
+                    <div class="customer-img bg-cover lazyload transition-all"
+                        data-bgset="/documents/20126/1272976/vng-cloud-customer-highlands-coffee-xs.jpg [(max-width: 576px)] | /documents/20126/1272976/vng-cloud-customer-highlands-coffee.jpg [(max-width: 1600px)] | /documents/20126/1272976/vng-cloud-customer-highlands-coffee-lg.jpg"
+                        data-logo="/documents/20126/1132451/highlands.svg">&nbsp;</div>
+                </div>
+
+                <div>
+                    <div class="customer-img bg-cover lazyload transition-all"
+                        data-bgset="/documents/20126/1132451/vcloudcam-customer-success-stories-pho24.jpg"
+                        data-logo="/documents/20126/1132451/pho24.svg">&nbsp;</div>
+                </div>
+
+                <div>
+                    <div class="customer-img bg-cover lazyload transition-all"
+                        data-bgset="/documents/20126/1341802/vcloudcam-dairy-queen-xs.jpg [(max-width: 576px)] | /documents/20126/1341802/vcloudcam-dairy-queen.jpg [(max-width: 1600px)] | /documents/20126/1341802/vcloudcam-dairy-queen-lg.jpg"
+                        data-logo="/documents/20126/1132451/dairyqueen.svg">&nbsp;</div>
+                </div>
+
+                <div>
+                    <div class="customer-img bg-cover lazyload transition-all"
+                        data-bgset="/documents/20126/1341802/vcloudcam-pizza-company-xs.jpg [(max-width: 576px)] | /documents/20126/1341802/vcloudcam-pizza-company.jpg [(max-width: 1600px)] | /documents/20126/1341802/vcloudcam-pizza-company-lg.jpg"
+                        data-logo="/documents/20126/1132451/pizzacompany.svg">&nbsp;</div>
+                </div>
+            </div>
+            <div class="vclc-customer__logo">
+
+            </div>
+        </div>
+    </section>
+    <style type="text/css">
+        .vclc-customer-ss {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .vclc-customer-ss .slick-slide {position: relative;}
+        .vclc-customer-ss .slick-slide[data-href] {cursor: pointer;}
+        .customer-img {
+            overflow: hidden;
+            position: relative;
+        }
+        .customer-img::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #1d2021;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        .vclc-customer-ss .slick-slide:not(.slick-center) .customer-img::before {
+            opacity: 0.5;
+        }
+        .vclc-customer-ss .slick-slide.slick-center .customer-img {transform: scale(1.08);}
+        .vclc-customer-ss .slick-arrow::before {color: var(--dark-blue-2);}
+
+        .vclc-customer-ss .slick-arrow {background-color: #fff !important;}
+
+        .vclc-customer-ss .slick-dots {
+            position: relative;
+        }
+        .vclc-customer-ss .slick-dots li.slick-active {
+            transform: scale(1.08);
+            box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 25px;
+        }
+        .vclc-customer-ss .slick-dots li {
+            width: auto;
+            height: auto;
+            padding: 5px;
+            margin: 10px;
+            transition: all .3s ease;
+        }
+
+        @media (min-width: 576px) {
+            .vclc-customer-ss .slick-slide {margin: 0 10px;}
+            .vclc-customer-ss .slick-arrow {height: 40px;width: 40px;}
+            .vclc-customer-ss .slick-dots li {background-color: #f4f9ff;}
+            .vclc-customer-ss .slick-dots li img {
+                width: 80px;
+            }
+            .vclc-customer-ss .slick-arrow:before {
+                font-size: 40px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .customer-img {height: 400px;margin: 20px;}
+            .vclc-customer-ss .slick-dots li img {width: 100px;}
+            .vclc-customer-ss .slick-arrow {top: 220px}
+        }
+
+        @media (min-width: 1200px) {
+            .vclc-customer-ss .slick-prev {left: 130px;}
+            .vclc-customer-ss .slick-next {right: 130px;}
+        }
+        @media (max-width: 991.98px) {
+            .customer-img {margin: 10px;}
+        }
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .vclc-customer-ss .slick-prev {left: 30px;}
+            .vclc-customer-ss .slick-next {right: 30px;}
+        }
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .vclc-customer-ss .customer-img {height: 300px;}
+            .vclc-customer-ss .slick-arrow {top: 170px;}
+            .vclc-customer-ss .slick-prev {left: 40px;}
+            .vclc-customer-ss .slick-next {right: 40px;}
+        }
+
+        @media(max-width: 575.98px) {
+            #s-vclc-customer-ss .cloud-container.v-section-inner {padding: 0;}
+            .vclc-customer-ss .customer-img {height: 200px;}
+            .vclc-customer-ss .slick-arrow {
+                width: 30px;
+                height: 30px;
+                top: 110px;
+            }
+            .vclc-customer-ss .slick-prev {left: 10px;}
+            .vclc-customer-ss .slick-next {right: 10px;}
+            .vclc-customer-ss .slick-arrow:before {
+                font-size: 25px;
+            }
+
+            .vclc-customer-ss .slick-arrow:hover {
+                opacity: 1;
+            }
+            .vclc-customer-ss .slick-dots li img {
+                width: 50px;
+            }
+            .vclc-customer-ss .slick-dots li {margin-top: 0;}
+            .vclc-customer-ss .slick-dots {bottom: -15px;}
+            .vclc-customer-ss .slick-dots li.slick-active {box-shadow: rgba(149, 157, 165, 0.2) 0px 5px 20px;}
+        }
+    </style>
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            $(".vclc-customer-ss").slick({
+                centerMode: true,
+                centerPadding: "200px",
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                dots: true,
+                autoplaySpeed: 2E3,
+                pauseOnHover: true,
+                customPaging: function (slick, index) {
+                    var targetImage = slick.$slides.eq(index).find("div[class*='customer-img']")
+                        .attr("data-logo");
+                    return '\x3cimg class\x3d"lazyload" data-src\x3d" ' + targetImage + ' "/\x3e'
+                },
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            centerPadding: "100px"
+                        }
+                    },
+                    {
+                        breakpoint: 576,
+                        settings: {
+                            centerPadding: "50px"
+                        }
+                    }
+                ],
+                initialSlide: 2
+            });
+            $('.vclc-customer-ss .slick-slide').on('click', function (e) {
+                let href = $(this).attr('data-href');
+                if (href !== undefined) {
+                    let link = document.createElement('a');
+                    link.setAttribute('href', href);
+                    link.setAttribute('target', '_blank');
+
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

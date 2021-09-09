@@ -1,0 +1,49 @@
+<script type="text/javascript" defer>
+    $(document).ready(function () {
+        var offset = parseInt("${maxItems}"),
+            page = 1,
+            numArrayArticle = parseInt("${count}"),
+            events = ${moreEvents};
+        $('#see-more-events').on('click', function (e) {
+            e.preventDefault();
+            if (((page - 1) * offset) + offset < parseInt(numArrayArticle)) {
+                for (let i = (page - 1) * offset; i < page * offset; i++) {
+                    let event = events[i];
+                    if (event === undefined) {
+                        $('.load-more-event').addClass('hidden');
+                        break;
+                    }
+                    let exLink = _.get(event, 'exLink', false),
+                        href = '${prefixUrl}' + _.get(event, 'url', ''),
+                        categories = "";
+                    if (exLink) {
+                        href = _.get(event, 'url', '');
+                    }
+                    if (!_.isEmpty(_.get(event, 'categories', []))) {
+                        categories += '<div class="event-category position-relative">';
+                        event.categories.forEach(function (category) {
+                            categories += '<p class="t-upper">' + category + '</p>'
+                        });
+                        categories += '</div>'
+                    }
+                    let html = "<div class='col-md-12 event-block wow fadeIn'>" +
+                        "<li><div class='block-left'>" +
+                        "<a class='d-block position-relative lazyload' href='" + href +
+                        "' data-bgset='" + event['image'] + "'></a></div>" +
+                        "<div class='block-right'>" +
+                        "<div class='event-title mb-1'>" +
+                        "<a class='transition-all f-bold' href='" + href + "' title=''>" + event[
+                            'title'] +
+                        "</a> </div><div class='event-block__header d-flex align-items-center'><p class='event-time t-upper'>" +
+                        event['date'] + "</p>" + categories + "</div>" +
+                        "<div class='article-meta'> <div class='article-desc' title='" + event['desc'] +
+                        "'>" + event['desc'] + "</div>" +
+                        "</div></div></li></div>";
+
+                    $('#events-wrapper').append(html);
+                }
+                page += 1;
+            }
+        })
+    });
+</script>

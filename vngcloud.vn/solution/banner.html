@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Pricing</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
+
+        :root {
+            --dark-blue-2: #1A3887;
+            --dark-blue-2-200: #071d56;
+            --dark-blue-3: #1B134D;
+            --light-blue: #5EBCE4;
+            --light-blue-200: #2192c1;
+            --vng-orange: #FB7033;
+            --text-body: #434343;
+            --text-headline: #292929;
+            --bg-sub-menu: #eaeaea
+        }
+
+        body {
+            color: var(--text-body)
+        }
+
+        .f-mont {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .f-500 {
+            font-weight: 500;
+        }
+
+        .f-600 {
+            font-weight: 600;
+        }
+
+        .f-700 {
+            font-weight: 700;
+        }
+
+        .f-800 {
+            font-weight: 800;
+        }
+
+        .btn {
+            border-radius: 0;
+            padding: 3px 15px
+        }
+
+        #page_header {
+            z-index: 988
+        }
+
+        .c-white {
+            color: #fff !important
+        }
+
+        .f-height {
+            height: 100%
+        }
+
+        .transition-all {
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s
+        }
+
+        .bg-cover {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%
+        }
+
+        .s-margin-height {
+            height: 50px
+        }
+
+        .s-color {
+            background-color: #f8f9fc
+        }
+
+        .cloud-container {
+            width: 100%;
+            max-width: 90%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto
+        }
+
+        .primary-bg {
+            background-color: var(--dark-blue-2) !important
+        }
+
+        .primary-color {
+            color: var(--dark-blue-2) !important
+        }
+
+        .optional-color {
+            color: var(--vng-orange)
+        }
+
+        .optional-bg {
+            background-color: var(--vng-orange) !important
+        }
+
+        .btn-primary-color {
+            background-color: var(--dark-blue-2);
+            border: 1px solid var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn-primary-color.btn-outline {
+            background-color: transparent;
+            color: var(--dark-blue-2)
+        }
+
+        .btn-primary-color.btn-outline:hover {
+            background-color: var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn:hover {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1)
+        }
+
+        .btn-secondary-color {
+            background-color: var(--vng-orange);
+            border: 1px solid var(--vng-orange);
+            color: #fff
+        }
+
+        .btn-secondary-color:hover {
+            background-color: #dc5c23;
+            color: #fff
+        }
+
+        .btn-white-color {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 3px 15px
+        }
+
+        .btn-white-color:hover {
+            background-color: var(--vng-orange);
+            color: #fff;
+            border-color: var(--vng-orange)
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .btn-primary-color:hover {
+            background-color: var(--dark-blue-2-200);
+            color: #fff
+        }
+
+        .navigation-bar-secondary {
+            border: 0
+        }
+
+        .v-cloud-title {
+            font-size: 36px;
+            line-height: 48px
+        }
+
+        .slick-arrow:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .fa-icon:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .slick-dots li button:before {
+            font-family: fontawesome-alloy !important;
+            font-size: 10px !important
+        }
+
+        .t-upper {
+            text-transform: uppercase
+        }
+
+        .slick-slider {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity .3s ease;
+            -moz-transition: opacity .3s ease;
+            -o-transition: opacity .3s ease;
+            -ms-transition: opacity .3s ease;
+            transition: opacity .3s ease
+        }
+
+        .slick-slider.slick-initialized {
+            visibility: visible;
+            opacity: 1
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        @media(min-width:1200px) {
+            .v-cloud-title.t-upper {
+                font-size: 30px;
+                line-height: 35px
+            }
+        }
+
+        @media(max-width:767.98px) {
+            .v-cloud-title {
+                font-size: 28px;
+                line-height: 33px
+            }
+
+            .s-margin-height {
+                height: 25px
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .cloud-container {
+                max-width: 100%
+            }
+
+            .v-cloud-title {
+                margin-bottom: 10px
+            }
+
+            p,
+            a,
+            span {
+                font-size: 16px
+            }
+        }
+
+        @media(min-width:1600px) {
+            body {
+                font-size: 18px
+            }
+
+            .cloud-container {
+                max-width: 85%
+            }
+
+            .cloud-container.v-section-inner {
+                max-width: 1200px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="s-intro">
+        <div class="solutions-banner f-mont flex-center text-center bg-cover lazyload position-relative c-white"
+            data-bgset="https://vngcloud.vn/documents/20126/1375996/vng-cloud-our-solution-banner-xs.jpg [(max-width: 576px)] | https://vngcloud.vn/documents/20126/1375996/vng-cloud-our-solution-banner.jpg [(max-width: 1600px)] | https://vngcloud.vn/documents/20126/1375996/vng-cloud-our-solution-banner-lg.jpg">
+            <div class="cloud-container position-relative v-section-inner">
+                <div class="banner-text pb-3 mt-sm-4 wow fadeIn">
+                    <p class="t-upper banner-title m-b-0 f-700">VNG Cloud Solution</p>
+
+                    <p class="banner-desc pt-2">Within 13 years of experience providing cloud technology businesses in
+                        Vietnam, we not only creating technology platforms and products but also focus on developing and
+                        building technology solutions, thoroughly solving problems in digital transformation.</p>
+                </div>
+                <a class="btn btn-secondary-color t-upper banner-btn f-600 wow fadeIn" data-wow-delay=".2s"
+                    href="/contact-sales">Contact</a>
+            </div>
+        </div>
+    </section>
+    <style type="text/css">
+        .solutions-banner {
+            background-color: #c4c4c4;
+            height: 100vh;
+        }
+
+        .banner-title {
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .banner-btn {
+            padding: 10px 30px;
+            width: 80%;
+            line-height: 1;
+        }
+
+        .solutions-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1d2021;
+            opacity: .2;
+        }
+
+        @media (min-width: 1200px) {
+            .banner-text {
+                max-width: 70%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 1199.98px) {
+            .solutions-banner {
+                height: 700px;
+            }
+        }
+
+        @media(min-width: 576px) {
+            .banner-btn {
+                max-width: 25%;
+                width: 100%;
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .banner-title {
+                font-size: 44px;
+            }
+
+            .banner-desc {
+                font-size: 22px;
+            }
+        }
+
+        @media(max-width: 575.98px) {
+            .solutions-banner {
+                height: 450px;
+            }
+
+            .solutions-banner::before {
+                opacity: .5;
+            }
+        }
+    </style>
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript" defer>
+        $(document).ready(function (e) {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        })
+    </script>
+</body>

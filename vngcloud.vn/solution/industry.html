@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Pricing</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
+
+        :root {
+            --dark-blue-2: #1A3887;
+            --dark-blue-2-200: #071d56;
+            --dark-blue-3: #1B134D;
+            --light-blue: #5EBCE4;
+            --light-blue-200: #2192c1;
+            --vng-orange: #FB7033;
+            --text-body: #434343;
+            --text-headline: #292929;
+            --bg-sub-menu: #eaeaea
+        }
+
+        body {
+            color: var(--text-body)
+        }
+
+        .f-mont {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .f-500 {
+            font-weight: 500;
+        }
+
+        .f-600 {
+            font-weight: 600;
+        }
+
+        .f-700 {
+            font-weight: 700;
+        }
+
+        .f-800 {
+            font-weight: 800;
+        }
+
+        .btn {
+            border-radius: 0;
+            padding: 3px 15px
+        }
+
+        #page_header {
+            z-index: 988
+        }
+
+        .c-white {
+            color: #fff !important
+        }
+
+        .f-height {
+            height: 100%
+        }
+
+        .transition-all {
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s
+        }
+
+        .bg-cover {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%
+        }
+
+        .s-margin-height {
+            height: 50px
+        }
+
+        .s-color {
+            background-color: #f8f9fc
+        }
+
+        .cloud-container {
+            width: 100%;
+            max-width: 90%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto
+        }
+
+        .primary-bg {
+            background-color: var(--dark-blue-2) !important
+        }
+
+        .primary-color {
+            color: var(--dark-blue-2) !important
+        }
+
+        .optional-color {
+            color: var(--vng-orange)
+        }
+
+        .optional-bg {
+            background-color: var(--vng-orange) !important
+        }
+
+        .btn-primary-color {
+            background-color: var(--dark-blue-2);
+            border: 1px solid var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn-primary-color.btn-outline {
+            background-color: transparent;
+            color: var(--dark-blue-2)
+        }
+
+        .btn-primary-color.btn-outline:hover {
+            background-color: var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn:hover {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1)
+        }
+
+        .btn-secondary-color {
+            background-color: var(--vng-orange);
+            border: 1px solid var(--vng-orange);
+            color: #fff
+        }
+
+        .btn-secondary-color:hover {
+            background-color: #dc5c23;
+            color: #fff
+        }
+
+        .btn-white-color {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 3px 15px
+        }
+
+        .btn-white-color:hover {
+            background-color: var(--vng-orange);
+            color: #fff;
+            border-color: var(--vng-orange)
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .btn-primary-color:hover {
+            background-color: var(--dark-blue-2-200);
+            color: #fff
+        }
+
+        .navigation-bar-secondary {
+            border: 0
+        }
+
+        .v-cloud-title {
+            font-size: 36px;
+            line-height: 48px
+        }
+
+        .slick-arrow:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .fa-icon:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .slick-dots li button:before {
+            font-family: fontawesome-alloy !important;
+            font-size: 10px !important
+        }
+
+        .t-upper {
+            text-transform: uppercase
+        }
+
+        .slick-slider {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity .3s ease;
+            -moz-transition: opacity .3s ease;
+            -o-transition: opacity .3s ease;
+            -ms-transition: opacity .3s ease;
+            transition: opacity .3s ease
+        }
+
+        .slick-slider.slick-initialized {
+            visibility: visible;
+            opacity: 1
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        @media(min-width:1200px) {
+            .v-cloud-title.t-upper {
+                font-size: 30px;
+                line-height: 35px
+            }
+        }
+
+        @media(max-width:767.98px) {
+            .v-cloud-title {
+                font-size: 28px;
+                line-height: 33px
+            }
+
+            .s-margin-height {
+                height: 25px
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .cloud-container {
+                max-width: 100%
+            }
+
+            .v-cloud-title {
+                margin-bottom: 10px
+            }
+
+            p,
+            a,
+            span {
+                font-size: 16px
+            }
+        }
+
+        @media(min-width:1600px) {
+            body {
+                font-size: 18px
+            }
+
+            .cloud-container {
+                max-width: 85%
+            }
+
+            .cloud-container.v-section-inner {
+                max-width: 1200px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="solution" style="background-color: #f4f9ff">
+        <div class="s-margin-height">&nbsp;</div>
+
+        <div class="solution f-mont">
+            <div class="solution-nav w-100 mb-4">
+                <ul class="nav flex-row align-items-center bg-white pt-2 pb-2" id="pills-tab" role="tablist">
+                    <li class="nav-item text-center"><a aria-controls="manufacturing" aria-selected="true"
+                            class="nav-link industry transition-all ml-1 mr-1" data-toggle="pill" href="#manufacturing"
+                            id="manufacturing-tab" role="tab">Manufacturing</a></li>
+                    <li class="nav-item text-center"><a aria-controls="retail" aria-selected="false"
+                            class="nav-link industry transition-all ml-1 mr-1" data-toggle="pill" href="#retail"
+                            id="retail-tab" role="tab">Retail</a></li>
+                    <li class="nav-item text-center"><a aria-controls="banking" aria-selected="false"
+                            class="nav-link industry transition-all ml-1 mr-1 active" data-toggle="pill" href="#banking"
+                            id="banking-tab" role="tab">Banking</a></li>
+                    <li class="nav-item text-center"><a aria-controls="media" aria-selected="false"
+                            class="nav-link industry transition-all ml-1 mr-1" data-toggle="pill" href="#media"
+                            id="media-tab" role="tab">Media</a></li>
+                    <li class="nav-item text-center"><a aria-controls="real-estate" aria-selected="false"
+                            class="nav-link industry transition-all ml-1 mr-1" data-toggle="pill" href="#real-estate"
+                            id="real-estate-tab" role="tab">Real estate</a></li>
+                    <li class="nav-item text-center"><a aria-controls="construction" aria-selected="false"
+                            class="nav-link industry transition-all ml-1 mr-1" data-toggle="pill" href="#construction"
+                            id="construction-tab" role="tab">Construction</a></li>
+                </ul>
+            </div>
+
+            <div class="tab-content" id="accordion">
+                <div aria-labelledby="manufacturing-tab" class="tab-pane" data-parent="#accordion" id="manufacturing"
+                    role="tabpanel">
+                    <div class="solution-content">
+                        <div class="solution-intro">
+                            <div class="solution-intro_content">
+                                <div class="wow fadeIn intro-bg float-sm-right bg-cover position-relative lazyload"
+                                    data-bgset="/documents/20126/1366961/vng-cloud-manufactoring-solution.jpg [(max-width: 1600px)] | /documents/20126/1366961/vng-cloud-manufactoring-solution-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="intro-txt">
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-security-control.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Do not have security control at the
+                                                factory 24/7</p>
+
+                                            <p>Security at the factory requires human resources 247. The current
+                                                security at the factory often depends on people, making it difficult for
+                                                the management to take the initiative in checking and monitoring and
+                                                possibly lack transparency.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-lack-of-it-human-resource.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Lack of IT human resource for digital
+                                                transformation</p>
+
+                                            <p>The factories are typically located in industrial zones and far from the
+                                                city center, leading to difficulties in recruiting human resources to
+                                                operate IT systems at the factory.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-loss-of-data.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Loss of data because of unexpected
+                                                accidents</p>
+
+                                            <p>Factories often use physical server systems located inside the factories
+                                                to ensure the fastest connection and stable production line operations,
+                                                not dependent on transmission lines. However, if something goes wrong
+                                                such as hard drive or machine failure, employee deletion or virus
+                                                sabotage, or worse, explosion, natural disaster, theft, business will
+                                                encounter data loss problem.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions bg-white">
+                            <div class="s-margin-height">&nbsp;</div>
+
+                            <p class="v-cloud-title text-center f-700">Solutions</p>
+
+                            <div class="cloud-container v-section-inner">
+                                <div class="solutions-blocks">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-centralized-camera.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Centralized camera management and
+                                                    monitoring with vCloudcam</p>
+
+                                                <p><a href="/product/vcloudcam" title="vCloudcam">vCloudcam</a> system
+                                                    has the ability to connect and centrally manage multiple cameras
+                                                    from multiple locations on the same account. Unlimited storage and
+                                                    access, surveillance anytime, anywhere with multi-platform
+                                                    application. The method of decentralization is suitable for many
+                                                    ways of operation.</p>
+
+                                                <p>In addition, with smart features such as facial recognition,
+                                                    timekeeping ... VNG Cloud's solution helps businesses easily monitor
+                                                    the factory's activities such as employee attendance, worker
+                                                    supervision.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-security-alert.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Security arlet with vCloudcam camera
+                                                    solution integrated with AI</p>
+
+                                                <p>In factories, there are restricted-areas to protect core technology
+                                                    or system. These areas only allow a certain number of people in and
+                                                    out which need 247 supervision. With <a href="/product/vcloudcam"
+                                                        title="vCloudcam">vCloudcam</a>'s face detection, restricted
+                                                    areas monitoring, access control, managers can actively monitor
+                                                    people entering and leaving, creating a blacklist, setting up
+                                                    restricted zones, virtual barriers, ... and receive instant security
+                                                    alerts across multiple devices, allowing users to respond promptly
+                                                    to surveillance systems.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-backup-data-dr-site.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Backup data at DR site</p>
+
+                                                <p>To minimize the risk of data loss, one of the safest options often
+                                                    chosen by businesses is offsite Backup - a Backup archive that is
+                                                    stored at a different facility from the original data, or store in
+                                                    the cloud.</p>
+
+                                                <p>Data stored in VNG Cloud system ensures all standards of redundancy
+                                                    as well as international data centers. VNG Cloud also has an
+                                                    intelligent storage system that automatically switches between
+                                                    frequently accessed data and less frequently accessed data To
+                                                    thoroughly cost optimization.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-managed-server.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Managed Server service for Cloud
+                                                    infrastructure</p>
+
+                                                <p>With this model, the cloud computing is the foundation for
+                                                    operations, management and analysis systems, helping business teams
+                                                    and other departments collaborate better, effectively supporting
+                                                    between businesses and suppliers. Enterprises do not need to invest
+                                                    in personnel to operate the infrastructure to work at the factory,
+                                                    optimize costs to be able to invest in other items.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381284/vng-cloud-solution-manufacturing-icon-infrastructure-on-demand.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Infrastructure on demand for CRM,
+                                                    ERP, DMS, POS systems</p>
+
+                                                <p>Infrastructure of VNG Cloud is Unlimited capacity, ready to meet the
+                                                    needs of customers. High speed up to Tpbs Domestics, 5Gbps
+                                                    International.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solution-benefits position-relative">
+                            <div class="benefits">
+                                <div class="bg-cover img lazyload wow fadeIn"
+                                    data-bgset="/documents/20126/1381284/vng-cloud-solution-manufacturing-benefits.jpg [(max-width: 1600px)] | /documents/20126/1381284/vng-cloud-solution-manufacturing-benefits-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="benefits-content position-relative">
+                                    <p class="v-cloud-title f-700">Benefits</p>
+
+                                    <div class="benefits-row row">
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="1">
+                                            <p class="title primary-color mb-2">Increase the efficiency in management
+                                                and operation</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="2">
+                                            <p class="title primary-color mb-2">Ensure the proactive security at the
+                                                factory</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="3">
+                                            <p class="title primary-color mb-2">Optimize operating costs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-labelledby="retail-tab" class="tab-pane" data-parent="#accordion" id="retail" role="tabpanel">
+                    <div class="solution-content">
+                        <div class="solution-intro">
+                            <div class="solution-intro_content">
+                                <div class="wow fadeIn intro-bg float-sm-right bg-cover position-relative lazyload"
+                                    data-bgset="/documents/20126/1366961/vng-cloud-retail-solution.jpg [(max-width: 1600px)] | /documents/20126/1366961/vng-cloud-retail-solution-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="intro-txt">
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-optimization-operation-management.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Optimization operation management in
+                                                traditional store</p>
+
+                                            <p>Businesses need to manage store displays, ensure proactive security and
+                                                heat maps. Proactively achieve KPIs of in store operation: put the
+                                                visual &amp; POSM key in the right position, the products are displayed
+                                                fully and in the right place according to the planogram diagram, the
+                                                personal items of employees are in the right place, store hygiene...</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-ensuring-a-consistent-customer-experience.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Ensuring a consistent customer
+                                                experience at points of sale</p>
+
+                                            <p>Ensure employees comply with customer service standards, track waiting
+                                                times, VIP services. Ensuring customer KPIs: Wearing name tags,
+                                                uniforms, greeting when customers enter, service attitude to customers,
+                                                employees understand the product and advise the right program for
+                                                customers, ... Ensure VIP customers are properly served and welcomed by
+                                                staff.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-store-security.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Store security</p>
+
+                                            <p>Supervise goods, handle difficult theft only depends on people</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-optimize-cost.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Optimize costs and improve efficiency
+                                                for centralized management</p>
+
+                                            <p>With modern ways of retail such as E-commerce &amp; Omni Channel,
+                                                transferring ERP, CRM and camera data to the cloud is essential to save
+                                                costs and improve efficiency.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-optimize-ensuring-the-best-user-experience.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Ensuring the best user experience on
+                                                online channels, avoiding lag, overload</p>
+
+                                            <p>When an attractive promotional campaign is launched opnline, millions of
+                                                customers are ready to "hunt" for the hottest deals, causing a large
+                                                number of people entering the site. The web interface loads slowly and
+                                                stops responding can make customers angry leads to sales are not as
+                                                expected.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-integrated-online-and-offline-sales-effectively.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Integrated online and offline sales
+                                                effectively</p>
+
+                                            <p>The current system doesn't transfer to the cloud right away, so there's a
+                                                need to run a combination of online and offline. When businesses have an
+                                                offline store system to invest in selling online, e-commerce, if the
+                                                infrastructure is fragmented, the management will be very difficult.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-enhance-comprehensive-network-security.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Enhance comprehensive network security
+                                                on the web, applications</p>
+
+                                            <p>When building websites and apps, information security is one of the
+                                                requirements need to be considerd. To do this, the company must build a
+                                                team of professional engineers, costly to build firewalls to protect
+                                                websites and apps.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions bg-white">
+                            <div class="s-margin-height">&nbsp;</div>
+
+                            <p class="v-cloud-title text-center f-700">Solutions</p>
+
+                            <div class="cloud-container v-section-inner">
+                                <div class="solutions-blocks">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-evaluate-kpi.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Evaluate KPI in store operations
+                                                    &amp; customer service transparency and realtime with integrated AI
+                                                    solution vCloudcam</p>
+
+                                                <p>Use the camera to measure KPI for in store operation (planogram - the
+                                                    company's display chart is decided by the firm, the catman -
+                                                    displaying and arranging goods, identifying bad people, cleaning the
+                                                    store ...) and customer services. Using this solution create
+                                                    transparency in workplace as there is not much human participation.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-increase-download-speed.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Increase download speed, serve
+                                                    millions of users at the same time with vCDN solutions.
+                                                    Livestreaming solution for E-commerce</p>
+
+                                                <p>Content distribution solution vCDN, with the system of VNG Cloud
+                                                    servers located in many places, extremely large bandwidth helps
+                                                    increase download speed when accessing the website, mobile app. vCDN
+                                                    helps reduce server load, optimizes bandwidth by streaming through
+                                                    network servers, and reduces queries to resources.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all block-more hidden">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-optimize-and-timely.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Optimize and timely handle all
+                                                    requests on websites and applications from users with Load Balancing
+                                                    and Auto Scalling</p>
+
+                                                <p>When many users request different services on the website and app at
+                                                    the same time, the system may be delayed due to inadequate
+                                                    processing, the Load balancing &amp; Auto Scaling service supports
+                                                    automatic server offloading, realtime response. when access demand
+                                                    spiked. Scale up service - help increase unlimited server
+                                                    configuration, scale out - increase the number of servers in just a
+                                                    few clicks.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-intelligent-storage.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Intelligent storage</p>
+
+                                                <p>Storage system automatically expands storage, easily switches between
+                                                    frequently accessed data and less-access data, optimizing cost.
+                                                    Items that need frequent retrieval, such as drawings while under
+                                                    construction, can be stored on vStorage, while drawings of completed
+                                                    buildings and less retrieval needs will be transferred to
+                                                    vColdstorage. All data will be backed up in 3 archives at 3
+                                                    different locations to avoid data loss.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-check-in-vip-customers.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Check in VIP customers with
+                                                    integrated AI vCloudcam</p>
+
+                                                <p>The facial recognition camera can sync with the store's CRM system.
+                                                    When a VIP customer arrives, it will automatically send a message to
+                                                    the head of the reception desk and have a special service for them
+                                                    as a priority line.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all block-more hidden">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-security-as-a-service.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Security as a Service</p>
+
+                                                <p>VNG Cloud infrastructure system has received ISO 27001 certification
+                                                    which also combined with Cloud Firewall system - providing advanced
+                                                    and flexible security features, such as creating a complete firewall
+                                                    (NGFW), creating security groups (Security) Policy Group) and
+                                                    network access control list (Network ACL), which allows content
+                                                    filtering to and from the lower network layer to the application
+                                                    layer.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-247-security-monitoring.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">24/7 security monitoring &amp;
+                                                    centralization with vCloudcam</p>
+
+                                                <p>Identify suspicious behavior, warnings of theft, retrive old data...
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-infrastructure-on-demand.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Infrastructure on demand for CRM,
+                                                    ERP, DMS, POS systems</p>
+
+                                                <p>Infrastructure of VNG Cloud is Unlimited capacity, ready to meet the
+                                                    needs of customers. High speed up to Tpbs Domestics, 5Gbps
+                                                    International</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all block-more hidden">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379594/vng-cloud-solution-retail-icon-hybrid-cloud-model.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Using hybrid cloud model to connect
+                                                    information between online and offline</p>
+
+                                                <p>Hybrid Cloud model: Combining current ERP, CRM and cloud systems
+                                                    thanks to hybrid model, businesses can keep their current on-premise
+                                                    systems and switch partly to the cloud without any loss without any
+                                                    impact and helps optimize investment costs.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="load-more t-upper">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="solution-benefits position-relative">
+                            <div class="benefits">
+                                <div class="bg-cover img lazyload wow fadeIn"
+                                    data-bgset="/documents/20126/1379594/vng-cloud-solution-retail-benefits.jpg [(max-width: 1600px)] | /documents/20126/1379594/vng-cloud-solution-retail-benefits-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="benefits-content position-relative">
+                                    <p class="v-cloud-title f-700">Benefits</p>
+
+                                    <div class="benefits-row row">
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="1">
+                                            <p class="title primary-color mb-2">Increase the efficiency of store
+                                                management and operation</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="2">
+                                            <p class="title primary-color mb-2">Ensure proactive security at the point
+                                                of sale</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="3">
+                                            <p class="title primary-color mb-2">Reduce operating costs</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="4">
+                                            <p class="title primary-color mb-2">Ensuring good customer service quality
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="5">
+                                            <p class="title primary-color mb-2">Ensure user experience on digital app
+                                                channels</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="6">
+                                            <p class="title primary-color mb-2">Create a new revenue source</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-labelledby="banking-tab" class="tab-pane show active" data-parent="#accordion" id="banking"
+                    role="tabpanel">
+                    <div class="solution-content">
+                        <div class="solution-intro">
+                            <div class="solution-intro_content">
+                                <div class="wow fadeIn intro-bg float-sm-right bg-cover position-relative lazyload"
+                                    data-bgset="/documents/20126/1366961/vng-cloud-banking-solution.jpg [(max-width: 1600px)] | /documents/20126/1366961/vng-cloud-banking-solution-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="intro-txt">
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-centralized-management.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Centralized management of camera systems
+                                                with optimal storage costs</p>
+
+                                            <p>Banks must have a surveillance camera system and store surveillance
+                                                camera data for at least 100 days (Circular on Safety of Information
+                                                Systems in Banking Operations, No. 18/2018 / TT-NHNN of State Bank of
+                                                Vietnam) to serve the work of counterparty, transaction inspection,
+                                                security. Banks have many branches spread across many locations, making
+                                                it difficult to manage camera systems, large costs for storing content,
+                                                and costs for system investment, operation and maintenance.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-ensure-security-at-atm-247.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Ensure security at ATM 247</p>
+
+                                            <p>Securing ATMs is resource-intensive and human-dependent, requiring 247
+                                                time control making it difficult for banks to optimize costs and ensure
+                                                safety.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-improve-and-ensure-consistent.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Bank needs to improve and ensure
+                                                consistent service quality in its branches</p>
+
+                                            <p>Ensure employees comply with customer service standards, track waiting
+                                                times, VIP service.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-most-cost-effective.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Looking for the most cost-effective and
+                                                optimal storage and data backup plan</p>
+
+                                            <p>According to Circular 18/2018 / TT-NHNN Article 21 of the State Bank of
+                                                Vietnam, Data of information systems at level 2 or higher must have an
+                                                automatic backup plan suitable to the frequency of data changes and
+                                                ensure the principle that arising data must be backed up within 24
+                                                hours. Backup data must be stored on external storage media (such as
+                                                tape, hard disk, optical disc or other storage media) and securely
+                                                stored and preserved separate from the information system installation
+                                                area.</p>
+
+                                            <p>For information systems at level 2 or higher, it is required to check and
+                                                restore backup data from external storage media at least every six
+                                                months. Organizations that have both primary and backup information
+                                                systems located outside of Vietnam must store personal information and
+                                                transaction data of customers in Vietnam in accordance with the
+                                                provisions of Vietnamese law.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-establishing.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Establishing a comprehensive IT
+                                                infrastructure</p>
+
+                                            <p>The bank needs to quickly establish its technology infrastructure and
+                                                environment to develop and test apps for non-critical services. To
+                                                ensure that research innovation and development catch up with the speed
+                                                of competitors and the world, banks need to quickly and flexibly deploy
+                                                the IT environment.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-remote-working.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Remote working safely and effectively
+                                            </p>
+
+                                            <p>The typicall job of a bank sales or appraisal officer must go out often
+                                                and need access to the bank's data to work. If the employees can only
+                                                access the branch, it will not be optimal for them to access remotely
+                                                which it is necessary to have a secure solution for remote working.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-ensure-privacy-and-cyber-security.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Ensure privacy and cyber security
+                                                capabilities for the e-banking</p>
+
+                                            <p>For e-banking model, it is vital to ensure the data privacy as well as
+                                                business information. Any information security incident can cause
+                                                serious financial and reputational damage to your business. According to
+                                                Symantec Software Company, Vietnam ranks 11th in the world in terms of
+                                                cyber threat activities. According to the Vietnam Digital Information
+                                                Security Association (VNISA), the information security index in 2018 is
+                                                45.6% although this index of Vietnam has improved over the years, but
+                                                the level of improvement is also modest. For that reason, Vietnam is
+                                                still forecasted to be a country with high rates of malware and malware
+                                                infections.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-effective-online-and-offline.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Effective online and offline integration
+                                                for the e-banking system</p>
+
+                                            <p>Banks are less able to move their core banking system to the cloud, but
+                                                they still have to develop an e-banking channel to catch up with the
+                                                trend. To expand to digital banking model, the current system needs to
+                                                integrate between e-banking (on cloud) with core banking on premise
+                                                system. Therefore, they have a need for hybrid cloud solution.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions bg-white">
+                            <div class="s-margin-height">&nbsp;</div>
+
+                            <p class="v-cloud-title text-center f-700">Solutions</p>
+
+                            <div class="cloud-container v-section-inner">
+                                <div class="solutions-blocks">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all block-more hidden">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-247-security-monitoring-with-ai.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">24/7 security monitoring with AI
+                                                    integrated vCloudcam</p>
+
+                                                <p>Using smart camera system to ensure security, if people have strange
+                                                    behaviors such as wearing helmets, wearing masks, the camera will
+                                                    continuously record and send realtime alerts to the security guard
+                                                    to follow. follow up and take timely measures.</p>
+
+                                                <p>The camera system with facial recognition technology can be used for
+                                                    security purposes - triggering alerts to call for focus and
+                                                    necessary action if "undesirable" people are detected.</p>
+
+                                                <p>With the investment in smart camera systems, banks can spend huge
+                                                    amounts of money investing in smart cameras to replace the current
+                                                    cameras. VNG Cloud has a solution to help optimize costs by making
+                                                    cameras become smarter, thanks to storing camera data in the cloud,
+                                                    image processing will be done in the cloud, helping banks save
+                                                    money. Many costs to replace all existing cameras and still meet the
+                                                    needs of information exploitation.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all block-more hidden">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-optimize-data-backup.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Optimize data backup with DR
+                                                    solution and smart storage</p>
+
+                                                <p>To minimize the risk of data loss, one of the safest options often
+                                                    chosen by businesses is offsite backup - a backup archive that is
+                                                    stored at a different facility from the original data, or elsewhere.
+                                                </p>
+
+                                                <p>Data stored in the cloud of VNG Cloud ensures all standards of
+                                                    redundancy as well as standards of international data centers. VNG
+                                                    Cloud also has an intelligent storage system, which automatically
+                                                    switches between frequently accessed data and less accessed data;
+                                                    from there to thoroughly optimize the cost. All are duplicated 3
+                                                    copies to avoid the risk of data loss.</p>
+
+                                                <p>VNG Cloud's system is certified with global security standards
+                                                    PCI-DSS and ISO 27001.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-centralized-camera-management.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Centralized camera management and
+                                                    storing with vCloudcam at optimal cost.</p>
+
+                                                <p>VNG Cloud's <a href="/product/vcloudcam"
+                                                        title="vCloudcam">vCloudcam</a> service supports unlimited
+                                                    camera data storage in the cloud at optimal cost. Support for
+                                                    managing, monitoring and extracting data of the entire camera system
+                                                    on many places in a centralized and effective way. No cost needed in
+                                                    investment, operation and maintenance.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-applying-ai.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Applying AI to monitor &amp; improve
+                                                    customer service quality at branches</p>
+
+                                                <p>Apply AI technology to recognize behavior, score employees, and
+                                                    manage services at branches more transparently. Use AI to recognize
+                                                    the faces of VIP customers and have a special service to take care
+                                                    of VIP customers.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-hybrid-cloud.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Using the hybrid cloud model to
+                                                    integrate online and offline information for e-banking</p>
+
+                                                <p>Hybrid Cloud model: Combining existing ERP, CRM and cloud systems
+                                                    thanks to the hybrid model, businesses can keep existing on-premise
+                                                    systems and partially convert to the cloud without any problems, any
+                                                    influence, help optimize investment costs.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-unlimited-capacity-and-flexible-according.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Infrastructure with unlimited
+                                                    capacity and flexibility according to the system's needs</p>
+
+                                                <p>Infrastructure capacity of VNG Cloud with Unlimited capacity, ready
+                                                    to meet the needs of businesses, VNG Cloud provides many services
+                                                    developed bu experienced experts, ready to support &amp; set up the
+                                                    environment according to business demand.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1381281/vng-cloud-solution-banking-icon-efficient-remove-working-management.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Efficient remote workfing management
+                                                </p>
+
+                                                <p>Secure digital workspace for bank employees to work remotely.
+                                                    Employees can access the Bank's system without worrying about
+                                                    information leakage, network security and still ensure information
+                                                    safety and work efficiency.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="load-more t-upper">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="solution-benefits position-relative">
+                            <div class="benefits">
+                                <div class="bg-cover img lazyload wow fadeIn"
+                                    data-bgset="/documents/20126/1381281/vng-cloud-solution-banking-benefits.jpg [(max-width: 1600px)] | /documents/20126/1381281/vng-cloud-solution-banking-benefits-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="benefits-content position-relative">
+                                    <p class="v-cloud-title f-700">Benefits</p>
+
+                                    <div class="benefits-row row">
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="1">
+                                            <p class="title primary-color mb-2">Increase the efficiency in management
+                                                and operation at branches and ATMs</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="2">
+                                            <p class="title primary-color mb-2">Ensure proactively security at the point
+                                                of sale</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="3">
+                                            <p class="title primary-color mb-2">Reduce operating and storage costs</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="4">
+                                            <p class="title primary-color mb-2">Ensure the best quality of customer
+                                                service</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="5">
+                                            <p class="title primary-color mb-2">Ensure customer experience on digital
+                                                channels</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-labelledby="media-tab" class="tab-pane" data-parent="#accordion" id="media" role="tabpanel">
+                    <div class="solution-content">
+                        <div class="solution-intro">
+                            <div class="solution-intro_content">
+                                <div class="wow fadeIn intro-bg float-sm-right bg-cover position-relative lazyload"
+                                    data-bgset="/documents/20126/1366961/vng-cloud-multimedia-solution.jpg [(max-width: 1600px)] | /documents/20126/1366961/vng-cloud-multimedia-solution-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="intro-txt">
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-lack-of-scalability.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Lack of scalability to ensure customer
+                                                experience</p>
+
+                                            <p>After launching a media product to the market, businesses cannot predict
+                                                the numbers of concurrent users so that a business needs a flexible,
+                                                scalable system based on demand at the time to optimize user experience
+                                                at the lowest cost.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-can-not-optimize-cost.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Can not optimize cost</p>
+
+                                            <p>In order to optimize the users experience on different types of devices
+                                                or Internet access conditions (3G, 4G), an original content needs to be
+                                                transcode into many different profiles, causing storage costs to
+                                                increase many times. If you use on premise solutions for storage,
+                                                businesses will have performance problems and lack of flexibility when
+                                                expanding.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-chanlenges-in-understand.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Challenges in understand and evaluate
+                                                customer behaviour</p>
+
+                                            <p>Businesses will need accurate data that is updated in real time to
+                                                evaluate the effectiveness of the delivered content and, improve the
+                                                quality of service delivered to users</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-enhance-comprehensive-network-security.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Enhance comprehensive network security
+                                                on the web, applications</p>
+
+                                            <p>When building websites and apps, information security is one of the
+                                                requirements need to be considerd. To do this, the company must build a
+                                                team of professional engineers, costly to build firewalls to protect
+                                                websites and apps.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions bg-white">
+                            <div class="s-margin-height">&nbsp;</div>
+
+                            <p class="v-cloud-title text-center f-700">Solutions</p>
+
+                            <div class="cloud-container v-section-inner">
+                                <div class="solutions-blocks">
+                                    <div class="row">
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-optimize-and-timely.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Optimize and timely handle all
+                                                    requests on websites and applications from users with Load Balancing
+                                                    and Auto Scalling</p>
+
+                                                <p>When many users request different services on the website and app at
+                                                    the same time, the system may be delayed due to inadequate
+                                                    processing, the Load balancing &amp; Auto Scaling service supports
+                                                    automatic server offloading, realtime response. when access demand
+                                                    spiked. Scale up service - help increase unlimited server
+                                                    configuration, scale out - increase the number of servers in just a
+                                                    few clicks.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-increase-the-download-speed.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Increase the downloads speed, serve
+                                                    millions of concurrent users with CDN solutions.</p>
+
+                                                <p>Content distribution solution vCDN, with the system of Vinadata
+                                                    servers located in many places, extremely large bandwidth helps
+                                                    increase download speed when accessing the website, mobile app. vCDN
+                                                    helps reduce server load, optimizes bandwidth by streaming through
+                                                    network servers, and reduces queries to resources.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-optimize-data-storage.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Optimize data storage</p>
+
+                                                <p>Cloud storage makes it easy to store unlimited content, depending on
+                                                    your usage needs. Smart Storage makes the system self-elasticity,
+                                                    easy to switch between frequently accessed data and less-accessed
+                                                    data, optimizing cost. Smart Storage also analyzes archived content.
+                                                    Frequently accessed content will be returned to vStorage, while less
+                                                    frequently accessed content will be returned to vColdstorage, making
+                                                    cost optimization and management easier.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379806/vng-cloud-solution-media-icon-providing-security-services.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Providing security services with
+                                                    leading partners in the world</p>
+
+                                                <p>All VNG Cloud infrastructure systems are ISO 27001 compliant with the
+                                                    Cloud Firewall system, providing advanced and flexible security
+                                                    features, such as creating a complete firewall (NGFW), creating
+                                                    security groups. Security Policy Group and Network Access Control
+                                                    List (Network ACL), to allow content filtering to and from the lower
+                                                    network layer to the application layer. With 2 layers of protection,
+                                                    the services of the business will be protected safely.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="load-more t-upper hidden">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="solution-benefits position-relative">
+                            <div class="benefits">
+                                <div class="bg-cover img lazyload wow fadeIn"
+                                    data-bgset="/documents/20126/1379806/vng-cloud-solution-multimedia-benefits.jpg [(max-width: 1600px)] | /documents/20126/1379806/vng-cloud-solution-multimedia-benefits-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="benefits-content position-relative">
+                                    <p class="v-cloud-title f-700">Benefits</p>
+
+                                    <div class="benefits-row row">
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="1">
+                                            <p class="title primary-color mb-2">Optimize operating costs</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="2">
+                                            <p class="title primary-color mb-2">Improve operational control efficiency
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="3">
+                                            <p class="title primary-color mb-2">Ensure flexibility, easy compatibility
+                                                with a variety of end-users devices</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="4">
+                                            <p class="title primary-color mb-2">Increase customer satisfaction with the
+                                                service</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="5">
+                                            <p class="title primary-color mb-2">Real time multi-dimensional data
+                                                analysis</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="6">
+                                            <p class="title primary-color mb-2">Proactive data security</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="7">
+                                            <p class="title primary-color mb-2">Ensure a good user experience on digital
+                                                platforms</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="8">
+                                            <p class="title primary-color mb-2">Create a new revenue streams</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-labelledby="real-estate-tab" class="tab-pane" data-parent="#accordion" id="real-estate"
+                    role="tabpanel">
+                    <div class="solution-content">
+                        <div class="solution-intro">
+                            <div class="solution-intro_content">
+                                <div class="wow fadeIn intro-bg float-sm-right bg-cover position-relative lazyload"
+                                    data-bgset="/documents/20126/1366961/vng-cloud-real-estate-solution.jpg [(max-width: 1600px)] | /documents/20126/1366961/vng-cloud-real-estate-solution-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="intro-txt">
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-invenstors-and-property-managements-have-difficilties.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Investors &amp; Property managements
+                                                have difficulties in information management</p>
+
+                                            <p>Challenges in managing the information of tenants/buyers, keeping records
+                                                of bills, managing papers... In addition, it is difficult for businesses
+                                                to create a friendly and transperant interactive environment between
+                                                management department and residental union.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-investors-and-property-managements-are-unable-to-optimize-cost.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Investors &amp; Property managements are
+                                                unable to optimize cost for storing construction drawings.</p>
+
+                                            <p>We understand that the construction industry has the specific
+                                                requirements of storing drawing from 10 years to 50 years, in order to
+                                                support the maintenance, repair as well as handling of unexpected risks
+                                                during operation. The storing will cost a lot to build an archive,
+                                                management fee as well as personnel costs. However, these archived data
+                                                can be lost due to natural disaster &amp; unintended incidents.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-invertorsand-property-managements-can-not-control-security-247-proactively.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Investors &amp; Property managements can
+                                                not control the security 247 proactively</p>
+
+                                            <p>Proactive security in buildings, apartments requires a a lot of people
+                                                who is always available 247. Therefore, ensuring the security will
+                                                depend on the current human resource, it is difficult to take the
+                                                initiative in monitoring and supervision. However, it will take a lot
+                                                cost to invest in new smart camera system.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-seeking-solutions.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Real estate transaction platforms are
+                                                seeking solutions to enhance the omni-channel customer experiences</p>
+
+                                            <p>Businesses are trying to improve the quality of customer services and
+                                                expand new sales channels. Since then, the need to effectively manage
+                                                the work of businesses is increasing, at the same time, the omni-channel
+                                                system must be flexible, well meet the flexible out-door meeting needs
+                                                of salesperson when having to meet customers in the different locations.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-facing-challenges.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Real estate transaction platforms are
+                                                facing challenges in ensure the data security and users privacy on their
+                                                website &amp; applications.</p>
+
+                                            <p>Information security is one of the important factors that is at the
+                                                forefront of developing and maintaining a website. To set up a firewall
+                                                to protect websites and applications, companies must build a team of
+                                                professional IT-engineers and spend a lot of money to maintain that
+                                                security.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions bg-white">
+                            <div class="s-margin-height">&nbsp;</div>
+
+                            <p class="v-cloud-title text-center f-700">Solutions</p>
+
+                            <div class="cloud-container v-section-inner">
+                                <div class="solutions-blocks">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-centralized-data-management.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Centralized data management</p>
+
+                                                <p>Centralized customers data and information managment on VNG Cloud
+                                                    infrastructure. All of the data will be stored and managed on a
+                                                    single system, helping building management to easily manage and easy
+                                                    for employees to access, manage and share documents easily and
+                                                    avoiding data loss.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-improve-the-quality.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Improve the quality of building
+                                                    management services.</p>
+
+                                                <p>DBusinesses easily receive and process information about buildings
+                                                    and apartments accurately and quickly. In addition, the building
+                                                    management can inventory and report expenses within a month, a
+                                                    quarter and a year. Reminders about the maintenance schedule,
+                                                    notification of electricity and water costs, activities ...,
+                                                    residents easily look up information on property facilities.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-proactive-camera-security-solution.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Proactive camera security solution
+                                                </p>
+
+                                                <p>Facial recognition camera system helps recognize residents in any
+                                                    apartement, no need magnetic card to use the elevator and they can
+                                                    be taken straight to the floor they live. Ensure 24/7 security, no
+                                                    need to invest in new camera systems, actively monitor prohibited
+                                                    areas, automatically notify the security team of unauthorized
+                                                    intrusion activities.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-security-as-a-service.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Security as a Service</p>
+
+                                                <p>VNG Cloud infrastructure system has received ISO 27001 certification
+                                                    which also combined with Cloud Firewall system - providing advanced
+                                                    and flexible security features, such as creating a complete firewall
+                                                    (NGFW), creating security groups (Security) Policy Group) and
+                                                    network access control list (Network ACL), which allows content
+                                                    filtering to and from the lower network layer to the application
+                                                    layer.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-intelligent-storage.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Intelligent Storage</p>
+
+                                                <p>Automatically expands storage, easily switches between frequently
+                                                    accessed data and less-accessed data, thereby, reducing costs.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1379938/vng-cloud-solution-real-estate-icon-smart-call-center.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Smart call center</p>
+
+                                                <p>Smart mobile switchboard vCS is an effective solution for businesses
+                                                    to control and monitor the efficiency of their employees.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="load-more t-upper hidden">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="solution-benefits position-relative">
+                            <div class="benefits">
+                                <div class="bg-cover img lazyload wow fadeIn"
+                                    data-bgset="/documents/20126/1379938/vng-cloud-solution-real-estate-benefits.jpg [(max-width: 1600px)] | /documents/20126/1379938/vng-cloud-solution-real-estate-benefits-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="benefits-content position-relative">
+                                    <p class="v-cloud-title f-700">Benefits</p>
+
+                                    <div class="benefits-row row">
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="1">
+                                            <p class="title primary-color mb-2">Optimize operating, storage and security
+                                                costs</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="2">
+                                            <p class="title primary-color mb-2">Improve security of building with the
+                                                support of 247 technology</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="3">
+                                            <p class="title primary-color mb-2">Saving costs of investing in new
+                                                systems, taking advantage of existing systems</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="4">
+                                            <p class="title primary-color mb-2">Enhance customer service on omni-channel
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="5">
+                                            <p class="title primary-color mb-2">Optimize IT infrastructure investment
+                                                cost</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="6">
+                                            <p class="title primary-color mb-2">Create a new revenue streams</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-labelledby="construction-tab" class="tab-pane" data-parent="#accordion" id="construction"
+                    role="tabpanel">
+                    <div class="solution-content">
+                        <div class="solution-intro">
+                            <div class="solution-intro_content">
+                                <div class="wow fadeIn intro-bg float-sm-right bg-cover position-relative lazyload"
+                                    data-bgset="/documents/20126/1366961/vng-cloud-construction-solution.jpg [(max-width: 1600px)] | /documents/20126/1366961/vng-cloud-construction-solution-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="intro-txt">
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-chanllenges-in-project.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Challenges in project management &amp;
+                                                time management</p>
+
+                                            <p>Businesses have to manage different construction projects at the same
+                                                time. This leads to the Challenges in tracking the project as well as
+                                                sync and transfer the accurate information across the teams.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-loss-of-property.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Loss of property, construction
+                                                materials, fraudulent the number of workers</p>
+
+                                            <p>Big construction projects need a many people in management team to
+                                                supervise workers, ensure work quality, labor safety, protect
+                                                construction materials, therefore, the effectiveness of these activities
+                                                depends on people.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-archive-many-construction-drawings.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Archive many construction drawings will
+                                                cost a lot for business</p>
+
+                                            <p>There are many requirements of long-term archive for design documents,
+                                                completed drawings according to the project's service life and 10-year
+                                                archival requirements for the design and construction contractors after
+                                                the end of the construction warranty. In addition, traditional storage
+                                                will cost a lot for building and mainting warehouse but there are always
+                                                riskes of data loss due to natural disaster or unwanted situation such
+                                                as: fires, flood, earthquake...</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-avoid-conflicts.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Avoid conflicts between different design
+                                                layers</p>
+
+                                            <p>Limited access to BIM models due to the server system located in
+                                                different regions would be affected by the international bandwidth. This
+                                                results in time consuming uploading and downloading data to BIM,
+                                                affecting the work progress of the teams involved.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="intro-block d-flex mb-3">
+                                        <div><img class="lazyload"
+                                                data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-physical-server-management.png" />
+                                        </div>
+
+                                        <div class="block-txt">
+                                            <p class="title primary-color mb-2">Physical server management and
+                                                infrastructure fragmentation</p>
+
+                                            <p>Construction business have to invest in a powerful configuration server
+                                                and located in the engine room to handle large-capacity design files.
+                                                This will cost operating costs, maintenance of machinery and engineers
+                                                have to be in the engine room to monitor the working process.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions bg-white">
+                            <div class="s-margin-height">&nbsp;</div>
+
+                            <p class="v-cloud-title text-center f-700">Solutions</p>
+
+                            <div class="cloud-container v-section-inner">
+                                <div class="solutions-blocks">
+                                    <div class="row">
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-smart-camera-system.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Smart camera system to monitor
+                                                    construction site</p>
+
+                                                <p>Our solution will helop business reduce supervision costs with
+                                                    intelligent features such as: counting people, timekeeping, facial
+                                                    recognition… .This will help business to monitor the site
+                                                    effectively, ensure labor safety compliance. Proactive monitor
+                                                    security such as: blacklisting, restricted areas, virtual fences
+                                                    ....</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-intelligent-storage.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Intelligent storage</p>
+
+                                                <p>Storage system automatically expands storage, easily switches between
+                                                    frequently accessed data and less-access data, optimizing cost.
+                                                    Items that need frequent retrieval, such as drawings while under
+                                                    construction, can be stored on vStorage, while drawings of completed
+                                                    buildings and less retrieval needs will be transferred to
+                                                    vColdstorage. All data will be backed up in 3 archives at 3
+                                                    different locations to avoid data loss.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-remote-working-management.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Remote working management</p>
+
+                                                <p>Digital workspace solution provide a safely online working
+                                                    environment for business. engineers and architects can work remotely
+                                                    and still have the ability to access to the servers and data on
+                                                    computers while ensuring information security and working
+                                                    efficiency.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-3 transition-all">
+                                            <div class="sol-block h-100 wow fadeIn">
+                                                <div class="mb-3 text-center"><img class="lazyload"
+                                                        data-src="/documents/20126/1380118/vng-cloud-solution-construction-icon-centralized-data-management.png" />
+                                                </div>
+
+                                                <p class="title primary-color mb-2">Centralized data management to track
+                                                    the project</p>
+
+                                                <p>Keep track and speed up the working process by updating real-time
+                                                    data across teams, ensure data transperancy and data security.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="load-more t-upper hidden">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="solution-benefits position-relative">
+                            <div class="benefits">
+                                <div class="bg-cover img lazyload wow fadeIn"
+                                    data-bgset="/documents/20126/1380118/vng-cloud-solution-construction-benefits.jpg [(max-width: 1600px)] | /documents/20126/1380118/vng-cloud-solution-construction-benefits-lg.jpg">
+                                    &nbsp;</div>
+
+                                <div class="benefits-content position-relative">
+                                    <p class="v-cloud-title f-700">Benefits</p>
+
+                                    <div class="benefits-row row">
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="1">
+                                            <p class="title primary-color mb-2">Provide fast and intuitive reporting
+                                                information and data, which helps project managers to make accurate
+                                                decisions, in order to improve management efficiency, ensure project
+                                                progress.</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="2">
+                                            <p class="title primary-color mb-2">Construction management, ensure
+                                                security, better labor safety with high performance, cost savings</p>
+                                        </div>
+
+                                        <div class="col-md-6 benefits-block position-relative pr-3 mb-4" data-index="3">
+                                            <p class="title primary-color mb-2">Optimize Storage costs, retrieve data
+                                                faster</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style type="text/css">
+        .solution-nav {
+            margin: 0 auto;
+        }
+
+        .solution-nav .nav {
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution .nav-item .nav-link.active,
+        .solution .tab-content .title {
+            font-weight: 600;
+        }
+
+        .solution .nav-item .nav-link {
+            position: relative;
+        }
+
+        .solution .nav-item .nav-link:hover,
+        .solution .nav-item .nav-link.active {
+            background-color: var(--dark-blue-2);
+            color: #fff;
+        }
+
+        .intro-block {
+            position: relative;
+        }
+
+        .intro-block img {
+            width: 50px;
+        }
+
+        .intro-bg {
+            background-color: #bababa;
+        }
+
+        .solutions-blocks .sol-block img {
+            height: 60px;
+        }
+
+        .solutions-blocks .sol-block .title {
+            text-align: center;
+        }
+
+        .solution-benefits .benefits .img {
+            background-color: #bababa;
+        }
+
+        .benefits-block {
+            padding-left: 70px;
+            min-height: 50px;
+        }
+
+        .benefits-block::before {
+            content: attr(data-index);
+            position: absolute;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            background: rgb(251 112 51 / .25);
+            font-weight: 600;
+            color: var(--vng-orange);
+        }
+
+        .solutions-blocks div[class*='col-']:hover {
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-8px);
+        }
+
+        @media (min-width: 1600px) {
+            .solution-nav {
+                max-width: 1200px;
+            }
+
+            .intro-block {
+                max-width: 1400px;
+            }
+
+            .intro-bg {
+                margin-left: 30px;
+            }
+
+            .solution-intro .intro-bg {
+                width: 600px;
+                height: 400px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .benefits-content {
+                padding: 30px;
+                width: calc(100% - 450px);
+            }
+
+            .solution-benefits .benefits .img {
+                width: 450px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .solutions {
+                padding-bottom: 7rem;
+            }
+
+            .solution-nav {
+                max-width: 90%;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .solution .nav-item .nav-link {
+                text-transform: uppercase;
+            }
+
+            .solution-intro {
+                padding-left: calc(10% + 15px)
+            }
+
+            .block-txt {
+                padding-left: 20px;
+            }
+
+            .intro-block {
+                display: flex;
+            }
+
+            .solution-benefits .benefits {
+                display: flex;
+                margin-bottom: 7rem;
+            }
+
+            .benefits-content {
+                padding: 20px;
+                width: calc(100% - 400px);
+            }
+
+            .solution-intro .intro-bg {
+                width: 500px;
+                height: 300px;
+            }
+
+            .solutions-blocks .sol-block {
+                margin-bottom: 20px;
+            }
+
+            .solution-benefits .benefits .img {
+                width: 400px;
+                margin-top: -30px;
+                margin-bottom: -30px;
+            }
+
+            .block-txt {
+                width: calc(100% - 50px);
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .solution .nav-item .nav-link {
+                padding: 5px 10px;
+            }
+
+            .intro-block:not(:last-child) {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .block-txt {
+                padding-top: .5rem;
+            }
+
+            .benefits-content {
+                padding: 20px;
+            }
+
+            .benefits-row {
+                display: block;
+            }
+
+            .benefits-block {
+                padding-top: 10px;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .solution .tab-content>.tab-pane {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .solution .tab-content .tab-pane:not(.show) .solution-content {
+                display: none
+            }
+
+            .solutions-blocks div[class*='col-'] {
+                margin-bottom: 30px;
+            }
+
+            .solution-benefits .benefits {
+                padding: 0;
+            }
+
+            .solution-benefits .benefits .img {
+                height: 250px;
+            }
+
+            .benefits-block {
+                padding-left: 60px;
+            }
+
+            .benefits-block::before {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .solution-intro {
+                padding-left: 5%;
+            }
+
+            .solution-intro .intro-bg {
+                margin-left: 15px;
+            }
+
+            .solution-intro .intro-bg,
+            .solution-benefits .benefits .img {
+                width: 50%;
+                height: 250px;
+            }
+
+            .solution-benefits .benefits .img {
+                height: 250px;
+                float: right;
+                margin-top: -50px;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .solution-nav .nav {
+                justify-content: center;
+            }
+
+            .intro-txt {
+                padding-right: 5%;
+            }
+
+            .block-txt {
+                padding-right: 40px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .solution {
+                margin-bottom: 50px;
+            }
+
+            .solutions-blocks {
+                padding-top: 1rem;
+            }
+
+            .intro-txt {
+                padding: 15px;
+            }
+
+            .solution-intro .intro-bg {
+                height: 250px;
+                margin-bottom: 20px;
+            }
+
+            .solutions-blocks div[class*='col-'] {
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1), 3px 0px 8px rgba(0, 0, 0, 0.1)
+            }
+
+            .benefits-content {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('industry')) activeIndustry()
+
+            function activeIndustry() {
+                var industry = _.escape(urlParams.get('industry'));
+                $.each(document.getElementsByClassName('industry'), function (key, value) {
+                    if ($(value).attr('href') == '#' + industry) {
+                        var offsetTop = $("#solution").offset().top - 20;
+                        $("html, body").stop().animate({
+                            scrollTop: offsetTop
+                        }, 600);
+
+                        $(value).tab('show');
+                        return false
+                    }
+                });
+            }
+        });
+    </script>
+    <style type="text/css">
+        .solution-nav {
+            margin: 0 auto;
+        }
+
+        .solution-nav .nav {
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution .nav-item .nav-link.active,
+        .solution .tab-content .title {
+            font-weight: 600;
+        }
+
+        .solution .nav-item .nav-link {
+            position: relative;
+        }
+
+        .solution .nav-item .nav-link:hover,
+        .solution .nav-item .nav-link.active {
+            background-color: var(--dark-blue-2);
+            color: #fff;
+        }
+
+        .intro-block {
+            position: relative;
+        }
+
+        .intro-block img {
+            width: 50px;
+        }
+
+        .intro-bg {
+            background-color: #bababa;
+        }
+
+        .solutions-blocks .sol-block img {
+            height: 60px;
+        }
+
+        .solutions-blocks .sol-block .title {
+            text-align: center;
+        }
+
+        .solution-benefits .benefits .img {
+            background-color: #bababa;
+        }
+
+        .benefits-block {
+            padding-left: 70px;
+            min-height: 50px;
+        }
+
+        .benefits-block::before {
+            content: attr(data-index);
+            position: absolute;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            background: rgb(251 112 51 / .25);
+            font-weight: 600;
+            color: var(--vng-orange);
+        }
+
+        .solutions-blocks div[class*='col-']:hover {
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-8px);
+        }
+
+        @media (min-width: 1600px) {
+            .solution-nav {
+                max-width: 1200px;
+            }
+
+            .intro-block {
+                max-width: 1400px;
+            }
+
+            .intro-bg {
+                margin-left: 30px;
+            }
+
+            .solution-intro .intro-bg {
+                width: 600px;
+                height: 400px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .benefits-content {
+                padding: 30px;
+                width: calc(100% - 450px);
+            }
+
+            .solution-benefits .benefits .img {
+                width: 450px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .solutions {
+                padding-bottom: 7rem;
+            }
+
+            .solution-nav {
+                max-width: 90%;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .solution .nav-item .nav-link {
+                text-transform: uppercase;
+            }
+
+            .solution-intro {
+                padding-left: calc(10% + 15px)
+            }
+
+            .block-txt {
+                padding-left: 20px;
+            }
+
+            .intro-block {
+                display: flex;
+            }
+
+            .solution-benefits .benefits {
+                display: flex;
+                margin-bottom: 7rem;
+            }
+
+            .benefits-content {
+                padding: 20px;
+                width: calc(100% - 400px);
+            }
+
+            .solution-intro .intro-bg {
+                width: 500px;
+                height: 300px;
+            }
+
+            .solutions-blocks .sol-block {
+                margin-bottom: 20px;
+            }
+
+            .solution-benefits .benefits .img {
+                width: 400px;
+                margin-top: -30px;
+                margin-bottom: -30px;
+            }
+
+            .block-txt {
+                width: calc(100% - 50px);
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .solution .nav-item .nav-link {
+                padding: 5px 10px;
+            }
+
+            .intro-block:not(:last-child) {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .block-txt {
+                padding-top: .5rem;
+            }
+
+            .benefits-content {
+                padding: 20px;
+            }
+
+            .benefits-row {
+                display: block;
+            }
+
+            .benefits-block {
+                padding-top: 10px;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .solution .tab-content>.tab-pane {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .solution .tab-content .tab-pane:not(.show) .solution-content {
+                display: none
+            }
+
+            .solutions-blocks div[class*='col-'] {
+                margin-bottom: 30px;
+            }
+
+            .solution-benefits .benefits {
+                padding: 0;
+            }
+
+            .solution-benefits .benefits .img {
+                height: 250px;
+            }
+
+            .benefits-block {
+                padding-left: 60px;
+            }
+
+            .benefits-block::before {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .solution-intro {
+                padding-left: 5%;
+            }
+
+            .solution-intro .intro-bg {
+                margin-left: 15px;
+            }
+
+            .solution-intro .intro-bg,
+            .solution-benefits .benefits .img {
+                width: 50%;
+                height: 250px;
+            }
+
+            .solution-benefits .benefits .img {
+                height: 250px;
+                float: right;
+                margin-top: -50px;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .solution-nav .nav {
+                justify-content: center;
+            }
+
+            .intro-txt {
+                padding-right: 5%;
+            }
+
+            .block-txt {
+                padding-right: 40px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .solution {
+                margin-bottom: 50px;
+            }
+
+            .solutions-blocks {
+                padding-top: 1rem;
+            }
+
+            .intro-txt {
+                padding: 15px;
+            }
+
+            .solution-intro .intro-bg {
+                height: 250px;
+                margin-bottom: 20px;
+            }
+
+            .solutions-blocks div[class*='col-'] {
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1), 3px 0px 8px rgba(0, 0, 0, 0.1)
+            }
+
+            .benefits-content {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('industry')) activeIndustry()
+
+            function activeIndustry() {
+                var industry = _.escape(urlParams.get('industry'));
+                $.each(document.getElementsByClassName('industry'), function (key, value) {
+                    if ($(value).attr('href') == '#' + industry) {
+                        var offsetTop = $("#solution").offset().top - 20;
+                        $("html, body").stop().animate({
+                            scrollTop: offsetTop
+                        }, 600);
+
+                        $(value).tab('show');
+                        return false
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript" defer>
+        $(document).ready(function (e) {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        })
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('industry')) activeIndustry()
+
+            function activeIndustry() {
+                var industry = _.escape(urlParams.get('industry'));
+                $.each(document.getElementsByClassName('industry'), function (key, value) {
+                    if ($(value).attr('href') == '#' + industry) {
+                        var offsetTop = $("#solution").offset().top - 20;
+                        $("html, body").stop().animate({
+                            scrollTop: offsetTop
+                        }, 600);
+
+                        $(value).tab('show');
+                        return false
+                    }
+                });
+            }
+        });
+    </script>
+</body>

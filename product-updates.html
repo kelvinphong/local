@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Example</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="assets/css/vngcloud3.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section id="new-features">
+        <div class="nf-wrapper pt-5 pb-5">
+            <div class="cloud-container">
+                <div class="v-cloud-title text-center"><b>What's New</b></div>
+                <p class="v-cloud-desc"> Stay on top of the latest solutions and technology with VNG CLOUD </p>
+                <div class="filter mb-2">
+                    <div class="left-filter">
+                        <ul class="list-unstyled m-0 position-relative">
+                            <span class="icon-filter">&nbsp;</span>
+                            <li data-target="filter-product" class="first">
+                                <div href="#filter-product" class="dropdown-label">Select Product (All)<span
+                                        class="icon-angle-down"></span> </div>
+                                <div class="dropdown-filter" data-type="product">
+                                    <div class="prod-filter active" data-value="">Select Product (All)</div>
+                                    <div class="prod-filter" data-value="vstorage">vStorage</div>
+                                    <div class="prod-filter" data-value="vcdn">vCDN</div>
+                                    <div class="prod-filter" data-value="vserver">vServer</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="accordion" id="accordion">
+                    </div>
+                    <div class="filter-pagination mt-3">
+                        <nav>
+                            <ul class="pagination">
+                                <li class="total pr-2">Total 7 items</li>
+                                <li class="page-item">
+                                    <div class="page-link" aria-label="Previous"><span aria-hidden="true">«</span><span
+                                            class="sr-only">Previous</span></div>
+                                </li>
+                                <li class="page-item active" data-index="1">
+                                    <div class="page-link">1</div>
+                                </li>
+                                <li class="page-item">
+                                    <div class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span
+                                            class="sr-only">Next</span></div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="s-margin-height">&nbsp;</div>
+        </div>
+    </section>
+    <style type="text/css">
+        .nf-wrapper {
+            background-color: #f4f9ff
+        }
+
+        .nf-item {
+            background-color: #fff;
+            margin-top: -1px
+        }
+
+        .nf-inner .title {
+            font-size: 20px;
+            color: #373d41;
+            line-height: 24px;
+            margin-bottom: 8px
+        }
+
+        .nf-inner .label-style {
+            background-color: var(--vng-orange);
+            color: #fff;
+            font-size: 12px;
+            border-radius: 50px
+        }
+
+        .nf-inner .description {
+            font-size: 15px;
+            color: #9b9ea0;
+            line-height: 24px
+        }
+
+        .nf-header {
+            padding: 25px 57px 25px 25px;
+            border: 1px solid #d7d8d9;
+            position: relative
+        }
+
+        .nf-header::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            width: 3px;
+            background-color: var(--vng-orange);
+            opacity: 0;
+            -webkit-transition: opacity .2s;
+            -o-transition: opacity .2s;
+            -moz-transition: opacity .2s;
+            -ms-transition: opacity .2s;
+            transition: opacity .2s
+        }
+
+        .nf-right .learn-more {
+            display: block
+        }
+
+        .learn-more {
+            color: var(--vng-orange)
+        }
+
+        .nf-right .learn-more:hover {
+            text-decoration: underline
+        }
+
+        .col-wrap {
+            width: 32px;
+            height: 32px;
+            background: var(--vng-orange);
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+            position: absolute;
+            top: 39px;
+            right: 25px;
+            border-radius: 100%;
+            cursor: pointer;
+            display: block
+        }
+
+        .nf-item.has-child .nf-header {
+            cursor: pointer
+        }
+
+        .nf-item:not(.has-child) .col-wrap {
+            display: none
+        }
+
+        .col-wrap .col-span {
+            width: 1px;
+            height: 18px;
+            left: 15px;
+            top: 7px
+        }
+
+        .col-wrap .row-span {
+            width: 18px;
+            height: 1px;
+            left: 7px;
+            top: 15px
+        }
+
+        .col-wrap>span {
+            position: absolute;
+            background-color: #fff
+        }
+
+        .nf-item .card-body {
+            padding: 25px
+        }
+
+        .nf-header[aria-expanded="true"] {
+            background-color: var(--vng-orange);
+            border-color: var(--vng-orange)
+        }
+
+        .nf-header[aria-expanded="true"] * {
+            color: #fff
+        }
+
+        .nf-header[aria-expanded="true"] .col-wrap,
+        .nf-header[aria-expanded="true"] .nf-inner .label-style {
+            background: #fff
+        }
+
+        .nf-header[aria-expanded="true"] .col-wrap>span {
+            background-color: var(--vng-orange)
+        }
+
+        .nf-header[aria-expanded="true"] .col-span {
+            display: none
+        }
+
+        .nf-header[aria-expanded="true"] .nf-inner .label-style {
+            color: var(--vng-orange)
+        }
+
+        .nf-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05)
+        }
+
+        .nf-item:hover .nf-header::before {
+            opacity: 1
+        }
+
+        .filter .icon-angle-down {
+            padding-left: 5px
+        }
+
+        .filter ul li.active .icon-angle-down::before {
+            content: "\f106"
+        }
+
+        .filter .dropdown-filter {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 100%;
+            left: 20px;
+            max-height: 200px;
+            max-width: 400px;
+            width: 400px;
+            overflow: auto;
+            background-color: #f4f9ff;
+            z-index: 1;
+            border: 1px solid #d7d8d9;
+            -webkit-transition: opacity .3s;
+            -o-transition: opacity .3s;
+            -moz-transition: opacity .3s;
+            -ms-transition: opacity .3s;
+            transition: opacity .3s
+        }
+
+        .left-filter ul li {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            cursor: pointer
+        }
+        .left-filter .icon-filter {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--dark-blue-2);
+        }
+        .dropdown-label {
+            font-weight: 600;
+            color: var(--dark-blue-2);
+        }
+        .left-filter ul li.first .dropdown-label {
+            padding-left: 20px;
+        }
+
+        .filter ul li.active .dropdown-filter {
+            padding: 0;
+            border-radius: 0;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.12);
+        }
+
+        .filter .dropdown-filter .prod-filter {
+            padding: 5px 20px;
+            cursor: pointer
+        }
+
+        .filter .dropdown-filter .prod-filter:hover {
+            background-color: #d7d8d9
+        }
+
+        .filter .dropdown-filter .prod-filter.active {
+            background-color: var(--vng-orange) !important;
+            color: #fff
+        }
+
+        .filter-pagination .pagination {
+            justify-content: flex-end;
+            align-items: flex-end
+        }
+
+        .filter-pagination .page-item.active .page-link {
+            color: var(--vng-orange) !important
+        }
+
+        .filter-pagination .pagination .page-link {
+            border-color: #d7d8d9;
+            padding: 5px 10px;
+            border-radius: 0 !important;
+            background-color: #fff
+        }
+
+        .filter-pagination .pagination .page-item:not(.disabled) .page-link {
+            color: var(--text-body);
+            
+        }
+
+        .filter-pagination .pagination .total {
+            color: #9b9ea0;
+            font-size: 15px
+        }
+
+        .nf-item .collapse.show .card-body {
+            border-width: 1px;
+            border-style: solid;
+            border-top-width: 0;
+            border-bottom-width: 0;
+            border-color: #d7d8d9
+        }
+
+        .nf-item:last-child .collapse.show .card-body {
+            border-bottom-width: 1px
+        }
+
+        .desc-img {
+            height: 300px;
+            background-size: contain;
+            background-repeat: no-repeat
+        }
+
+        @media(min-width:576px) {
+            .desc-img {
+                height: 350px
+            }
+        }
+
+        @media(min-width:769px) {
+            .nf-header {
+                min-height: 130px
+            }
+
+            .nf-right {
+                text-align: center;
+                padding: 0 20px;
+                width: 326px
+            }
+
+            .nf-inner {
+                width: calc(100% - 326px)
+            }
+
+            .show-xs {
+                display: none
+            }
+        }
+
+        @media(max-width:768px) {
+            .nf-header {
+                flex-direction: column-reverse
+            }
+
+            .nf-right .date-wrap {
+                margin-bottom: 5px
+            }
+
+            .hide-xs {
+                display: none !important
+            }
+
+            .show-xs {
+                display: block !important
+            }
+
+            .filter {
+                margin-bottom: 0 !important
+            }
+
+            .left-filter ul li {
+                margin-bottom: 10px
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .nf-inner .description {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin-top: .5rem
+            }
+
+            .nf-header {
+                padding: 10px
+            }
+
+            .col-wrap {
+                top: 10px;
+                right: 10px;
+                width: 28px;
+                height: 28px
+            }
+
+            .nf-right .date-wrap {
+                padding-right: 40px
+            }
+
+            .nf-inner .title {
+                padding-top: 5px
+            }
+
+            .title-inner {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: block
+            }
+
+            .nf-inner .label-style {
+                margin-left: 0 !important
+            }
+
+            .col-wrap .row-span {
+                width: 15px;
+                top: 14px
+            }
+
+            .col-wrap .col-span {
+                height: 15px;
+                left: 14px
+            }
+
+            .txt-block .desc-img {
+                height: 200px;
+                background-size: cover
+            }
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" rel="stylesheet">
+    <script src="assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="assets/js/wow.min.js"></script>
+    <script src="assets/js/lazysizes.min.js" async></script>
+    <script src="assets/js/ls.blur-up.min.js" async></script>
+    <script src="assets/js/ls.object-fit.min.js" async></script>
+    <script src="assets/js/ls.parent-fit.min.js" async></script>
+    <script src="assets/js/ls.bgset.min.js" async></script>
+    <script type="text/javascript" defer="">
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+
+        });
+    </script>
+    <script type="text/javascript" defer="">
+        $(document).ready(function () {
+            var active = 0,
+                active2 = 0,
+                page = 1,
+                size = 3,
+                count = 7,
+                dataNF = [{
+                    "date": "Oct 2020",
+                    "product": "vserver",
+                    "index": 0,
+                    "title": "vMonitor - Theo d\u00f5i to\u00e0n di\u1ec7n h\u1ec7 th\u1ed1ng v\u00e0 c\u00e1c t\u00e0i nguy\u00ean tr\u00ean cloud",
+                    "url": "/product/vmonitor",
+                    "content": '<div class="pl-2">\n    <p class="mb-1">Features:</p>\n    <ul>\n        <li>Creating charts</li>\n<li>Timely alerts</li>\n<li>Different types of notifications via email, slack, webhook and SMS</li>\n<li>Monitoring continuously every minutes the performance of website, application, server with different protocols such as: HTTP, HTTPS, TCP, PING...</li>\n<li>Track the response time of website from different locations.</li>\n<li>Integrated parameter monitoring of different products: vServer, vLB, vAS, vDB.</li>\n    </ul>\n</div>',
+                    "desc": "vMonitor is a service that continuously monitors the performance of resources in real-time. vMonitor is developed for users, developers, system engineers or IT managers to track, monitor resources on cloud infrastructure VNG CLOUD. vMonitor provides an overall view of the system health, allows collecting metrics, data to track, optimize the system, set up alerts and notify when accidents occur."
+                }, {
+                    "date": "Oct 2020",
+                    "product": "vserver",
+                    "index": 1,
+                    "title": "Identity and Access Management",
+                    "url": "/product/vserver#features",
+                    "content": "<p>Allows businesses to securely manage access to services and resources. When using IAM, businesses can create, manage users and VM groups, use permissions to allow and deny access to resources on VNG CLOUD.</p>",
+                    "desc": ""
+                }, {
+                    "date": "Oct 2020",
+                    "product": "vserver",
+                    "index": 2,
+                    "title": "Backup - Allow data and applications on enterprise servers to be backed up and stored independently on VNG CLOUD",
+                    "url": "/product/vserver#features",
+                    "content": "",
+                    "desc": ""
+                }, {
+                    "date": "Oct 2020",
+                    "product": "vstorage",
+                    "index": 3,
+                    "title": "Lifecycle - Users can set rule specifying less frequently accessed data to automatically move to silver class",
+                    "url": "/product/vstorage#prod-new-features",
+                    "content": '<div class="text-center"><img class="img-fluid lazyload" data-src="https://vngcloud.vn/documents/20126/1455799/vng-cloud-product-vstorage-lifecycle-02.png" style="width: 80%" /></div>',
+                    "desc": ""
+                }, {
+                    "date": "Oct 2020",
+                    "product": "vstorage",
+                    "index": 4,
+                    "title": "Ph\u00e2n quy\u1ec1n (ACL) - Admin can grant permission to Read or Write to one or all user in other portals",
+                    "url": "/product/vstorage#prod-new-features",
+                    "content": '<div class="text-center"><img class="img-fluid lazyload" data-src="https://vngcloud.vn/documents/20126/1455799/vng-cloud-product-vstorage-acl-en-01.png" style="width: 80%" /></div>',
+                    "desc": ""
+                }, {
+                    "date": "Oct 2020",
+                    "product": "vstorage",
+                    "index": 5,
+                    "title": "Versioning - Allow save different versions of 1 object. Restore old objects that are accidentally deleted or overwritten",
+                    "url": "/product/vstorage#prod-new-features",
+                    "content": '<div class="text-center"><img class="img-fluid lazyload" data-src="https://vngcloud.vn/documents/20126/1455799/vng-cloud-product-vstorage-versioning-02.png" style="width: 80%" /></div>',
+                    "desc": ""
+                }, {
+                    "date": "Oct 2020",
+                    "product": "vstorage",
+                    "index": 6,
+                    "title": "Multi-tier storage - 3 storage tiers meet different needs of customers",
+                    "url": "/product/vstorage#features",
+                    "content": "<p>vStorage provides 3 storage tiers: Gold, Silver and vCold. With the Gold storage, your data is always ready to use with millisecond retrieval. The Silver is great for data that is rarely accessed, but you still want the data to be ready to use at any time with low storage costs. Finally, vCold - the most economical storage layer suitable for data that are rarely used but need to be stored such as medical records, transaction logs etc.</p>",
+                    "desc": "<p>Easy to plan and manage moving data between storage tiers on web interface. Automatically identify seldom or never-accessed data and move to Silver tier to optimize storage cost.</p>"
+                }],
+                txtMore = "Learn more",
+                txtNF = "New Features",
+                filter = {
+                    "product": {
+                        "name": "",
+                        "field": "product",
+                        "state": false
+                    }
+                },
+                activePage = 1;
+            renderPagination(count, Math.ceil(count / size), 1);
+            handleNFItems(filter, 1);
+            $(".prod-filter").on("click", function (e) {
+                let index = $(this).index();
+                $(".prod-filter").eq(index).addClass("active");
+                $(".prod-filter").eq(active2).removeClass("active");
+                $(this).parent().parent()[0].firstElementChild.innerHTML = $(this)[0].innerText +
+                    "<span class='icon-angle-down'></span>";
+                let value = $(this).attr("data-value"),
+                    type = $($(this).parent()).attr("data-type");
+                filter[type]["name"] = value;
+                activePage = 1;
+
+                handleNFItems(filter, 1);
+                active2 = index
+            });
+            $(".pagination").on("click", ".page-item", function (e) {
+                e.preventDefault();
+                if (!$(this).hasClass('disabled')) {
+                    var index = $(this).attr("data-index");
+                    activePage = parseInt(index);
+
+                    handleNFItems(filter, index);
+                }
+                    
+            });
+            $(".left-filter ul").on("click", "li", function (e) {
+                e.preventDefault();
+                
+                let target = $(this).attr("data-target"),
+                    filterItems = $(".left-filter").find('[class*="dropdown-label"]');
+                filterItems.filter(":not([href*='#" + target + "'])").parent().removeClass("active")
+                    .end();
+                filterItems.filter("[href*='#" + target + "']").parent().toggleClass("active")
+            });
+            let features = document.getElementsByClassName("accordion");
+            if (features.length > 0) {
+                let collapse = $(features[0]).find(".collapse");
+                if (collapse.length >
+                    0) _.forEach(collapse, function (ele, key) {
+                    let find = $(ele).find(".card-body");
+                    if (find.length > 0)
+                        if (find[0].children.length > 0) ele.parentElement.classList.add("has-child")
+                })
+            }
+            $(".accordion").on("click", '[data-toggle="collapse"]', function (event) {
+                event.stopPropagation();
+                let parent = $(this)[0].parentElement.parentElement;
+                if (parent.classList.contains("has-child")) {
+                    let collapse = $(parent).find(".collapse");
+                    if (collapse.hasClass("show")) $(collapse).collapse("hide");
+                    else $(collapse).collapse("show")
+                }
+            });
+
+            function handleNFItems(filter, page) {
+                let data = [];
+
+                dataNF.map(function (value, index) {
+                    if (shoudShowItem(value)) data.push(value)
+                });
+                renderNFItems(_.slice(data, (page - 1) * size, page * size));
+                renderPagination(_.size(data), Math.ceil(_.size(data) / size), page)
+            }
+
+            function shoudShowItem(data) {
+                let isMatch = true;
+                _.forEach(filter, (item, key) => {
+                    if (item["name"] !== "" && data[item["field"]] !== item["name"]) {
+                        isMatch = false;
+                        return false
+                    }
+                });
+                return isMatch
+            }
+
+            function renderPagination(total, num, active = 1) {
+                num = num === 0 ? 1 : num;
+                result = '<li class="total pr-2">Total ' + total + " items</li>";
+                if (total > 0) {
+                    let isDisableNext = activePage === 1 ? " disabled" : "";
+                    result += '<li class="page-item' + isDisableNext + '" data-index="1"><div class="page-link" aria-label="Previous"><span aria-hidden="true">\x26laquo;</span><span class="sr-only">Previous</span></div></li>';
+                    for (var i = 0; i < num; i++) {
+                        let page = i + 1,
+                            isActive = active == page ? " disabled active" : "";
+                        result += '<li class="page-item' + isActive + '" data-index="' + page +
+                            '"><div class="page-link">' + page + "</div></li>"
+                    }
+
+                    let isDisablePrev = activePage === num ? " disabled" : "";
+                    result += '<li class="page-item' + isDisablePrev + '" data-index="' + num + '"><div class="page-link" aria-label="Next"><span aria-hidden="true">\x26raquo;</span><span class="sr-only">Next</span></div></li>'
+                }
+                $(".pagination")[0].innerHTML = result
+            }
+
+            function renderNFItems(data) {
+                var result = "";
+                for (var i = 0; i < data.length; i++) {
+                    let hasChild = "has-child";
+                    if (data[i]["content"] == undefined || data[i]["content"] === "") hasChild = "";
+                    result += '<div class="nf-item transition-all ' + hasChild + '">' +
+                        '<div class="position-relative" id="heading' + data[i]["index"] + '">' +
+                        '<div aria-controls="collapse' + data[i]["index"] +
+                        '" aria-expanded="false" class="nf-header position-relative collapsed d-flex transition-all" data-target="#collapse' +
+                        data[i]["index"] + '" data-toggle="collapse">' +
+                        '<div class="nf-inner"><h4 class="title"><span class="title-inner">' +
+                        data[i]["title"] +
+                        '</span><span class="label-style ml-2 mt-sm-1 pl-2 pr-2 d-inline-block">' +
+                        txtNF + "</span></h4>" + '<div class="description">' + data[i][
+                            "desc"
+                        ] + '</div><a href="#" class="learn-more mt-2 show-xs">' + txtMore +
+                        '</a></div><div class="nf-right"><div class="date-wrap">' +
+                        data[i]["date"] + "</div>" +
+                        '<a href="#" class="learn-more mt-2 hide-xs">' + txtMore +
+                        '</a><span class="col-wrap"><span class="col-span"></span><span class="row-span"></span></span>' +
+                        '</div></div></div><div aria-labelledby="heading' + data[i][
+                            "index"
+                        ] + '" class="collapse" data-parent="#accordion" id="collapse' + data[i][
+                            "index"
+                        ] + '">' + '<div class="card-body">' + data[i]["content"] +
+                        "</div></div></div>"
+                }
+                $(".accordion")[0].innerHTML =
+                    result
+            }
+        });
+    </script>

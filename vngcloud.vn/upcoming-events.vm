@@ -1,0 +1,257 @@
+#if (!$entries.isEmpty() && $entries.size() > 0)
+<link href="/o/vng-cloud-theme/css/slick.css" rel="stylesheet" type="text/css">
+<link href="/o/vng-cloud-theme/css/slick-theme.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  .u-events-wrapper {
+      opacity: 0;
+      visibility: hidden
+  }
+  
+  .u-events.slick-slide {
+    display: flex;
+  }
+  .u-events {
+    background: #F4F9FF;
+  }
+  .u-events .events__main-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .u-events-wrapper .slick-arrow {
+    width: 30px;
+    height: 30px;
+    background: var(--dark-blue-2);
+  }
+
+  .u-events-wrapper .slick-arrow::before {
+    opacity: 1 !important;
+  }
+
+  .u-events-wrapper .slick-arrow:hover::before {
+    font-weight: 600;
+  }
+
+  .u-events-wrapper .slick-prev {
+    left: 0;
+  }
+
+  .u-events-wrapper .slick-next {
+    right: 0;
+  }
+
+  .u-events-wrapper .slick-dots {
+    display: flex;
+    align-items: center;
+  }
+
+  .u-events-wrapper .slick-dots li {
+    height: 2px;
+    width: auto;
+  }
+
+  .u-events-wrapper .slick-dots li button {
+    height: auto;
+    padding: 0;
+  }
+
+  .u-events-wrapper .slick-dots li.slick-active button {
+    width: 30px;
+  }
+
+  .u-events-wrapper .slick-dots li.slick-active button:before {
+    background: var(--vng-orange);
+    width: 30px;
+  }
+
+  .u-events-wrapper .slick-dots li button:before {
+    content: ' ' !important;
+    height: 2px;
+    background: var(--dark-blue-2);
+    opacity: 1;
+    border-radius: 2px;
+  }
+
+  .u-events-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .u-events .v-cloud-title {
+    font-size: 25px;
+  }
+
+  .u-events-heading {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #747474
+  }
+
+  .u-events-heading p {
+    margin-bottom: 0;
+  }
+
+  .u-events-heading .u-events-time {
+    margin-right: 30px;
+  }
+
+  .u-events-heading .u-events-address {
+    position: relative;
+  }
+
+  .u-events-heading .u-events-address::before {
+    position: absolute;
+    content: '.';
+    left: -17px;
+    top: calc(50% - 15px);
+  }
+
+  .u-events-category {
+    font-weight: 900;
+  }
+
+  .u-events .events-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .u-events__content img {
+    width: 30px
+  }
+
+  .u-events-join {
+    background-color: var(--dark-blue-2);
+    color: #fff;
+  }
+    .u-events-join:hover {background-color: var(--dark-blue-3);}
+  @media (min-width: 1500px) {
+    .u-events .events-thumb {
+      height: 450px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .u-events .events-thumb {
+      height: 350px;
+      padding-left: 20px;
+    }
+    .u-events-wrapper .slick-dots { justify-content: center; }
+  }
+  @media (min-width: 576px) and (max-width: 991.98px) {
+      .u-events .events-thumb {height: 400px;}
+  }
+  @media (max-width: 1199.98px) {
+      .u-events .events__main-content {padding-left: 15px;padding-right: 15px}
+  }
+  @media(max-width: 991.98px) {
+      .u-events.slick-slide { flex-direction: column-reverse }
+      .u-events-wrapper .slick-dots {
+          top: 330px;
+          left: 15px;
+          bottom: auto
+      }
+      .u-events-wrapper .slick-dots li {margin-left: 0;margin-right: 10px}
+  }
+  @media (max-width: 575.98px) {
+      .u-events .events-thumb {height: 200px;}
+  }
+</style>
+#set ($AssetCategoryLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService"))
+#set ($prefixUrl = "/events/")
+#set ($size = 0)
+#set ($maxItems = 5)
+#if ($entries.size() > $maxItems)
+#set ($size = $maxItems - 1)
+#else
+#set ($size = $entries.size() - 1)
+#end
+#set ($catLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService"))
+#set ($exceptCat = ['Upcoming Events'])
+<section id="s-events">
+    <div class="u-events-wrapper wow fadeIn" id="u-events-wrapper">
+        #foreach ($index in [0..$size])
+            #set($renderer = $entries.get($index).getAssetRenderer())
+            #set($className = $renderer.getClassName() )
+            #set($event=$entries.get($index))
+            #set( $exLink = false )
+            #if ($className == "com.liferay.journal.model.JournalArticle")
+                #set( $journalArticle = $renderer.getArticle() )
+                #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                #set( $rootElement = $document.getRootElement() )
+                #set ($styledTitle = "")
+                #set( $xPathTitle =
+                $saxReaderUtil.createXPath("dynamic-element[@name='title']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+                #set( $xPathStyledTitle =
+                $saxReaderUtil.createXPath("dynamic-element[@name='styledTitle']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $styledTitle = $xPathStyledTitle.selectSingleNode($rootElement).getStringValue())
+
+                #set ($xPathUrl =
+                $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+                #set ($linkDetail = 'javascript::void(0)')
+                #if (!$url.isEmpty()) #set ($linkDetail = $url)
+                #end
+                #set( $xPathDesc =
+                $saxReaderUtil.createXPath("dynamic-element[@name='description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $description = $xPathDesc.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathExLink =
+                $saxReaderUtil.createXPath("dynamic-element[@name='IsExternalLink']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $exLink = $xPathExLink.selectSingleNode($rootElement).getStringValue())
+
+#set( $xPathAddress =
+                $saxReaderUtil.createXPath("dynamic-element[@name='address']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $exAddress = $xPathAddress.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathImage =
+                $saxReaderUtil.createXPath("dynamic-element[@name='thumbnail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+                #if (!$image.isEmpty())
+                #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+$imgJson.name
+                +"/"+$imgJson.uuid)
+                #else
+                #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+                #end
+                #set( $xPathDate =
+                $saxReaderUtil.createXPath("dynamic-element[@name='Dateid24']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $exDate = $xPathDate.selectSingleNode($rootElement).getStringValue())
+                #set($strToDate = $dateTool.toDate('yyyy-MM-dd', $exDate))
+                    <div class="u-events row">
+                        <div class="col-xl-1 hidden-xs hidden-sm"></div>
+                        <div class="col-xl-4 col-lg-4">
+                            <div class="events__main-content">
+                                #set ($categories = $catLocalService.getEntryCategories($event.getEntryId()))
+                                #if ($categories.size() > 1)
+                                    <div class="u-events-category t-upper">
+                                        #foreach($cat in $categories)
+                                            #if (!$exceptCat.contains($cat.getName()))
+                                                ${cat.getName()}
+                                                #break
+                                            #end
+                                        #end
+                                    </div>
+                                #end
+                                
+                                <div class="u-events-heading">
+                                    <div class="u-events-time">$dateTool.format('MMM-dd-YYYY', $strToDate)</div>
+                                    #if (!$exAddress.isEmpty())
+                                        <div class="u-events-address">${exAddress}</div>
+                                    #end
+                                </div>
+                                #if (!$styledTitle || $styledTitle == '') ${title} #else ${styledTitle} #end
+                                <div class="u-events__content">
+                                    <p class="u-events-desc text-shadow">${description}</p>
+                                </div>
+                                <a class="btn u-events-join t-upper" href="$linkDetail" target="_blank">#if ($locale == 'vi_VN') Tham gia #else Join Event #end <svg class="ml-1" width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36185 4.32192L5.94426 0.958948L6.91878 0L12 5L6.91878 10L5.94426 9.04105L9.36185 5.67808L0 5.67808V4.32192L9.36185 4.32192Z" fill="#fff"></path> </svg></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="events-thumb">
+                                <img alt="Events Image" src="$urlImage" /></div> </div> </div> #end #end </div> </section> <script type="text/javascript" src="/o/vng-cloud-theme/js/slick.min.js"></script> <script type="text/javascript"> $(document).ready(function () { const mBlock = document.getElementsByClassName("u-events"), showDots = mBlock.length > 1; $(".u-events-wrapper").slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: false, dots: showDots, autoplaySpeed: 2000, pauseOnHover: true, responsive: [{ breakpoint: 991.98, settings: { arrows: false } }] }); }); </script> #else <section id="event-banner"> <div class="events-banner__wrapper bg-cover wow fadeIn lazyload" data-bgset="/documents/20126/906379/thumbnail-meta-image.jpg [(max-width: 576px)] | /documents/20126/906379/thumbnail-meta-image.jpg [(max-width: 1600px)] | /documents/20126/906379/thumbnail-meta-image.jpg"></div> </section> <style type="text/css"> .events-banner__wrapper{height:500px} @media(min-width:1600px){.events-banner__wrapper{height:700px}} @media(max-width:991.98px){.events-banner__wrapper{height:400px}} @media(max-width:575.98px){.events-banner__wrapper{height:300px}} </style> #end

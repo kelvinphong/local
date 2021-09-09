@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Pricing</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/header.css"> -->
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
+
+        :root {
+            --dark-blue-2: #1A3887;
+            --dark-blue-2-200: #071d56;
+            --dark-blue-3: #1B134D;
+            --light-blue: #5EBCE4;
+            --light-blue-200: #2192c1;
+            --vng-orange: #FB7033;
+            --text-body: #434343;
+            --text-headline: #292929;
+            --bg-sub-menu: #eaeaea
+        }
+
+        body {
+            color: var(--text-body)
+        }
+
+        .f-mont {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .f-500 {
+            font-weight: 500;
+        }
+
+        .f-600 {
+            font-weight: 600;
+        }
+
+        .f-700 {
+            font-weight: 700;
+        }
+
+        .f-800 {
+            font-weight: 800;
+        }
+
+        .btn {
+            border-radius: 0;
+            padding: 3px 15px
+        }
+
+        #page_header {
+            z-index: 988
+        }
+
+        .c-white {
+            color: #fff !important
+        }
+
+        .f-height {
+            height: 100%
+        }
+
+        .transition-all {
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s
+        }
+
+        .bg-cover {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%
+        }
+
+        .s-margin-height {
+            height: 50px
+        }
+
+        .s-color {
+            background-color: #f8f9fc
+        }
+
+        .cloud-container {
+            width: 100%;
+            max-width: 90%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto
+        }
+
+        .primary-bg {
+            background-color: var(--dark-blue-2) !important
+        }
+
+        .primary-color {
+            color: var(--dark-blue-2) !important
+        }
+
+        .optional-color {
+            color: var(--vng-orange)
+        }
+
+        .optional-bg {
+            background-color: var(--vng-orange) !important
+        }
+
+        .btn-primary-color {
+            background-color: var(--dark-blue-2);
+            border: 1px solid var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn-primary-color.btn-outline {
+            background-color: transparent;
+            color: var(--dark-blue-2)
+        }
+
+        .btn-primary-color.btn-outline:hover {
+            background-color: var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn:hover {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1)
+        }
+
+        .btn-secondary-color {
+            background-color: var(--vng-orange);
+            border: 1px solid var(--vng-orange);
+            color: #fff
+        }
+
+        .btn-secondary-color:hover {
+            background-color: #dc5c23;
+            color: #fff
+        }
+
+        .btn-white-color {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 3px 15px
+        }
+
+        .btn-white-color:hover {
+            background-color: var(--vng-orange);
+            color: #fff;
+            border-color: var(--vng-orange)
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .btn-primary-color:hover {
+            background-color: var(--dark-blue-2-200);
+            color: #fff
+        }
+
+        .navigation-bar-secondary {
+            border: 0
+        }
+
+        .v-cloud-title {
+            font-size: 36px;
+            line-height: 48px
+        }
+
+        .slick-arrow:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .fa-icon:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .slick-dots li button:before {
+            font-family: fontawesome-alloy !important;
+            font-size: 10px !important
+        }
+
+        .t-upper {
+            text-transform: uppercase
+        }
+
+        .slick-slider {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity .3s ease;
+            -moz-transition: opacity .3s ease;
+            -o-transition: opacity .3s ease;
+            -ms-transition: opacity .3s ease;
+            transition: opacity .3s ease
+        }
+
+        .slick-slider.slick-initialized {
+            visibility: visible;
+            opacity: 1
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        @media(min-width:1200px) {
+            .v-cloud-title.t-upper {
+                font-size: 30px;
+                line-height: 35px
+            }
+        }
+
+        @media(max-width:767.98px) {
+            .v-cloud-title {
+                font-size: 28px;
+                line-height: 33px
+            }
+
+            .s-margin-height {
+                height: 25px
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .cloud-container {
+                max-width: 100%
+            }
+
+            .v-cloud-title {
+                margin-bottom: 10px
+            }
+
+            p,
+            a,
+            span {
+                font-size: 16px
+            }
+        }
+
+        @media(min-width:1600px) {
+            body {
+                font-size: 18px
+            }
+
+            .cloud-container {
+                max-width: 85%
+            }
+
+            .cloud-container.v-section-inner {
+                max-width: 1200px
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="product-pricing">
+        <div class="s-margin-height">&nbsp;</div>
+        <div class="cloud-container text-center pb-4">
+            <p class="v-cloud-title f-bold">Pricing</p>
+            <div class="row pricing">
+                <div class="col-md-12">
+                    <div class="row text-left estimated mt-4">
+                    <div class="col-md-12 pb-2 p-0 mb-0">
+                    <div class="package-desc fade show active by-package">
+                    <h5 class="mb-2"><b>FULL GOLD CLASS PACKAGE</b>: Free x10 traffic and unlimited queries</h5>
+                    </div>
+                    
+                    <div class="package-desc fade by-package">
+                    <h5 class="mb-2"><b>STANDARD GOLD CLASS PACKAGE</b></h5>
+                    </div>
+                    
+                    <div class="package-desc by-package">
+                    <h5 class="mb-2"><b>PAYG GOLD CLASS PACKAGE</b>: business only need to pay uploading data, applicable for postpaid services.</h5>
+                    </div>
+                    
+                    <div class="package-desc by-package">
+                    <h5 class="mb-2"><b>PAYG SILVER CLASS PACKAGE</b>: Silver class helps business to optimize automated storage cost and maintain the services. With Pay-as-you-go payment, business only need to pay for uploading data. The package applies to postpaid services.</h5>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-6 pr-sm-3 p-0 mb-0">
+                    <div class="modified-price">
+                    <div class="group-price"><select class="t-upper" id="select-package"><option value="full">FULL GOLD CLASS</option><option value="standard">STANDARD GOLD CLASS</option><option value="payg">PAYG GOLD CLASS</option><option value="pays">PAYG SILVER CLASS</option> </select></div>
+                    
+                    <div class="modified-comp position-relative">
+                    <h5>Storage</h5>
+                    
+                    <div class="input-range position-relative"><input class="input-storage" max="11000" min="1" step="1" style="--percent: 100%" type="range" value="1" />
+                    <div class="input-value text-center">
+                    <div>1 GB</div>
+                    </div>
+                    
+                    <div class="input-fill">&nbsp;</div>
+                    </div>
+                    
+                    <div class="custom-val"><input class="val-storage" value="1" /><span class="pl-1">GB</span></div>
+                    </div>
+                    </div>
+                    
+                    <h5><img class="img-notice mr-2 lazyload" data-src="/documents/20126/906379/notice.svg" /><span class="primary-color f-bold">Notice:</h5>
+                    
+                    <div class="pricing-note fade show active by-package" id="full-note">
+                    <h5 class="mb-2">The price list includes free local traffic and unlimited request. In case of out-of-package distribution, the price is as follows:</h5>
+                    
+                    <ul class="list-unstyled pl-2">
+                        <li>Traffic from vStorage to the Internet <b>280đ/GB</b></li>
+                    </ul>
+                    </div>
+                    
+                    <div class="pricing-note fade by-package" id="standard-note">
+                    <h5 class="mb-2">The prices doesn’t include traffic &amp; request. These costs will be calculated at the end of the month</h5>
+                    
+                    <ul class="list-unstyled pl-2">
+                        <li>Traffic from vFileStore to the Internet <b>322đ/GB</b></li>
+                        <li>Request PUT / POST / DELETE: <b>115đ/1000 request</b></li>
+                        <li>Request GET / HEAD: <b>12đ/1000 request</b></li>
+                        <li>VAT 10% not included</li>
+                    </ul>
+                    </div>
+                    
+                    <div class="pricing-note fade by-package" id="payg-note">
+                    <h5 class="mb-2">The prices doesn’t include traffic &amp; request</h5>
+                    
+                    <ul class="list-unstyled pl-2">
+                        <li>Traffic from vFileStore to the Internet <span class="f-bold">280đ/GB</span></li>
+                        <li>Request PUT / POST / DELETE: <span class="f-bold">100đ/1000 request</span></li>
+                        <li>Request GET / HEAD: <span class="f-bold">10đ/1000 request</span></li>
+                        <li>Free traffic upload to vFileStore</li>
+                        <li>Free traffic from vFileStore to VNG Cloud (<a href="/product/vserver">vServer</a>, <a href="/product/vcdn">vCDN</a>, <a href="/product/vdb">vDB</a>,...)</li>
+                        <li>VAT 10% not included</li>
+                        <li>Only applicable for postpaid customers</li>
+                    </ul>
+                    </div>
+                    
+                    <div class="pricing-note fade by-package" id="pays-note">
+                    <h5 class="mb-2">The prices doesn’t include traffic &amp; request</h5>
+                    
+                    <ul class="list-unstyled pl-2">
+                        <li>Traffic from vFileStore to the Internet <span class="f-bold">280đ/GB</span></li>
+                        <li>Request PUT / POST / DELETE: <span class="f-bold">400đ/1000 request</span></li>
+                        <li>Request GET / HEAD: <span class="f-bold">40đ/1000 request</span></li>
+                        <li>Free traffic upload to vFileStore, <b>move from Payg Gold Class.</b></li>
+                        <li>Free traffic from vFileStore to VNG Cloud (<a href="/product/vserver">vServer</a>, <a href="/product/vcdn">vCDN</a>, <a href="/product/vdb">vDB</a>,...)</li>
+                        <li>VAT 10% not included</li>
+                        <li>Only applicable for postpaid customers</li>
+                    </ul>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-6 p-0 mb-0">
+                    <div class="estimated-price f-height">
+                    <div class="estimated-note">
+                    <h4 class="primary-color f-bold">Estimated storage price per day</h4>
+                    
+                    <h5>(Price does not include 10% VAT)</h5>
+                    </div>
+                    
+                    <div class="estimated-result">
+                    <div>
+                    <h5>Total cost</h5>
+                    
+                    <h5><span class="optional-color f-bold">2,300,000đ</span>/30 days</h5>
+                    </div>
+                    
+                    <div>
+                    <h5>Storage</h5>
+                    
+                    <h5><span class="optional-color f-bold">2000</span> GB/30 days</h5>
+                    </div>
+                    </div>
+                    
+                    <div class="estimated-price-note fade show active by-package">
+                    <div class="external-gift">
+                    <div class="external-note">
+                    <h5>Unit cost</h5>
+                    
+                    <h5><span class="optional-color f-bold">1,150đ</span>/GB/30 days</h5>
+                    </div>
+                    </div>
+                    
+                    <ul class="list-unstyled">
+                        <li><b>Free</b> traffic upload to vFileStore</li>
+                        <li><b>Free</b> traffic from vFileStore to VNG Cloud (<a href="/product/vserver">vServer</a>, <a href="/product/vcdn">vCDN</a>, <a href="/product/vdb">vDB</a>,...)</li>
+                    </ul>
+                    </div>
+                    
+                    <div class="estimated-price-note fade by-package">
+                    <div class="external-gift">&nbsp;</div>
+                    
+                    <ul class="list-unstyled">
+                        <li><b>Free</b> ltraffic upload to vFileStore</li>
+                        <li><b>Free</b> traffic from vFileStore to VNG Cloud (<a href="/product/vserver">vServer</a>, <a href="/product/vcdn">vCDN</a>, <a href="/product/vdb">vDB</a>,...)</li>
+                    </ul>
+                    </div>
+                    
+                    <div class="estimated-price-note fade by-package">
+                    <div class="external-gift">&nbsp;</div>
+                    </div>
+                    
+                    <div class="estimated-price-note fade by-package">
+                    <div class="external-gift">&nbsp;</div>
+                    </div>
+                    
+                    <div class="text-center estimated-btn"><a class="btn btn-primary-color t-upper f-bold" href="https://filestore.vngcloud.vn" target="_blank">Buy now</a></div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    
+            </div>
+        </div>
+        <div class="s-margin-height">&nbsp;</div>
+    </section>
+    <style type="text/css">
+        .pricing {
+            justify-content: center
+        }
+
+        .pricing div[class*='col'] {
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-block {
+            border: 1px solid var(--dark-blue-2);
+            border-top-width: 4px;
+            padding: 20px 20px 50px 20px;
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            -ms-transition: all .3s;
+            transition: all .3s;
+            position: relative;
+            height: 100%;
+        }
+
+        .pricing-block .package-name {
+            color: var(--dark-blue-2);
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 0;
+        }
+
+        .pricing-block .price {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: var(--vng-orange);
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        .pricing-block .unit {
+            font-size: 15px;
+            line-height: initial
+        }
+
+        .pricing-block .price-note,
+        .pricing-block .price-desc {
+            margin-bottom: 10px;
+        }
+
+        .pricing-block .price-note {
+            border: 1px solid var(--dark-blue-2);
+            padding: 10px
+        }
+
+        .pack-button {
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            bottom: -16px;
+        }
+
+        .pack-button .btn {
+            background-color: var(--dark-blue-2);
+            border-color: var(--dark-blue-2);
+            color: #fff;
+            display: block;
+            text-transform: uppercase
+        }
+
+        .pricing-block:hover {
+            background-color: var(--dark-blue-2);
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .pricing-block:hover .package-name {
+            color: #fff;
+        }
+
+        .pricing-block:hover .price-note {
+            border-color: #fff;
+        }
+
+        .pricing-block:hover .pack-button .btn {
+            background-color: var(--vng-orange);
+            border-color: var(--vng-orange);
+        }
+
+        #product-pricing a:hover {
+            font-weight: 600
+        }
+    </style>
+    
+<style type="text/css">
+.estimated {
+    font-size: 17px;
+}
+
+.estimated-price {
+    border: 1px solid var(--dark-blue-2);
+    padding: 20px;
+}
+
+.estimated-note {
+    border-bottom: 2px solid #c4c4c4;
+    padding-bottom: 20px;
+}
+
+.estimated-result {
+    padding-top: 20px;
+}
+
+.estimated-result>div,
+.estimated-price-note .external-note {
+    padding: 10px 0;
+}
+
+.estimated-price-note .external-note>h5:not(:first-child),
+.estimated-result>div>h5:not(:first-child) {
+    min-width: 150px;
+    padding-left: 10px;
+    text-align: right;
+}
+
+.estimated-result>div,
+.modified-comp,
+.estimated-price-note .external-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estimated-btn .btn {
+    color: #fff;
+    font-size: 18px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.modified-comp {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.group-price select {
+    border-color: var(--dark-blue-2);
+    padding: 10px;
+    width: 100%;
+    text-align-last: center;
+    text-align: center;
+    -ms-text-align-last: center;
+    -moz-text-align-last: center;
+    font-size: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("/documents/20126/906379/select-option-icon-down.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position-y: 50%;
+    background-position-x: 100%;
+}
+
+.input-range .input-value {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.input-range .input-fill {
+    position: absolute;
+    top: 0;
+    height: 40px;
+    background-color: var(--dark-blue-2);
+    width: 0;
+}
+
+.input-range input[type=range] {
+    height: 40px;
+    -webkit-appearance: none;
+    width: 100%;
+    position: relative;
+}
+
+.input-range input[type=range]:focus {
+    outline: none;
+}
+
+.input-range input[type=range]::-webkit-slider-container {
+    background-color: var(--dark-blue-2);
+}
+
+.input-range input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    background: #F4F9FF;
+}
+
+/* Special styling for WebKit/Blink */
+.input-range input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -4px;
+    height: 48px;
+    width: 5px;
+    border-radius: .25rem;
+    background: var(--vng-orange);
+    cursor: pointer;
+    position: relative;
+    z-index: 2
+}
+
+.input-range input[type=range]::-webkit-slider-thumb::after {
+    content: ' ';
+    background-color: var(--vng-orange);
+    top: 0;
+    bottom: 0;
+    width: 5px;
+}
+
+.input-range input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #F4F9FF;
+}
+
+.input-range input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    background: #f4f9ff;
+    border-radius: 0px;
+    border: 0;
+    z-index: -1;
+}
+
+/* All the same stuff for Firefox */
+.input-range input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 48px;
+    width: 5px;
+    border-radius: .25rem;
+    background: var(--vng-orange);
+    cursor: pointer;
+    border: 0;
+    position: relative;
+    z-index: 2
+}
+
+.input-range input[type=range]::-ms-track {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+.input-range input[type=range]::-ms-fill-lower {
+    background: #F4F9FF;
+    border: 0px solid #F9F4FF;
+    border-radius: 0px;
+}
+
+.input-range input[type=range]::-ms-fill-upper {
+    background: #F4F9FF;
+    border: 0px solid #F9F4FF;
+    border-radius: 0px;
+}
+
+/* All the same stuff for IE */
+.input-range input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    height: 26px;
+    width: 14px;
+    border-radius: 0px;
+    background: var(--dark-blue-2);
+    cursor: pointer;
+}
+
+.input-range input[type=range]:focus::-ms-fill-lower {
+    background: #F4F9FF;
+}
+
+.input-range input[type=range]:focus::-ms-fill-upper {
+    background: #F4F9FF;
+}
+
+.by-package {
+    display: none;
+}
+
+.by-package.active {
+    display: block;
+}
+
+.estimated-price-note.active {
+    padding-bottom: 50px;
+}
+
+.img-notice {
+    height: 30px;
+}
+
+.pricing-note ul li::before {
+    content: "•";
+    color: var(--dark-blue-2);
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+.group-price select:focus,
+.val-storage:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.val-storage {
+    width: 50px;
+    border-radius: 0;
+    border: 1px solid var(--dark-blue-2);
+    background-color: #F4F9FF;
+}
+@media (min-width: 1366px) {
+    .modified-price {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .group-price select {
+        font-size: 20px;
+    }
+
+    .input-range {
+        width: 250px;
+    }
+
+    .estimated-result .f-bold,
+    .external-note .f-bold {
+        font-size: 25px;
+    }
+    .custom-val { position: relative; }
+}
+
+@media (max-width: 991.98px) {
+    .estimated-price h4 {
+        font-size: 20px;
+    }
+
+    .modified-comp {
+        display: block;
+    }
+
+    .modified-comp h5 {
+        font-weight: 600;
+    }
+
+    .input-range {
+        margin-top: 10px;
+        width: calc(100% - 90px);
+    }
+    .custom-val {
+        position: absolute;
+        right: 0;
+        top: 40px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .input-range {
+        width: 300px;
+    }
+}
+
+@media (min-width: 576px) {
+    .estimated-btn {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media(max-width: 575.98px) {
+
+    .estimated-price-note .external-note h5 span,
+    .estimated-result h5 span {
+        font-size: 1.25rem !important;
+    }
+}
+</style>
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            let pricingBlock = document.getElementsByClassName('pricing-block'),
+                note = document.getElementsByClassName('pricing-note'),
+                note2 = document.getElementsByClassName('estimated-price-note'),
+                desc = document.getElementsByClassName('package-desc'),
+                classShow = 'show active';
+            var maxValue = 11000,
+                range = [
+                    {
+                        fields: {
+                            price: '/30 days',
+                            storage: ' GB/30 days',
+                            external: [{
+                                    'label': 'Free local traffic from vStorage to internet',
+                                    'func': 'doubleTraffic',
+                                    'append': ' GB'
+                                },
+                                {
+                                    'label': 'Unit cost',
+                                    'func': 'unitByGB',
+                                    'append': '/GB/30 days'
+                                }
+                            ]
+                        },
+                        value: [{
+                            max: maxValue,
+                            price: 1150
+                        }],
+                        min: 2000,
+                        val: 2000
+                    },
+                    {
+                        fields: {
+                            price: '/30 days',
+                            storage: ' GB/30 days',
+                            external: [{
+                                'label': 'Unit cost',
+                                'func': 'unitByGB',
+                                'append': '/GB/30 days'
+                            }]
+                        },
+                        value: [{
+                                max: 99,
+                                price: 1610
+                            },
+                            {
+                                max: 999,
+                                price: 1564
+                            },
+                            {
+                                max: 4999,
+                                price: 1150
+                            },
+                            {
+                                max: 9999,
+                                price: 1093
+                            },
+                            {
+                                max: maxValue,
+                                price: 1035
+                            },
+                        ]
+                    },
+
+                    {
+                        fields: {
+                            price: '/day',
+                            storage: ' GB/day',
+                            external: [{
+                                'label': 'Unit cost',
+                                'func': 'unitByGB',
+                                'append': '/GB/day'
+                            }]
+                        },
+                        value: [{
+                                max: 1999,
+                                price: 53
+                            }, {
+                                max: 4999,
+                                price: 52
+                            },
+                            {
+                                max: 9999,
+                                price: 50
+                            },
+                            {
+                                max: maxValue,
+                                price: 49
+                            },
+                        ]
+                    },
+                    {
+                        fields: {
+                            price: '/day',
+                            storage: ' GB/day',
+                            external: [{
+                                'label': 'Unit cost',
+                                'func': 'unitByGB',
+                                'append': '/GB/day'
+                            }]
+                        },
+                        value: [{
+                                max: 999,
+                                price: 35
+                            }, {
+                                max: 4999,
+                                price: 34
+                            },
+                            {
+                                max: 9999,
+                                price: 33
+                            },
+                            {
+                                max: maxValue,
+                                price: 32
+                            },
+                        ]
+                    }
+                ],
+                active = 0,
+                active2 = 0,
+                widthRange = 5;
+            const inputRange = document.getElementsByClassName('input-storage'),
+                    valRange = document.getElementsByClassName('val-storage');
+            if (inputRange.length > 0) {
+                $.each(inputRange, function (key, ele) {
+                    ele.addEventListener('input', changeStorage);
+                });
+                $('.val-storage').on('keypress', function(e) {
+                    if (e.which === 13) {
+                        changeStorage(e, true)
+                    }
+                })
+            }
+
+            $('#select-package').change(function () {
+                active = $(this).find('option:selected').index();
+
+                (active2 !== active) && $(note).eq(active2).removeClass(classShow) && $(note2).eq(
+                    active2).removeClass(classShow) && $(desc).eq(active2).removeClass(classShow);
+                $(note).eq(active).addClass(classShow) && $(note2).eq(active).addClass(classShow) && $(
+                    desc).eq(active).addClass(classShow);
+
+                active2 = active;
+                let percent = range[active]['percent'] || '',
+                    val = range[active]['val'] || 1;
+
+                handleChangeStorage(val, percent);
+                inputRange[0].value = val;
+                valRange[0].value = val
+
+            })
+
+            function changeStorage(e, changeValue = false) {
+                let minVal = range[active2]['min'] || 1,
+                    value = parseInt(_.escape(e.target.value));
+
+                if (value > maxValue) {
+                    handleChangeStorage(maxValue);
+                    inputRange[0].value = maxValue;
+                } else if (value > minVal) {
+                    handleChangeStorage(value);
+                    if (changeStorage) inputRange[0].value = value;
+                } else {
+                    handleChangeStorage(minVal);
+                    inputRange[0].value = minVal;
+                }
+            }
+
+            function handleChangeStorage(value, percent = '') {
+                let data = range[active2];
+                $('.input-value')[0].innerHTML = '<div>' + value + ' GB</div>';
+                valRange[0].value = value
+                if (percent === '') {
+                    percent = value / maxValue * 100;
+                }
+
+                if (percent > 40) {
+                    $('.input-value')[0].classList.add('c-white');
+                } else {
+                    $('.input-value')[0].classList.remove('c-white');
+                }
+                let diff = widthRange * percent / 100;
+                $('.input-fill')[0].style.width = "calc(" + percent + "% - " + diff + "px)";
+
+                range[active2]['percent'] = percent;
+                range[active2]['val'] = parseInt(value);
+
+                $('.estimated-result')[0].innerHTML = renderPackage(value, data);
+            }
+
+            function renderPackage(value, data) {
+                let price = 0,
+                    result = '',
+                    unit = {};
+                $.each(data['value'], function (key, d) {
+                    if (parseInt(value) <= d.max) {
+                        price = parseInt(value) * d.price;
+                        unit = d;
+                        return false
+                    }
+                });
+
+                result += "<div><h5>Total cost</h5><h5><span class='optional-color f-bold'>" +
+                    replaceNumberWithCommas(price) + "đ</span>" + data['fields']['price'] +
+                    "</h5></div>" +
+                    "<div><h5>Storage</h5><h5><span class='optional-color f-bold'>" + value +
+                    "</span>" + data['fields']['storage'] + "</h5></div>";
+                if (data['fields'].hasOwnProperty('external')) {
+                    let externalNote = $(note2).eq(active2).find('.external-gift'),
+                        temp = ""
+                    $.each(data['fields']['external'], function (idx, item) {
+                        let val = replaceNumberWithCommas(events[item['func']](value, unit));
+                        temp += "<div class='external-note'>" +
+                            "<h5>" + item['label'] + "</h5>" +
+                            "<h5><span class='optional-color f-bold'>" + val + "</span>" +
+                            item['append'] + "</h5></div>";
+
+                    });
+                    externalNote[0].innerHTML = temp
+                }
+                return result
+            }
+
+            function initData(val) {
+                handleChangeStorage(val);
+
+                inputRange[0].value = val;
+                valRange[0].value = val
+            }
+
+            const events = {
+                doubleTraffic: function (value) {
+                    return replaceNumberWithCommas(parseInt(value) * 10);
+                },
+                unitByGB: function (value, unit) {
+                    return unit['price'] + "đ"
+                }
+            }
+            initData(2000);
+            function replaceNumberWithCommas(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+        });
+    </script>
+</body>
