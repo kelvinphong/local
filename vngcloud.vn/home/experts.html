@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>True Cloud Technology</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section class="s-slick-slider" id="s-our-experts">
+        <div class="s-margin-height">&nbsp;</div>
+
+        <div class="cloud-container v-section-inner position-relative">
+            <div class="v-cloud-title mb-sm-2 mb-lg-5"><strong>Our </strong><br />
+                unique pool of experts</div>
+
+            <div class="our-experts">
+                <div class="experts-block d-md-flex position-relative" data-index="0">
+                    <div class="experts-img wow fadeIn position-relative"><img
+                            class="img-cover img-fluid lazyload"
+                            data-src="/documents/20126/1273708/vng-cloud-our-experts-mr-tran-anh-nhan.jpg" /></div>
+
+                    <div class="experts-quote__wrapper">
+                        <div class="experts-quote block-txt position-relative">
+                            <div class="quote bg-diff p-2 mb-3"><img class="lazyload"
+                                    data-src="/documents/20126/0/vng-cloud-quote-icon.png" />
+                                <h5 class="quote"><i>The focus, understanding what you are doing and the spirit of
+                                        willingness to solve the problem to the end will help you develop steadily and
+                                        create trust with customers and partners.</i></h5>
+                            </div>
+
+                            <p>With over 20 years of experience in building, evaluating and deploying systems,
+                                infrastructure and software for global technology corporations such as Global Cybersoft,
+                                Atlas Industries, Toshiba, Yokogawa, Hitachi, ... Mr. Nhan with his team have created
+                                breakthrough solutions to help optimize the operation of the business through the
+                                application of the most advanced technology.</p>
+                        </div>
+
+                        <div class="author mt-md-3 position-relative block-txt d-inline-block pl-md-3">
+                            <div class="translate-ele"><strong class="t-upper">Tran Anh Nhan</strong>
+
+                                <div class="author-fields">Manager, Head of Infrastructure As A Service</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="slide-dots">
+                <div class="slide-num">
+                    <div class="slide-num__num" data-index="1" style="--i: 1">02</div>
+
+                    <div class="slide-num__num active" data-index="0" style="--i: 0">01</div>
+                </div>
+
+                <div class="split">/</div>
+
+                <div class="total-slide">02</div>
+            </div> -->
+
+            <div class="s-margin-height">&nbsp;</div>
+        </div>
+
+        <div class="s-margin-height">&nbsp;</div>
+    </section>
+    <style type="text/css">
+        @media (min-width: 992px) {
+            .our-experts .slick-arrow {
+                top: auto !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .experts-img {
+                width: 35%;
+                flex-shrink: 0;
+            }
+
+            .experts-quote__wrapper {
+                flex: 1;
+                padding-left: 30px;
+            }
+
+            .our-experts .slick-arrow {
+                top: 470px;
+                bottom: -40px;
+            }
+
+            .our-experts .slick-prev {
+                left: -40px;
+                border-right: 0;
+            }
+
+            .our-experts .slick-next {
+                left: 0;
+                border-left: 0;
+            }
+
+            .our-experts .slick-slide:focus {
+                outline: none;
+            }
+
+            .our-experts .slick-arrow:hover {
+                background: #fff !important;
+            }
+
+            .our-experts .slick-arrow:hover::before {
+                color: var(--dark-blue-2);
+            }
+        }
+
+        .our-experts {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .our-experts .slick-arrow {
+            width: 40px;
+            height: 40px;
+            transform: translate(0, 0);
+            border: 1px solid var(--dark-blue-2);
+            background: var(--dark-blue-2);
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            -ms-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .experts-img {
+            height: 450px;
+            background-color: #f4f9ff;
+        }
+
+        .experts-block:not(.slick-slide) {
+            display: none;
+        }
+
+        .author {
+            overflow: hidden;
+        }
+
+        .translate-ele {
+            opacity: 0;
+            transform: translateX(-200px);
+            transition: opacity 300ms ease, transform 400ms ease;
+            transition-delay: 600ms;
+        }
+
+        .experts-block.slick-active .translate-ele {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .block-txt {
+            opacity: 0;
+            -webkit-transition: opacity 300ms ease 500ms;
+            ;
+            -moz-transition: opacity 300ms ease 500ms;
+            ;
+            -o-transition: opacity 300ms ease 500ms;
+            ;
+            -ms-transition: opacity 300ms ease 500ms;
+            ;
+            transition: opacity 300ms ease 500ms;
+            ;
+        }
+
+        .experts-block .quote {
+            background-color: #f4f9ff;
+            overflow: hidden;
+        }
+
+        .experts-block .experts-quote h5 {
+            padding-left: 20px;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(200px);
+            transition: opacity 300ms ease, transform 400ms ease;
+            transition-delay: 600ms;
+        }
+
+        .experts-block.slick-active .experts-quote h5 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .experts-block .quote img {
+            height: 15px;
+        }
+
+        .author-fields {
+            color: #8c8c8c;
+        }
+
+        .author::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: var(--vng-orange);
+        }
+
+        .experts-block.slick-active .block-txt {
+            opacity: 1;
+        }
+
+        .experts-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: inherit;
+            width: 0;
+            transition: width .3s ease-in-out;
+            transition-delay: 500ms;
+        }
+
+        .experts-block .experts-img img {
+            opacity: 0;
+            transition: opacity 125ms ease 500ms;
+        }
+
+        .experts-block.slick-active .experts-img img {
+            opacity: 1;
+        }
+
+        .our-experts.dragging .experts-img::after {
+            width: 100%;
+        }
+
+        .our-experts.dragging .block-txt::after {
+            right: 0
+        }
+
+        .our-experts .slick-arrow:hover::before {
+            font-weight: 600
+        }
+
+        .slide-dots {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: flex-end;
+            line-height: 1;
+            bottom: 40px;
+        }
+
+        .slide-num {
+            font-size: 35px;
+            width: 40px;
+            overflow: hidden;
+        }
+
+        .total-slide {
+            color: #999;
+        }
+
+        .slide-num__num {
+            top: calc(calc(-1 * 18px) - calc(var(--i) * 38px));
+        }
+
+        .slide-num__num {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 300ms ease 500ms;
+        }
+
+        .slide-num__num.active {
+            opacity: 1;
+            top: -18px !important;
+        }
+
+        @media (min-width: 1036px) {
+            #s-our-experts .cloud-container {
+                width: 75%;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .our-experts {
+                padding-top: 20px
+            }
+        }
+
+        @media(max-width: 767.98px) {
+            .experts-img {
+                height: 250px;
+            }
+
+            .quote-img {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                width: 20px;
+            }
+
+            .experts-block {
+                padding: 10px;
+            }
+
+            .experts-block.slick-active .experts-quote__wrapper {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 10%);
+            }
+
+            .experts-block .experts-quote__wrapper {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .experts-quote .quote {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .experts-quote .quote::first-letter {
+                padding-left: 10px;
+            }
+
+            .experts-quote p:not(.quote) {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .author {
+                text-align: center;
+                margin: 20px 10px 10px 10px;
+                padding-top: 10px;
+            }
+
+            .our-experts .slick-arrow {
+                top: 125px;
+                opacity: .7;
+            }
+
+            .our-experts .slick-arrow:hover {
+                opacity: 1;
+            }
+
+            .our-experts .slick-prev {
+                left: -15px;
+            }
+
+            .our-experts .slick-next {
+                right: -15px;
+            }
+
+            .author::before {
+                left: 0;
+                right: 0;
+                width: 40px;
+                height: 2px;
+                margin: 0 auto;
+            }
+
+            .slide-dots {
+                display: none;
+            }
+        }
+    </style>
+
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript" defer>
+        $(document).ready(function (e) {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        })
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            $('.our-experts').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplaySpeed: 3000,
+                speed: 500,
+                autoplay: true,
+                pauseOnHover: true,
+                pauseOnFocus: true,
+                arrows: true
+            });
+            $('.our-experts').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+                $('.our-experts').addClass('dragging');
+            });
+
+            $('.our-experts').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+                $('.our-experts').removeClass('dragging');
+                const slideNum = document.querySelectorAll(".slide-num__num");
+                $(slideNum).removeClass('active');
+
+                var count = 1;
+                $.each(slideNum, function (index, ele) {
+                    if (ele.getAttribute('data-index') == currentSlide) {
+                        ele.classList.add('active');
+                        ele.style.removeProperty('top');
+                    } else {
+                        let top = -1 * 18 - (count * 36);
+                        ele.style.top = top + 'px';
+                        count++;
+                    }
+                })
+            });
+        });
+    </script>
+</body>

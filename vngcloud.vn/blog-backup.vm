@@ -1,0 +1,218 @@
+#set ($catLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService"))
+#set ($assetEntryLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService"))
+<section id="s-blog">
+    <div class="cloud-container v-section-inner">
+        #set ( $numBlogMain = 1 )
+        #if (!$entries.isEmpty())
+            #set ( $mapCat = {} )
+            #foreach ($entry in $entries)
+                #set( $categories = $catLocalService.getEntryCategories($entry.getEntryId()) )
+                #set( $cat = $categories.get(0) )
+                #set ($arrArticle = $mapCat.get($cat) )
+
+                #if( !$arrArticle )
+                    #set ($arrArticle = [] )
+                #end
+                #set( $all = $arrArticle.add($entry) )
+                #set ($allow = $mapCat.put($cat, $arrArticle))
+            #end
+            <div class="latest-blog blog-widget row">
+                #set ($latestBlogEntry = $entries.get(0))
+                #set($renderer = $latestBlogEntry.getAssetRenderer())
+                #set( $journalArticle = $renderer.getArticle() )
+                #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                #set( $rootElement = $document.getRootElement() )
+
+                #set( $xPathTitle = $saxReaderUtil.createXPath("dynamic-element[@name='BlogTitle']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+
+                #set ($xPathUrl = $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathDesc = $saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $desc = $xPathDesc.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathImage = $saxReaderUtil.createXPath("dynamic-element[@name='thumbnailImage']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+
+                #if (!$image.isEmpty())
+                    #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+ $imgJson.name +"/"+$imgJson.uuid)
+                #else
+                    #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+                #end
+                <div class="col-lg-7 col-md-6">
+                    <a class="latest-blog__thumb blog-img" href="#if ($url.isEmpty())javascript::void(0)#else/blog/$url#end">
+                        <div class="latest-blog-img lazyload bg-cover h-100" data-bgset="$urlImage"></div>
+                    </a>
+                </div>
+                <div class="col-lg-5 col-md-6 latest-blog__content padding-xs">
+                    <div class="blog-heading">
+                        #set ($categories = $catLocalService.getEntryCategories($latestBlogEntry.getEntryId()))
+                        #if ($categories.size() > 0)
+                            <div class="blog-category">
+                                #foreach($cat in $categories)
+                                    <p class="t-upper">$cat.getName()</p> 
+                                #end
+                            </div>
+                        #end
+                    </div>
+                    <a class="latest-blog__title blog-widget-title text-shadow transition-all f-medium" href="#if ($url.isEmpty())javascript::void(0)#else/blog/$url#end" title="$title">$title</a>
+                    <p class="latest-blog__desc" title="$desc">$desc</p>
+                    <div><a class="btn btn-white-color t-upper read-more" href="#if ($url.isEmpty())javascript::void(0)#else/blog/$url#end">Read Article</a></div>
+                </div>
+            </div>
+            #set ( $maxBlogOnceLoad = 6 )
+            #set( $moreBlogs = $jsonFactoryUtil.createJSONArray())
+            #set ($index = 1)
+            #set( $size = $entries.size() - 1 )
+            #if ($size ge $index)
+                #set ($count = 0)
+                #set ($concat ="-tab")
+                #set($tabs = [
+                    {
+                        "label": "All article",
+                        "name": "all",
+                        "cat": "all"
+                    },
+                    {
+                        "label": "Trends",
+                        "name": "trends",
+                        "cat": "Trends"
+                    },
+                    {
+                        "label": "AI",
+                        "name": "ai",
+                        "cat": "AI"
+                    },
+                    {
+                        "label": "Computing",
+                        "name": "computing",
+                        "cat": "Computing"
+                    },
+                    {
+                        "label": "Database",
+                        "name": "database",
+                        "cat": "Database"
+                    },
+                    {
+                        "label": "Netwoking",
+                        "name": "netwoking",
+                        "cat": "Netwoking"
+                    },
+                    {
+                        "label": "Storage",
+                        "name": "storage",
+                        "cat": "Storage"
+                    },
+                    {
+                        "label": "Security",
+                        "name": "security",
+                        "cat": "Security"
+                    },
+                    {
+                        "label": "IoT",
+                        "name": "iot",
+                        "cat": "IoT"
+                    }
+                ])
+                <div class="group-blog">
+                    <ul class="nav nav-tabs" id="blog-tab" role="tablist">
+                        #foreach ($tab in $tabs)
+                            <li class="nav-item">
+                                <a class="nav-link #if ($tab.name == 'all') active #end" data-tab="$tab.cat" id="$tab.name$concat" data-toggle="tab" href="#$tab.name" role="tab"
+                                    aria-controls="$tab.name" aria-selected="true">$tab.label</a>
+                            </li>
+                        #end
+                        <li class="nav-item search-blog__wrapper flex-center">
+                            <div id="search-blog" class="search-blog flex-center h-100 position-relative">
+                              <input class="search-blog-input" id="search-blog-input" placeholder="Search..." type="search" value="" name="search">
+                              <i class="icon-search flex-center">&nbsp;</i>
+                            </div>
+                         </li>
+                    </ul>
+                    <div class="primary-color g-topic">Topics</div>
+                    <div class="select-category">
+                      <select class="blog-select-category" id="blog-select-category">
+                        #foreach ($tab in $tabs)
+                        <option #if ($tab.name == 'all') selected #end value="$tab.cat" data-href="$tab.name">$tab.label</option>
+                        #end
+                      </select>
+                      <div class="search-blog">
+                        <input class="search-blog-input" id="search-blog-input" placeholder="Search..." type="search" value=""
+                          name="search">
+                        <i class="icon-search">&nbsp;</i>
+                      </div>
+                    </div>
+                    <div class="blog-filter">
+          <div class="blog-filter-search hidden" id="blog-filter-search" title="Remove Filter">
+            <div id="blog-search-value"></div><i class="icon-remove"></i>
+          </div>
+        </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row all-block" id="all-block">
+                                #foreach ($number in [$index..$size])
+                                    #set($renderer = $entries.get($number).getAssetRenderer() )
+                                    #set($blog=$entries.get($number))
+                                    #set($className = $renderer.getClassName() )
+                                    #set ($image = "")
+                                    #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+
+                                    #if( $className == "com.liferay.journal.model.JournalArticle" )
+                                        #set( $journalArticle = $renderer.getArticle() )
+                                        #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                                        #set( $rootElement = $document.getRootElement() )
+
+                                        #set( $xPathTitle = $saxReaderUtil.createXPath("dynamic-element[@name='BlogTitle']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+
+                                        #set( $xPathDescription = $saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $description = $xPathDescription.selectSingleNode($rootElement).getStringValue())
+
+                                        #set ($xPathUrl = $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+
+                                        #set( $xPathImage = $saxReaderUtil.createXPath("dynamic-element[@name='thumbnailImage']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                                        #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+
+                                        #if (!$image.isEmpty())
+                                            #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+$imgJson.name+"/"+$imgJson.uuid)
+                                        #end
+                                        #set( $articleTmp = $jsonFactoryUtil.createJSONObject() )
+                                        #set ($v = $articleTmp.put("index", $count))
+                                        #set ($v = $articleTmp.put("user", $blog.getUserName()))
+                                        #set ($v = $articleTmp.put("date", $dateTool.format('MMM-dd-yyyy', $blog.getModifiedDate())))
+                                        #set ($v = $articleTmp.put("title", $title))
+                                        #set ($v = $articleTmp.put("desc", $description))
+                                        #set ($v = $articleTmp.put("url", $url))
+                                        #set ($v = $articleTmp.put("image", $urlImage))
+                                        #set ($assetEntry = $assetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", $journalArticle.getResourcePrimKey()))
+                                        #set ($viewCountMore = $getterUtil.getInteger($assetEntry.getViewCount()) / 2)
+                                        #set ($v = $articleTmp.put("view", $viewCountMore))
+                                        
+                                        #set ($blogCategories = $catLocalService.getEntryCategories($blog.getEntryId()))
+                                        #if ($blogCategories.size() > 0)
+                                            #set( $tempCat = $jsonFactoryUtil.createJSONArray())
+                                            #foreach($cat in $blogCategories)
+                                                #set ($v = $tempCat.put($cat.getName()))
+                                            #end
+                                            #set ($v = $articleTmp.put('categories', $tempCat))
+                                        #end
+                                        #set ($v = $moreBlogs.put($articleTmp))
+                                        #if ($count < 3)
+                                        <div class="col-md-4 col-sm-6 blog-widget blog-top">
+                                            <a title="$title" href="#if ($url.isEmpty())javascript::void(0)#else/blog/$url#end">
+                                            #if ($blogCategories.size() > 0)
+                                                <div class="blog-heading">
+                                                    <div class="blog-category">
+                                                        #foreach($cat in $blogCategories)
+                                                            <p class="t-upper">$cat.getName()</p> 
+                                                        #end
+                                                    </div>
+                                                </div>
+                                                #end
+                                                <div class="title f-medium">$title</div>
+                                                <div class="blog-widget-img blog-img">
+                                                    <img class="lazyload img-cover" alt="Blog Image" data-src="$urlImage"/> </div></a> </div> #elseif ($count < $maxBlogOnceLoad + 3) <div class="col-md-12 blog-widget blog-widget-padding"> <a class="row" title="$title" href="#if ($url.isEmpty())javascript::void(0)#else/blog/$url#end"> <div class="col-md-3 col-sm-4 col-xs-4"> <div class="blog-widget-img blog-img"><img class="lazyload img-cover" data-src="$urlImage" alt="Blog Image" /></div> </div> <div class="col-md-9 col-sm-8 col-xs-8"> <div class="blog-widget-content"> <div class="blog-heading"> <p class="blog-time">$dateTool.format('MMM-dd-yyyy', $blog.getCreateDate())</p> #if ($blogCategories.size() > 0) <div class="blog-category"> #foreach($cat in $blogCategories) <p class="t-upper">$cat.getName()</p> #end </div> #end </div> <div class="blog-widget-title"><b>$title</b></div> </div> </div> </a> </div> #end #set ($count = $count + 1) #end #end </div> #if ($entries.size() > $maxBlogOnceLoad + $index) <div class="blog-widget-more blog-widget-padding"> <a class="btn btn-white-color" href="#" id="latest-blog-load-more">#if ($themeDisplay.getLanguageId() == 'vi_VN')Xem thêm #else Load More Article #end</a> </div> #end </div> #set ($sizeTab = $tabs.size() - 1) #foreach($indexTab in [1..$sizeTab]) #set ($tab = $tabs.get($indexTab)) <div class="tab-pane fade" id="$tab.name" role="tabpanel" aria-labelledby="$tab.name$concat"> <div class="row all-block" id="$tab.cat"></div> </div> #end </div> </div> #end #end <div class="s-margin-height">&nbsp;</div><div class="s-margin-height">&nbsp;</div> </div> </section> <style type="text/css"> .latest-blog { margin-top: 50px; margin-bottom: 25px } .blog-img { width: 100%; display: block; overflow: hidden; background-color: #c4c4c4; } .blog-img img, .latest-blog-img { -webkit-transition: transform .5s ease; -moz-transition: transform .5s ease; -o-transition: transform .5s ease; -ms-transition: transform .5s ease; transition: transform .5s ease } .latest-blog__header { color: #747474 } .blog-widget .blog-heading { display: flex; align-items: center; color: #747474; text-transform: uppercase; } .blog-heading .blog-category { position: relative; display: flex } .blog-heading .blog-category p { margin-right: 10px } .blog-widget:not(.blog-top) .blog-category p:first-child:before { position: absolute; content: '.'; left: -17px; top: -5px } .latest-blog .blog-heading .blog-category p:before { content: none !important; } .blog-category p { text-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); font-size: 14px; } .latest-blog .latest-blog__title { font-size: 25px; } .blog-widget-title, .blog-widget-title a, .blog-top .title { color: var(--text-headline); } .latest-blog .latest-blog__desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: .5rem } .latest-blog .read-more { border-color: #747474; font-size: 15px; font-weight: bold; color: inherit } .latest-blog .read-more:hover { border-color: var(--vng-orange); color: #fff !important } .blog-widget__thumb { height: 100%; position: relative; display: block; cursor: pointer; overflow: hidden } .latest-blog__title a { color: #fff } .latest-blog__title:hover a { text-decoration: none } .group-blog .nav-tabs { border: .5px solid var(--dark-blue-2); border-left: 0; border-right: 0; margin-bottom: 20px; position: relative; } .group-blog .nav-tabs .nav-item { text-align: center } .group-blog .nav-tabs .nav-link { border: 0; background-color: transparent; color: var(--text-body); padding: 10px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; -webkit-transition: all .3s; -moz-transition: all .3s; -o-transition: all .3s; transition: all .3s; } .group-blog .nav-tabs .nav-link:hover { border: 0; color: var(--vng-orange) !important } .group-blog .nav-tabs .nav-link.active { font-weight: bold } .blog-filter { margin-bottom: 20px; } .blog-filter .blog-filter-search { padding: 2px 10px; background: var(--dark-blue-2); color: #fff; border-radius: 16px; position: relative; display: inline-flex; align-items: center; cursor: pointer; } .blog-filter .blog-filter-search.hidden { display: none; } .blog-filter .blog-filter-search:hover { background: var(--vng-orange); } .blog-filter .blog-filter-search i { margin-left: 5px; font-size: 13px; } .blog-widget-padding { padding: 20px 0 } .blog-widget-more.hidden { display: none } .blog-widget-more .btn { color: var(--text-body); font-size: 15px; border: .5px solid var(--text-body); text-transform: uppercase } .blog-widget-more .btn:hover { border-color: var(--vng-orange); color: #fff !important } .blog-widget-more span { font-size: 22px; font-weight: 600; cursor: pointer } .blog-widget-img { height: 150px } .blog-top { margin-bottom: 30px; } .blog-top a { color: inherit; display: block } .blog-widget-title, .blog-top .title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; -webkit-transition: all .3s; -moz-transition: all .3s; -o-transition: all .3s; transition: all .3s; overflow: hidden; } .blog-top .title { margin-bottom: 10px; } .blog-widget-content { padding-left: 20px } .search-blog__wrapper .search-blog { -webkit-transition: width 0.3s; -moz-transition: width 0.3s; transition: width 0.3s; -webkit-backface-visibility: hidden; backface-visibility: hidden; } .search-blog .icon-search { -webkit-transition: right .3s; -moz-transition: right .3s; -o-transition: right .3s; transition: right .3s; } .search-blog.is-opened .search-blog-input { width: 300px; height: auto; box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.12); border-radius: 16px; } .search-blog.is-opened .search-blog-input, .search-blog.is-opened .icon-search { right: 0 } .search-blog.is-opened .icon-search { width: 30px; } .search-blog__wrapper .search-blog-input { position: absolute; top: 10px; bottom: 10px; right: 50%; outline: none; width: 0; height: auto; margin: 0; -webkit-transition: width .4s, right .3s, border-radius .2s; -moz-transition: width .4s, right .3s, border-radius .2s; -o-transition: width .4s, right .3s, border-radius .2s; transition: width .4s, right .3s, border-radius .2s; } .search-blog-input { z-index: 10; padding: 5px 10px; border: 0; } .search-blog-input:focus { outline: none; } .search-blog .icon-search { color: #3860C4; position: absolute; right: 50%; top: 10px; bottom: 10px; z-index: 12; } .blog-img:hover img, .latest-blog__thumb:hover .latest-blog-img { transform: scale(1.1) } .blog-widget a:hover, .blog-widget .blog-widget-title:hover, .blog-top .title:hover { color: var(--vng-orange); text-decoration: none } input[type="search"].search-blog-input { -webkit-appearance: none; } .search-blog.search-blog-open, .no-js .sb-search { width: 100%; } @media(min-width:992px) { .latest-blog .latest-blog__title { font-size: 30px } .group-blog .nav-tabs .nav-item { width: calc(100% / 10) } } @media (min-width: 576px) and (max-width: 991.98px) { .search-blog__wrapper .search-blog { position: absolute; right: 0; } .search-blog__wrapper .search-blog-input, .search-blog .icon-search { right: 0; } .group-blog .nav>li { position: unset; } } @media(min-width:875px) { .blog-top .blog-img { height: 200px } } @media(min-width:768px) { .latest-blog .read-more { margin-top: 1rem } .group-blog .nav-tabs .nav-link { padding: 15px 10px } .blog-top .title { min-height: 60px; } .latest-blog__content { padding-left: 20px; } .group-blog .blog-widget:not(.blog-top) { border-bottom: .5px solid #bababa } .blog-top { padding-right: 20px; } .blog-top .title, .blog-widget-title { font-size: 18px; } } @media(max-width:767.98px) { .blog-top:nth-child(n) { padding-right: 10px; } .blog-top:nth-child(2n) { padding-left: 10px; padding-right: 0; } .all-block .blog-widget:nth-child(4) { padding-top: 30px !important } .all-block .blog-widget:nth-child(4)::before { content: ' '; top: 0; left: 10px; right: 10px; height: .5px; background: #bababa; width: 100%; position: absolute; } .latest-blog__header { margin-top: 20px } .blog-widget-padding { padding: 0 10px; margin-bottom: 20px } .blog-top .blog-widget-img { height: 200px; } .blog-widget-content { display: flex; flex-direction: column-reverse; } .blog-widget:not(.latest-blog) a { height: 100% } .blog-widget .blog-heading { padding-top: 10px; } .blog-top .title { padding: 10px 0; font-size: 18px; } .blog-top .title.visible-xs-block { display: -webkit-box !important } } @media (min-width: 576px) { .latest-blog .latest-blog__thumb { height: 300px } .select-category, .g-topic { display: none; } .blog-heading .blog-time { margin-right: 30px } .blog-heading p { margin-bottom: .5rem; } } @media(max-width:575.98px) { .latest-blog { margin: 0 -15px 25px -15px } .latest-blog .latest-blog__thumb { height: 250px; } .g-topic { font-size: 30px } .blog-top, .blog-widget-padding { padding: 0 !important; } .all-block .blog-widget:nth-child(4)::before { left: 0; right: 0; } .blog-widget:not(.blog-top) .blog-heading p { font-size: 13px; } .blog-heading .blog-time { margin-right: 20px; } .blog-widget-img { height: 80px; } .blog-widget-content { padding-left: 10px; } .blog-widget:not(.blog-top) .blog-category p:first-child:before { left: -12px } .group-blog .nav-tabs { display: none; } .select-category { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; margin-top: 10px; position: relative; } .select-category select { padding: 5px; min-width: 120px; border-radius: 0 !important; background: transparent; } .select-category select, .select-category .search-blog-input { height: 35px; border: .5px solid #bababa; border-radius: 16px; } .select-category .icon-search { right: 5px; } } </style> <script type="text/javascript" defer> $(document).ready(function (e) { let numBlog = parseInt('${count}'), offset = parseInt('${maxBlogOnceLoad}'), limit = parseInt('${maxBlogOnceLoad}'), blogs = ${moreBlogs}, page = 1, filterTab = [], keySearch = "", htmlPost = initRenderBlog(); const searchBlog = document.getElementById('search-blog-input'); if (searchBlog) { searchBlog.addEventListener('input', typeHandler); } document.getElementById('blog-select-category').addEventListener('change', changeCategory); function changeCategory(e) { handleChangeCategory(e.target.value); let option = e.target[e.target.selectedIndex]; let href = option.attributes['data-href'].value; let target = document.getElementById(href); if (target) { target.classList.add('show'); target.classList.add('active'); } let tabPane = document.getElementsByClassName('tab-pane'); for (let index = 0; index < tabPane.length; index++) { const element = tabPane[index]; if (element.id !== href && element.className.includes('show')) { element.classList.remove('show'); element.classList.remove('active'); break; } } } $('#latest-blog-load-more').on('click', function (e) { e.preventDefault(); for (var index = (offset * page) + 3; index < (page + 1) * offset + 3; index++) { appendBlog(blogs[index]); if (index == numBlog - 1) { $('.blog-widget-more').addClass('hidden'); break; } } page++; }); $('#blog-tab a').on('click', function (e) { e.preventDefault(); let tab = $(this).attr('data-tab'); handleChangeCategory(tab); $(this).tab('show') }); $('.icon-search').on('click', function (e) { e.preventDefault(); document.addEventListener('click', (e) => handleClickOutside(e, $(this))); $(this).parent().toggleClass('is-opened'); }); $('#blog-filter-search').on('click', function (e) { e.preventDefault(); keySearch = ""; $('#all-block').html(""); $('#all-block').append(htmlPost); $('#search-blog-input').val(""); $(this).addClass('hidden'); }); function initRenderBlog() { let result = renderTopBlog(_.take(blogs, 3)); for (var index = 3; index < offset + 3; index++) { result += appendBlog(blogs[index], false); } return result; } function handleChangeCategory(tab) { if (tab !== 'all' && _.indexOf(filterTab, tab) < 0) { filterTab.push(tab); let filterBlogs = _.filter(blogs, (blog) => { return _.indexOf(_.get(blog, 'categories', []), tab) > -1 && shouldShowItem(blog, keySearch) }); for (var index = 0; index < _.size(filterBlogs); index++) { appendBlog(filterBlogs[index], true, tab); } } } function handleClickOutside(e) { let target = document.getElementById('search-blog'); if (target && !target.contains(e.target)) { target.classList.remove('is-opened'); document.removeEventListener('click', e => handleClickOutside(e)); } } function typeHandler(e) { keySearch = e.target.value; let result = []; $('#all-block').html(""); if (_.isEmpty(keySearch)) { $('#blog-filter-search')[0].classList.add('hidden'); result = _.take(_.cloneDeep(blogs), offset + 3); $('#all-block').append(htmlPost); page = 1; $('.blog-widget-more').removeClass('hidden'); } else { $('#blog-filter-search')[0].classList.remove('hidden'); $('#blog-search-value').text(keySearch); _.forEach(_.cloneDeep(blogs), item => { if (!shouldShowItem(item, keySearch)) return; appendBlog(item); }); $('.blog-widget-more').addClass('hidden'); } } function shouldShowItem(item, searchingKeyword) { let isMatch = false; if (!searchingKeyword || _.trim(searchingKeyword) === "") return true; _.forEach(['title', 'desc'], (field, index) => { if (_.toLower(_.trim(item[field])).indexOf(_.toLower(_.trim(searchingKeyword))) > -1) { isMatch = true; return false; } }); return isMatch; } function renderTopBlog(blogs) { let blogHtml = ""; for (var i = 0; i < _.size(blogs); i++) { let blog = blogs[i]; let url = blog['url'] !== "" ? "/blog/" + blog['url'] : "javascript::void(0)", categories = _.get(blog, 'categories', []), txtCat = "<div class='blog-category'>"; if (!_.isEmpty(categories)) { categories.forEach(element => { txtCat += "<p class='t-upper'>" + element + "</p>" }); } txtCat += "</div>"; blogHtml += "<div class='col-md-4 col-sm-6 blog-widget blog-top'><a title='" + blog['title'] + "' href='" + url + "'>" + "<div class='blog-heading hidden-xs'>" + txtCat + "</div>" + "<div class='title hidden-xs'><b>" + blog['title'] + "</b></div>" + "<div class='blog-widget-img blog-img'> <img class='lazyload img-cover' alt='Blog Image' data-src='" + blog['image'] + "'></div>" + "<div class='blog-heading visible-xs-block'><p class='blog-time'>" + blog[ 'date'] + "</p></div>" + "<div class='title visible-xs-block'><b>" + blog['title'] + "</b></div></a></div>" } return blogHtml } function appendBlog(blog, isAppened = true, href = "all-block") { let url = blog['url'] !== "" ? "/blog/" + blog['url'] : "javascript::void(0)", categories = _.get(blog, 'categories', []), txtCat = "<div class='blog-category'>", result = ""; if (!_.isEmpty(categories)) { categories.forEach(element => { txtCat += "<p class='t-upper'>" + element + "</p>" }); } txtCat += "</div>"; let html = "<div class='col-md-12 blog-widget blog-widget-padding'>" + "<div class='row' title='" + blog[ 'title'] + "' href='" + url + "'>" + "<div class='col-md-3 col-sm-4 col-xs-4'><div class='blog-widget-img blog-img'><a href=" + url + " title=''" + blog['title'] + "'><img class='lazyload img-cover' data-src='" + blog['image'] + "' alt='Blog Image' /></a></div></div>" + "<div class='col-md-9 col-sm-8 col-xs-8'><div class='blog-widget-content'><div class='blog-heading'>" + "<p class='blog-time'>" + blog['date'] + "</p>" + txtCat + '</div>' + "<div class='blog-widget-title'><a title='" + blog['title'] + "' href=" + url + "><b>" + blog['title'] + "</b></a></div></div></div></div></div>"; if (isAppened) { $('#' + href).append(html); } return html; } }); </script>

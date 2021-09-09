@@ -1,0 +1,109 @@
+<div class="home-banner" style="background-color: #c4c4c4;">
+<div class="banner-item banner-promotion bg-cover lazyload position-relative redirect" data-bgset="/documents/20126/1658729/vng-cloud-home-banner-promotion-xs.jpg [(max-width: 576px)] | /documents/20126/1658729/vng-cloud-home-banner-promotion.jpg [(max-width: 1600px)] | /documents/20126/1658729/vng-cloud-home-banner-promotion-lg.jpg" data-href="/blog/tang-mot-trieu-dong-su-dung-dich-vu-vserver-va-vstorage" data-index="1">
+<div class="banner-content h-100">
+<div class="cloud-container h-100 position-relative">
+<div class="content">
+<div class="home-banner__txt">
+<div class="skew-group">
+<div class="txt c-white"><b>Sử dụng thả ga - Không lo về giá</b></div>
+
+<div class="code__wrapper position-relative d-inline-block wow swing" data-wow-delay=".3s">
+<div class="position-relative txt d-flex align-items-center p-1"><span class="pl-2 mr-3" style="color: #0478f3;">Nhập mã</span>
+
+<div class="t-upper code position-relative">
+<div class="position-relative c-white p-1">trial1trieu</div>
+</div>
+</div>
+</div>
+
+<div class="pt-3">
+<div class="desc position-relative">
+<div class="txt c-white"><b>Nhận ngay</b></div>
+
+<div class="price c-white"><b>1.000.000đ</b></div>
+
+<div class="pt-2 c-white txt" style="font-weight: 600;">sử dụng dịch vụ<br class="hidden-xs" />
+dành cho tài khoản mới</div>
+</div>
+</div>
+</div>
+
+<div class="promotion-btn"><a class="btn btn-secondary-color flex-center" href="/tang-mot-trieu-dong-su-dung-dich-vu">Nhận ngay</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="banner-item get-started bg-cover lazyload position-relative" data-bgset="/documents/20126/1316969/vng-cloud-home-banner-get-started-xs.jpg [(max-width: 576px)] | /documents/20126/1316969/vng-cloud-home-banner-get-started.jpg [(max-width: 1600px)] | /documents/20126/1316969/vng-cloud-home-banner-get-started-lg.jpg" data-index="2">
+<div class="banner-content">
+<div class="cloud-container">
+<div class="row">
+<div class="col-lg-6 col-md-5">&nbsp;</div>
+
+<div class="col-lg-6 col-md-7 home-banner__txt">
+<div class="v-cloud-title">We accompany and<br />
+support our customers<br />
+who are organizations<br />
+or enterprises</div>
+
+<p class="banner-desc">in solving their challenges, improving their ability to grow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<p><script type="text/javascript" async>
+    autoHeightBanner();
+    $(document).ready(function () {
+      window.addEventListener("resize", function (event) {
+        autoHeightBanner()
+      });
+    });
+    function autoHeightBanner() {
+        let topMenu = document.querySelector("#v-navbar");
+      $(".home-banner")[0].style.height = $(window).height() - (topMenu !== null ? topMenu.offsetHeight : 0) + "px"
+    };
+</script><script type="text/javascript" defer>
+    $(document).ready(function () {
+      $slick_slider = $('.home-banner');
+      settings = {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        dots: false,
+        pauseOnHover: true,
+        responsive: [{
+          breakpoint: 575.98,
+          settings: {
+            dots: true,
+            arrows: false
+          }
+        }]
+      };
+      $slick_slider.slick(settings);
+      $('.redirect').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation()
+
+        let href = $(this).attr("data-href");
+        if (e.target.classList.contains("btn")) {
+          href = $(e.target).attr("href");
+        }
+        if (href !== undefined) {
+          var ele = document.createElement('a');
+          ele.setAttribute('href', href);
+
+          if (e && (e.ctrlKey || e.metaKey)) {
+            ele.setAttribute('target', '_blank');
+          }
+
+          document.body.appendChild(ele);
+          ele.click();
+          document.body.removeChild(ele);
+        }
+      })
+    });
+  </script></p>

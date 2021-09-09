@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upcoming Events</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
+
+        :root {
+            --dark-blue-2: #1A3887;
+            --dark-blue-2-200: #071d56;
+            --dark-blue-3: #1B134D;
+            --light-blue: #5EBCE4;
+            --light-blue-200: #2192c1;
+            --vng-orange: #FB7033;
+            --text-body: #434343;
+            --text-headline: #292929;
+            --bg-sub-menu: #eaeaea
+        }
+
+        body {
+            color: var(--text-body)
+        }
+
+        .f-mont {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .f-500 {
+            font-weight: 500;
+        }
+
+        .f-600 {
+            font-weight: 600;
+        }
+
+        .f-700 {
+            font-weight: 700;
+        }
+
+        .f-800 {
+            font-weight: 800;
+        }
+
+        .btn {
+            border-radius: 0;
+            padding: 3px 15px
+        }
+
+        #page_header {
+            z-index: 988
+        }
+
+        .c-white {
+            color: #fff !important
+        }
+
+        .f-height {
+            height: 100%
+        }
+
+        .transition-all {
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s
+        }
+
+        .bg-cover {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%
+        }
+
+        .s-margin-height {
+            height: 50px
+        }
+
+        .s-color {
+            background-color: #f8f9fc
+        }
+
+        .cloud-container {
+            width: 100%;
+            max-width: 90%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto
+        }
+
+        .primary-bg {
+            background-color: var(--dark-blue-2) !important
+        }
+
+        .primary-color {
+            color: var(--dark-blue-2) !important
+        }
+
+        .optional-color {
+            color: var(--vng-orange)
+        }
+
+        .optional-bg {
+            background-color: var(--vng-orange) !important
+        }
+
+        .btn-primary-color {
+            background-color: var(--dark-blue-2);
+            border: 1px solid var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn-primary-color.btn-outline {
+            background-color: transparent;
+            color: var(--dark-blue-2)
+        }
+
+        .btn-primary-color.btn-outline:hover {
+            background-color: var(--dark-blue-2);
+            color: #fff
+        }
+
+        .btn:hover {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1)
+        }
+
+        .btn-secondary-color {
+            background-color: var(--vng-orange);
+            border: 1px solid var(--vng-orange);
+            color: #fff
+        }
+
+        .btn-secondary-color:hover {
+            background-color: #dc5c23;
+            color: #fff
+        }
+
+        .btn-white-color {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 3px 15px
+        }
+
+        .btn-white-color:hover {
+            background-color: var(--vng-orange);
+            color: #fff;
+            border-color: var(--vng-orange)
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .btn-primary-color:hover {
+            background-color: var(--dark-blue-2-200);
+            color: #fff
+        }
+
+        .navigation-bar-secondary {
+            border: 0
+        }
+
+        .v-cloud-title {
+            font-size: 36px;
+            line-height: 48px
+        }
+
+        .slick-arrow:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .fa-icon:before {
+            font-family: fontawesome-alloy !important
+        }
+
+        .slick-dots li button:before {
+            font-family: fontawesome-alloy !important;
+            font-size: 10px !important
+        }
+
+        .t-upper {
+            text-transform: uppercase
+        }
+
+        .slick-slider {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity .3s ease;
+            -moz-transition: opacity .3s ease;
+            -o-transition: opacity .3s ease;
+            -ms-transition: opacity .3s ease;
+            transition: opacity .3s ease
+        }
+
+        .slick-slider.slick-initialized {
+            visibility: visible;
+            opacity: 1
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        @media(min-width:1200px) {
+            .v-cloud-title.t-upper {
+                font-size: 30px;
+                line-height: 35px
+            }
+        }
+
+        @media(max-width:767.98px) {
+            .v-cloud-title {
+                font-size: 28px;
+                line-height: 33px
+            }
+
+            .s-margin-height {
+                height: 25px
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .cloud-container {
+                max-width: 100%
+            }
+
+            .v-cloud-title {
+                margin-bottom: 10px
+            }
+
+            p,
+            a,
+            span {
+                font-size: 16px
+            }
+        }
+
+        @media(min-width:1600px) {
+            body {
+                font-size: 18px
+            }
+
+            .cloud-container {
+                max-width: 85%
+            }
+
+            .cloud-container.v-section-inner {
+                max-width: 1200px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="s-events">
+        <div class="s-margin-height">&nbsp;</div>
+        <div class="cloud-container v-section-inner">
+            <div class="v-cloud-title text-center f-bold t-upper"> Tất cả Sự kiện </div>
+            <div class="event-filter d-flex mt-3 mt-sm-4 f-mont">
+                <div class="d-flex align-items-center">
+                    <div class="filter-grid filter-ele flex-center">
+                        <button class="btn p-0 grid-th" data-type="th">
+                            <svg viewBox="0 0 36 36">
+                                <path fill="currentColor"
+                                    d="M21 36V21h15v15H21zm0-36h15v15H21V0zM0 21h15v15H0V21zM0 0h15v15H0V0z"></path>
+                            </svg>
+                        </button>
+                        <button class="btn active p-0 grid-list" data-type="list">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 489.5 489.5" xml:space="preserve">
+                                <g>
+                                    <rect y="1.35" width="97.5" height="97.5" />
+                                    <rect x="138.3" y="27.45" width="351.2" height="43.1" />
+                                    <rect y="195.95" width="97.5" height="97.5" />
+                                    <rect x="138.3" y="222.05" width="351.2" height="43.1" />
+                                    <rect y="390.65" width="97.5" height="97.5" />
+                                    <rect x="138.3" y="416.65" width="351.2" height="43.1" />
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="filter-saved d-none d-sm-block pl-3 pr-3"></div>
+                </div>
+                <div class="filter-sort flex-center">
+                    <div class="filter-search d-none d-sm-flex align-items-center ml-3 mr-3">
+                        <i class="icon-search mr-2 pl-3"></i>
+                        <input class="pl-3 w-100 h-100 border-0" id="filterSearch" type="text" placeholder="Search" />
+                    </div>
+                    <div class="dropdown filter-ele">
+                        <div class="dropdown-select t-upper transition-all">Sắp xếp</div>
+                        <div class="sort-menu">
+                            <div class="sort-item transition-all" data-field="title" data-sort="asc" data-type="string">
+                                Alphabetically: A-Z</div>
+                            <div class="sort-item transition-all" data-field="title" data-sort="desc"
+                                data-type="string">Alphabetically: Z-A</div>
+                            <div class="sort-item transition-all" data-field="numDate" data-sort="desc" data-type="date">
+                                Newest to Oldest</div>
+                            <div class="sort-item transition-all" data-field="numDate" data-sort="asc" data-type="date">
+                                Oldest to Newest</div>
+
+                            <!-- <div class="sort-item transition-all" data-field="title" data-sort="asc" data-type="string">
+                                Theo ký tự: A-Z</div>
+                            <div class="sort-item transition-all" data-field="title" data-sort="desc"
+                                data-type="string">Theo ký tự: Z-A</div>
+                            <div class="sort-item transition-all" data-field="numDate" data-sort="desc" data-type="date">
+                                Bài viết mới nhất</div>
+                            <div class="sort-item transition-all" data-field="numDate" data-sort="asc" data-type="date">
+                                Bài viết cũ nhất</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="event-list" data-type="list" id="events-wrapper">
+                <div class="event-block w-100">
+                    <div class="block-left"> <a class="bg-cover d-block position-relative lazyload"
+                            href="/events/nen-tang-chuyen-doi-so-an-toan-cho-doanh-nghiep"
+                            data-bgset="https://vngcloud.vn/documents/20126/1544985/vng-cloud-blog-nen-tang-chuyen-doi-so-an-toan-cho-doanh-nghiep.jpg/bb718f68-369d-a56f-d4e3-dfdcd160e4e8"
+                            style="background-image: url(&quot;https://admin.vngcloud.vn/documents/20126/1544985/vng-cloud-blog-nen-tang-chuyen-doi-so-an-toan-cho-doanh-nghiep.jpg/bb718f68-369d-a56f-d4e3-dfdcd160e4e8&quot;);">
+                            <picture style="display: none;">
+                                <source
+                                    data-srcset="https://vngcloud.vn/documents/20126/1544985/vng-cloud-blog-nen-tang-chuyen-doi-so-an-toan-cho-doanh-nghiep.jpg/bb718f68-369d-a56f-d4e3-dfdcd160e4e8"
+                                    sizes="293px"
+                                    srcset="https://vngcloud.vn/documents/20126/1544985/vng-cloud-blog-nen-tang-chuyen-doi-so-an-toan-cho-doanh-nghiep.jpg/bb718f68-369d-a56f-d4e3-dfdcd160e4e8">
+                                <img alt="" class="lazyautosizes lazyload ls-is-cached" data-sizes="auto"
+                                    data-parent-fit="cover" sizes="293px"></picture>
+                        </a> </div>
+                    <div class="block-right">
+                        <div class="event-title mb-1"
+                            title="<div>Nền tảng chuyển đổi số an toàn cho doanh nghiệp</div>"> <a
+                                class="transition-all f-bold"
+                                href="/events/nen-tang-chuyen-doi-so-an-toan-cho-doanh-nghiep"
+                                title="<div>Nền tảng chuyển đổi số an toàn cho doanh nghiệp</div>">
+                                <div>Nền tảng chuyển đổi số an toàn cho doanh nghiệp</div>
+                            </a> </div>
+                        <div class="event-block__header d-flex align-items-center">
+                            <p class="event-time t-upper">Dec-08-2020</p>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-desc"
+                                title="VNG Cloud đáp ứng tiêu chuẩn an toàn thông tin và tuân thủ Luật An ninh mạng Việt Nam, phù hợp với quá trình chuyển đổi số của các doanh nghiệp">
+                                VNG Cloud đáp ứng tiêu chuẩn an toàn thông tin và tuân thủ Luật An ninh mạng Việt Nam,
+                                phù hợp với quá trình chuyển đổi số của các doanh nghiệp</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-block w-100">
+                    <div class="block-left"> <a class="bg-cover d-block position-relative lazyload"
+                            href="/events/dien-toan-dam-may-dich-thuc-true-cloud"
+                            data-bgset="https://vngcloud.vn/documents/20126/1562265/vng-cloud-true-cloud-mr-vu-minh-tri-cff.jpg/55c6b68d-164f-98e6-f4a6-b362b128caa4"
+                            style="background-image: url(&quot;https://admin.vngcloud.vn/documents/20126/1562265/vng-cloud-true-cloud-mr-vu-minh-tri-cff.jpg/55c6b68d-164f-98e6-f4a6-b362b128caa4&quot;);">
+                            <picture style="display: none;">
+                                <source
+                                    data-srcset="https://vngcloud.vn/documents/20126/1562265/vng-cloud-true-cloud-mr-vu-minh-tri-cff.jpg/55c6b68d-164f-98e6-f4a6-b362b128caa4"
+                                    sizes="293px"
+                                    srcset="https://vngcloud.vn/documents/20126/1562265/vng-cloud-true-cloud-mr-vu-minh-tri-cff.jpg/55c6b68d-164f-98e6-f4a6-b362b128caa4">
+                                <img alt="" class="lazyautosizes lazyload ls-is-cached" data-sizes="auto"
+                                    data-parent-fit="cover" sizes="293px"></picture>
+                        </a> </div>
+                    <div class="block-right">
+                        <div class="event-title mb-1"
+                            title="<div>Điện Toán Đám Mây Đích Thực True Cloud - Công Nghệ Tối Ưu Cho Kỳ Vọng Của Khách Hàng</div>">
+                            <a class="transition-all f-bold" href="/events/dien-toan-dam-may-dich-thuc-true-cloud"
+                                title="<div>Điện Toán Đám Mây Đích Thực True Cloud - Công Nghệ Tối Ưu Cho Kỳ Vọng Của Khách Hàng</div>">
+                                <div>Điện Toán Đám Mây Đích Thực True Cloud - Công Nghệ Tối Ưu Cho Kỳ Vọng Của Khách
+                                    Hàng</div>
+                            </a> </div>
+                        <div class="event-block__header d-flex align-items-center">
+                            <p class="event-time t-upper">Jan-10-2021</p>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-desc"
+                                title="Hiện nay chỉ có một số ít các dịch vụ đám mây đích thực như VNG Cloud – mới có thể đáp ứng được gần như đầy đủ các kỳ vọng của khách hàng. Những đám mây này được thiết kế theo kiến trúc Multi-tenant cho phép nhiều người dùng cùng chia sẻ một hạ tầng lưu trữ cũng như cùng một tập hợp các ứng dụng.">
+                                Hiện nay chỉ có một số ít các dịch vụ đám mây đích thực như VNG Cloud – mới có thể đáp
+                                ứng được gần như đầy đủ các kỳ vọng của khách hàng. Những đám mây này được thiết kế theo
+                                kiến trúc Multi-tenant cho phép nhiều người dùng cùng chia sẻ một hạ tầng lưu trữ cũng
+                                như cùng một tập hợp các ứng dụng.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-block w-100">
+                    <div class="block-left"> <a class="bg-cover d-block position-relative lazyload"
+                            href="/events/phien-ban-nang-cap-vcloudcam-danh-rieng-cho-gia-dinh-viet-nam"
+                            data-bgset="https://vngcloud.vn/documents/20126/1702117/vng-cloud-events-phien-ban-nang-cap-vcloudcam-danh-rieng-cho-gia-dinh-viet-nam-thumbnail.jpg/81bcb0c6-f7b0-3f35-efc3-6b7e8f865b01">
+                        </a> </div>
+                    <div class="block-right">
+                        <div class="event-title mb-1"
+                            title="<div>Phiên bản nâng cấp vCloudcam dành riêng cho gia đình Việt Nam</div>"> <a
+                                class="transition-all f-bold"
+                                href="/events/phien-ban-nang-cap-vcloudcam-danh-rieng-cho-gia-dinh-viet-nam"
+                                title="<div>Phiên bản nâng cấp vCloudcam dành riêng cho gia đình Việt Nam</div>">
+                                <div>Phiên bản nâng cấp vCloudcam dành riêng cho gia đình Việt Nam</div>
+                            </a> </div>
+                        <div class="event-block__header d-flex align-items-center">
+                            <p class="event-time t-upper">Jun-14-2021</p>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-desc"
+                                title="VNG Cloud ra mắt phiên bản nâng cấp vCloudcam giúp quản trị toàn diện ngôi nhà của bạn, mượt mà, an toàn và dễ sử dụng.">
+                                VNG Cloud ra mắt phiên bản nâng cấp vCloudcam giúp quản trị toàn diện ngôi nhà của bạn,
+                                mượt mà, an toàn và dễ sử dụng.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-block w-100">
+                    <div class="block-left"> <a class="bg-cover d-block position-relative lazyload"
+                            href="/events/vng-cloud-ho-tro-doanh-nghiep-vuot-qua-mua-dich"
+                            data-bgset="https://vngcloud.vn/documents/20126/1702011/vng-cloud-events-ho-tro-doanh-nghiep-vuot-qua-mua-dich-thumbnail.jpg/a913465b-e042-7615-27e6-3f89eaabc759">
+                        </a> </div>
+                    <div class="block-right">
+                        <div class="event-title mb-1"
+                            title="<div>VNG Cloud hỗ trợ doanh nghiệp vượt qua mùa dịch</div>"> <a
+                                class="transition-all f-bold"
+                                href="/events/vng-cloud-ho-tro-doanh-nghiep-vuot-qua-mua-dich"
+                                title="<div>VNG Cloud hỗ trợ doanh nghiệp vượt qua mùa dịch</div>">
+                                <div>VNG Cloud hỗ trợ doanh nghiệp vượt qua mùa dịch</div>
+                            </a> </div>
+                        <div class="event-block__header d-flex align-items-center">
+                            <p class="event-time t-upper">Jun-04-2021</p>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-desc"
+                                title="Với mong muốn cùng doanh nghiệp vượt qua mùa dịch, VNG Cloud tung hàng loạt chương trình ưu đãi đặc biệt như: tặng 1.000.000 đồng dịch vụ sử dụng các giải pháp hạ tầng điện toán đám mây, kích hoạt gói lưu trữ siêu tiết kiệm trên cloud chỉ từ 9.000vnđ sử dụng giải pháp vCloudcam.">
+                                Với mong muốn cùng doanh nghiệp vượt qua mùa dịch, VNG Cloud tung hàng loạt chương trình
+                                ưu đãi đặc biệt như: tặng 1.000.000 đồng dịch vụ sử dụng các giải pháp hạ tầng điện toán
+                                đám mây, kích hoạt gói lưu trữ siêu tiết kiệm trên cloud chỉ từ 9.000vnđ sử dụng giải
+                                pháp vCloudcam.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-block w-100">
+                    <div class="block-left"> <a class="bg-cover d-block position-relative lazyload"
+                            href="/events/vng-cloud-tham-gia-tuan-le-chuyen-doi-so-thua-thien-hue"
+                            data-bgset="https://vngcloud.vn/documents/20126/1645008/vng-cloud-tham-gia-tuan-le-chuyen-doi-so-thua-thien-hue-thumbnail.jpg/e8e6277f-623d-1612-41cd-a28899e49a62">
+                        </a> </div>
+                    <div class="block-right">
+                        <div class="event-title mb-1"
+                            title="<div>VNG Cloud Tham Gia Tuần Lễ Chuyển Đổi Số Thừa Thiên Huế 2021 Hướng Tới Xây Dựng Hệ Sinh Thái Số Cho Địa Phương</div>">
+                            <a class="transition-all f-bold"
+                                href="/events/vng-cloud-tham-gia-tuan-le-chuyen-doi-so-thua-thien-hue"
+                                title="<div>VNG Cloud Tham Gia Tuần Lễ Chuyển Đổi Số Thừa Thiên Huế 2021 Hướng Tới Xây Dựng Hệ Sinh Thái Số Cho Địa Phương</div>">
+                                <div>VNG Cloud Tham Gia Tuần Lễ Chuyển Đổi Số Thừa Thiên Huế 2021 Hướng Tới Xây Dựng Hệ
+                                    Sinh Thái Số Cho Địa Phương</div>
+                            </a> </div>
+                        <div class="event-block__header d-flex align-items-center">
+                            <p class="event-time t-upper">May-09-2021</p>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-desc"
+                                title="Vào ngày 28/04/2021, trong khuôn khổ Tuần Lễ Chuyển Đổi Số Thừa Thiên Huế 2021, các chuyên gia của VNG Cloud đã tham gia thảo luận vào các phiên hội thảo thương mại, dịch vụ và y tế ,giáo dục. Đây là dịp để các chuyên gia VNG Cloud giới thiệu và chia sẻ những bộ giải pháp chuyên biệt trên nền tảng điện toán đám mây chuẩn quốc tế, đánh dấu bước phát triển trong việc số hoá toàn diện tại Thừa Thiên Huế.">
+                                Vào ngày 28/04/2021, trong khuôn khổ Tuần Lễ Chuyển Đổi Số Thừa Thiên Huế 2021, các
+                                chuyên gia của VNG Cloud đã tham gia thảo luận vào các phiên hội thảo thương mại, dịch
+                                vụ và y tế ,giáo dục. Đây là dịp để các chuyên gia VNG Cloud giới thiệu và chia sẻ những
+                                bộ giải pháp chuyên biệt trên nền tảng điện toán đám mây chuẩn quốc tế, đánh dấu bước
+                                phát triển trong việc số hoá toàn diện tại Thừa Thiên Huế.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-block w-100">
+                    <div class="block-left"> <a class="bg-cover d-block position-relative lazyload"
+                            href="/events/vng-cloud-thong-bao-thoi-gian-nghi-le"
+                            data-bgset="https://vngcloud.vn/documents/20126/1637365/event-thumbnail-image.jpg/88b2bc30-dbda-f686-2d47-f134223be116">
+                        </a> </div>
+                    <div class="block-right">
+                        <div class="event-title mb-1"
+                            title="<div>VNG Cloud Thông Báo Thời Gian Nghỉ Lễ 30/4 - 1/5</div>"> <a
+                                class="transition-all f-bold" href="/events/vng-cloud-thong-bao-thoi-gian-nghi-le"
+                                title="<div>VNG Cloud Thông Báo Thời Gian Nghỉ Lễ 30/4 - 1/5</div>">
+                                <div>VNG Cloud Thông Báo Thời Gian Nghỉ Lễ 30/4 - 1/5</div>
+                            </a> </div>
+                        <div class="event-block__header d-flex align-items-center">
+                            <p class="event-time t-upper">Apr-29-2021</p>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-desc"
+                                title="VNG Cloud trân trọng thông báo đến Quý Khách hàng, Quý Đối tác thời gian nghỉ Lễ 30/4 - 1/5 từ ngày 30/04/2021 đến hết ngày 03/05/2021">
+                                VNG Cloud trân trọng thông báo đến Quý Khách hàng, Quý Đối tác thời gian nghỉ Lễ 30/4 -
+                                1/5 từ ngày 30/04/2021 đến hết ngày 03/05/2021</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more-event"><button class="btn btn-load-more t-upper" id="see-more-events">Xem thêm <svg
+                        class="ml-1" width="12" height="10" viewBox="0 0 12 10" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.36185 4.32192L5.94426 0.958948L6.91878 0L12 5L6.91878 10L5.94426 9.04105L9.36185 5.67808L0 5.67808V4.32192L9.36185 4.32192Z"
+                            fill="#fff"></path>
+                    </svg></button></div>
+        </div>
+        <div class="s-margin-height">&nbsp;</div>
+    </section>
+    <style type="text/css">
+        .event-list {
+            display: grid;
+        }
+
+        .event-list[data-type="list"] {
+            grid-template-columns: 1fr;
+        }
+
+        .event-list[data-type="th"] {
+            grid-template-columns: repeat(var(--columns), minmax(0, calc(100% / var(--columns))));
+            gap: 30px;
+        }
+        .filter-saved>div {
+            background-color: var(--dark-blue-2);
+            color: #fff;
+            padding-left: 1.5rem;
+            padding-right: 1rem;
+            border-radius: 16px;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 15px;
+        }
+        .filter-saved>div::after {
+            content: "x";
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--dark-blue-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 1px solid #fff;
+            opacity: 0;
+            -webkit-transition: opacity 125ms linear;
+            -moz-transition: opacity 125ms linear;
+            -ms-transition: opacity 125ms linear;
+            -o-transition: opacity 125ms linear;
+            transition: opacity 125ms linear;
+        }
+        .filter-saved>div:hover::after {opacity: 1;}
+        .filter-saved>div::before {
+            font-family: fontawesome-alloy;
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            font-size: 11px;
+        }
+        .filter-saved__search::before {
+            content: "\f002";
+        }
+        .filter-saved .filter-saved__sort {padding-left: 1.6rem;}
+        .filter-saved .filter-saved__sort::before {
+            content:  "\f160";
+            top: 4px;
+        }
+       
+        .event-filter {
+            justify-content: space-between;
+            border: 1px solid #ebebeb;
+            border-left: 0;
+            border-right: 0;
+            color: #747474;
+        }
+
+        .event-filter .filter-ele {
+            padding: 15px 0;
+        }
+
+        .filter-grid {
+            width: 100px;
+            border-right: 1px solid #ebebeb;
+        }
+
+        .event-filter .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 6px;
+            background-color: transparent;
+            transition: opaicty 300ms ease;
+        }
+
+        .event-filter .btn:not(.active) {
+            opacity: .2;
+        }
+
+        .event-filter .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .event-filter .dropdown {
+            border-left: 1px solid #ebebeb;
+        }
+
+        .filter-sort .dropdown:hover .dropdown-select {
+            color: #4d4d4d;
+        }
+
+        .sort-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background: #fff;
+            box-shadow: 1px -1px 15px rgb(0 0 0 / 11%);
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 125ms;
+        }
+
+        .sort-menu .sort-item {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .sort-menu .sort-item:hover {
+            color: #4d4d4d;
+        }
+
+        .sort-menu .sort-item.active {
+            color: #4d4d4d;
+            background-color: #f7f7f7;
+        }
+
+        .sort-menu .sort-item:first-child:hover::before {
+            border-bottom-color: #f7f7f7;
+        }
+
+        .sort-menu .sort-item:first-child:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 20px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #fff;
+            transform: translateY(-100%);
+            transition: all 300ms ease;
+            -webkit-transition: all 300ms ease;
+            -moz-transition: all 300ms ease;
+            -ms-transition: all 300ms ease;
+            -o-transition: all 300ms ease;
+            transition: all 300ms ease;
+        }
+
+        .filter-sort .dropdown:hover .sort-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .dropdown-select {
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dropdown-select::after {
+            content: "\f107";
+            font-family: fontawesome-alloy;
+            padding-left: 5px;
+            transition: transform .3s;
+        }
+
+        .filter-search {
+            height: 35px;
+            border-radius: 24px;
+            background-color: #f4f4f4;
+        }
+
+        .filter-search .icon-search {
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .filter-search input {
+            background: none;
+            flex: 1;
+        }
+
+        .filter-search input:focus {
+            outline: none;
+        }
+
+        .filter-search input::placeholder {
+            color: #747474 !important;
+        }
+
+        .event-filter .btn:hover {
+            box-shadow: none;
+        }
+
+        .event-block .block-left {
+            background-color: #c4c4c4;
+            overflow: hidden;
+        }
+
+        .event-list[data-type="th"] {
+            padding-top: 30px;
+        }
+
+        .event-list[data-type="list"] .event-block {
+            padding: 20px 0;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .block-left a {
+            -webkit-transition: transform .5s ease;
+            -moz-transition: transform .5s ease;
+            -o-transition: transform .5s ease;
+            -ms-transition: transform .5s ease;
+            transition: transform .5s ease;
+        }
+
+        .event-block:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .event-list[data-type="th"]~.load-more-event {
+            text-align: center;
+        }
+
+        .event-block__img {
+            height: 150px;
+            overflow: hidden;
+            background-color: #E5E5E5;
+        }
+
+        .event-block__img img {
+            -webkit-transition: transform 1s ease;
+            -moz-transition: transform 1s ease;
+            -ms-transition: transform 1s ease;
+            -o-transition: transform 1s ease;
+            transition: transform 1s ease;
+        }
+
+        .block-left a:hover {
+            transform: scale(1.12);
+        }
+
+        .event-block__header {
+            color: #747474;
+        }
+
+        .event-block__header .event-time {
+            margin-right: 30px;
+        }
+
+        .event-block__header .event-category p:first-child:before {
+            position: absolute;
+            content: '.';
+            left: -17px;
+            top: -5px;
+        }
+
+        .event-block .event-title a {
+            -webkit-line-clamp: 2;
+            color: var(--text-headline);
+        }
+
+        .event-block .event-title p {
+            margin-bottom: 0;
+        }
+
+        .event-block .event-title a,
+        .article-desc {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .event-block .event-title {
+            font-size: 18px;
+        }
+
+        .article-desc {
+            -webkit-line-clamp: 3;
+            color: #747474;
+        }
+
+        .event-block .event-title:hover a {
+            color: var(--vng-orange) !important;
+        }
+
+        .event-block__header p {
+            margin-bottom: .5rem;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .event-block .event-desc {
+            text-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .load-more-event.hidden {
+            display: none;
+        }
+
+        .btn-load-more {
+            background-color: var(--vng-orange);
+            color: #fff;
+            box-sizing: border-box;
+            border-radius: 0;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        .event-list[data-type="th"] .event-loading .block-right {
+            margin-top: .5rem;
+        }
+        .event-loading .placeholder {
+            border-radius: .25rem;
+            margin-bottom: 5px;
+            background-color: #ccc;
+            animation: skeleton-loading 1s linear infinite alternate;
+        }
+
+        .event-loading .block-right .placeholder {width: 100%;height: 15px;margin-bottom: 5px;}
+        @keyframes skeleton-loading {
+            0% {
+                opacity: .2;
+            }
+            50% {
+                opacity: .4;
+            }
+            100% {
+                opacity: .2;
+            }
+        }
+        @media (min-width: 1200px) {
+            .event-list[data-type="list"] {--width: 25%}
+            .block-left a {height: 250px;}
+        }
+        @media (min-width: 992px) {
+            .event-list[data-type="th"] {--columns: 3;}
+            .event-list[data-type="list"] .block-left a,
+            .event-loading .block-left {
+                height: 180px;
+            }
+            .filter-search {width: 200px;}
+            .event-filter .dropdown {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            .filter-sort {
+                border-left: 1px solid #ebebeb;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .event-list[data-type="list"] .block-left {
+                float: left;
+                width: var(--width);
+            }
+            .event-list[data-type="list"] .block-right {
+                margin-left: calc(var(--width) + 20px);
+            }
+        }
+        @media(min-width: 768px) {
+            .event-list[data-type="th"] .event-title {
+                padding-top: .5rem;
+            }
+        }
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .event-list[data-type="th"] .block-left a {height: 150px;}
+        }
+        @media (min-width: 768px) and (max-width: 1199.98px) {
+            .event-list[data-type="list"] {--width: 35%}
+        }
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .event-list[data-type="list"] .block-left a,
+            .event-loading .block-left {
+                height: 150px;
+            }
+            .event-list[data-type="th"] .block-left a {height: 200px;}
+            .filter-search {width: 150px;}
+        }
+        @media (max-width: 991.98px) {
+            .event-list[data-type="th"] {--columns: 2}
+            
+            .event-filter .dropdown {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .event-filter {
+                position: absolute;
+                left: 0;
+                right: 0;
+            }
+            .event-list {margin-top: 90px;}
+        }
+        @media (max-width: 575.98px) {
+            .event-block {
+                flex-direction: column-reverse;
+            }
+            .event-list[data-type="th"] {gap: 20px;}
+            .event-list .block-left a {height: 100%;}
+            .event-list[data-type="list"] .block-left {height: 200px;}
+            .event-list[data-type="th"] .block-left {height: 100px;}
+            .event-list[data-type="th"] .event-block .event-title a {-webkit-line-clamp: 3}
+            .event-loading .block-right {margin-top: .5rem;}
+            .event-block .event-title a {
+                font-size: 18px;
+            }
+
+            .event-block .event-desc {
+                display: none;
+            }
+
+            .event-block .event-title {
+                padding-top: .5rem;
+            }
+        }
+    </style>
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script>
+    <script type="text/javascript" defer="">
+        $(document).ready(function () {
+            var offset = parseInt("${maxItems}"),
+                page = 1,
+                numArrayArticle = parseInt("${count}"),
+                sort = {},
+                searchField = ["title"],
+                keySearch = "",
+                flag = 0,
+                events = ${moreEvents};
+            const searchInput = document.querySelector("#filterSearch"),
+                eventWrapper = document.querySelector("#events-wrapper"),
+                gridItems = document.querySelectorAll(".filter-grid .btn"),
+                sortItem = document.querySelectorAll(".sort-item"),
+                saved = document.querySelectorAll(".filter-saved>div");
+
+            searchInput && searchInput.addEventListener("keypress", typeHandler);
+
+            gridItems && gridItems.forEach(item => {
+                item.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    $(gridItems).removeClass("active") && ($(this).addClass("active"))
+                    eventWrapper && eventWrapper.setAttribute("data-type", $(this).attr(
+                        "data-type"))
+                })
+            });
+            sortItem && sortItem.forEach(item => {
+                item.addEventListener("click", function (e) {
+                    e.preventDefault();
+                        
+                    if (!$(this).hasClass("active")) {
+                        $(sortItem).removeClass("active") && ($(this).addClass("active"));
+                        sort = {
+                            field: $(this).attr("data-field"),
+                            sort: $(this).attr("data-sort"),
+                            type: $(this).attr("data-type"),
+                        }
+                        const savedFilter = document.querySelector("#filter-sort");
+                        if (savedFilter) {
+                            savedFilter.classList.remove("d-none");
+                            savedFilter.textContent = e.target.innerText;
+                        } else {
+                            $(".filter-saved").append(`<div class='filter-saved__sort mr-2' data-type='sort' id='filter-sort'>${e.target.innerText}</div>`)
+                        }
+
+                        reset();
+                    }
+                })
+            })
+
+            $(".filter-saved").on("click", ">div", function(e) {
+                e.preventDefault();
+
+                let type = $(this).attr("data-type");
+                if (type === "search") {
+                    keySearch = "";
+                } else if (type === "sort") {
+                    sort = {};
+                    $(sortItem).removeClass("active");
+                }
+
+                reset();
+                $(this).addClass("d-none");
+
+            })
+
+            $("#see-more-events").on("click", function (e) {
+                e.preventDefault();
+                page++;
+
+                $(".load-more-event").addClass("hidden");
+
+                loading(1);
+                setTimeout(function(e) {
+                    const loadingEle = document.querySelectorAll(".event-loading");
+                    loadingEle && $(loadingEle).remove();
+
+                    $(".load-more-event").removeClass("hidden");
+                    reRendered();
+                }, 500);
+            })
+
+            function sortBy(a, b) {
+                let field = sort["field"],
+                    type = sort["type"];
+                var aName, bName;
+
+                switch (type) {
+                    case "string":
+                        aName = $(a[field].toLowerCase()).text();
+                        bName = $(b[field].toLowerCase()).text();
+                        break;
+
+                    case "date":
+                        aName = toDate(a[field]);
+                        bName = toDate(b[field]);
+                        break;
+                    default:
+                        break;
+                }
+
+                return ((aName < bName) ? sort["sort"] == "asc" ? -1 : 1 : ((aName > bName) ? sort["sort"] ==
+                    "asc" ? 1 : -1 : 0));
+            }
+
+            function toDate(dateStr) {
+                const [month, day, year] = dateStr.split("-"),
+                    dateFormat = new Date(year, month - 1, day);
+                
+                return Math.floor(dateFormat / 1000);
+            }
+
+            function reRendered() {
+                if (sort.hasOwnProperty("field")) {
+                    renderEvent(_.cloneDeep(events).sort(sortBy))
+                } else renderEvent(_.cloneDeep(events));
+            }
+
+            function renderEvent(data) {
+                let count = 0;
+                flag = flag > 0 ? flag : (page - 1) * offset;
+
+                while (count < offset) {
+                    if (flag < numArrayArticle) {
+                        let event = data[flag];
+                        if (shouldShowItem(event, keySearch)) {
+                            renderItem(event);
+                            count++
+                        }
+
+                        flag++;
+                    } else {
+                        // finished
+                        $(".load-more-event").addClass("hidden");
+                        count = offset + 1;
+                    }
+                }
+            }
+
+            function renderItem(event) {
+                let exLink = _.get(event, "exLink", false),
+                    href = "/events/" + _.get(event, "url", ""),
+                    categories = "";
+                if (exLink) href = _.get(event, "url", "");
+                if (!_.isEmpty(_.get(event, "categories", []))) {
+                    categories += '<div class="event-category position-relative">';
+                    event.categories.forEach(function (category) {
+                        categories += '<p class="t-upper">' + category +
+                            "</p>"
+                    });
+                    categories += "</div>"
+                }
+
+                let html = "<div class='event-block'>" +
+                    "<div class='block-left'>" +
+                    "<a class='bg-cover d-block position-relative lazyload' href='" + href +
+                    "' data-bgset='" + (event.hasOwnProperty("image") ? event["image"] : '') + "'></a></div>" +
+                    "<div class='block-right'>" +
+                    "<div class='event-title mb-1'>" +
+                    "<a class='transition-all f-bold' href='" + href +
+                    "' title=''>" + event["title"] +
+                    "</a> </div><div class='event-block__header d-flex align-items-center'><p class='event-time t-upper'>" +
+                    event["date"] + "</p>" + categories + "</div>" +
+                    "<div class='article-meta'> <div class='article-desc' title='" +
+                    event["desc"] + "'>" + event["desc"] + "</div>" +
+                    "</div></div></div>";
+                $("#events-wrapper").append(html)
+            }
+
+            function shouldShowItem(item, searchingKeyword) {
+                let isMatch = false;
+                if (!searchingKeyword || searchingKeyword.trim() === "") return true;
+
+                searchField.map((field, index) => {
+                    if ($(item[field]).text().trim().toLowerCase().indexOf(searchingKeyword.trim()
+                            .toLowerCase()) > -1) {
+                        isMatch = true;
+                        return false
+                    }
+                });
+
+                return isMatch
+            }
+
+            function typeHandler(e) {
+                let value = _.escape(e.target.value.trim());
+                let keycode = (e.keyCode ? e.keyCode : e.which);
+                if (keycode == '13') {
+                    keySearch = value;
+                    const savedSearch = document.querySelector("#filter-search");
+                    if (savedSearch) {
+                        savedSearch.classList.remove("d-none");
+                        savedSearch.textContent = value;
+                    } else {
+                        $(".filter-saved").append(`<div class='filter-saved__search mr-2' data-type='search' id='filter-search'>${value}</div>`)
+                    }
+
+                    e.target.value = "";
+                    reset();
+                }
+            }
+
+            function reset() {
+                $("#events-wrapper").html("");
+                $(".load-more-event").addClass("hidden");
+
+                flag = 0;
+                page = 1;
+
+                loading()
+                setTimeout(function(e) {
+                    const loadingEle = document.querySelectorAll(".event-loading");
+                    loadingEle && $(loadingEle).remove();
+
+                    $(".load-more-event").removeClass("hidden");
+                    reRendered();
+                }, 1000);
+            }
+
+            function loading(num = 6) {
+                let html = "<div class='event-loading pt-3'>" +
+                    "<div class='placeholder block-left mb-0'></div>" +
+                    "<div class='block-right'>" +
+                        "<div class='placeholder' style='width: 70%'></div>" +
+                        "<div class='d-flex'>" +
+                            "<div class='placeholder mr-2' style='width: 10%'></div>" +
+                            "<div class='placeholder' style='width: 20%'></div>" +
+                    "</div></div></div>";
+                for(let i = 0; i < num; i++) {
+                    $("#events-wrapper").append(html);
+                }
+            }
+        });
+    </script>
+</body>

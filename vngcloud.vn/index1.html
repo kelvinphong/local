@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .wallpapers {
+            background-image:
+                url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-dark-wwdc-2020-4480x2520-1432.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .text {
+            font-weight: 700;
+            font-size: 5rem;
+            line-height: 1;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        .desc {
+            padding-top: 1.5rem;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .date {
+            padding-top: .5rem;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .wallpapers::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: #1d2021;
+            opacity: .2;
+        }
+        .quote img {
+            position: absolute;
+            width: 10px;
+            left: 0;
+            top: 2px;
+        }
+        .author::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 1px;
+            width: 25px;
+            left: 0;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wallpapers">
+        <div style="position: relative;z-index: 1;max-width: 50%;margin: 0 auto;">
+            <div class="text">Workhard<br>anywhere</div>
+            <div class="desc">Image by _threenhphnq</div>
+            <div class="date">08.30.2021</div>
+
+            <div class="quote" style="display: flex;align-items: center;padding-top: 80px;text-align: right;font-size: 13px;padding-left: 50px;font-weight: 300;">
+                <div style="text-align: left;position: relative;padding-left: 15px;max-width: 55%;">
+                    <img src="https://www.nicepng.com/png/full/41-412418_left-quote-quote-white-icon-png.png" />
+                    <p style="font-style: italic;">You shouldn't focus on why you cant do something, which is what most people do. You should focus on why perhaps you can, and be one of the exceptions.</p>
+                    <p class="author" style="font-size: 12px;padding-top: .125rem;margin-top: .5rem;font-weight: 500;position: relative;">Steve Case</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+.modal-body .close {
+    color: #eaeaea;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid transparent;
+    position: absolute;
+    right: -2rem;
+    top: -2rem;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    text-shadow: none;
+    opacity: 1;
+}
+.modal-body .close::before {
+    content: 'x';
+    font-weight: 300;
+    position: absolute;
+    top: -2px;
+    left: calc(50% - 5.5px);
+    font-size: 25px;
+}

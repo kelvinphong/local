@@ -1,0 +1,129 @@
+html {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 16px;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+}
+img {max-width: 100%;}
+.cards {
+    --spacing: 25px;
+    --columns: 4;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--spacing));
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    width: calc(calc(100% / var(--columns)) - var(--spacing));
+    margin-left: var(--spacing);
+    margin-bottom: var(--spacing);
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: transform 300ms ease;
+}
+.card:hover {
+    transform: translateY(-8px);
+}
+.card-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.card-top {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: 1;
+}
+.card-title {
+    font-weight: 500;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+.card-user {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    margin-top: auto;
+}
+.card-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.card-user-info {
+    padding-left: 10px;
+    flex: 1;
+}
+.card-user-top {
+    display: flex;
+    align-items: center;
+}
+.card-user-top ion-icon {
+    color: green;
+    margin-left: 5px;
+}
+.card-game {
+    color: #999;
+    font-size: 13px;
+}
+.card-bottom {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}
+.card-live {
+    display: flex;
+    align-items: center;
+    background-color: coral;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 15px;
+}
+.card-live span {margin-left: 5px;line-height: 1;}
+.card-watching {
+    color: #999;
+    font-size: 13px;
+    font-weight: 300;
+}
+@media screen and (min-width: 1200px) {
+    .cards {
+        --columns: 4
+    }
+}
+@media screen and (max-width: 1199.98px) {
+    .cards {
+        --columns: 2;
+        --spacing: 20px
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+    .cards {
+        --columns: 1
+    }
+}

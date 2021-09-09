@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>True Cloud Technology</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section id="home-banner" class="s-slick-slider">
+        <div class="home-banner" style="background-color: #c4c4c4;">
+            <div class="banner-item banner-combo banner-txt__left bg-cover lazyload position-relative"
+                data-bgset="/documents/20126/1658729/vng-cloud-home-banner-combo-promotion-xs.jpg [(max-width: 576px)] | /documents/20126/1658729/vng-cloud-home-banner-combo-promotion.jpg [(max-width: 1600px)] | /documents/20126/1658729/vng-cloud-home-banner-combo-promotion-lg.jpg"
+                data-index="1">
+                <div class="banner-content">
+                    <div class="home-banner__txt position-relative">
+                        <div class="title t-upper wow fadeIn"><b>Tặng 100%</b></div>
+                        <p class="banner-subtitle pt-2 mb-2 wow fadeIn" data-wow-delay=".2s" style="font-weight: 600">phí dịch vụ thử nghiệm <br>Combo Promotion</p>
+                        <p class="banner-desc wow fadeIn" data-wow-delay=".4s">cho tất cả các khách hàng mới khi khởi tạo <br class="d-none d-sm-block">thành công vServer</p>
+                        <div class="group-btn pt-3 wow fadeIn" data-wow-delay=".6s">
+                            <a class="btn btn-secondary-color btn-learn" href="/promotions/tang-mot-tram-phan-tram-phi-dich-vu-thu-nghiem-combo-promotion">Tìm hiểu ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-item banner-vcloudcam banner-txt__left bg-cover lazyload position-relative" data-bgset="/documents/20126/1658729/vng-cloud-home-banner-promotions-vcloudcam-xs.jpg [(max-width: 576px)] | /documents/20126/1658729/vng-cloud-home-banner-promotions-vcloudcam.jpg [(max-width: 1600px)] | /documents/20126/1658729/vng-cloud-home-banner-promotions-vcloudcam-lg.jpg" data-index="1">
+                <div class="banner-content">
+                <div class="home-banner__txt position-relative">
+                <div class="title wow fadeIn"><b>Phiên bản nâng cấp<br />
+                vCloudcam</b></div>
+                
+                <p class="banner-desc pt-2 wow fadeIn" data-wow-delay=".2s">dành riêng cho gia đình Việt Nam</p>
+                
+                <div class="download d-flex align-items-center pt-3 wow fadeIn" data-wow-delay=".4s"><a href="https://apps.apple.com/us/app/vcloudcam/id1439880879" target="_blank"><img class="img-fluid lazyload mr-3" data-src="/documents/20126/1316969/logo-available-on-the-app-store.png" width="150px" /></a> <a href="https://play.google.com/store/apps/details?id=vn.vd.vcloudcam&amp;hl=vi&amp;gl=US" target="_blank"><img class="img-fluid lazyload" data-src="/documents/20126/1316969/logo-get-it-on-google-play.png" width="150px" /></a></div>
+                </div>
+                </div>
+                </div>
+        </div>
+
+    </section>
+    <style type="text/css">
+        .s-slick-slider .slick-slide {
+            position: relative;
+        }
+
+        .s-slick-slider .slick-arrow {
+            background: var(--dark-blue-2) !important;
+        }
+
+        .s-slick-slider .slick-arrow:hover::before {
+            font-weight: 600
+        }
+
+        .s-slick-slider .slick-dots li.slick-active button:before {
+            opacity: 1;
+            color: var(--dark-blue-2);
+        }
+
+        .s-slick-slider .slick-slide:focus {
+            outline: none !important
+        }
+
+        @media(max-width: 575.98px) {
+            .s-slick-slider .slick-arrow {
+                opacity: .7;
+                width: 40px;
+                height: 40px;
+                -webkit-transition: opacity .3s;
+                -moz-transition: opacity .3s;
+                -o-transition: opacity .3s;
+                transition: opacity .3s;
+            }
+
+            .s-slick-slider .slick-arrow:before {
+                font-size: 25px
+            }
+
+            .s-slick-slider .slick-prev {
+                left: 0
+            }
+
+            .s-slick-slider .slick-next {
+                right: 0
+            }
+
+            .s-slick-slider .slick-arrow:hover {
+                opacity: 1;
+            }
+
+            .s-slick-slider .slick-dots {
+                bottom: -30px;
+            }
+        }
+    </style>
+    <style type="text/css">
+        .home-banner {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .home-banner .slick-list,
+        .home-banner .slick-track {
+            height: 100%;
+        }
+        
+        .banner-vcloudcam {
+            color: #fff;
+        }
+
+        .banner-vcloudcam .title {
+            font-size: 50px;
+            line-height: 55px;
+        }
+        .banner-combo .title {
+            font-size: 70px;
+            line-height: 1.2;
+        }
+        .banner-vcloudcam .banner-desc {
+            font-size: 28px;
+            line-height: 33px;
+        }
+        .banner-combo .banner-subtitle {
+            font-size: 28px;
+            line-height: 1.2;
+        }
+        .banner-combo .banner-desc {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+        .banner-combo .btn {
+            border-radius: 6px;
+            font-size: 25px;
+            line-height: 1.2;
+            font-weight: 600;
+            padding: 5px 30px;
+        }
+        .banner-promotion,
+        .banner-txt__left {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .banner-promotion .f-600 {
+            font-weight: 600;
+        }
+
+        .code__wrapper::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 10px;
+            bottom: 0;
+            background: #fff;
+        }
+
+        .code>div {
+            padding: 2px 10px;
+        }
+
+        .code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--vng-orange);
+            border-radius: .25rem;
+        }
+
+        .promotion-btn .btn {
+            border-radius: .25rem;
+            border: 1px solid var(--vng-orange);
+            color: var(--vng-orange);
+        }
+
+        .promotion-btn .btn:hover {
+            background-color: var(--vng-orange);
+            color: #fff;
+        }
+
+        .banner-promotion .price {
+            color: #fff;
+            padding: 2px 10px;
+        }
+
+        .banner-promotion .price::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #0e83c4;
+            border-radius: .25rem;
+        }
+
+        .get-started .banner-content .v-cloud-title {
+            color: #48d7f5 !important;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .get-started .banner-content {
+            color: #fff;
+            height: 100%;
+        }
+
+        .home-banner:hover .slick-arrow {
+            opacity: 1;
+        }
+
+        .home-banner .slick-next {
+            right: 15px;
+        }
+
+        .home-banner .slick-next:before {
+            content: '\f105'
+        }
+
+        .home-banner .slick-prev:before {
+            content: '\f104'
+        }
+
+        .home-banner .slick-arrow {
+            opacity: 0;
+            width: 40px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.2) !important;
+            -webkit-transition: opacity .3s;
+            -moz-transition: opacity .3s;
+            -ms-transition: opacity .3s;
+            -o-transition: opacity .3s;
+            transition: opacity .3s;
+        }
+
+        .banner-item.redirect {
+            cursor: pointer;
+        }
+
+        .home-banner .slick-arrow::before {
+            font-size: 45px;
+        }
+
+        @media (min-width: 1200px) {
+            .banner-combo .banner-content {left: 12%;top: 22%;}
+            .banner-promotion .home-banner__txt {
+                top: 20%;
+            }
+
+            .get-started .home-banner__txt {
+                padding-left: 100px;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .banner-txt__left .title {
+                font-size: 70px;
+                line-height: 75px;
+            }
+
+            .banner-txt__left .banner-desc {
+                font-size: 40px;
+                line-height: 45px;
+            }
+
+            .get-started .v-cloud-title {
+                font-size: 42px;
+            }
+
+            .banner-promotion .txt {
+                font-size: 1.7rem;
+            }
+
+            .banner-promotion .price {
+                font-size: 3rem;
+            }
+
+            .banner-promotion .home-banner__txt {
+                padding-bottom: 80px !important;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1599.98px) {
+            .banner-promotion .txt {
+                font-size: 20px;
+            }
+
+            .banner-promotion .price {
+                font-size: 55px;
+                letter-spacing: 2px;
+                line-height: 60px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .banner-desc {
+                font-size: 20px;
+            }
+
+            .banner-promotion .home-banner__txt {
+                min-height: 350px;
+            }
+
+            .promotion-btn .btn {
+                font-size: 25px;
+                padding: 5px 30px;
+                line-height: 30px;
+                height: 50px;
+            }
+
+            .banner-promotion .title {
+                font-size: 40px;
+                line-height: 50px;
+            }
+
+            .code__wrapper span {
+                font-size: 25px;
+                line-height: 35px
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1111px) {
+            .banner-combo .banner-content {
+                left: 10%;
+            }
+            .get-started .banner-content .v-cloud-title {
+                font-size: 34px;
+            }
+
+            .banner-vcloudcam .title {
+                font-size: 40px;
+                line-height: 45px;
+            }
+        }
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .banner-combo .banner-content {
+                top: 15%;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1199.98px) {
+            .banner-promotion {
+                background-position-x: 100%;
+            }
+
+            .banner-promotion .home-banner__txt {
+                top: 12%;
+            }
+            
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .get-started .banner-content .v-cloud-title {
+                font-size: 30px;
+            }
+
+            .banner-promotion .title {
+                font-size: 25px;
+                line-height: 35px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1024px) {
+            .home-banner {
+                height: 700px !important;
+            }
+
+            .get-started .banner-content {
+                padding-top: 200px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .home-banner {
+                height: 500px !important;
+            }
+            .banner-combo .banner-content {
+                top: 20%;
+            }
+            .banner-promotion .price {
+                font-size: 35px;
+                line-height: 40px;
+            }
+
+            .banner-txt__left .banner-content {
+                left: 10% !important;
+            }
+
+            .banner-vcloudcam .title {
+                font-size: 30px;
+                line-height: 35px;
+            }
+            .banner-combo {background-position-x: 10%;}
+            .banner-combo .title {
+                font-size: 45px;
+            }
+            .banner-combo .banner-subtitle {font-size: 25px;}
+            .banner-txt__left .banner-desc {
+                font-size: 20px;
+                line-height: 25px;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .banner-txt__left .banner-content {
+                position: absolute;
+                right: 0;
+            }
+            .banner-combo .title {color: #0674ed;}
+            .banner-combo .banner-subtitle,
+            .banner-combo .banner-desc {color: #0453b2;}
+            .banner-vcloudcam .banner-content {
+                bottom: 22%;
+                left: 15%;
+            }
+            .get-started .v-cloud-title {
+                letter-spacing: -1px;
+            }
+
+            .banner-promotion .c-main {
+                color: #0f5691;
+            }
+
+            .banner-promotion .home-banner__txt {
+                position: absolute;
+                padding: 20px;
+                right: 0;
+                text-align: right;
+            }
+
+            .get-started .banner-content {
+                padding-top: 12%;
+            }
+
+            .banner-promotion .content {
+                flex-wrap: nowrap;
+                align-items: center
+            }
+
+            .banner-promotion .skew-group {
+                transform: skew(-5deg);
+            }
+
+            .code__wrapper span::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                height: 3px;
+                left: 0;
+                right: 0;
+                background-color: #0e83c4;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .home-banner {
+                height: 450px !important;
+            }
+            
+            .banner-txt__left .banner-content {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 15px;
+            }
+            .banner-combo .title {
+                font-size: 38px;
+                border-left: 2px solid var(--vng-orange);
+                background-color: rgba(0,0,0,0.2);
+                display: inline-block;
+                padding: 5px 10px;
+            }
+            .banner-vcloudcam .title {
+                font-size: 25px;
+                line-height: 30px;
+            }
+            .banner-combo .banner-subtitle {
+                font-size: 25px;
+            }
+            .banner-vcloudcam .banner-desc {
+                font-size: 20px;
+                line-height: 25px;
+            }
+            .banner-combo {color: #fff;background-position-x: 50%}
+            .banner-promotion .c-main {
+                color: #fff;
+            }
+
+            .banner-promotion .home-banner__txt .title {
+                color: #fff;
+                font-size: 20px;
+                line-height: 30px
+            }
+
+            .home-banner .get-started {
+                background-position: 10%;
+            }
+
+            .home-banner .banner-promotion {
+                background-position: 20%;
+            }
+
+            .banner-promotion .content {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .banner-promotion .home-banner__txt {
+                position: relative;
+            }
+
+            .get-started .banner-content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .promotion-btn .btn {
+                min-width: 150px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                line-height: 40px;
+                font-size: 18px;
+            }
+
+            .banner-content::before {
+                content: ' ';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgb(29, 32, 33);
+                opacity: .6;
+            }
+
+            .home-banner .banner-content::before {
+                opacity: .8;
+            }
+
+            .home-banner__txt .v-cloud-title {
+                font-size: 20px;
+            }
+
+            .banner-promotion .price {
+                font-size: 25px;
+            }
+
+            .home-banner .slick-dots {
+                bottom: 0;
+                text-align: left;
+                left: 0;
+                padding-left: 15px;
+            }
+
+            .home-banner .slick-dots li {
+                margin: 0;
+                margin-right: 5px;
+            }
+
+            .home-banner .slick-dots li button,
+            .home-banner .slick-dots li button::before {
+                height: 3px;
+                width: 20px;
+            }
+
+            .home-banner .slick-dots li button:before {
+                content: '';
+                background-color: rgba(255, 255, 255, .3);
+                opacity: 1;
+                border-radius: 2px;
+            }
+
+            .home-banner .slick-dots li.slick-active button:before {
+                background-color: #fff
+            }
+
+            .code__wrapper::before {
+                bottom: -5px;
+            }
+
+            .promotion-btn .btn {
+                background-color: var(--vng-orange);
+                color: #fff;
+            }
+        }
+    </style>
+
+
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript" defer>
+        $(document).ready(function (e) {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        })
+    </script>
+    <script type="text/javascript" async>
+        autoHeightBanner();
+        $(document).ready(function () {
+            window.addEventListener("resize", function (event) {
+                autoHeightBanner()
+            });
+        });
+
+        function autoHeightBanner() {
+            let topMenu = document.querySelector("#v-navbar");
+            $(".home-banner")[0].style.height = $(window).height() - (topMenu !== null ? topMenu.offsetHeight : 0) +
+                "px"
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            $slick_slider = $('.home-banner');
+            settings = {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                dots: false,
+                pauseOnHover: true,
+                responsive: [{
+                    breakpoint: 575.98,
+                    settings: {
+                        dots: true,
+                        arrows: false
+                    }
+                }]
+            };
+            $slick_slider.slick(settings);
+            $('.redirect').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation()
+
+                let href = $(this).attr("data-href");
+                if (e.target.classList.contains("btn")) {
+                    href = $(e.target).attr("href");
+                }
+                if (href !== undefined) {
+                    var ele = document.createElement('a');
+                    ele.setAttribute('href', href);
+
+                    if (e && (e.ctrlKey || e.metaKey)) {
+                        ele.setAttribute('target', '_blank');
+                    }
+
+                    document.body.appendChild(ele);
+                    ele.click();
+                    document.body.removeChild(ele);
+                }
+            })
+        });
+    </script>
+
+</body>

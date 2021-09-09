@@ -1,0 +1,64 @@
+/* @font-face {
+    font-family: "Montserrat Medium";
+    src: url('https://vngcloud.vn/documents/20126/1383279/Montserrat-Medium.ttf');
+    src: local('Montserrat Medium'), local('Montserrat');
+    font-weight: 500;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: "Montserrat SemiBold";
+    src: url('https://vngcloud.vn/documents/20126/1383279/Montserrat-SemiBold.ttf');
+    src: local('Montserrat SemiBold'), local('Montserrat');
+    font-weight: 600;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url('https://vngcloud.vn/documents/20126/1383276/OpenSans.ttf');
+    src: local('Open Sans');
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: "Open Sans SemiBold";
+    src: url('https://vngcloud.vn/documents/20126/1383276/OpenSans-SemiBold.ttf');
+    src: local('Open Sans SemiBold'), local('Open Sans');
+    font-weight: 600;
+    font-style: normal;
+    font-display: fallback
+}
+
+@font-face {
+    font-family: "Open Sans Bold";
+    src: url('https://vngcloud.vn/documents/20126/1383276/OpenSans-Bold.ttf');
+    src: local('Open Sans Bold'), local('Open Sans');
+    font-weight: 700;
+    font-style: normal;
+    font-display: fallback
+}
+
+.f-mont-medium {
+    font-family: "Montserrat Medium", sans-serif
+}
+
+.f-mont-bold {
+    font-family: "Montserrat SemiBold", sans-serif
+}
+
+.f-ops {
+    font-family: "Open Sans", sans-serif
+}
+
+.f-ops-semibold {
+    font-family: "Open Sans SemiBold", sans-serif
+}
+
+.f-ops-bold {
+    font-family: "Open Sans Bold", sans-serif
+} */
