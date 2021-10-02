@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Pricing</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <!-- <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');:root{--dark-blue-2:#1A3887;--dark-blue-2-200:#071d56;--dark-blue-3:#1B134D;--light-blue:#5EBCE4;--light-blue-200:#2192c1;--vng-orange:#FB7033;--text-body:#434343;--text-headline:#292929;--bg-sub-menu:#eaeaea}body{color:var(--text-body)}.f-mont{font-family:"Montserrat",sans-serif;}.f-500{font-weight:500;}.f-600{font-weight:600;}.f-700{font-weight:700;}.f-800{font-weight:800;}.btn{border-radius:0;padding:3px 15px}#page_header{z-index:988}.c-white{color:#fff !important}.f-height{height:100%}.transition-all{-webkit-transition:all .3s;-moz-transition:all .3s;-o-transition:all .3s;transition:all .3s}.bg-cover{background-size:cover;background-repeat:no-repeat;background-position:50%}.s-margin-height{height:50px}.s-color{background-color:#f8f9fc}.cloud-container{width:100%;max-width:90%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.primary-bg{background-color:var(--dark-blue-2) !important}.primary-color{color:var(--dark-blue-2) !important}.optional-color{color:var(--vng-orange)}.optional-bg{background-color:var(--vng-orange) !important}.btn-primary-color{background-color:var(--dark-blue-2);border:1px solid var(--dark-blue-2);color:#fff}.btn-primary-color.btn-outline{background-color:transparent;color:var(--dark-blue-2)}.btn-primary-color.btn-outline:hover{background-color:var(--dark-blue-2);color:#fff}.btn:hover{box-shadow:0 3px 3px rgba(0,0,0,0.1)}.btn-secondary-color{background-color:var(--vng-orange);border:1px solid var(--vng-orange);color:#fff}.btn-secondary-color:hover{background-color:#dc5c23;color:#fff}.btn-white-color{background-color:transparent;border:1px solid #fff;color:#fff;padding:3px 15px}.btn-white-color:hover{background-color:var(--vng-orange);color:#fff;border-color:var(--vng-orange)}.flex-center{display:flex;align-items:center;justify-content:center}.btn-primary-color:hover{background-color:var(--dark-blue-2-200);color:#fff}.navigation-bar-secondary{border:0}.v-cloud-title{font-size:36px;line-height:48px}.slick-arrow:before{font-family:fontawesome-alloy !important}.fa-icon:before{font-family:fontawesome-alloy !important}.slick-dots li button:before{font-family:fontawesome-alloy !important;font-size:10px !important}.t-upper{text-transform:uppercase}.slick-slider{opacity:0;visibility:hidden;-webkit-transition:opacity .3s ease;-moz-transition:opacity .3s ease;-o-transition:opacity .3s ease;-ms-transition:opacity .3s ease;transition:opacity .3s ease}.slick-slider.slick-initialized{visibility:visible;opacity:1}.img-cover{width:100%;height:100%;object-fit:cover}@media(min-width:1200px){.v-cloud-title.t-upper{font-size:30px;line-height:35px}}@media(max-width:767.98px){.v-cloud-title{font-size:28px;line-height:33px}.s-margin-height{height:25px}}@media(max-width:575.98px){.cloud-container{max-width:100%}.v-cloud-title{margin-bottom:10px}p,a,span{font-size:16px}}@media(min-width:1600px){body{font-size:18px}.cloud-container{max-width:85%}.cloud-container.v-section-inner{max-width:1200px}}</style> -->
+</head>
+
+<body>
+    <style type="text/css">
+        @font-face {
+            font-family: "Montserrat Medium";
+            src: url('https://vngcloud.vn/documents/20126/1383279/Montserrat-Medium.ttf');
+            src: local('Montserrat Medium'), local('Montserrat');
+            font-weight: 500;
+            font-style: normal;
+            font-display: fallback;
+        }
+
+        @font-face {
+            font-family: "Montserrat SemiBold";
+            src: url('https://vngcloud.vn/documents/20126/1383279/Montserrat-SemiBold.ttf');
+            src: local('Montserrat SemiBold'), local('Montserrat');
+            font-weight: 600;
+            font-style: normal;
+            font-display: fallback;
+        }
+
+        @font-face {
+            font-family: "Open Sans";
+            src: url('https://vngcloud.vn/documents/20126/1383276/OpenSans.ttf');
+            src: local('Open Sans');
+            font-weight: 400;
+            font-style: normal;
+            font-display: fallback;
+        }
+
+        @font-face {
+            font-family: "Open Sans SemiBold";
+            src: url('https://vngcloud.vn/documents/20126/1383276/OpenSans-SemiBold.ttf');
+            src: local('Open Sans SemiBold'), local('Open Sans');
+            font-weight: 600;
+            font-style: normal;
+            font-display: fallback;
+        }
+
+        @font-face {
+            font-family: "Open Sans Bold";
+            src: url('https://vngcloud.vn/documents/20126/1383276/OpenSans-Bold.ttf');
+            src: local('Open Sans Bold'), local('Open Sans');
+            font-weight: 700;
+            font-style: normal;
+            font-display: fallback;
+        }
+
+        .f-mont-medium {
+            font-family: "Montserrat Medium", sans-serif;
+        }
+
+        .f-mont-bold {
+            font-family: "Montserrat SemiBold", sans-serif;
+        }
+
+        .f-ops {
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .f-ops-semibold {
+            font-family: "Open Sans SemiBold", sans-serif;
+        }
+
+        .f-ops-bold {
+            font-family: "Open Sans Bold", sans-serif;
+        }
+
+        .banner-wrapper {
+            background-color: #c4c4c4;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: 100vh;
+        }
+
+        .banner-content {
+            position: relative;
+        }
+
+        .banner-logo {
+            margin-bottom: 20px;
+        }
+
+        .banner-logo img {
+            height: 80px;
+        }
+
+        .banner-logo img.lazyload {
+            width: 100px
+        }
+
+        .banner-title,
+        .big-title {
+            font-weight: 600;
+        }
+
+        .banner-price {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .banner-price .price {
+            font-weight: 600;
+            font-size: 45px;
+            line-height: 40px;
+        }
+
+        .banner-features {
+            margin: 30px 0
+        }
+
+        .banner-features__block {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .banner-features__block::after {
+            content: ' ';
+            display: inline-block;
+        }
+
+        .banner-features__block.check::after {
+            transform: rotate(45deg);
+            border-bottom: 2px solid;
+            border-right: 2px solid;
+            position: absolute;
+            border-color: #fff;
+            height: 16px;
+            width: 6px;
+            left: 9px;
+            top: 3px;
+        }
+
+        .banner-btn .btn {
+            margin-right: 20px;
+        }
+
+        .banner-btn .btn-outline {
+            background: #fff;
+            color: var(--vng-orange);
+        }
+
+        .product-intro-tabs ul li a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        section#pro-tabs {
+            display: none;
+        }
+
+        @media(min-width:576px) and (max-width: 1200px) {
+            .banner-wrapper {
+                height: 700px !important
+            }
+        }
+
+        @media(min-width: 768px) {
+            section#pro-tabs {
+                display: block;
+            }
+
+            .product-intro-tabs ul li a {
+                color: var(--dark-blue-2);
+                font-size: 18px;
+                line-height: 28px;
+                padding: 0 20px;
+                letter-spacing: -1px;
+            }
+
+            .nav-prod-tabs {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .prod-sub-menu.fixed {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                z-index: 2;
+                box-shadow: 0 2px 4px 0 rgba(76, 76, 75, 0.1);
+            }
+
+            .prod-sub-menu.fixed .product-intro-tabs ul li a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .product-intro-tabs ul li.active,
+            .product-intro-tabs ul li a:hover {
+                font-weight: 600;
+            }
+        }
+
+        @media(min-width: 576px) {
+            .banner-title {
+                font-size: 35px;
+                line-height: 40px;
+            }
+
+            .banner-desc {
+                font-size: 20px;
+            }
+
+            .banner-price .price {
+                font-size: 55px;
+                line-height: 50px;
+            }
+
+            .banner-btn .btn {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .banner-price {
+                padding-top: 20px;
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .banner-wrapper:not(.no-overlay)::before {
+                content: ' ';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: .5;
+                background-color: #1d2021;
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .banner-wrapper {
+                height: auto !important;
+            }
+
+            .banner-content {
+                margin-bottom: 50px
+            }
+
+            .banner-wrapper .banner-content {
+                margin-top: 100px;
+            }
+
+            .banner-logo {
+                margin-bottom: 10px;
+            }
+
+            .banner-logo img {
+                height: 40px;
+            }
+
+            .banner-title {
+                font-size: 20px;
+            }
+
+            .banner-features {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .banner-features__block,
+            .banner-features__block p {
+                margin-bottom: 5px
+            }
+
+            .banner-price {
+                margin-bottom: 20px;
+            }
+
+            .banner-price .price {
+                font-size: 35px;
+                line-height: 35px;
+            }
+
+            .banner-btn .btn {
+                margin-right: 10px;
+                margin-bottom: 10px;
+                font-size: 1rem;
+            }
+
+            .banner-features__block.check::after {
+                height: 12px;
+                width: 5px;
+                top: 4px;
+            }
+
+            .banner-wrapper:not(.no-overlay)::before {
+                opacity: .7;
+            }
+        }
+
+        .banner-btn .btn-outline:hover {
+            background: var(--vng-orange);
+            color: #fff
+        }
+    </style>
+    <section id="prod-intro">
+        <div class="banner-wrapper bg-cover lazyload"
+            data-bgset="https://vngcloud.vn/documents/20126/1710157/vng-cloud-product-vuc-banner-xs.jpg [(max-width: 576px)] | https://vngcloud.vn/documents/20126/1710157/vng-cloud-product-vuc-banner.jpg [(max-width: 1600px)] | https://vngcloud.vn/documents/20126/1710157/vng-cloud-product-vuc-banner-lg.jpg">
+            <div class="cloud-container" id="description">
+                <div class="banner-content f-mont-medium">
+                    <div class="vuc-desc">
+                        <div class="banner-logo"><img class="lazyload"
+                                data-src="https://vngcloud.vn/documents/20126/1710144/vng-cloud-product-vuc-logo-200h-trimmed.png" /></div>
+
+                        <div class="big-title">
+                            <p class="position-relative mb-0">Giải pháp</p>
+                        </div>
+
+                        <div class="banner-title">kết nối và chăm sóc<br />
+                            khách hàng toàn diện<br />
+                            trên nền tảng cloud</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="primary-bg docs-fixed flex-center"><a href="https://docs.vngcloud.vn/x/KAAS" target="_blank">Tài
+                liệu</a></div>
+    </section>
+    <style type="text/css">
+        .vuc-desc .big-title {
+            font-size: 40px;
+            line-height: 55px;
+            padding-top: 10px;
+            margin-top: 30px;
+        }
+
+        .banner-btn {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        section#pro-tabs {
+            display: none !important;
+        }
+
+        .docs-fixed {
+            position: fixed;
+            bottom: 278px;
+            box-shadow: 0 0 6px 0 rgba(55, 61, 65, .3);
+            height: 42px;
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            right: -23px;
+            width: 108px;
+            line-height: 42px;
+            font-size: 16px;
+            -webkit-transition: background .3s ease-in;
+            -moz-transition: background .3s ease-in;
+            -o-transition: background .3s ease-in;
+            -ms-transition: background .3s ease-in;
+            transition: background .3s ease-in;
+            z-index: 2;
+        }
+
+        .docs-fixed a {
+            color: #fff;
+        }
+
+        .docs-fixed:hover {
+            background-color: #fff !important;
+        }
+
+        .docs-fixed:hover a {
+            color: var(--dark-blue-2);
+        }
+
+        @media (min-width: 1200px) {
+            .banner-content {
+                padding-top: 20px
+            }
+        }
+
+        @media (min-width: 576px) {
+            .banner-title {
+                line-height: 50px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .banner-wrapper:not(.no-overlay)::before {
+                content: none;
+            }
+
+            .banner-wrapper {
+                height: 900px !important;
+                background-position: 70% !important
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .banner-wrapper {
+                background-position: 65% !important
+            }
+
+            .banner-wrapper:not(.no-overlay)::before {
+                opacity: .7;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .banner-wrapper {
+                height: 500px !important;
+            }
+
+            .vuc-desc .big-title {
+                margin-top: 0;
+            }
+
+            .vuc-desc .big-title p {
+                font-size: 30px;
+                line-height: 40px;
+            }
+
+            .banner-title {
+                line-height: 30px;
+                font-size: 25px;
+            }
+
+            .banner-logo img {
+                height: 60px;
+            }
+
+            .docs-fixed {
+                right: -32px;
+                bottom: 280px;
+            }
+
+            .banner-btn {
+                padding-top: 35px;
+            }
+
+            .banner-wrapper:not(.no-overlay)::before {
+                opacity: .8;
+            }
+        }
+    </style>
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script>
+    <script type="text/javascript" async>
+        $(document).ready(function () {
+            resizeWindow();
+            $(window).on("resize", function (event) {
+                resizeWindow()
+            });
+    
+            function resizeWindow() {
+                let topMenu = $('#v-navbar').outerHeight();
+                let banner = document.getElementsByClassName('banner-wrapper');
+                if (banner.length > 0) {
+                    let mt = 0;
+                    if (banner[0].classList.contains('m-t')) {
+                        mt = topMenu;
+                    }
+                    $(banner).css({
+                        'height': $(window).height() + "px",
+                        'margin-top': '-' + mt + 'px'
+                    });
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            let topMenu = $("#v-navbar"),
+                subMenu = document.getElementById('prod-sub-menu'),
+                offset = 20,
+                lastSt = 0;
+            $(".btn-price").on("click", function (e) {
+                e.preventDefault();
+                var href = $(this).attr("href");
+                if ($(href)) {
+                    var offsetTop = $(href).offset().top - topMenu.outerHeight() - $(subMenu).outerHeight() - offset;
+                    $("html, body").stop().animate({
+                        scrollTop: offsetTop
+                    }, 800)
+                }
+            });
+            $("#prod-tabs a").on("click", function (e) {
+                e.preventDefault();
+                var href = $(this).attr("href");
+                if (href !== undefined)
+                    if (href.indexOf("https://") > -1) redirectLink(href, $(this).attr("target") ===
+                        "_blank");
+                    else if (href.indexOf("/product/") > -1) window.location.href = href;
+                else if ($(href).length > 0) {
+                    var offsetTop = $(href).offset().top - topMenu.outerHeight() - $(subMenu).outerHeight() - offset;
+                    $("html, body").stop().animate({
+                        scrollTop: offsetTop
+                    }, 800)
+                }
+            });
+            let menuItems = $(subMenu).find('a'),
+                scrollItems = menuItems.map(function(e) {
+                    let href = $(this).attr('href');
+                    if (href.indexOf('#') > -1) {
+                        var item = $(href);
+                        if (item.length > 0) { return item} 
+                    }
+                });
+            onScrollWindow();
+            $(window).on("scroll", function (event) {
+                onScrollWindow();
+            });
+    
+            function onScrollWindow() {
+                let scrollTop = $(window).scrollTop(),
+                    topMenuHeight = topMenu.outerHeight(),
+                    offsetTop = $('#pro-tabs').offset().top;
+                if (offsetTop > 0) {
+                    if (scrollTop > offsetTop - (offset * 2)) {
+                        if (!subMenu.classList.contains("fixed")) {
+                            window.innerWidth >= 768 && (document.querySelector(".v-header").classList.add("hidden"));
+                            subMenu.classList.add("fixed");
+                        }
+                    } else {
+                        document.querySelector(".v-header").classList.remove("hidden");
+                        subMenu.classList.remove("fixed");
+                    }
+                }
+                
+                var fromTop = scrollTop + topMenuHeight + $(subMenu).outerHeight() + offset + 10;
+                var cur = scrollItems.map(function(e) {
+                    if ($(this).offset().top < fromTop && ($(this).offset().top + $(this).outerHeight()) > fromTop) {
+                        return this;
+                    }
+                });
+    
+                cur = cur[cur.length - 1];
+                if (cur && cur.length > 0) {
+                    menuItems.parent().removeClass('active').end().filter("[href='#" + cur[0].id +"']").parent().addClass("active");
+                } else {
+                    menuItems.parent().removeClass('active')
+                }
+                lastSt = scrollTop;
+            }
+    
+            function redirectLink(href, newTab = true) {
+                var docsLink = window.document.createElement("a");
+                docsLink.href = href;
+                if (newTab) docsLink.target = "_blank";
+                document.body.appendChild(docsLink);
+                docsLink.click();
+                document.body.removeChild(docsLink)
+            }
+        });
+    </script>
+</body>

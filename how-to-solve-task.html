@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>How To Solve Task Issues</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			padding: 2rem;
+			font-size: 16px;
+			font-family: "Poppins", sans-serif;
+			font-weight: 400;
+			line-height: 1.4;
+		}
+		a {text-decoration: none;color: #3850a1;}
+		a:hover {text-decoration: underline;}
+		p {margin-bottom: .5rem;}
+		.h {font-weight: 600;margin-bottom: .5rem;}
+		.list-unstyled>li{
+			list-style: none;
+		}
+		ul.list>li {padding-bottom: 1rem;margin-bottom: 1rem;border-bottom: 1px dashed;}
+	</style>
+</head>
+
+<body>
+	<ul class="list">
+		<li>
+			<h3 class="h">Để 1 sản phẩm có thể request trên New Farm/Singapore có 2 cách:</h3>
+			<div>
+				<p>- Cách 1. Đánh dấu sản phẩm đó lên version v2 bằng url: <a
+						href="#">https://vc_cmdb.vng.com.vn/v1/syncher/mark-product-v2/{product_code}</a></p>
+				<p>- Cách 2. Yêu cầu SE mở yêu cầu tại <a
+						href="#">https://iportal.vng.com.vn/#/app/request-ticket/infrastructure_site_placing</a></p>
+
+				<p><i>Do bên SE nhờ tạo sản phẩm để request server trên New Farm, nên sau khi tạo mình dùng cách 1 để hỗ trợ
+					nó đánh dấu luôn cho lẹ</i></p>
+				<b style="margin-top: .5rem;"><ion-icon name="arrow-redo-outline"></ion-icon> Note:</b>
+				<ul class="list-unstyled" style="padding-left: 1rem;">
+					<li> - Server v1 là server không thể cấp phát/provisioning automation bằng iPortal dc.</li>
+					<li>- Server v2 là server có thể automation bằng iPortal</li>
+					<li>- Trong đó product có server v2 cũng dc đánh dấu là v2</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<h3 class="h">Bổ sung thêm tape mới</h3>
+			<p>Chạy Query bên dưới trên <b>vc_noc</b> của project <b>iPortal Production</b></p>
+			<p><u>Lý do</u>: bổ sung tape mới</p>
+			<p><b>Sample</b> <a href="https://sdkpm.vng.com.vn/issues/4934" target="_blank">https://sdkpm.vng.com.vn/issues/4934</a></p>
+		</li>
+	</ul>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

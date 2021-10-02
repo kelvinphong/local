@@ -816,7 +816,7 @@
                     !vHeader.hasClass("scrolled") && hasDropdownOpened($(this));
                 }
             });
-            $(document).on('click', '.v-header .dropdown-menu', function (e) {
+            $(".v-header").on('click', '.dropdown-menu', function (e) {
                 e.stopPropagation();
             });
             $('#prod-tab a.category-link').on('click', function (e) {
