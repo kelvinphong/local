@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./vngcloud.vn/assets/images/favicon-01-2.ico" type="image/x-icon">
 	<title>How To Solve Task Issues</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,16 +29,29 @@
 		a {text-decoration: none;color: #3850a1;}
 		a:hover {text-decoration: underline;}
 		p {margin-bottom: .5rem;}
+		.text-center {text-align: center;}
 		.h {font-weight: 600;margin-bottom: .5rem;}
 		.list-unstyled>li{
 			list-style: none;
 		}
+		ul {
+			margin-left: 1em;
+			margin-top: 0;
+			margin-bottom: 1rem;
+			padding-left: 40px;
+		}
+		ul.list-unstyled {
+			padding-left: 0;
+    		list-style: none;
+		}
 		ul.list>li {padding-bottom: 1rem;margin-bottom: 1rem;border-bottom: 1px dashed;}
+		.mb-0 {margin-bottom: 0;}
+		
 	</style>
 </head>
 
 <body>
-	<ul class="list">
+	<ul class="list-unstyled list">
 		<li>
 			<h3 class="h">Để 1 sản phẩm có thể request trên New Farm/Singapore có 2 cách:</h3>
 			<div>
@@ -61,6 +75,46 @@
 			<p>Chạy Query bên dưới trên <b>vc_noc</b> của project <b>iPortal Production</b></p>
 			<p><u>Lý do</u>: bổ sung tape mới</p>
 			<p><b>Sample</b> <a href="https://sdkpm.vng.com.vn/issues/4934" target="_blank">https://sdkpm.vng.com.vn/issues/4934</a></p>
+		</li>
+		<li>
+			<h3>Task cần tính lại SLA hoặc không có thông tin SLA</h3>
+			<p>Bước 1. Đăng nhập vào tool tương ứng và sử dụng route sau của backend để tính lại SLA:</p>
+			<ul>
+				<li><u>iPortal</u>: https://iportal.vng.com.vn/be/vc-itsm/sla/re-calculate/{ticket-id}</li>
+				<li><u>Ticket Support</u>: https://support.vngcloud.vn/be/vc-itsm/sla/re-calculate/{ticket-id}</li>
+			</ul>
+
+			<p>Bước 2. Nếu vẫn không có SLA, kiểm tra cấu hình tại menu "ITSM / SLAs" để phân tích. Có 2 cách để kiểm tra cấu hình SLAs</p>
+			<ul>
+				<li>Cách 1: Tìm kiếm theo tên category ở page "ITSM / SLAs"</li>
+				<li>Cách 2: Tìm <i>category_id</i> và <i>priority_id</i> ở bảng <i>vc_itsn/itsm_tickets</i>.<br>Sau đó dùng thông tin có được để tìm kiếm ở bảng <i>vc_itsm/itsm_setting_slas</i> xem đã có config SLA như yêu cầu chưa</li>
+			</ul>
+			<p>-> Nếu chưa có liên hệ NOC coi chỗ đó SLA như thế nào, sau đó cấu hình rồi retry lại.</p>
+		</li>
+		<li>
+			<h3>Request 1 card NIC, mà sinh ra 2 NIC trên cùng 1 Vlan</h3>
+			<p><u>Lý do</u>: Case này iPortal có gọi 1 request qua Platform, request đầu bị timeout ko rõ kết quả, nên nó thực hiện retry lại, ra 2 nic luôn</p>
+			<p>Cách xử lý:</p>
+			<ul class="list-unstyled">
+				<li>- Liên hệ Product coi giữ lại NIC nào rồi nhờ SNS hỗ trợ remove bớt 1 card, sau đó release IP.</li>
+				<li><p>- Viết query update lại field nic cho server</p>
+					<div style="border: 1px solid;display: inline-block;padding: .5rem">
+						<div>db.cmdb_servers.update(</div>
+						<div style="padding-left: 1rem;">
+							<div>{"code": "..."},</div>
+							<div>{ $set: {</div>
+							<div style="padding-left: 1rem;">
+								<div>"nics": [</div>
+								<div style="padding-left: 1rem">{(danh sách nics)}</div>
+								<div>]</div>
+							</div>
+							<div>}</div>
+							<div>{upsert: false, multi: false}</div>
+						</div>
+						<div>)</div>
+					</div>
+				</li>
+			</ul>
 		</li>
 	</ul>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

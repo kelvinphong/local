@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Pricing</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vngcloud3.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+    <link href="../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section id="s-fields">
+        <div class="cloud-container text-center">
+        <div class="s-margin-height">&nbsp;</div>
+        
+        <div class="v-cloud-title f-bold wow fadeIn">Lĩnh vực phù hợp</div>
+        
+        <div class="fields-wrapper pt-4">
+        <div class="fields-block p-2 wow fadeIn" data-wow-delay=".2s">
+        <div class="fields-block__content d-flex">
+        <div class="fields-block__img position-relative"><img class="img-fluid lazyload" data-src="/documents/20126/1765670/vng-cloud-product-live-low-latency-fields-sports.jpg" /></div>
+        
+        <div class="fields-block__text pt-2 transition-all">
+        <p class="title mb-1">Truyền hình trực tiếp<br />
+        các trận đấu Thể thao</p>
+        </div>
+        </div>
+        </div>
+        
+        <div class="fields-block p-2 wow fadeIn" data-wow-delay=".2s">
+        <div class="fields-block__content d-flex">
+        <div class="fields-block__img position-relative"><img class="img-fluid lazyload" data-src="/documents/20126/1765670/vng-cloud-product-live-low-latency-fields-esport.jpg" /></div>
+        
+        <div class="fields-block__text pt-2 transition-all">
+        <p class="title mb-1">Giải đấu Esport hoặc<br />
+        Game streaming</p>
+        </div>
+        </div>
+        </div>
+        
+        <div class="fields-block p-2 wow fadeIn" data-wow-delay=".2s">
+        <div class="fields-block__content d-flex">
+        <div class="fields-block__img position-relative"><img class="img-fluid lazyload" data-src="/documents/20126/1765670/vng-cloud-product-live-low-latency-fields-livestream.jpg" /></div>
+        
+        <div class="fields-block__text pt-2 transition-all">
+        <p class="title mb-1">Livestream tương tác<br />
+        (Games đố vui, trắc nghiệm<br />
+        tương tác trực tuyến)</p>
+        </div>
+        </div>
+        </div>
+        
+        <div class="fields-block p-2 wow fadeIn" data-wow-delay=".4s">
+        <div class="fields-block__content d-flex">
+        <div class="fields-block__img position-relative"><img class="img-fluid lazyload" data-src="/documents/20126/1765670/vng-cloud-product-live-low-latency-fields-ecommerce.jpg" /></div>
+        
+        <div class="fields-block__text pt-2 transition-all">
+        <p class="title mb-1">Tổ chức livestream<br />
+        trên các sàn TMĐT</p>
+        </div>
+        </div>
+        </div>
+        
+        <div class="fields-block p-2 wow fadeIn" data-wow-delay=".4s">
+        <div class="fields-block__content d-flex">
+        <div class="fields-block__img position-relative"><img class="img-fluid lazyload" data-src="/documents/20126/1765670/vng-cloud-product-live-low-latency-fields-auction.jpg" /></div>
+        
+        <div class="fields-block__text pt-2 transition-all">
+        <p class="title mb-1">Đấu giá trực tuyến</p>
+        </div>
+        </div>
+        </div>
+        
+        <div class="fields-block p-2 wow fadeIn" data-wow-delay=".4s">
+        <div class="fields-block__content d-flex">
+        <div class="fields-block__img position-relative"><img class="img-fluid lazyload" data-src="/documents/20126/1765670/vng-cloud-product-live-low-latency-fields-bet.jpg" /></div>
+        
+        <div class="fields-block__text pt-2 transition-all">
+        <p class="title mb-1">Sòng bạc trực tuyến và cá<br />
+        cược thể thao</p>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <div class="s-margin-height">&nbsp;</div>
+        </div>
+        </section>
+        
+    <style type="text/css">
+        .fields-wrapper {
+            --columns: 3;
+            --spacing: 20px;
+            display: grid;
+            grid-template-columns: repeat(var(--columns), 1fr);
+            gap: var(--spacing);
+        }
+        .fields-block__content {
+            flex-direction: column;
+            align-items: center;
+        }
+        .fields-block {
+            -webkit-transition: transform .3s ease;
+            -moz-transition: transform .3s ease;
+            -o-transition: transform .3s ease;
+            transition: transform .3s ease;
+        }
+
+        .fields-block__content .title {
+            font-size: 18px;
+        }
+
+        .fields-block__img {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        .fields-block__text {
+            flex: 1;
+        }
+
+        .fields-block__img::before,
+        .fields-block__img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+        }
+        .fields-block__img::before {
+            border: 1px solid var(--dark-blue-2);
+            margin: -5px;
+            opacity: 0;
+            transition: opacity 300ms ease;
+        }
+
+        .fields-block__img::after {
+            background-color: #f4f4f4;
+            z-index: -1;
+        }
+        .fields-block:hover {
+            transform: translateY(-8px);
+        }
+
+        .fields-block:hover .title {
+            color: var(--dark-blue-2);
+        }
+        .fields-block:hover .fields-block__img::before {opacity: 1;}
+        @media (min-width: 1600px) {
+            section#s-fields .cloud-container {max-width: 1000px;}
+        }
+        @media (min-width: 1200px) and (max-width: 1599.98px) {
+            section#s-fields .cloud-container {max-width: 70%;}
+        }
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .fields-wrapper {
+                --columns: 2;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .fields-wrapper {
+                --columns: 1;
+                --spacing: 20px;
+            }
+            .fields-block__img::before {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script src="../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js" async></script>
+    <script src="../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../assets/js/ls.bgset.min.js" async></script>
+    <script src="../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script>
+</body>
