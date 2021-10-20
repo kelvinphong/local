@@ -1,0 +1,337 @@
+.pro-iaas-banner {
+    color: #fff;
+    background-color: #bababa;
+    height: 100vh;
+    position: relative
+}
+
+.pro-iaas-banner .row {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between
+}
+
+.big-title {
+    font-size: 50px;
+    line-height: 60px;
+    text-transform: uppercase
+}
+
+.banner-title {
+    font-size: 30px;
+    line-height: 35px;
+    text-transform: uppercase
+}
+
+.banner-logo {
+    margin-bottom: 20px
+}
+
+.banner-logo img.lazyload {
+    width: 100px
+}
+
+.banner-btn {
+    margin-top: 2rem
+}
+
+.banner-features {
+    margin: 30px 0
+}
+
+.banner-features__block {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative
+}
+
+.banner-features__block p {
+    margin-bottom: 0
+}
+
+.banner-features__block.check::after {
+    content: '';
+    display: inline-block;
+    transform: rotate(45deg);
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    position: absolute;
+    border-color: #fff;
+    height: 16px;
+    width: 6px;
+    left: 9px;
+    top: 3px
+}
+
+.pro-iaas-banner::before {
+    content: '';
+    background-color: #1d2021;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: .5
+}
+
+.pro-iaas-banner:hover .product-intro-video {
+    opacity: 1;
+    visibility: visible
+}
+
+.prod-sub-menu.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgb(76 76 75 / 10%);
+    z-index: 2
+}
+
+.prod-sub-menu.fixed .product-intro-tabs ul li a {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.product-intro-video {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity .3s;
+    -moz-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    -ms-transition: opacity .3s;
+    transition: opacity .3s
+}
+
+.play-btn {
+    height: var(--size);
+    width: var(--size);
+    text-align: center;
+    margin: calc(-1 * (var(--size) / 2)) 0 0 calc(-1 * (var(--size) / 2));
+    z-index: 1;
+    cursor: pointer;
+    background-color: #fff
+}
+
+.play-btn,
+.play-btn .ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%
+}
+
+.play-btn .icon-play {
+    font-size: 20px;
+    margin-left: 7px;
+    color: var(--dark-blue-2)
+}
+
+.play-btn .ripple {
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 2);
+    z-index: -1;
+    opacity: 0;
+    margin: calc(-1 * var(--size)) 0 0 calc(-1 * var(--size));
+    background-color: #fff;
+    -webkit-animation: ripple 2s infinite;
+    animation: ripple 2s infinite
+}
+
+@-webkit-keyframes ripple {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+
+    100% {
+        opacity: .2;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+
+    100% {
+        opacity: .2;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+.play-btn .ripple:nth-child(2) {
+    animation-delay: .3s !important;
+    -webkit-animation-delay: .3s !important
+}
+
+.play-btn .ripple:nth-child(3) {
+    animation-delay: .6s !important;
+    -webkit-animation-delay: .6s !important
+}
+
+section#pro-tabs {
+    display: none
+}
+
+@media(min-width:1600px) {
+    .big-title {
+        font-size: 60px;
+        line-height: 65px
+    }
+
+    .banner-title {
+        font-size: 35px;
+        line-height: 40px
+    }
+
+    .banner-btn {
+        font-size: 20px
+    }
+}
+
+@media(min-width:992px) and (max-width:1200px) {
+    .pro-iaas-banner {
+        height: 800px !important
+    }
+}
+
+@media(min-width:992px) {
+    .product-intro-video {
+        padding-right: 40px
+    }
+
+    .product-intro-video img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover
+    }
+}
+
+@media(max-width:991.98px) {
+    .pro-iaas-banner {
+        height: auto !important
+    }
+
+    .product-intro-video {
+        display: none
+    }
+
+    .pro-iaas-banner .row {
+        padding-top: 68px;
+        padding-bottom: 50px
+    }
+
+    .banner-text {
+        margin-bottom: 0;
+        padding-top: 50px;
+        padding-bottom: 50px
+    }
+
+    .pro-iaas-banner::before {
+        position: absolute
+    }
+}
+
+@media(min-width:576px) {
+    .pro-iaas-banner .play-btn {
+        --size: 60px
+    }
+
+    .banner-text {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+
+    .banner-btn {
+        padding: 15px 50px
+    }
+
+    .banner-desc {
+        font-size: 18px
+    }
+
+    .banner-features__block p {
+        font-size: 17px
+    }
+
+    .banner-logo img {
+        height: 80px
+    }
+}
+
+@media(min-width:768px) {
+    section#pro-tabs {
+        display: block
+    }
+
+    .product-intro-tabs ul li a {
+        color: var(--dark-blue-2);
+        font-size: 18px;
+        line-height: 28px;
+        padding: 0 20px;
+        letter-spacing: -1px
+    }
+
+    .nav-prod-tabs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center
+    }
+
+    .product-intro-tabs ul li.active,
+    .product-intro-tabs ul li a:hover {
+        font-weight: 600
+    }
+}
+
+@media(max-width:575.98px) {
+    .big-title {
+        font-size: 30px;
+        line-height: 35px
+    }
+
+    .banner-title {
+        font-size: 20px;
+        line-height: 25px;
+        margin-top: 0 !important
+    }
+
+    .banner-logo {
+        margin-top: 10px
+    }
+
+    .banner-logo img {
+        height: 50px
+    }
+
+    .banner-btn {
+        margin-top: 15px
+    }
+
+    .banner-text {
+        padding-bottom: 0
+    }
+
+    .banner-features {
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+
+    .banner-features__block {
+        margin-bottom: 5px
+    }
+
+    .banner-features__block.check::after {
+        height: 12px;
+        width: 5px;
+        top: 4px
+    }
+}

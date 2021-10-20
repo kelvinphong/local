@@ -14,116 +14,114 @@
     <link href="assets/css/animate.css" rel="stylesheet" type="text/css">
     <link href="assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/custom-header.css">
     <link rel="stylesheet" href="./assets/css/menu.css">
 </head>
 
 <body>
     <div id="wrapper">
         <header id="page_header">
-            <div class="v-header v-nav-show" role="banner" style="--height-header: 70px">
+            <div class="v-header header-abs white-bg" role="banner" style="--height-header: 70px">
                 <div class="navbar v-navbar cloud-container align-items-center h-100" id="v-navbar"
                     style="padding-left: 15px;padding-right: 15px;">
                     <div class="mobile-g-btn d-flex align-items-center position-absolute"> <button type="button"
                             id="nav-toggle" class="navbar-toggle d-flex" data-target="navigation-menu"> <img
-                                class="abs-icon"
-                                src="https://vngcloud.vn/documents/20126/906379/vng-cloud-icon-menu.svg"> <img
-                                class="pos-icon"
-                                src="https://vngcloud.vn/documents/20126/906379/vng-cloud-icon-menu-color.svg">
-                        </button>
-                        <div class="t-upper active-menu ml-1" id="active-menu">Menu</div>
+                                class="abs-icon" src="https://vngcloud.vn/documents/20126/906379/vng-cloud-icon-menu.svg"> <img
+                                class="pos-icon" src="https://vngcloud.vn/documents/20126/906379/vng-cloud-icon-menu-color.svg"> </button>
+                        <div class="t-upper active-menu ml-1" id="active-menu">Products</div>
                     </div>
                     <div class="navbar-header flex-center"> <a class="navbar-brand vng-cloud-logo" href="/"> <img
-                                class="vng-cloud-logo-main lazyload img-fluid"
-                                data-src="https://vngcloud.vn/documents/20126/906379/vng-cloud-logo-white.png" alt=""
-                                width="150px"> <img class="vng-cloud-logo-sub img-fluid lazyloaded"
-                                data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png" alt=""
-                                width="150px" src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png">
-                        </a> </div>
+                                class="vng-cloud-logo-main img-fluid lazyloaded"
+                                data-src="https://vngcloud.vn/documents/20126/906379/vng-cloud-logo-white.png" alt="" width="150px"
+                                src="https://vngcloud.vn/documents/20126/906379/vng-cloud-logo-white.png"> <img
+                                class="vng-cloud-logo-sub img-fluid lazyloaded"
+                                data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png" alt="" width="150px"
+                                src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png"> </a> </div>
                     <div class="navigation-group">
                         <nav id="navigation-menu" class="navbar-collapse"> <a id="nav-toggle"
                                 class="navbar-toggle collapsed p-0 mobile-opacity" data-toggle="collapse"
                                 data-target="navigation-menu" aria-expanded="false" title="Toggle Menu"> <img
-                                    class="img-fluid lazyloaded"
-                                    data-src="https://vngcloud.vn/documents/20126/1718708/mobile-menu-toggle-close.svg"
-                                    src="https://vngcloud.vn/documents/20126/1718708/mobile-menu-toggle-close.svg"> </a>
-                            <div class="toggle-logo mobile-opacity"> <img class=" lazyloaded"
-                                    data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png"
-                                    src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png"> </div>
+                                    class="lazyload img-fluid"
+                                    data-src="https://vngcloud.vn/documents/20126/1718708/mobile-menu-toggle-close.svg"> </a>
+                            <div class="toggle-logo mobile-opacity"> <img class="lazyload"
+                                    data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png"> </div>
                             <ul class="menu-nav list-unstyled" id="menu-nav">
-                                <li class="nav-item active"> <a
+                                <li class="nav-item"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
                                         aria-labelledby="layout_1282289"
-                                        href="https://admin.vngcloud.vn/web/guest/trang-chu" role="menuitem"><span
-                                            class="position-relative">Trang Chủ</span></a> </li>
+                                        href="https://admin.vngcloud.vn/en/web/guest/home" role="menuitem"><span
+                                            class="position-relative">Home</span></a> </li>
                                 <li class="nav-item has-child"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
                                         aria-labelledby="layout_934220" href="javascript:void(0)" role="menuitem"
                                         id="dropdown_934220" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"> <span class="position-relative">Về VNG Cloud</span> </a>
-                                    <div class="child-nav d-block dropdown-menu m-0 p-0 border-0" id="child-nav"
-                                        aria-labelledby="dropdown_934220">
+                                        aria-expanded="false"> <span class="position-relative">About Us</span> </a>
+                                    <div class="child-nav d-block dropdown-menu header-dropdown m-0 p-0 border-0"
+                                        id="child-nav" aria-labelledby="dropdown_934220">
                                         <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
-                                            <span>Về VNG Cloud</span> </h3>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/about-us" nav-target=""
-                                            nav-name="Giới thiệu VNG Cloud" class="nav-child-item "> <a class="nav-link"
+                                            <span>About Us</span> </h3>
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/about-us" nav-target=""
+                                            nav-name="About VNG Cloud" class="nav-child-item "> <a class="nav-link"
                                                 aria-labelledby="layout_1084501"
-                                                href="https://admin.vngcloud.vn/web/guest/about-us" role="menuitem">
-                                                <span style="font-size: 16px">Giới thiệu VNG Cloud</span> </a> </div>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/solution" nav-target=""
-                                            nav-name="Giải pháp của VNG Cloud" class="nav-child-item "> <a
-                                                class="nav-link" aria-labelledby="layout_1389723"
-                                                href="https://admin.vngcloud.vn/web/guest/solution" role="menuitem">
-                                                <span style="font-size: 16px">Giải pháp của VNG Cloud</span> </a> </div>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/partner-hub" nav-target=""
+                                                href="https://admin.vngcloud.vn/en/web/guest/about-us" role="menuitem">
+                                                <span style="font-size: 16px">About VNG Cloud</span> </a> </div>
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/solution" nav-target=""
+                                            nav-name="Solution" class="nav-child-item "> <a class="nav-link"
+                                                aria-labelledby="layout_1389723"
+                                                href="https://admin.vngcloud.vn/en/web/guest/solution" role="menuitem">
+                                                <span style="font-size: 16px">Solution</span> </a> </div>
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/partner-hub" nav-target=""
                                             nav-name="Partner Hub" class="nav-child-item "> <a class="nav-link"
                                                 aria-labelledby="layout_1433219"
-                                                href="https://admin.vngcloud.vn/web/guest/partner-hub" role="menuitem">
-                                                <span style="font-size: 16px">Partner Hub</span> </a> </div>
+                                                href="https://admin.vngcloud.vn/en/web/guest/partner-hub"
+                                                role="menuitem"> <span style="font-size: 16px">Partner Hub</span> </a>
+                                        </div>
                                         <div nav-url="https://career.vng.com.vn/co-hoi-nghe-nghiep" nav-target="target="
-                                            _blank""="" nav-name="Nghề nghiệp tại VNG Cloud" class="nav-child-item "> <a
+                                            _blank""="" nav-name="Career At VNG Cloud" class="nav-child-item "> <a
                                                 class="nav-link" aria-labelledby="layout_873289"
                                                 href="https://career.vng.com.vn/co-hoi-nghe-nghiep" target="_blank"
-                                                role="menuitem"> <span style="font-size: 16px">Nghề nghiệp tại VNG
+                                                role="menuitem"> <span style="font-size: 16px">Career At VNG
                                                     Cloud</span> </a> </div>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/our-history" nav-target=""
-                                            nav-name="Lịch sử" class="nav-child-item "> <a class="nav-link"
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/our-history" nav-target=""
+                                            nav-name="Our History" class="nav-child-item "> <a class="nav-link"
                                                 aria-labelledby="layout_934251"
-                                                href="https://admin.vngcloud.vn/web/guest/our-history" role="menuitem">
-                                                <span style="font-size: 16px">Lịch sử</span> </a> </div>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/about-us/terms-and-condition"
-                                            nav-target="" nav-name="Điều khoản sử dụng"
+                                                href="https://admin.vngcloud.vn/en/web/guest/our-history"
+                                                role="menuitem"> <span style="font-size: 16px">Our History</span> </a>
+                                        </div>
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/about-us/terms-and-condition"
+                                            nav-target="" nav-name="Terms and Conditions"
                                             class="nav-child-item has-child-2"> <a class="nav-link"
                                                 aria-labelledby="layout_934744" href="javascript:void(0)"
-                                                role="menuitem"> <span style="font-size: 16px">Điều khoản sử dụng</span>
-                                            </a>
+                                                role="menuitem"> <span style="font-size: 16px">Terms and
+                                                    Conditions</span> </a>
                                             <div class="child-nav-2">
-                                                <div nav-url="https://admin.vngcloud.vn/web/guest/terms-and-conditions"
-                                                    nav-target="" nav-name="Thỏa thuận sử dụng dịch vụ"
+                                                <div nav-url="https://admin.vngcloud.vn/en/web/guest/terms-and-conditions"
+                                                    nav-target="" nav-name="Service Term Agreement"
                                                     class="nav-child-item"> <a class="nav-link "
                                                         aria-labelledby="layout_962676"
-                                                        href="https://admin.vngcloud.vn/web/guest/terms-and-conditions"
-                                                        role="menuitem"> <span style="font-size: 16px">Thỏa thuận sử
-                                                            dụng dịch vụ</span> </a> </div>
-                                                <div nav-url="https://admin.vngcloud.vn/web/guest/cam-ket-chat-luong-dich-vu"
-                                                    nav-target="" nav-name="Cam kết chất lượng dịch vụ"
+                                                        href="https://admin.vngcloud.vn/en/web/guest/terms-and-conditions"
+                                                        role="menuitem"> <span style="font-size: 16px">Service Term
+                                                            Agreement</span> </a> </div>
+                                                <div nav-url="https://admin.vngcloud.vn/en/web/guest/commitment-to-quality-service"
+                                                    nav-target="" nav-name="Commitment To Quality Service"
                                                     class="nav-child-item"> <a class="nav-link "
                                                         aria-labelledby="layout_962677"
-                                                        href="https://admin.vngcloud.vn/web/guest/cam-ket-chat-luong-dich-vu"
-                                                        role="menuitem"> <span style="font-size: 16px">Cam kết chất
-                                                            lượng dịch vụ</span> </a> </div>
+                                                        href="https://admin.vngcloud.vn/en/web/guest/commitment-to-quality-service"
+                                                        role="menuitem"> <span style="font-size: 16px">Commitment To
+                                                            Quality Service</span> </a> </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="nav-item has-child product-menu"> <a
+                                <li class="nav-item active has-child product-menu show"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
                                         aria-labelledby="layout_632377" href="javascript:void(0)" role="menuitem"
                                         id="dropdown_632377" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"> <span class="position-relative">Sản phẩm</span> </a>
-                                    <div class="child-nav d-block dropdown-menu m-0 p-0 border-0 cloud-container child-nav__full-screen"
+                                        aria-expanded="true"> <span class="position-relative">Products</span> </a>
+                                    <div class="child-nav d-block dropdown-menu header-dropdown m-0 p-0 border-0 cloud-container child-nav__full-screen show"
                                         id="child-nav" aria-labelledby="dropdown_632377">
                                         <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
-                                            <span>Sản phẩm</span> </h3>
+                                            <span>Products</span> </h3>
                                         <div class="menu-prod-wrapper d-md-flex align-items-md-start">
                                             <div class="nav flex-column prod-group nav-pills p-md-3 h-100" id="prod-tab"
                                                 role="tablist" aria-orientation="vertical">
@@ -134,18 +132,17 @@
                                                         service </a>
                                                     <div class="category-desc p-md-3">
                                                         <div class="d-lg-flex align-items-center">
-                                                            <div class="img pl-1"> <img
-                                                                    class="hidden-xs ls-is-cached lazyloaded"
+                                                            <div class="img pl-1"> <img class="hidden-xs lazyloaded"
                                                                     data-src="https://vngcloud.vn/documents/20126/1718708/icon-category-saas.svg"
                                                                     width="90px"
                                                                     src="https://vngcloud.vn/documents/20126/1718708/icon-category-saas.svg">
                                                             </div>
-                                                            <div class="desc position-relative">Các ứng dụng được phát
-                                                                triển trên nền tảng Cloud và phân phối qua internet dưới
-                                                                dạng gói dịch vụ trả theo tháng. Khách hàng không cần
-                                                                phải cài đặt, bảo trì và cập phần cứng hay phần mềm.
-                                                                Điều duy nhất khách hàng cần là kết nối internet để truy
-                                                                câp vào các ứng dụng này một cách dễ dàng.</div>
+                                                            <div class="desc position-relative">Cloud-based applications
+                                                                developed and offered over the internet as a monthly
+                                                                paid service package. Customers do not need to install,
+                                                                maintain and update any hardware or software. The only
+                                                                thing customers need is an internet connection to access
+                                                                these applications easily.</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,18 +153,16 @@
                                                         service </a>
                                                     <div class="category-desc p-md-3">
                                                         <div class="d-lg-flex align-items-center">
-                                                            <div class="img pl-1"> <img
-                                                                    class="hidden-xs ls-is-cached lazyloaded"
+                                                            <div class="img pl-1"> <img class="hidden-xs lazyloaded"
                                                                     data-src="https://vngcloud.vn/documents/20126/1718708/icon-category-paas.svg"
                                                                     width="90px"
                                                                     src="https://vngcloud.vn/documents/20126/1718708/icon-category-paas.svg">
                                                             </div>
-                                                            <div class="desc position-relative">Cung cấp một nền tảng
-                                                                tính toán với bộ công cụ ứng dụng và giải pháp với khả
-                                                                năng mở rộng linh hoạt, giúp tối ưu hóa tối đa việc phát
-                                                                triển và xây dựng ứng dụng trên nền tảng đám mây mà
-                                                                không cần bận tâm đến việc bảo trì và vận hành các nền
-                                                                tảng cơ sở này.</div>
+                                                            <div class="desc position-relative">Provides a cloud
+                                                                computing platform with scalable applications and
+                                                                solutions, maximizes the development of applications on
+                                                                cloud without worrying about maintenance and operation
+                                                                of these platform</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,16 +173,15 @@
                                                         a service </a>
                                                     <div class="category-desc p-md-3">
                                                         <div class="d-lg-flex align-items-center">
-                                                            <div class="img pl-1"> <img
-                                                                    class="hidden-xs ls-is-cached lazyloaded"
+                                                            <div class="img pl-1"> <img class="hidden-xs lazyloaded"
                                                                     data-src="https://vngcloud.vn/documents/20126/1718708/icon-category-iaas.svg"
                                                                     width="90px"
                                                                     src="https://vngcloud.vn/documents/20126/1718708/icon-category-iaas.svg">
                                                             </div>
-                                                            <div class="desc position-relative">Cơ sở hạ tầng như một
-                                                                dịch vụ - IaaS cung cấp không gian ảo, lưu trữ và các
-                                                                nguồn lực kết nối, giúp các doanh nghiệp có thể dễ dàng
-                                                                mở rộng hoặc thu gọn cơ sở hạ tầng theo nhu cầu.</div>
+                                                            <div class="desc position-relative">Infrastructure as a
+                                                                Service - IaaS provides a virtual space, storage and
+                                                                network, making it easy for businesses to scale or
+                                                                shrink infrastructure if needed</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -198,87 +192,80 @@
                                                     <div class="prod-category mb-md-3 col-12">
                                                         <div class="category-name not-category">&nbsp;</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946158"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vcloudcam"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vcloudcam"
                                                                     role="menuitem"
-                                                                    title="vCloudcam | Giải pháp giám sát an ninh toàn diện trên nền tảng cloud">
+                                                                    title="vCloudcam | Cloud computing platform and application for cameras">
                                                                     <div class="title transition-all"
-                                                                        title="vCloudcam | Giải pháp giám sát an ninh toàn diện trên nền tảng cloud">
+                                                                        title="vCloudcam | Cloud computing platform and application for cameras">
                                                                         vCloudcam </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp
-                                                                        giám sát an ninh toàn diện trên nền tảng cloud
+                                                                    <div class="description pt-1 mb-md-2"> Cloud
+                                                                        computing platform and application for cameras
                                                                     </div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946750"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vuc"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vuc"
                                                                     role="menuitem"
-                                                                    title="vUC | Giải pháp kết nối và chăm sóc khách hàng toàn diện trên nền tảng cloud">
+                                                                    title="vUC | The End-to-end cloud contact center and customer service solution">
                                                                     <div class="title transition-all"
-                                                                        title="vUC | Giải pháp kết nối và chăm sóc khách hàng toàn diện trên nền tảng cloud">
+                                                                        title="vUC | The End-to-end cloud contact center and customer service solution">
                                                                         vUC </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp kết
-                                                                        nối và chăm sóc khách hàng toàn diện trên nền
-                                                                        tảng cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> The
+                                                                        End-to-end cloud contact center and customer
+                                                                        service solution</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1212002"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vmeeting"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vmeeting"
                                                                     role="menuitem"
-                                                                    title="vMeeting | Giải pháp hội họp và làm việc trực tuyến trên nền tảng cloud">
+                                                                    title="vMeeting | The solution for online meeting &amp; working on cloud computing platform">
                                                                     <div class="title transition-all"
-                                                                        title="vMeeting | Giải pháp hội họp và làm việc trực tuyến trên nền tảng cloud">
+                                                                        title="vMeeting | The solution for online meeting &amp; working on cloud computing platform">
                                                                         vMeeting </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp hội
-                                                                        họp và làm việc trực tuyến trên nền tảng cloud
-                                                                    </div>
+                                                                    <div class="description pt-1 mb-md-2"> The solution
+                                                                        for online meeting &amp; working on cloud
+                                                                        computing platform</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1074281"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vclouddrive"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vclouddrive"
                                                                     role="menuitem"
-                                                                    title="vCloudDrive | Giải pháp lưu trữ, chia sẻ và đồng bộ dữ liệu trên nền tảng cloud">
+                                                                    title="vCloudDrive | Unlimited cloud storage and file-sharing solution">
                                                                     <div class="title transition-all"
-                                                                        title="vCloudDrive | Giải pháp lưu trữ, chia sẻ và đồng bộ dữ liệu trên nền tảng cloud">
+                                                                        title="vCloudDrive | Unlimited cloud storage and file-sharing solution">
                                                                         vCloudDrive </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp lưu
-                                                                        trữ, chia sẻ và đồng bộ dữ liệu trên nền tảng
-                                                                        cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> Unlimited
+                                                                        cloud storage and file-sharing solution</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1433218"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vdws"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vdws"
                                                                     role="menuitem"
-                                                                    title="vDWS | Giải pháp làm việc trực tuyến , từ xa mọi lúc mọi nơi trên nền tảng cloud">
+                                                                    title="vDWS | Virtual Workplace solution, work everytime, everywhere on cloud">
                                                                     <div class="title transition-all"
-                                                                        title="vDWS | Giải pháp làm việc trực tuyến , từ xa mọi lúc mọi nơi trên nền tảng cloud">
+                                                                        title="vDWS | Virtual Workplace solution, work everytime, everywhere on cloud">
                                                                         vDWS </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp làm
-                                                                        việc trực tuyến , từ xa mọi lúc mọi nơi trên nền
-                                                                        tảng cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> Virtual
+                                                                        Workplace solution, work everytime, everywhere
+                                                                        on cloud</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100" target="_blank"
-                                                                    aria-labelledby="layout_946755"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    target="_blank" aria-labelledby="layout_946755"
                                                                     href="https://wps.net.vn" role="menuitem"
-                                                                    title="WPS Office | Bộ ứng dụng văn phòng trên nền tảng cloud">
+                                                                    title="WPS Office | Cloud-based office suite">
                                                                     <div class="title transition-all"
-                                                                        title="WPS Office | Bộ ứng dụng văn phòng trên nền tảng cloud">
+                                                                        title="WPS Office | Cloud-based office suite">
                                                                         WPS Office </div>
-                                                                    <div class="description pt-1 mb-md-2"> Bộ ứng dụng
-                                                                        văn phòng trên nền tảng cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> Cloud-based
+                                                                        office suite</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
@@ -289,19 +276,18 @@
                                                         class="prod-category mb-md-3 col-sm-4 inline d-sm-flex flex-column">
                                                         <div class="category-name">Database</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946782"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vdb"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vdb"
                                                                     role="menuitem"
-                                                                    title="vDB | Hỗ trợ thiết lập, vận hành và mở rộng CSDL cho doanh nghiệp">
+                                                                    title="vDB | Database as a Service - Cloud-based platform for managing, storing and retrieving data">
                                                                     <div class="title transition-all"
-                                                                        title="vDB | Hỗ trợ thiết lập, vận hành và mở rộng CSDL cho doanh nghiệp">
+                                                                        title="vDB | Database as a Service - Cloud-based platform for managing, storing and retrieving data">
                                                                         vDB </div>
-                                                                    <div class="description pt-1 mb-md-2"> Hỗ trợ thiết
-                                                                        lập, vận hành và mở rộng CSDL cho doanh nghiệp
-                                                                    </div>
+                                                                    <div class="description pt-1 mb-md-2"> Database as a
+                                                                        Service - Cloud-based platform for managing,
+                                                                        storing and retrieving data</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
@@ -309,147 +295,179 @@
                                                         class="prod-category mb-md-3 col-sm-4 inline d-sm-flex flex-column">
                                                         <div class="category-name">Container</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1646924"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vcontainer"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vcontainer"
                                                                     role="menuitem"
-                                                                    title="K8S | Dịch vụ Container cho Kubernetes trên VNG Cloud">
+                                                                    title="K8S | Container Service for Kubernetes in VNG Cloud">
                                                                     <div class="title transition-all"
-                                                                        title="K8S | Dịch vụ Container cho Kubernetes trên VNG Cloud">
+                                                                        title="K8S | Container Service for Kubernetes in VNG Cloud">
                                                                         K8S </div>
-                                                                    <div class="description pt-1 mb-md-2"> Dịch vụ
-                                                                        Container cho Kubernetes trên VNG Cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> Container
+                                                                        Service for Kubernetes in VNG Cloud</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
                                                     <div class="prod-category mb-md-3 col-12">
                                                         <div class="category-name">Monitoring &amp; Security</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1719440"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vmonitor"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vmonitor"
                                                                     role="menuitem"
-                                                                    title="vMonitor | Theo dõi toàn diện hệ thống và các tài nguyên trên cloud">
+                                                                    title="vMonitor | A comprehensive cloud monitoring solution">
                                                                     <div class="title transition-all"
-                                                                        title="vMonitor | Theo dõi toàn diện hệ thống và các tài nguyên trên cloud">
+                                                                        title="vMonitor | A comprehensive cloud monitoring solution">
                                                                         vMonitor </div>
-                                                                    <div class="description pt-1 mb-md-2"> Theo dõi toàn
-                                                                        diện hệ thống và các tài nguyên trên cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> A
+                                                                        comprehensive cloud monitoring solution</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1719285"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vmonitor-metric"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vmonitor-metric"
                                                                     role="menuitem"
-                                                                    title="vMonitor Metric | Theo dõi toàn diện hệ thống và các tài nguyên trên cloud">
+                                                                    title="vMonitor Metric | Monitoring application performance &amp; resource on multi platform">
                                                                     <div class="title transition-all"
-                                                                        title="vMonitor Metric | Theo dõi toàn diện hệ thống và các tài nguyên trên cloud">
+                                                                        title="vMonitor Metric | Monitoring application performance &amp; resource on multi platform">
                                                                         vMonitor Metric </div>
-                                                                    <div class="description pt-1 mb-md-2"> Theo dõi toàn
-                                                                        diện hệ thống và các tài nguyên trên cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> Monitoring
+                                                                        application performance &amp; resource on multi
+                                                                        platform</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1719286"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vmonitor-log"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vmonitor-log"
                                                                     role="menuitem"
-                                                                    title="vMonitor Log | Giải pháp quản lý log tập trung đa nền tảng, đa thiết bị">
+                                                                    title="vMonitor Log | Centralized log management on multi-platform, multi-devices">
                                                                     <div class="title transition-all"
-                                                                        title="vMonitor Log | Giải pháp quản lý log tập trung đa nền tảng, đa thiết bị">
+                                                                        title="vMonitor Log | Centralized log management on multi-platform, multi-devices">
                                                                         vMonitor Log </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp
-                                                                        quản lý log tập trung đa nền tảng, đa thiết bị
+                                                                    <div class="description pt-1 mb-md-2"> Centralized
+                                                                        log management on multi-platform, multi-devices
                                                                     </div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946753"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vwaf"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vwaf"
                                                                     role="menuitem"
-                                                                    title="vWAF | Tường lửa ứng dụng web">
+                                                                    title="vWAF | Launch a secure &amp; private cloud">
                                                                     <div class="title transition-all"
-                                                                        title="vWAF | Tường lửa ứng dụng web"> vWAF
-                                                                    </div>
-                                                                    <div class="description pt-1 mb-md-2"> Tường lửa ứng
-                                                                        dụng web</div>
+                                                                        title="vWAF | Launch a secure &amp; private cloud">
+                                                                        vWAF </div>
+                                                                    <div class="description pt-1 mb-md-2"> Launch a
+                                                                        secure &amp; private cloud</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
                                                     <div class="prod-category mb-md-3 col-12">
                                                         <div class="category-name">CDN</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1719439"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vcdn"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vcdn"
                                                                     role="menuitem"
-                                                                    title="vCDN | Dịch vụ mạng phân phối nội dung">
+                                                                    title="vCDN | Content Delivery Network">
                                                                     <div class="title transition-all"
-                                                                        title="vCDN | Dịch vụ mạng phân phối nội dung">
-                                                                        vCDN </div>
-                                                                    <div class="description pt-1 mb-md-2"> Dịch vụ mạng
-                                                                        phân phối nội dung</div>
-                                                                </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
-                                                                    aria-labelledby="layout_1719287"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/video-on-demand"
-                                                                    role="menuitem"
-                                                                    title="VOD | Giải pháp tối ưu truyền tải nội dung video">
-                                                                    <div class="title transition-all"
-                                                                        title="VOD | Giải pháp tối ưu truyền tải nội dung video">
-                                                                        VOD </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp tối
-                                                                        ưu truyền tải nội dung video</div>
-                                                                </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
-                                                                    aria-labelledby="layout_1719288"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/live-streaming"
-                                                                    role="menuitem"
-                                                                    title="Live Streaming | Giải pháp phát nội dung trực tuyến trên Internet">
-                                                                    <div class="title transition-all"
-                                                                        title="Live Streaming | Giải pháp phát nội dung trực tuyến trên Internet">
-                                                                        Live Streaming </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp
-                                                                        phát nội dung trực tuyến trên Internet</div>
-                                                                </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
-                                                                    aria-labelledby="layout_1719289"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/web-accelerator"
-                                                                    role="menuitem"
-                                                                    title="Web Accelerator | Giúp tăng tốc độ hiển thị nội dung và trải nghiệm người dùng">
-                                                                    <div class="title transition-all"
-                                                                        title="Web Accelerator | Giúp tăng tốc độ hiển thị nội dung và trải nghiệm người dùng">
-                                                                        Web Accelerator </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giúp tăng tốc
-                                                                        độ hiển thị nội dung và trải nghiệm người dùng
+                                                                        title="vCDN | Content Delivery Network"> vCDN
                                                                     </div>
+                                                                    <div class="description pt-1 mb-md-2"> Content
+                                                                        Delivery Network</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
-                                                                    aria-labelledby="layout_1719290"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/object-download"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1719287"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/video-on-demand"
                                                                     role="menuitem"
-                                                                    title="Object Download | Giải pháp tăng tốc độ tải File">
+                                                                    title="VOD | Video content delivery optimization solution">
                                                                     <div class="title transition-all"
-                                                                        title="Object Download | Giải pháp tăng tốc độ tải File">
+                                                                        title="VOD | Video content delivery optimization solution">
+                                                                        VOD </div>
+                                                                    <div class="description pt-1 mb-md-2"> Video content
+                                                                        delivery optimization solution</div>
+                                                                </a> </div>
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1719288"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/live-streaming"
+                                                                    role="menuitem"
+                                                                    title="Live Streaming | Live Streaming Solution">
+                                                                    <div class="title transition-all"
+                                                                        title="Live Streaming | Live Streaming Solution">
+                                                                        Live Streaming </div>
+                                                                    <div class="description pt-1 mb-md-2"> Live
+                                                                        Streaming Solution</div>
+                                                                </a> </div>
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1719289"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/web-accelerator"
+                                                                    role="menuitem"
+                                                                    title="Web Accelerator | Speed up the content display on website, improve customer experience">
+                                                                    <div class="title transition-all"
+                                                                        title="Web Accelerator | Speed up the content display on website, improve customer experience">
+                                                                        Web Accelerator </div>
+                                                                    <div class="description pt-1 mb-md-2"> Speed up the
+                                                                        content display on website, improve customer
+                                                                        experience</div>
+                                                                </a> </div>
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1719290"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/object-download"
+                                                                    role="menuitem"
+                                                                    title="Object Download | Increase File Download Speed Solution">
+                                                                    <div class="title transition-all"
+                                                                        title="Object Download | Increase File Download Speed Solution">
                                                                         Object Download </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp
-                                                                        tăng tốc độ tải File</div>
+                                                                    <div class="description pt-1 mb-md-2"> Increase File
+                                                                        Download Speed Solution</div>
+                                                                </a> </div>
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1741966"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/drm"
+                                                                    role="menuitem"
+                                                                    title="DRM | Giải pháp bảo vệ nội dung số">
+                                                                    <div class="title transition-all"
+                                                                        title="DRM | Giải pháp bảo vệ nội dung số"> DRM
+                                                                    </div>
+                                                                    <div class="description pt-1 mb-md-2"> Giải pháp bảo
+                                                                        vệ nội dung số</div>
+                                                                </a> </div>
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1765871"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/live-low-latency"
+                                                                    role="menuitem"
+                                                                    title="Live Low Latency | Content distribution solution">
+                                                                    <div class="title transition-all"
+                                                                        title="Live Low Latency | Content distribution solution">
+                                                                        Live Low Latency </div>
+                                                                    <div class="description pt-1 mb-md-2"> Content
+                                                                        distribution solution</div>
+                                                                </a> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prod-category mb-md-3 col-12">
+                                                        <div class="category-name">vStack</div>
+                                                        <div class="prod-block__wrapper">
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1741443"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vstack"
+                                                                    role="menuitem"
+                                                                    title="vStack | Giải pháp tối ưu và bảo mật toàn diện cho website">
+                                                                    <div class="title transition-all"
+                                                                        title="vStack | Giải pháp tối ưu và bảo mật toàn diện cho website">
+                                                                        vStack </div>
+                                                                    <div class="description pt-1 mb-md-2"> Giải pháp tối
+                                                                        ưu và bảo mật toàn diện cho website</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
@@ -459,136 +477,160 @@
                                                     <div class="prod-category mb-md-3 col-12">
                                                         <div class="category-name">Compute</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946163"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vserver"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vserver"
                                                                     role="menuitem"
-                                                                    title="vServer | Hệ thống máy chủ ảo toàn diện">
+                                                                    title="vServer | The service provides comprehensive virtual server system">
                                                                     <div class="title transition-all"
-                                                                        title="vServer | Hệ thống máy chủ ảo toàn diện">
+                                                                        title="vServer | The service provides comprehensive virtual server system">
                                                                         vServer </div>
-                                                                    <div class="description pt-1 mb-md-2"> Hệ thống máy
-                                                                        chủ ảo toàn diện</div>
+                                                                    <div class="description pt-1 mb-md-2"> The service
+                                                                        provides comprehensive virtual server system
+                                                                    </div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item has-child"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1773875" href="#"
+                                                                    role="menuitem"
+                                                                    title="Simple Server | eVPS &amp; eApp"
+                                                                    data-dropdown-sub-product="">
+                                                                    <div class="title transition-all"
+                                                                        title="Simple Server | eVPS &amp; eApp"> Simple
+                                                                        Server </div>
+                                                                    <div class="description pt-1 mb-md-2"> eVPS &amp;
+                                                                        eApp</div>
+                                                                </a>
+                                                                <div class="sub-product-menu">
+                                                                    <div class="sub-product active"> <a
+                                                                            class="d-block h-100"
+                                                                            aria-labelledby="layout_1773876"
+                                                                            href="https://admin.vngcloud.vn/en/web/guest/product/evps"
+                                                                            role="menuitem"
+                                                                            title="eVPS | Máy chủ ảo thông minh">
+                                                                            <div class="title transition-all"
+                                                                                title="eVPS | Máy chủ ảo thông minh">
+                                                                                eVPS </div>
+                                                                            <div class="description pt-1 mb-md-2"> Máy
+                                                                                chủ ảo thông minh</div>
+                                                                        </a> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1495262"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vbaremetal"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vbaremetal"
                                                                     role="menuitem"
-                                                                    title="vBareMetal | Dịch vụ cung cấp máy chủ vật lý">
+                                                                    title="vBareMetal | Bare Metal Solution">
                                                                     <div class="title transition-all"
-                                                                        title="vBareMetal | Dịch vụ cung cấp máy chủ vật lý">
+                                                                        title="vBareMetal | Bare Metal Solution">
                                                                         vBareMetal </div>
-                                                                    <div class="description pt-1 mb-md-2"> Dịch vụ cung
-                                                                        cấp máy chủ vật lý</div>
-                                                                </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
-                                                                    aria-labelledby="layout_1317251"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vcolo"
-                                                                    role="menuitem"
-                                                                    title="vColo | Giải pháp thuê chỗ đặt máy chủ">
-                                                                    <div class="title transition-all"
-                                                                        title="vColo | Giải pháp thuê chỗ đặt máy chủ">
-                                                                        vColo </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp
-                                                                        thuê chỗ đặt máy chủ</div>
+                                                                    <div class="description pt-1 mb-md-2"> Bare Metal
+                                                                        Solution</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
                                                     <div class="prod-category mb-md-3 col-12">
                                                         <div class="category-name">Object Storage</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100" target="_blank"
-                                                                    aria-labelledby="layout_1719295"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    target="_blank" aria-labelledby="layout_1719295"
                                                                     href="https://docs.vngcloud.vn/x/TAFeAQ"
                                                                     role="menuitem"
-                                                                    title="Block Store | Block Store Lưu trữ khối, co dãn linh hoạt, đáp ứng yêu cầu đọc ghi cao">
+                                                                    title="Block Store | Block Store A flexbile block storage, suitable for high read/write">
                                                                     <div class="title transition-all"
-                                                                        title="Block Store | Block Store Lưu trữ khối, co dãn linh hoạt, đáp ứng yêu cầu đọc ghi cao">
+                                                                        title="Block Store | Block Store A flexbile block storage, suitable for high read/write">
                                                                         Block Store </div>
-                                                                    <div class="description pt-1 mb-md-2"> Block Store
-                                                                        Lưu trữ khối, co dãn linh hoạt, đáp ứng yêu cầu
-                                                                        đọc ghi cao</div>
+                                                                    <div class="description pt-1 mb-md-2"> Block Store A
+                                                                        flexbile block storage, suitable for high
+                                                                        read/write</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946748"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vstorage"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vstorage"
                                                                     role="menuitem"
-                                                                    title="vStorage | Giải pháp lưu trữ hướng đối tượng an toàn, bền bỉ và truy xuất nhanh">
+                                                                    title="vStorage | A secure, durable and fast data retrieval object storage solution">
                                                                     <div class="title transition-all"
-                                                                        title="vStorage | Giải pháp lưu trữ hướng đối tượng an toàn, bền bỉ và truy xuất nhanh">
+                                                                        title="vStorage | A secure, durable and fast data retrieval object storage solution">
                                                                         vStorage </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp lưu
-                                                                        trữ hướng đối tượng an toàn, bền bỉ và truy xuất
-                                                                        nhanh</div>
+                                                                    <div class="description pt-1 mb-md-2"> A secure,
+                                                                        durable and fast data retrieval object storage
+                                                                        solution</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1719294"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vstoragegateway"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vstoragegateway"
                                                                     role="menuitem"
-                                                                    title="Storage Gateway | Lưu trữ và truy cập dữ liệu trên cloud qua các protocol SMB/NFS/FTP">
+                                                                    title="Storage Gateway | Data Storage and Access on cloud using protocol SMB/NFS/FTP">
                                                                     <div class="title transition-all"
-                                                                        title="Storage Gateway | Lưu trữ và truy cập dữ liệu trên cloud qua các protocol SMB/NFS/FTP">
+                                                                        title="Storage Gateway | Data Storage and Access on cloud using protocol SMB/NFS/FTP">
                                                                         Storage Gateway </div>
-                                                                    <div class="description pt-1 mb-md-2"> Lưu trữ và
-                                                                        truy cập dữ liệu trên cloud qua các protocol
-                                                                        SMB/NFS/FTP</div>
+                                                                    <div class="description pt-1 mb-md-2"> Data Storage
+                                                                        and Access on cloud using protocol SMB/NFS/FTP
+                                                                    </div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1612093"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vfilestore"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vfilestore"
                                                                     role="menuitem"
-                                                                    title="vFileStore | Giải pháp lưu trữ file trên cloud">
+                                                                    title="vFileStore | File Storage on Cloud Solution">
                                                                     <div class="title transition-all"
-                                                                        title="vFileStore | Giải pháp lưu trữ file trên cloud">
+                                                                        title="vFileStore | File Storage on Cloud Solution">
                                                                         vFileStore </div>
-                                                                    <div class="description pt-1 mb-md-2"> Giải pháp lưu
-                                                                        trữ file trên cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> File Storage
+                                                                        on Cloud Solution</div>
                                                                 </a> </div>
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_1719441"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/varchive"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/varchive"
                                                                     role="menuitem"
-                                                                    title="vArchive | Dịch vụ lưu trữ toàn diện trên cloud">
+                                                                    title="vArchive | Long-term data storage service on cloud">
                                                                     <div class="title transition-all"
-                                                                        title="vArchive | Dịch vụ lưu trữ toàn diện trên cloud">
+                                                                        title="vArchive | Long-term data storage service on cloud">
                                                                         vArchive </div>
-                                                                    <div class="description pt-1 mb-md-2"> Dịch vụ lưu
-                                                                        trữ toàn diện trên cloud</div>
+                                                                    <div class="description pt-1 mb-md-2"> Long-term
+                                                                        data storage service on cloud</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
                                                     <div class="prod-category mb-md-3 col-12">
                                                         <div class="category-name">Private Cloud</div>
                                                         <div class="prod-block__wrapper">
-                                                            <div
-                                                                class="prod-block position-relative bg-white nav-child-item">
-                                                                <a class="nav-link h-100"
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
                                                                     aria-labelledby="layout_946749"
-                                                                    href="https://admin.vngcloud.vn/web/guest/product/vcloudstack"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vcloudstack"
                                                                     role="menuitem"
-                                                                    title="vCloudStack | Hỗ trợ tập hợp các tài nguyên máy tính giúp xây dựng đám mây riêng">
+                                                                    title="vCloudStack | Solution to develop a flexible, safe and ultimate private cloud">
                                                                     <div class="title transition-all"
-                                                                        title="vCloudStack | Hỗ trợ tập hợp các tài nguyên máy tính giúp xây dựng đám mây riêng">
+                                                                        title="vCloudStack | Solution to develop a flexible, safe and ultimate private cloud">
                                                                         vCloudStack </div>
-                                                                    <div class="description pt-1 mb-md-2"> Hỗ trợ tập
-                                                                        hợp các tài nguyên máy tính giúp xây dựng đám
-                                                                        mây riêng</div>
+                                                                    <div class="description pt-1 mb-md-2"> Solution to
+                                                                        develop a flexible, safe and ultimate private
+                                                                        cloud</div>
+                                                                </a> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prod-category mb-md-3 col-12">
+                                                        <div class="category-name">Colocation</div>
+                                                        <div class="prod-block__wrapper">
+                                                            <div class="prod-block position-relative bg-white nav-child-item"
+                                                                data-dropdown-product=""> <a class="nav-link"
+                                                                    aria-labelledby="layout_1317251"
+                                                                    href="https://admin.vngcloud.vn/en/web/guest/product/vcolo"
+                                                                    role="menuitem"
+                                                                    title="vColo | Trusted Data Center Colocation">
+                                                                    <div class="title transition-all"
+                                                                        title="vColo | Trusted Data Center Colocation">
+                                                                        vColo </div>
+                                                                    <div class="description pt-1 mb-md-2"> Trusted Data
+                                                                        Center Colocation</div>
                                                                 </a> </div>
                                                         </div>
                                                     </div>
@@ -599,66 +641,68 @@
                                 </li>
                                 <li class="nav-item"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
-                                        aria-labelledby="layout_725845" href="https://admin.vngcloud.vn/web/guest/blog"
-                                        role="menuitem"><span class="position-relative">Blog</span></a> </li>
+                                        aria-labelledby="layout_725845"
+                                        href="https://admin.vngcloud.vn/en/web/guest/blog" role="menuitem"><span
+                                            class="position-relative">Blog</span></a> </li>
                                 <li class="nav-item has-child"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
                                         aria-labelledby="layout_1667030" href="javascript:void(0)" role="menuitem"
                                         id="dropdown_1667030" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"> <span class="position-relative">Tin tức</span> </a>
-                                    <div class="child-nav d-block dropdown-menu m-0 p-0 border-0" id="child-nav"
-                                        aria-labelledby="dropdown_1667030">
+                                        aria-expanded="false"> <span class="position-relative">News</span> </a>
+                                    <div class="child-nav d-block dropdown-menu header-dropdown m-0 p-0 border-0"
+                                        id="child-nav" aria-labelledby="dropdown_1667030">
                                         <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
-                                            <span>Tin tức</span> </h3>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/events" nav-target=""
-                                            nav-name="TIN TỨC SỰ KIỆN" class="nav-child-item "> <a class="nav-link"
+                                            <span>News</span> </h3>
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/events" nav-target=""
+                                            nav-name="EVENTS" class="nav-child-item "> <a class="nav-link"
                                                 aria-labelledby="layout_908958"
-                                                href="https://admin.vngcloud.vn/web/guest/events" role="menuitem"> <span
-                                                    style="font-size: 16px">TIN TỨC SỰ KIỆN</span> </a> </div>
-                                        <div nav-url="https://admin.vngcloud.vn/web/guest/promotions" nav-target=""
-                                            nav-name="TIN TỨC KHUYẾN MÃI" class="nav-child-item "> <a class="nav-link"
+                                                href="https://admin.vngcloud.vn/en/web/guest/events" role="menuitem">
+                                                <span style="font-size: 16px">EVENTS</span> </a> </div>
+                                        <div nav-url="https://admin.vngcloud.vn/en/web/guest/promotions" nav-target=""
+                                            nav-name="PROMOTIONS" class="nav-child-item "> <a class="nav-link"
                                                 aria-labelledby="layout_1667031"
-                                                href="https://admin.vngcloud.vn/web/guest/promotions" role="menuitem">
-                                                <span style="font-size: 16px">TIN TỨC KHUYẾN MÃI</span> </a> </div>
+                                                href="https://admin.vngcloud.vn/en/web/guest/promotions"
+                                                role="menuitem"> <span style="font-size: 16px">PROMOTIONS</span> </a>
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="nav-item"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
                                         aria-labelledby="layout_908828"
-                                        href="https://admin.vngcloud.vn/web/guest/contact" role="menuitem"><span
-                                            class="position-relative">Liên hệ</span></a> </li>
+                                        href="https://admin.vngcloud.vn/en/web/guest/contact" role="menuitem"><span
+                                            class="position-relative">Contact</span></a> </li>
                                 <li class="nav-item has-child site-wrap" id="site-wrap"> <a href="javascript:void(0)"
                                         class="nav-link menu-main d-flex align-items-center flex-center dropdown-site d-flex t-upper"
                                         data-target="site-wrap" aria-labelledby="dropdown_locale" id="dropdown_locale"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <div class="main-locale-flag"> <img class="img-fluid main-locale-img"
-                                                id="main-locale-img"
-                                                src="https://vngcloud.vn/documents/20126/960997/vietnam.png"> </div>
+                                                id="main-locale-img" src="https://vngcloud.vn/documents/20126/960997/united-states.png">
+                                        </div>
                                         <div class="selected-lang pl-1 pr-2 position-relative" data-target="site-wrap">
-                                            VIE</div>
+                                            ENG</div>
                                     </a>
-                                    <div class="site-menu dropdown-menu m-0 p-0 border-0 child-nav d-block"
+                                    <div class="site-menu dropdown-menu header-dropdown m-0 p-0 border-0 child-nav d-block"
                                         id="site-content" aria-labelledby="dropdown_locale">
                                         <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
-                                            <span>VIE</span> </h3>
-                                        <div class="site-item-wrap d-flex align-items-center selected" data-href="/vi/"
-                                            data-lang="vi"> <span class="nav-site-icon"><img class="img-fluid"
-                                                    src="https://vngcloud.vn/documents/20126/960997/vietnam.png"
-                                                    width="20px"></span>
+                                            <span>ENG</span> </h3>
+                                        <div class="site-item-wrap d-flex align-items-center site-item"
+                                            data-href="/vi/product/evps" data-lang="vi"> <span
+                                                class="nav-site-icon"><img class="img-fluid"
+                                                    src="https://vngcloud.vn/documents/20126/960997/vietnam.png" width="20px"></span>
                                             <div class="nav-site-lang pl-2">VIE</div>
                                         </div>
-                                        <div class="site-item-wrap d-flex align-items-center site-item" data-href="/en/"
-                                            data-lang="en"> <span class="nav-site-icon"><img class="img-fluid"
-                                                    src="https://vngcloud.vn/documents/20126/960997/united-states.png"
-                                                    width="20px"></span>
+                                        <div class="site-item-wrap d-flex align-items-center selected"
+                                            data-href="/en/product/evps" data-lang="en"> <span
+                                                class="nav-site-icon"><img class="img-fluid"
+                                                    src="https://vngcloud.vn/documents/20126/960997/united-states.png" width="20px"></span>
                                             <div class="nav-site-lang pl-2">ENG</div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="nav-item nav-item-btn flex-center pl-3"> <a
                                         class="nav-link flex-center btn btn-default btn-login pt-1 pb-1 pl-3 pr-3 t-upper"
-                                        aria-labelledby="layout_908828" href="https://my.vngcloud.vn?hl=vi"
-                                        target="_blank" role="menuitem"> Đăng nhập </a> </li>
+                                        aria-labelledby="layout_908828" href="https://my.vngcloud.vn?hl=en"
+                                        target="_blank" role="menuitem"> Login </a> </li>
                             </ul>
                             <div class="copyright">© VNG Cloud 2021</div>
                         </nav>
@@ -673,83 +717,113 @@
                                                 data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
                                                 src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png">
                                             <div class="badge badge-danger number promotion-number flex-center"
-                                                id="promotion-number">4</div>
+                                                id="promotion-number">5</div>
                                         </a>
-                                        <ul class="dropdown-menu m-0 p-0 border-0 dropdown-ext"
+                                        <ul class="dropdown-menu header-dropdown m-0 p-0 border-0 dropdown-ext"
                                             aria-labelledby="dropdown_promotion">
                                             <li
                                                 class="dropdown-ext__header d-flex align-items-center justify-content-between position-relative">
-                                                <div class="primary-color"><b>Promotion <span>(4)</span></b></div>
+                                                <div class="primary-color"><b>Promotion <span>(5)</span></b></div>
                                             </li>
-                                            <li class="p-0"><a target="_blank"
-                                                    href="/promotions/tang-mot-trieu-dong-dich-vu-su-dung-cac-giai-phap-ha-tang-thong-minh-tren-cloud"
-                                                    title="VNG Cloud Tặng 1.000.000 đồng Dịch Vụ sử dụng các giải pháp hạ tầng thông minh trên cloud">
-                                                    <div class="promotion-icon flex-center position-absolute"><img
-                                                            class="position-relative"
-                                                            src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
-                                                            width="30px" height="30px"></div>
-                                                    <div class="promotion-desc">
-                                                        <div class="text-truncate">VNG Cloud Tặng 1.000.000 đồng Dịch Vụ
-                                                            sử dụng các giải pháp hạ tầng thông minh trên cloud</div>
-                                                        <p>Với mong muốn tiếp tục đồng hành cùng doanh nghiệp xuyên
-                                                            dịch, VNG Cloud tiếp tục tặng tất cả các khách hàng mới
-                                                            1.000.000 đồng dịch vụ sử dụng các giải pháp hạ tầng thông
-                                                            minh trên cloud.</p>
+                                            <li class="p-0"> <a class="d-flex mb-2 p-2" target="_blank"
+                                                    href="/promotions/tang-mot-tram-phan-tram-phi-dich-vu-thu-nghiem-combo-promotion">
+                                                    <div class="promotion-icon position-relative"> <img
+                                                            class="lazyload position-relative"
+                                                            data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
+                                                            width="30px" height="30px"> </div>
+                                                    <div class="promotion-desc pl-1">
+                                                        <div
+                                                            title="Tặng 100% phí dịch vụ thử nghiệm Combo Promotion cho tất cả các khách hàng mới khi khởi tạo thành công vServer">
+                                                            Tặng 100% phí dịch vụ thử nghiệm Combo Promotion cho tất cả
+                                                            các khách hàng mới khi khởi tạo thành công vServer</div>
+                                                        <p title="Tiếp tục đồng hành cùng doanh nghiệp trong suốt thời gian giãn cách, VNG Cloud tiếp tục tặng 100% phí dịch vụ thử nghiệm Combo Promotion cho tất cả các khách hàng mới khi khởi tạo thành công vServer"
+                                                            class="d-none">Tiếp tục đồng hành cùng doanh nghiệp trong
+                                                            suốt thời gian giãn cách, VNG Cloud tiếp tục tặng 100% phí
+                                                            dịch vụ thử nghiệm Combo Promotion cho tất cả các khách hàng
+                                                            mới khi khởi tạo thành công vServer</p>
                                                     </div>
-                                                </a></li>
-                                            <li class="p-0"><a target="_blank"
-                                                    href="/promotions/nhap-ma-lien-tay-giam-ngay-hai-muoi-phan-tram-dich-vu-ha-tang"
-                                                    title="Nhập mã liền tay - Giảm ngay 20% dịch vụ hạ tầng">
-                                                    <div class="promotion-icon flex-center position-absolute"><img
-                                                            class="position-relative"
-                                                            src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
-                                                            width="30px" height="30px"></div>
-                                                    <div class="promotion-desc">
-                                                        <div class="text-truncate">Nhập mã liền tay - Giảm ngay 20% dịch
-                                                            vụ hạ tầng</div>
-                                                        <p>VNG Cloud dành tặng tất cả khách hàng có tài khoản đăng kí
-                                                            tham gia chương trình SỬ DỤNG THẢ GA, KHÔNG LO VỀ GIÁ hợp lệ
-                                                            mã giảm giá 20% sử dụng một trong các dịch vụ hạ tầng sau
-                                                            đây: vStorage, vCDN, vServer</p>
+                                                </a> </li>
+                                            <li class="p-0"> <a class="d-flex mb-2 p-2" target="_blank"
+                                                    href="/promotions/tang-mot-trieu-dong-dich-vu-su-dung-cac-giai-phap-ha-tang-thong-minh-tren-cloud">
+                                                    <div class="promotion-icon position-relative"> <img
+                                                            class="lazyload position-relative"
+                                                            data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
+                                                            width="30px" height="30px"> </div>
+                                                    <div class="promotion-desc pl-1">
+                                                        <div
+                                                            title="VNG Cloud Tặng 1.000.000 đồng Dịch Vụ sử dụng các giải pháp hạ tầng thông minh trên cloud">
+                                                            VNG Cloud Tặng 1.000.000 đồng Dịch Vụ sử dụng các giải pháp
+                                                            hạ tầng thông minh trên cloud</div>
+                                                        <p title="Với mong muốn tiếp tục đồng hành cùng doanh nghiệp xuyên dịch, VNG Cloud tiếp tục tặng tất cả các khách hàng mới 1.000.000 đồng dịch vụ sử dụng các giải pháp hạ tầng thông minh trên cloud."
+                                                            class="d-none">Với mong muốn tiếp tục đồng hành cùng doanh
+                                                            nghiệp xuyên dịch, VNG Cloud tiếp tục tặng tất cả các khách
+                                                            hàng mới 1.000.000 đồng dịch vụ sử dụng các giải pháp hạ
+                                                            tầng thông minh trên cloud.</p>
                                                     </div>
-                                                </a></li>
-                                            <li class="p-0"><a target="_blank"
-                                                    href="/promotions/ket-noi-xuyen-dich-cung-vng-cloud"
-                                                    title="Miễn phí 30 ngày sử dụng tổng đài - Kết nối xuyên dịch cùng VNG Cloud">
-                                                    <div class="promotion-icon flex-center position-absolute"><img
-                                                            class="position-relative"
-                                                            src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
-                                                            width="30px" height="30px"></div>
-                                                    <div class="promotion-desc">
-                                                        <div class="text-truncate">Miễn phí 30 ngày sử dụng
-                                                            tổng đài - Kết nối xuyên dịch cùng VNG Cloud</div>
-                                                        <p>VNG Cloud giới thiệu chương trình khuyến mãi "Kết nối xuyên
-                                                            dịch với 30 ngày sử dụng miễn phí tổng đài chăm sóc khách
-                                                            hàng", giúp doanh nghiệp nâng cao năng suất làm việc và tăng
-                                                            cường hiệu quả trong việc chăm sóc khách hàng với chi phí rẻ
-                                                            nhất.</p>
+                                                </a> </li>
+                                            <li class="p-0"> <a class="d-flex mb-2 p-2" target="_blank"
+                                                    href="/promotions/nhap-ma-lien-tay-giam-ngay-hai-muoi-phan-tram-dich-vu-ha-tang">
+                                                    <div class="promotion-icon position-relative"> <img
+                                                            class="lazyload position-relative"
+                                                            data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
+                                                            width="30px" height="30px"> </div>
+                                                    <div class="promotion-desc pl-1">
+                                                        <div title="Nhập mã liền tay - Giảm ngay 20% dịch vụ hạ tầng">
+                                                            Nhập mã liền tay - Giảm ngay 20% dịch vụ hạ tầng</div>
+                                                        <p title="VNG Cloud dành tặng tất cả khách hàng có tài khoản đăng kí tham gia chương trình SỬ DỤNG THẢ GA, KHÔNG LO VỀ GIÁ hợp lệ mã giảm giá 20% sử dụng một trong các dịch vụ hạ tầng sau đây: vStorage, vCDN, vServer"
+                                                            class="d-none">VNG Cloud dành tặng tất cả khách hàng có tài
+                                                            khoản đăng kí tham gia chương trình SỬ DỤNG THẢ GA, KHÔNG LO
+                                                            VỀ GIÁ hợp lệ mã giảm giá 20% sử dụng một trong các dịch vụ
+                                                            hạ tầng sau đây: vStorage, vCDN, vServer</p>
                                                     </div>
-                                                </a></li>
-                                            <li class="p-0"><a target="_blank"
-                                                    href="/promotions/kich-hoat-giam-sat-toan-dien-voi-goi-luu-tru-sieu-tiet-kiem-vcloudcam"
-                                                    title="Kích Hoạt Giám Sát Toàn Diện Với Gói Lưu Trữ Siêu Tiết Kiệm vCloudcam">
-                                                    <div class="promotion-icon flex-center position-absolute"><img
-                                                            class="position-relative"
-                                                            src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
-                                                            width="30px" height="30px"></div>
-                                                    <div class="promotion-desc">
-                                                        <div class="text-truncate">Kích Hoạt Giám Sát Toàn Diện Với Gói
-                                                            Lưu Trữ Siêu Tiết Kiệm vCloudcam</div>
-                                                        <p>Trong bối cảnh các biện pháp phòng chống dịch được kích hoạt,
-                                                            doanh nghiệp phải thực hiện các hoạt động giãn cách, giảm
-                                                            tối đa số lượng nhân sự tại các văn phòng, nhà máy, dẫn đến
-                                                            các khó khăn trong việc giám sát, đảm bảo an toàn an ninh.
-                                                            Với các nhu cầu cấp thiết đó, VNG Cloud giới thiệu chương
-                                                            trình ưu đãi đặc biệt: Gói lưu trữ siêu tiết kiệm, chỉ từ
-                                                            9.000vnđ/camera/tháng sử dụng giải pháp quản trị camera toàn
-                                                            diện – vCloudcam VMS, lưu trữ trên cloud.</p>
+                                                </a> </li>
+                                            <li class="p-0"> <a class="d-flex mb-2 p-2" target="_blank"
+                                                    href="/promotions/ket-noi-xuyen-dich-cung-vng-cloud">
+                                                    <div class="promotion-icon position-relative"> <img
+                                                            class="lazyload position-relative"
+                                                            data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
+                                                            width="30px" height="30px"> </div>
+                                                    <div class="promotion-desc pl-1">
+                                                        <div
+                                                            title="Miễn phí 30 ngày sử dụng tổng đài - Kết nối xuyên dịch cùng VNG Cloud">
+                                                            Miễn phí 30 ngày sử dụng tổng đài - Kết nối
+                                                            xuyên dịch cùng VNG Cloud</div>
+                                                        <p title="VNG Cloud giới thiệu chương trình khuyến mãi " kết=""
+                                                            nối="" xuyên="" dịch="" với="" 30="" ngày="" sử="" dụng=""
+                                                            miễn="" phí="" tổng="" đài="" chăm="" sóc="" khách=""
+                                                            hàng",="" giúp="" doanh="" nghiệp="" nâng="" cao="" năng=""
+                                                            suất="" làm="" việc="" và="" tăng="" cường="" hiệu="" quả=""
+                                                            trong="" hàng="" chi="" rẻ="" nhất."="" class="d-none">VNG
+                                                            Cloud giới thiệu chương trình khuyến mãi "Kết nối xuyên dịch
+                                                            với 30 ngày sử dụng miễn phí tổng đài chăm sóc khách hàng",
+                                                            giúp doanh nghiệp nâng cao năng suất làm việc và tăng cường
+                                                            hiệu quả trong việc chăm sóc khách hàng với chi phí rẻ nhất.
+                                                        </p>
                                                     </div>
-                                                </a></li>
+                                                </a> </li>
+                                            <li class="p-0"> <a class="d-flex mb-2 p-2" target="_blank"
+                                                    href="/promotions/kich-hoat-giam-sat-toan-dien-voi-goi-luu-tru-sieu-tiet-kiem-vcloudcam">
+                                                    <div class="promotion-icon position-relative"> <img
+                                                            class="lazyload position-relative"
+                                                            data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
+                                                            width="30px" height="30px"> </div>
+                                                    <div class="promotion-desc pl-1">
+                                                        <div
+                                                            title="Kích Hoạt Giám Sát Toàn Diện Với Gói Lưu Trữ Siêu Tiết Kiệm vCloudcam">
+                                                            Kích Hoạt Giám Sát Toàn Diện Với Gói Lưu Trữ Siêu Tiết Kiệm
+                                                            vCloudcam</div>
+                                                        <p title="Trong bối cảnh các biện pháp phòng chống dịch được kích hoạt, doanh nghiệp phải thực hiện các hoạt động giãn cách, giảm tối đa số lượng nhân sự tại các văn phòng, nhà máy, dẫn đến các khó khăn trong việc giám sát, đảm bảo an toàn an ninh. Với các nhu cầu cấp thiết đó, VNG Cloud giới thiệu chương trình ưu đãi đặc biệt: Gói lưu trữ siêu tiết kiệm, chỉ từ 9.000vnđ/camera/tháng sử dụng giải pháp quản trị camera toàn diện – vCloudcam VMS, lưu trữ trên cloud."
+                                                            class="d-none">Trong bối cảnh các biện pháp phòng chống dịch
+                                                            được kích hoạt, doanh nghiệp phải thực hiện các hoạt động
+                                                            giãn cách, giảm tối đa số lượng nhân sự tại các văn phòng,
+                                                            nhà máy, dẫn đến các khó khăn trong việc giám sát, đảm bảo
+                                                            an toàn an ninh. Với các nhu cầu cấp thiết đó, VNG Cloud
+                                                            giới thiệu chương trình ưu đãi đặc biệt: Gói lưu trữ siêu
+                                                            tiết kiệm, chỉ từ 9.000vnđ/camera/tháng sử dụng giải pháp
+                                                            quản trị camera toàn diện – vCloudcam VMS, lưu trữ trên
+                                                            cloud.</p>
+                                                    </div>
+                                                </a> </li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -772,6 +846,15 @@
     <script src="assets/js/ls.parent-fit.min.js" async></script>
     <script src="assets/js/ls.bgset.min.js" async></script>
     <script src="assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript" src="/o/vng-cloud-theme/js/wow_1_1_2.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
     <script type="text/javascript" defer>
         $(document).ready(function () {
             var wow = new WOW({
@@ -783,13 +866,17 @@
             });
             wow.init();
             var activeMenu = "${activeMenu}",
-                hHeader = 70;
+                hHeader = parseInt("${hHeader}");
             if (activeMenu == "" || ["trang ch\u1ee7", "home"].includes(activeMenu.toLowerCase().trim()))
                 activeMenu = "Menu";
             document.getElementById("active-menu").innerHTML = activeMenu;
             const vHeader = $(".v-header"),
                 prodTab = document.querySelector("#prod-tab"),
-                categoryItems = $(prodTab).find('a');
+                categoryItems = $(prodTab).find('a'),
+                subProduction = document.querySelectorAll(".prod-block.has-child"),
+                prodTabContent = document.querySelector("#prod-tabContent"),
+                productMenu = document.querySelector(".child-nav__full-screen"),
+                subProductActive = document.querySelector(".sub-product.active");
             changeProductMenu();
             $('body').append("<div class='overlay'></div>")
             "${productActive?c}" === "true" && ($('.product-menu').addClass('active'));
@@ -808,6 +895,7 @@
                 changeProductMenu();
             });
             // initLang(${jsonFactoryUtil.looseSerializeDeep(selectedLang)});
+            subProductActive && subProductActive.parentNode.parentNode.classList.add("active");
             $(".navigation-group").on({
                 mouseenter: function () {
                     (!vHeader.hasClass("scrolled")) && (vHeader.addClass("white-bg"));
@@ -816,7 +904,7 @@
                     !vHeader.hasClass("scrolled") && hasDropdownOpened($(this));
                 }
             });
-            $(".v-header").on('click', '.dropdown-menu', function (e) {
+            $(".v-header").on('click', '.header-dropdown', function (e) {
                 e.stopPropagation();
             });
             $('#prod-tab a.category-link').on('click', function (e) {
@@ -850,6 +938,36 @@
             $(".menu__header").on("click", function (e) {
                 e.preventDefault();
                 $(this).parent().removeClass("show").parent().removeClass("show");
+            });
+            productMenu && productMenu.addEventListener("click", function (e) {
+                const isDropdownSubProduct = e.target.parentNode.matches(
+                    "[data-dropdown-sub-product]") || e.target.classList.contains("nav-link");
+                if (!isDropdownSubProduct && e.target.closest('[data-dropdown-product]') !== null)
+                    return;
+
+                let currentDropdown;
+                if (isDropdownSubProduct) {
+                    currentDropdown = e.target.closest('[data-dropdown-product]');
+                    currentDropdown.classList.toggle("is-show");
+                    prodTabContent.classList.toggle("mask");
+
+                    var navLink = $(currentDropdown).find(".nav-link");
+                    navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
+                        .clientHeight + "px"))
+                }
+
+                var opened = false;
+                document.querySelectorAll('[data-dropdown-product].is-show').forEach(function (
+                dropdown) {
+                    if (dropdown === currentDropdown) {
+                        opened = true;
+                        return;
+                    }
+
+                    dropdown.classList.remove("is-show");
+                })
+
+                if (!opened) prodTabContent.classList.remove("mask");
             })
 
             function hasDropdownOpened(target, remove = true) {
@@ -908,1375 +1026,3 @@
 </body>
 
 </html>
-<style type="text/css">
-    @media (min-width: 1600px) {
-        #page_header .navbar {
-            max-width: 1200px;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .v-header .nav-item.has-child .menu-main {
-            padding-left: 15px;
-            padding-right: 25px;
-        }
-
-        .child-nav__full-screen {
-            left: 5%;
-        }
-
-        .dropdown-promotion .number {
-            right: 8px !important;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .v-header.scrolled {
-            height: 60px;
-        }
-
-        .v-header .nav-item.active .menu-main {
-            font-family: "Sarabun Bold", sans-serif;
-        }
-
-        .menu-nav {
-            display: flex;
-            align-items: center;
-        }
-
-        .menu-nav li.nav-item,
-        .menu-main {
-            height: 100%;
-        }
-
-        .v-header.scrolled .nav-link.menu-main {
-            padding-top: 16px;
-            padding-bottom: 16px;
-        }
-
-        .v-navbar .navbar-collapse {
-            height: 100%;
-        }
-
-        .v-header .nav-item .child-nav__full-screen {
-            position: fixed;
-            right: auto;
-            height: auto;
-        }
-
-        .v-header .nav-item .child-nav__full-screen.dropdown-menu {
-            max-height: none;
-        }
-
-        .v-header.header-abs:not(.scrolled) .menu-main {
-            color: #fff;
-        }
-
-        .v-header.white-bg .menu-main {
-            color: var(--dark-blue-2) !important;
-        }
-
-        .prod-category .prod-block .description {
-            -webkit-line-clamp: 3 !important;
-        }
-
-        .v-header .btn-login:hover {
-            background: var(--dark-blue-2-200) !important;
-            border-color: var(--dark-blue-2-200) !important;
-        }
-    }
-
-    @media (min-width: 576px) {
-        .v-header {
-            height: var(--height-header);
-        }
-
-        .v-header:not(.scrolled)~.v-header-mask {
-            height: 70px;
-        }
-    }
-
-    .no-scroll #page_header {
-        z-index: 9999;
-    }
-
-    .v-header {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-        width: 100%;
-        transform: translateY(0);
-        background-color: #fff;
-        transition: all 125ms ease;
-    }
-
-    .v-header.hidden {
-        transform: translateY(-70px);
-    }
-
-    .v-header.header-abs:not(.white-bg) {
-        background-color: transparent;
-    }
-
-    .v-header.header-abs:not(.white-bg) .vng-cloud-logo-main {
-        display: block;
-    }
-
-    .v-header.header-abs:not(.white-bg) .vng-cloud-logo-sub {
-        display: none;
-    }
-
-    .v-header.v-nav-show,
-    .v-header.white-bg {
-        background-color: #fff;
-        box-shadow: 0 2px 4px 0 rgba(76, 76, 75, 0.1);
-    }
-
-    .vng-cloud-logo-main {
-        display: none;
-    }
-
-    .menu-nav .nav-item .child-nav {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .menu-nav .nav-item .child-nav .nav-child-item a {
-        padding: 10px 15px;
-        color: var(--text-body);
-    }
-
-    .menu-nav .nav-item.has-child .child-nav a.nav-link:hover,
-    .menu-nav .nav-item.has-child .nav-child-item:hover>.nav-link {
-        color: var(--vng-orange);
-    }
-
-    .menu-nav .nav-item.has-child .menu-main::before {
-        content: "\f107";
-        position: absolute;
-        font-family: fontawesome-alloy;
-        transition: transform 0.3s;
-    }
-
-    .v-navbar .dropdown-menu {
-        border-radius: 0;
-        overflow: inherit;
-    }
-
-    .site-wrap .dropdown-site.show .selected-lang::before {
-        transform: rotate(-90deg);
-    }
-
-    .main-locale-flag {
-        width: 25px;
-        margin-top: -2px;
-    }
-
-    .site-item-wrap {
-        padding: 5px 10px;
-        cursor: pointer;
-    }
-
-    .site-item-wrap.selected {
-        cursor: not-allowed;
-    }
-
-    .site-wrap.show .selected-lang::before {
-        transform: rotate(-90deg);
-    }
-
-    .nav-child-item.has-child-2 .child-nav-2 {
-        padding: 5px 0;
-    }
-
-    .nav-child-item.has-child-2:hover .child-nav-2 {
-        display: block;
-        right: auto !important;
-        min-width: 300px !important;
-    }
-
-    .selected-lang::after {
-        bottom: 0;
-        left: 5px;
-        right: -10px;
-    }
-
-    .site-item-wrap.site-item:hover {
-        color: var(--vng-orange);
-    }
-
-    .dropdown-promotion .dropdown-menu a {
-        padding: 10px;
-    }
-
-    .dropdown-promotion .dropdown-menu a:active {
-        background-color: rgba(84, 164, 255, 0.19);
-        color: #16181b;
-    }
-
-    .dropdown-promotion .dropdown-menu a:focus-visible {
-        outline: none;
-    }
-
-    .icon-promotion {
-        width: 25px;
-        -webkit-animation-name: gift;
-        animation-name: gift;
-        -webkit-animation-duration: 0.8s;
-        animation-duration: 0.8s;
-        -webkit-animation-delay: 1.5s;
-        animation-delay: 1.5s;
-        -webkit-animation-iteration-count: 5;
-        animation-iteration-count: 5;
-    }
-
-    .dropdown-ext .promotion-desc {
-        padding-left: 40px;
-        padding-bottom: 10px;
-    }
-
-    .dropdown-ext .promotion-desc>div {
-        font-size: 15px;
-        line-height: 20px;
-        margin-top: -5px;
-    }
-
-    .dropdown-ext .promotion-desc>div:hover {
-        color: var(--dark-blue-2);
-    }
-
-    .dropdown-ext .promotion-desc>p {
-        color: #8f9294;
-        font-size: 13px;
-        margin-bottom: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .promotion-icon::before {
-        content: "";
-        position: absolute;
-        background-color: #56a4ff;
-        left: -2px;
-        top: -2px;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-    }
-
-    .dropdown-ext__header {
-        padding: 1rem 15px;
-    }
-
-    ul.menu-nav .nav-item.show .dropdown-menu {
-        opacity: 1;
-        pointer-events: auto;
-        z-index: 3;
-    }
-
-    .v-header .dropdown-promotion .dropdown-menu {
-        left: auto;
-        right: 0;
-        top: 100%;
-        min-width: 300px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        overflow-y: auto;
-    }
-
-    .v-header .dropdown-promotion .number {
-        position: absolute;
-        border-radius: 50%;
-        right: -8px;
-        top: -8px;
-        font-size: 10px;
-    }
-
-    .menu-prod-wrapper .tab-content {
-        overflow: auto;
-        background-color: #f5f6f6;
-    }
-
-    .menu-prod-wrapper .tab-content>.active {
-        display: flex;
-    }
-
-    .menu-prod-wrapper .tab-content::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    .menu-prod-wrapper .tab-content::-webkit-scrollbar-track {
-        background-color: #f5f6f6;
-    }
-
-    .menu-prod-wrapper .tab-content::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        background-color: #d7d7d7;
-    }
-
-    .menu-prod-wrapper .tab-pane {
-        margin: 0 auto;
-        padding: 15px;
-    }
-
-    .prod-group .nav-link {
-        border-radius: 0;
-        color: #000;
-        font-size: 18px;
-    }
-
-    .prod-group .nav-link.active {
-        color: var(--vng-orange);
-        background-color: transparent;
-    }
-
-    .prod-group .nav-link:hover {
-        color: var(--vng-orange);
-    }
-
-    .prod-group>.nav-link:not(.active) {
-        padding-top: 0.5rem !important;
-    }
-
-    .prod-group .category:not(.show) .category-desc {
-        padding: 0 !important;
-    }
-
-    .prod-group .nav-link.active,
-    .prod-category .category-name {
-        font-family: "Sarabun Bold", sans-serif;
-    }
-
-    .prod-category .category-name {
-        color: #39519F;
-        font-size: 18px;
-    }
-
-    .prod-category.inline .category-name {
-        flex-shrink: 0;
-    }
-
-    .prod-category.inline .prod-block__wrapper {
-        flex-grow: 1;
-    }
-
-    .prod-category.inline .prod-block {
-        height: 100%;
-    }
-
-    .prod-category.inline .prod-block:not(:first-child) {
-        margin-top: 20px;
-    }
-
-    .prod-category .prod-block .title {
-        color: #000;
-    }
-
-    .prod-category .prod-block .description {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        font-size: 13px;
-        overflow: hidden;
-        font-family: "Sarabun Light", sans-serif;
-    }
-
-    .prod-category .prod-block.active .nav-link .title {
-        color: var(--vng-orange);
-        font-family: "Sarabun Bold", sans-serif;
-    }
-
-    .prod-category .prod-block:hover .title {
-        color: var(--vng-orange);
-        font-weight: 600;
-    }
-
-    .prod-group .category:not(:last-child)::before {
-        content: "";
-        position: absolute;
-        height: 1px;
-    }
-
-    .fancy-img {
-        cursor: zoom-in;
-    }
-
-    .fancybox-thumbs__list {
-        display: flex;
-        justify-content: center;
-        width: 100% !important;
-    }
-
-    @media (max-width: 768px) {
-        .fancybox-thumbs {
-            width: 100% !important;
-            left: 0;
-            top: unset !important;
-        }
-
-        .fancybox-show-thumbs .fancybox-inner {
-            right: 0 !important;
-        }
-
-        .fancybox-caption {
-            bottom: 90px;
-        }
-    }
-
-    @media (min-width: 800px) {
-        .fancybox-thumbs {
-            top: auto;
-            width: auto;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 95px;
-            padding: 10px 10px 5px 10px;
-            box-sizing: border-box;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .fancybox-show-thumbs .fancybox-inner {
-            right: 0;
-            bottom: 95px;
-        }
-    }
-
-    @-webkit-keyframes gift {
-        25% {
-            transform: rotate(10deg);
-        }
-
-        50% {
-            transform: rotate(-10deg);
-        }
-
-        75% {
-            transform: rotate(10deg);
-        }
-
-        100% {
-            transform: rotate(-10deg);
-        }
-    }
-
-    @keyframes gift {
-        25% {
-            transform: rotate(10deg);
-        }
-
-        50% {
-            transform: rotate(-10deg);
-        }
-
-        75% {
-            transform: rotate(10deg);
-        }
-
-        100% {
-            transform: rotate(-10deg);
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .v-header .nav-item:not(.has-child) .menu-main {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .prod-category:not(.inline) .prod-block__wrapper {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .menu-nav .nav-item.has-child .menu-main::before {
-            right: 10px;
-        }
-
-        .menu-nav .nav-item.site-wrap .menu-main::before {
-            right: 15px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        .menu-prod-wrapper .tab-pane {
-            max-width: 95%;
-        }
-
-        .prod-category:not(.inline) .prod-block__wrapper {
-            display: grid;
-            gap: 20px;
-        }
-    }
-
-    @media (max-width: 991.98px) {
-        .prod-category .category-name.not-category {
-            display: none;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 991.98px) {
-        .prod-category .prod-block {
-            margin-bottom: 1rem;
-        }
-    }
-
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-        .prod-category:not(.inline) .prod-block__wrapper {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width: 1024px) and (max-width: 1199.98px) {
-        #page_header .navbar {
-            max-width: 100%;
-        }
-
-        .v-header .nav-item .child-nav__full-screen {
-            max-width: 100%;
-        }
-
-        .v-header .nav>li>a {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        .nav-item-btn {
-            padding-right: 1rem;
-        }
-
-        .nav-item.has-child .menu-main::before {
-            right: 2px;
-        }
-
-        .menu-nav .nav-item.site-wrap .menu-main::before {
-            right: 10px;
-        }
-    }
-
-    @media (min-width: 1024px) {
-
-        .v-header.white-bg .nav-item.show,
-        .v-header.white-bg .nav-item:not(.nav-item-btn):hover {
-            background-color: #f5f6f6;
-        }
-
-        .toggle-logo {
-            display: none;
-        }
-
-        ul.menu-nav .nav-item.show .child-nav__full-screen {
-            top: var(--height-header);
-        }
-
-        .v-header .nav-link.menu-main,
-        .site-wrap .dropdown-site {
-            letter-spacing: -1px;
-            line-height: 26px;
-            font-size: 16px;
-        }
-
-        .nav-item .child-nav-2 a.nav-link {
-            padding-left: 25px;
-        }
-
-        .v-header.v-nav-show .nav-link.menu-main {
-            color: var(--dark-blue-2);
-        }
-
-        .v-header.v-nav-show .nav-item .menu-main::after {
-            background-color: var(--dark-blue-2);
-        }
-
-        .v-header .menu-main>span::after {
-            content: " ";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -5px;
-            height: 2px;
-            background-color: var(--dark-blue-2);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .v-header .navbar .nav-item.active .menu-main>span::after {
-            opacity: 1;
-        }
-
-        .v-header .btn-login {
-            background-color: var(--dark-blue-2);
-            border-color: var(--dark-blue-2);
-        }
-
-        .v-header.header-abs:not(.white-bg) .btn-login {
-            background-color: var(--vng-orange);
-            border-color: var(--vng-orange);
-        }
-
-        .v-header.header-abs:not(.white-bg) .menu-main>span::after {
-            background-color: #fff;
-        }
-
-        .v-header.scrolled .menu-main>span::after {
-            bottom: 0;
-        }
-
-        .v-header.scrolled .navbar .nav-item .menu-main::after {
-            bottom: 16px;
-        }
-
-        .v-header ul.menu-nav {
-            height: 100%;
-            position: relative;
-            margin-left: auto;
-        }
-
-        .v-header ul.menu-nav .nav-item.show .menu-main::before {
-            transform: rotate(-90deg);
-        }
-
-        .v-header .dropdown-promotion .dropdown-menu {
-            top: calc(100% - 10px);
-        }
-
-        .v-navbar .site-menu.dropdown-menu::after {
-            left: 30px;
-        }
-
-        .navigation-group {
-            display: flex;
-            margin-left: auto;
-            height: 100%;
-        }
-
-        .nav-child-item.has-child-2 .child-nav-2 {
-            background-color: #f5f6f6;
-            padding: 5px 0;
-            min-width: 300px;
-            position: absolute;
-            top: 0;
-            left: 100%;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08);
-        }
-
-        .nav-item.has-child .child-nav {
-            min-width: 300px;
-        }
-
-        .site-wrap .dropdown-site .selected-lang::before {
-            right: auto;
-            left: 100%;
-        }
-
-        .site-wrap .site-menu {
-            max-width: 200px;
-            min-width: 120px !important;
-        }
-
-        .mobile-g-btn {
-            display: none !important;
-        }
-
-        .nav-item .child-nav:not(.child-nav__full-screen) .nav-child-item a.active {
-            color: var(--vng-orange) !important;
-        }
-
-        .nav-child-item.has-child-2>.nav-link::after {
-            transform: rotate(90deg);
-            padding-left: 0;
-            transition: transform 0.3s;
-        }
-
-        .nav-child-item.has-child-2:hover {
-            color: var(--vng-orange) !important;
-        }
-
-        .nav-child-item.has-child-2:hover .nav-link::after {
-            transform: rotate(0);
-        }
-
-        .menu-prod-wrapper .tab-content {
-            height: calc(100vh - var(--height-header) - 30px);
-            max-height: calc(100vh - var(--height-header) - 30px);
-        }
-
-        .prod-group {
-            width: 430px;
-            min-width: 430px;
-        }
-
-        .prod-group .category .category-desc .desc {
-            padding-left: 30px;
-        }
-
-        .prod-group .category .category-desc .desc::before {
-            content: "";
-            position: absolute;
-            left: 15px;
-            top: 5px;
-            bottom: 5px;
-            width: 1px;
-            background-color: #efeaea;
-        }
-
-        .copyright {
-            display: none;
-        }
-
-        .prod-category.inline:nth-child(1) .prod-block__wrapper {
-            margin-right: calc(40px / 3);
-        }
-
-        .prod-category.inline:nth-child(2)>div {
-            margin-left: calc(40px / 6);
-            margin-right: calc(40px / 6);
-        }
-
-        .prod-category.inline:nth-child(3)>div {
-            margin-left: calc(40px / 3);
-        }
-    }
-
-    @media (min-width: 768px) {
-        .menu-nav .nav-item .child-nav {
-            z-index: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .menu-nav .dropdown-menu.child-nav__full-screen {
-            background-color: #eaebee;
-        }
-
-        .menu-nav .nav-item .child-nav.dropdown-menu:not(.child-nav__full-screen) {
-            background-color: #f5f6f6;
-        }
-
-        .menu-nav .nav-item.has-child {
-            position: relative;
-        }
-
-        .menu__header {
-            display: none;
-        }
-
-        ul.menu-nav .nav-item.show .dropdown-menu {
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .prod-category .prod-block {
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
-            border-radius: 9px;
-            transition: transform 1s cubic-bezier(0.08, 0.52, 0.52, 1);
-        }
-
-        .prod-group .category .category-desc {
-            opacity: 0;
-            visibility: hidden;
-            max-height: 0;
-            transition: opacity 0.3s, max-height 0.3s cubic-bezier(0.08, 0.52, 0.52, 1);
-        }
-
-        .prod-group .category .category-desc .desc {
-            font-size: 15px;
-        }
-
-        .prod-group .category.show {
-            background-color: #fff;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
-            border-radius: 5px;
-        }
-
-        .prod-category .category-name {
-            margin-bottom: .5rem;
-        }
-
-        .prod-group .category.show .category-desc {
-            max-height: 1000px;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .prod-category .prod-block.active::before {
-            border-color: var(--vng-orange);
-        }
-
-        .prod-category .prod-block::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 1.5px solid #fff;
-            border-radius: inherit;
-        }
-
-        .prod-category .prod-block .description {
-            color: #585858;
-        }
-
-        .prod-group .category:not(:last-child)::before {
-            left: 1rem;
-            bottom: -1rem;
-            right: 0;
-            background-color: rgba(57, 81, 159, 0.3);
-        }
-
-        .prod-category .prod-block:hover {
-            transform: translateY(-5px);
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 10px;
-        }
-    }
-
-    @media (max-width: 1023.98px) {
-        .v-header.white-bg .mobile-g-btn .active-menu {
-            color: var(--dark-blue-2);
-        }
-
-        .v-header .nav-child-item.has-child-2 .child-nav-2 {
-            left: 0;
-            background-color: transparent;
-            position: relative;
-            padding-left: 15px;
-            display: block;
-        }
-
-        .v-header .btn-login:hover {
-            background-color: #dc5c23;
-            border-color: #dc5c23;
-            text-decoration: underline;
-        }
-
-        .menu-nav {
-            margin-top: 60px;
-        }
-
-        .mobile-g-btn .active-menu {
-            color: #fff;
-            font-family: "Sarabun Bold", sans-serif;
-        }
-
-        .mobile-g-btn .navbar-toggle {
-            cursor: pointer;
-            margin-right: 0;
-            padding: 0;
-            border-radius: 0;
-        }
-
-        .nav-item-btn .btn-login {
-            background-color: var(--vng-orange);
-            border-color: var(--vng-orange);
-        }
-
-        #page_header .mobile-opacity {
-            position: absolute;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 350ms, transform 350ms ease-out, visibility 0s 350ms;
-            transition-delay: 0.262s, 0.262s;
-        }
-
-        #page_header .navbar .navbar-collapse .toggle-logo {
-            left: 10px;
-            top: 5px;
-        }
-
-        #page_header .navbar .navbar-collapse.show .mobile-opacity {
-            opacity: 1;
-            visibility: visible;
-            transform: translate3d(0, 0, 0);
-            -webkit-transform: translate3d(0, 0, 0);
-        }
-
-        #page_header .navbar .navbar-collapse .toggle-logo img {
-            max-height: 50px;
-        }
-
-        #page_header .navbar .navbar-collapse .navbar-toggle {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            margin-right: 0;
-            cursor: pointer;
-            display: block;
-            transform: translate3d(10px, 0, 0);
-        }
-
-        #page_header .navbar .navbar-collapse .navbar-toggle svg {
-            transform: rotate(180deg);
-            transition: transform 450ms ease-out;
-        }
-
-        .navbar-header {
-            width: 100%;
-        }
-
-        .v-navbar .navbar-collapse {
-            position: fixed;
-            top: 0;
-            background-color: #fff;
-            transition: left 0.3s;
-            z-index: 1000;
-            height: 100vh;
-        }
-
-        #page_header .navbar .navbar-collapse .navbar-toggle,
-        .menu-nav .nav-item {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 450ms, transform 450ms ease-out, visibility 0s 450ms;
-            transition-delay: 0.362s, 0.362s;
-        }
-
-        #page_header .navbar .navbar-collapse.show .menu-nav .nav-item {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .nav-link.menu-main {
-            color: #484848;
-            padding-top: 16px;
-            padding-bottom: 16px;
-        }
-
-        .v-header .nav-item.active .menu-main,
-        .site-item-wrap.selected,
-        .v-header .nav-item:not(.active).has-child.show .menu-main,
-        .v-header .site-wrap.show .selected-lang {
-            color: var(--vng-orange);
-        }
-
-        .menu-nav .nav-item .child-nav:not(.child-nav__full-screen) .nav-child-item a,
-        .site-item-wrap {
-            padding-left: 30px;
-        }
-
-        .nav-child-item.has-child-2 .nav-link>span {
-            padding-right: 10px;
-        }
-
-        .child-nav__full-screen .nav-child-item .description {
-            font-size: 15px;
-        }
-
-        .v-header .nav-link.menu-main,
-        .btn-login {
-            font-size: 18px;
-            font-family: "Sarabun Bold", sans-serif;
-        }
-
-        .site-wrap .dropdown-site,
-        .v-header .menu-nav .nav-item.nav-item-btn {
-            justify-content: flex-start;
-        }
-
-        .v-navbar .navbar-collapse {
-            left: -100%;
-        }
-
-        .v-navbar .navbar-collapse.show {
-            left: 0;
-        }
-
-        .nav-item-btn {
-            padding-top: 16px;
-            padding-bottom: 16px;
-        }
-
-        .mobile-g-btn .navbar-toggle img {
-            display: none;
-        }
-
-        .v-header.header-abs:not(.white-bg) .abs-icon,
-        .v-header.white-bg .pos-icon,
-        .v-header.v-nav-show .pos-icon {
-            display: block;
-        }
-
-        .site-wrap .dropdown-site .selected-lang::before {
-            right: -10px;
-        }
-
-        .nav-item .child-nav .nav-link.active {
-            color: var(--vng-orange);
-        }
-
-        .nav-item .child-nav.dropdown-menu {
-            max-width: 100%;
-        }
-
-        .nav-item.has-child .menu-main::before {
-            right: 20px;
-            font-size: 25px;
-        }
-
-        .nav-item.show .menu-main::after {
-            height: 100%;
-        }
-
-        .nav-item .menu-main::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 0;
-            background-color: var(--vng-orange);
-            transition: height 0.3s;
-        }
-
-        .options-menu {
-            position: absolute;
-            top: calc(50% - 13px);
-            right: 20px;
-        }
-
-        .copyright {
-            position: absolute;
-            left: 20px;
-            bottom: 10px;
-            color: #484848;
-        }
-
-        .nav-child-item.has-child-2>.nav-link::after {
-            content: none;
-        }
-
-        .child-nav-2 .nav-link::before {
-            content: "";
-            position: absolute;
-            left: 15px;
-            top: 25px;
-            width: 14px;
-            height: 1px;
-            background-color: #aaa;
-        }
-
-        .child-nav-2::before {
-            content: "";
-            position: absolute;
-            left: 30px;
-            top: -5px;
-            bottom: 23px;
-            width: 1px;
-            background-color: #aaa;
-        }
-
-        .menu-prod-wrapper .tab-content {
-            height: calc(100vh - 420px);
-            max-height: calc(100vh - 420px);
-        }
-
-        .no-scroll {
-            overflow: hidden;
-        }
-    }
-
-    @media (min-width: 576px) and (max-width: 1055.98px) {
-        .menu-prod-wrapper .cloud-container {
-            max-width: 100% !important;
-        }
-    }
-
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-        #page_header .v-header.v-nav-show .v-navbar {
-            box-shadow: none;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 1055.98px) {
-        .prod-category.inline {
-            max-width: 50%;
-            flex: 0 0 50%;
-        }
-
-        .prod-category.inline:nth-child(1) .prod-block__wrapper {
-            margin-right: 10px;
-        }
-
-        .prod-category.inline:nth-child(2)>div {
-            margin-left: 5px;
-            margin-right: 5px;
-        }
-
-        .prod-category.inline:nth-child(3)>div {
-            margin-left: 10px;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 1023.98px) {
-        .menu-nav {
-            margin-top: 80px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .v-header ul.menu-nav .nav-item .child-nav {
-            max-height: 0;
-            visibility: hidden;
-            float: none;
-            -webkit-transition: all 300ms ease-in-out;
-            -moz-transition: all 300ms ease-in-out;
-            -o-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out;
-            position: relative;
-        }
-
-        .nav-item.has-child .child-nav {
-            background-color: #f4f4f4;
-        }
-
-        #page_header .mobile-opacity {
-            transform: translate3d(0, -50px, 0);
-        }
-
-        #page_header .navbar .navbar-collapse.show .menu-nav .nav-item {
-            transform: translate3d(0, 0, 0);
-            -webkit-transform: translate3d(0, 0, 0);
-        }
-
-        .v-header ul.menu-nav .nav-item.show .child-nav {
-            opacity: 1;
-            visibility: visible;
-            max-height: 1000px;
-        }
-
-        .nav-item-btn,
-        .nav-link.menu-main {
-            padding-left: 30px !important;
-        }
-
-        #page_header .navbar .navbar-collapse .toggle-logo {
-            left: 20px;
-            top: 20px;
-        }
-
-        #page_header .navbar .navbar-collapse .navbar-toggle {
-            top: 25px;
-        }
-
-        .prod-group {
-            width: 50%;
-            flex-shrink: 0;
-        }
-
-        .prod-group .category.show .category-desc .img {
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .v-navbar .navbar-collapse {
-            right: 0;
-        }
-
-        .v-header ul.menu-nav .nav-item.show .nav-link::before {
-            transform: rotate(-90deg);
-        }
-    }
-
-    @media (max-width: 767.98px) {
-
-        .v-header,
-        .v-header-mask {
-            height: 56px;
-        }
-
-        .v-navbar .navbar-collapse {
-            width: 320px;
-        }
-
-        .v-navbar .navbar-collapse.show {
-            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.11);
-        }
-
-        .nav-item.has-child .child-nav {
-            background-color: #fff;
-        }
-
-        .v-header ul.menu-nav .nav-item .child-nav {
-            top: 56px;
-            bottom: 0;
-            transform: translateX(100%);
-            width: 100%;
-            max-height: 100%;
-            overflow: auto;
-            transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
-        }
-
-        .v-header ul.menu-nav .nav-item .child-nav.child-nav__full-screen {
-            padding-bottom: 80px !important;
-        }
-
-        .v-header ul.menu-nav .nav-item.show .child-nav {
-            transform: translateX(0);
-        }
-
-        .prod-group .category:not(:last-child)::before {
-            bottom: 0;
-            left: 30px;
-            right: 15px;
-            background-color: #ddd;
-        }
-
-        .prod-group .category-link {
-            padding-left: 30px !important;
-            padding-right: 50px !important;
-        }
-
-        .prod-group .category .category-desc {
-            padding-right: 1rem;
-        }
-
-        .prod-group .category .prod-group .category>.nav-link,
-        .prod-group .category .category-desc {
-            padding-left: 30px !important;
-        }
-
-        .prod-group .category.show {
-            padding-bottom: 1rem;
-        }
-
-        .prod-category .prod-block {
-            background-color: transparent !important;
-        }
-
-        .prod-group .prod-block.active .description {
-            color: #000;
-        }
-
-        .prod-category .prod-block:not(.active) .description {
-            color: #8c8c8c;
-        }
-
-        .prod-category .prod-block:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 15px;
-            right: 0;
-            bottom: 0;
-            background-color: #ddd;
-            height: 1px;
-        }
-
-        .menu__header {
-            display: flex;
-            padding-top: 15px;
-            padding-right: 20px;
-            padding-bottom: 15px;
-            padding-left: 20px;
-            background-color: #f2fafe;
-        }
-
-        .menu__header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            height: 0;
-            left: 0;
-            width: 3px;
-            background-color: var(--dark-blue-2);
-            transition: height 300ms ease;
-        }
-
-        ul.menu-nav .nav-item.show .menu__header::before {
-            height: 100%;
-        }
-
-        .menu__header::after {
-            content: "\f104";
-            font-family: fontawesome-alloy;
-            position: absolute;
-            right: 15px;
-        }
-
-        .nav-item.has-child .menu-main::before {
-            transform: rotate(-90deg);
-        }
-
-        .prod-category .category-name {
-            background-color: #f2fafe;
-            padding: 10px;
-            text-transform: uppercase;
-        }
-
-        .prod-group .category .category-link::after {
-            content: "\f114";
-            font-family: 'fontawesome-alloy';
-            position: absolute;
-            right: 15px;
-            top: 18px;
-            font-size: 16px;
-            color: #444444;
-        }
-
-        .prod-group .category.show .category-link::after {
-            content: "\f115";
-            color: var(--vng-orange);
-        }
-
-        .main-locale-flag {
-            margin-right: .5rem;
-        }
-    }
-
-    @media (max-width: 575.98px) {
-        .mobile-g-btn .active-menu {
-            display: none;
-        }
-
-        .menu-nav::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #ddd;
-            height: 1px;
-        }
-
-        .v-header .child-nav__full-screen {
-            background-color: #fff !important;
-        }
-
-        .menu-prod-wrapper .tab-content {
-            display: none;
-        }
-
-        .prod-group {
-            display: block;
-        }
-
-        .prod-group .category .prod-category {
-            display: none;
-        }
-
-        .prod-group .category.show .prod-category {
-            display: block;
-            padding-top: 0.5rem;
-        }
-
-        .prod-group .category:not(.show) .category-desc {
-            display: none;
-        }
-
-        .nav-item-btn {
-            display: block;
-            padding-right: 1rem;
-        }
-    }
-
-    .overlay {
-        display: none;
-        position: fixed;
-        z-index: 3200;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-</style>

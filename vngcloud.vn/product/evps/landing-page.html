@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>eVPS - Landing Page</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/vngcloud3.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/css/header.css"> -->
+    <link href="../../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/custom-header.css" rel="stylesheet" type="text/css">
+    <link href="landing-page.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header id="header-area" class="header-area" role="banner">
+        <div class="navbar mu-navbar navbar-fixed-top transition-all" id="v-navbar">
+            <div class="cloud-container v-section-inner">
+                <div class="navbar-header position-relative">
+                    <button type="button" id="nav-toggle" class="navbar-toggle collapsed p-0" data-toggle="collapse"
+                        data-target="#navigation-menu" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand logo p-0" href="https://vngcloud.vn" target="_blank">
+                        <img class="logo-main img-fluid lazyload"
+                            data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color-white-trimmed.png"
+                            alt="vng-cloud-logo">
+                        <img class="logo-sub img-fluid lazyload"
+                            data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png"
+                            alt="vng-cloud-logo">
+                    </a>
+                </div>
+                <nav id="navigation-menu" class="collapse navbar-collapse">
+                    <a id="nav-toggle" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navigation-menu" aria-expanded="false" title="Toggle Menu"> <svg
+                            xmlns="http://www.w3.org/2000/svg" width="14" height="26" viewBox="0 0 14 26">
+                            <g fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="square" stroke-width="2"
+                                transform="translate(2 2)">
+                                <path d="M0,11 L10,0"></path>
+                                <path d="M0,22 L10,11" transform="matrix(1 0 0 -1 0 33)"></path>
+                            </g>
+                        </svg> </a>
+                    <ul class="nav navbar-nav menu-nav">
+                        <li class="text-center"><a href="#features" class="position-relative">Tính năng eVPS</a></li>
+                        <li class="text-center"><a href="#benefits" class="position-relative">Tại sao chọn eVPS</a></li>
+                        <li class="text-center"><a href="#pricing" class="position-relative">Ưu đãi</a></li>
+                        <li class="text-center"><a href="#contact" class="position-relative">Hỗ trợ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div style="background-color: #00acd4;height: 100vh;"></div>
+    <div id="s-features" style="background-color: red;height: 500px;">
+        <div id="features" style="max-width: 90%;margin:0 auto;padding: 0 15px;transform: translateY(-50px);background-color: #fff;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <div class="s-margin-height">&nbsp;</div>
+            <div class="v-cloud-title text-center">Features</div>
+            <div class="s-margin-height">&nbsp;</div>
+        </div>
+    </div>
+    <div id="benefits" style="background-color: yellow;height: 500px;">
+        <div class="s-margin-height">&nbsp;</div>
+        <div class="v-cloud-title text-center">Benfits</div>
+        <div class="s-margin-height">&nbsp;</div>
+    </div>
+    <div id="pricing" style="background-color: blue;height: 500px;">
+        <div class="s-margin-height">&nbsp;</div>
+        <div class="v-cloud-title text-center">Pricing</div>
+        <div class="s-margin-height">&nbsp;</div>
+    </div>
+    <div id="contact" style="background-color: green;height: 1000px;">
+        <div class="s-margin-height">&nbsp;</div>
+        <div class="v-cloud-title text-center">Contact us</div>
+        <div class="s-margin-height">&nbsp;</div>
+    </div>
+    
+
+    <script src="../../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/wow.min.js"></script>
+    <script src="../../assets/js/lazysizes.min.js" async></script>
+    <script src="../../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../../assets/js/ls.bgset.min.js" async></script>
+    <script src="../../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <!-- <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script> -->
+    
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+            var lastSt = 0;
+            const vHeader = document.querySelector("#v-navbar"),
+                menuNav = document.querySelector(".menu-nav"),
+                offset = 30;
+
+            const menuItems = $(menuNav).find("a"),
+                scrollItems = menuItems.map(function (index, ele) {
+                    let href = $(this).attr("href");
+                    if (href.indexOf("#") === 0) {
+                        var item = $(href);
+                        if (item.length > 0) {
+                            ele.addEventListener("click", function(e) {
+                                e.preventDefault();
+                                scrollToDiv(href);
+                            });
+
+                            return item;
+                        }
+                    }
+                })
+            onScrollWindow();
+            $(window).bind("scroll", function () {
+                onScrollWindow();
+            });
+
+            function onScrollWindow() {
+                var scrollTop = $(window).scrollTop();
+                vHeader && scrollTop > 100 ? vHeader.classList.add("mu-nav-show") : vHeader.classList
+                    .remove("mu-nav-show");
+
+                var fromTop = scrollTop + vHeader.offsetHeight + offset;
+                var cur = scrollItems.map(function (e) {
+                    if ($(this).offset().top < fromTop && $(this).offset().top + $(this).outerHeight() >
+                        fromTop) return this
+                });
+                cur = cur[cur.length - 1];
+                if (cur && cur.length > 0) menuItems.parent().removeClass("active").end().filter("[href\x3d'#" +
+                    cur[0].id + "']").parent().addClass("active");
+                else menuItems.parent().removeClass("active");
+                lastSt = scrollTop;
+            }
+
+            function scrollToDiv(href) {
+                var offsetTop = $(href).offset().top - vHeader.offsetHeight + offset;
+                $("html, body").stop().animate({
+                    scrollTop: offsetTop
+                }, 800)
+            }
+        });
+    </script>
+</body>

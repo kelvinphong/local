@@ -96,6 +96,11 @@ window.location.href= "${redirect}";
         }
     }
 
+    .v-cloud-title span,
+    .v-cloud-title p {
+        font-size: inherit !important;
+    }
+
     .no-scroll #page_header {
         z-index: 9999;
     }
@@ -207,10 +212,6 @@ window.location.href= "${redirect}";
         color: var(--vng-orange);
     }
 
-    .dropdown-promotion .dropdown-menu a {
-        padding: 10px;
-    }
-
     .dropdown-promotion .dropdown-menu a:active {
         background-color: rgba(84, 164, 255, 0.19);
         color: #16181b;
@@ -233,14 +234,16 @@ window.location.href= "${redirect}";
     }
 
     .dropdown-ext .promotion-desc {
-        padding-left: 40px;
-        padding-bottom: 10px;
+        flex: 1;
     }
 
     .dropdown-ext .promotion-desc>div {
         font-size: 15px;
         line-height: 20px;
-        margin-top: -5px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .dropdown-ext .promotion-desc>div:hover {
@@ -257,12 +260,23 @@ window.location.href= "${redirect}";
         overflow: hidden;
     }
 
+    .promotion-icon {
+        width: 40px;
+        flex-shrink: 0;
+        margin-top: 5px;
+    }
+
+    .promotion-icon img {
+        margin-top: 1px;
+        margin-left: 2px;
+    }
+
     .promotion-icon::before {
         content: "";
         position: absolute;
         background-color: #56a4ff;
-        left: -2px;
-        top: -2px;
+        left: 0;
+        top: 0;
         width: 34px;
         height: 34px;
         border-radius: 50%;
@@ -298,6 +312,7 @@ window.location.href= "${redirect}";
     .menu-prod-wrapper .tab-content {
         overflow: auto;
         background-color: #f5f6f6;
+        position: relative;
     }
 
     .menu-prod-wrapper .tab-content>.active {
@@ -367,6 +382,10 @@ window.location.href= "${redirect}";
         height: 100%;
     }
 
+    .prod-block:not(.is-show) a {
+        height: 100%;
+    }
+
     .prod-category.inline .prod-block:not(:first-child) {
         margin-top: 20px;
     }
@@ -389,15 +408,40 @@ window.location.href= "${redirect}";
         font-family: "Sarabun Bold", sans-serif;
     }
 
-    .prod-category .prod-block:hover .title {
-        color: var(--vng-orange);
-        font-weight: 600;
-    }
-
     .prod-group .category:not(:last-child)::before {
         content: "";
         position: absolute;
         height: 1px;
+    }
+
+    .menu-prod-wrapper .tab-content.mask::before {
+        position: absolute;
+        z-index: 1;
+    }
+
+    .menu-prod-wrapper .tab-content::before {
+        content: "";
+
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #1d2021;
+        opacity: .3;
+        transition: opacity 125ms ease;
+    }
+
+    .prod-category .prod-block.is-show {
+        z-index: 1;
+    }
+
+    .sub-product a {
+        padding-left: 25px !important;
+    }
+
+    .sub-product.active .title {
+        color: var(--vng-orange);
+        font-weight: 600;
     }
 
     .fancy-img {
@@ -738,6 +782,10 @@ window.location.href= "${redirect}";
         .prod-category.inline:nth-child(3)>div {
             margin-left: calc(40px / 3);
         }
+
+        .prod-block.is-show .nav-link {
+            padding-bottom: 0 !important;
+        }
     }
 
     @media (min-width: 768px) {
@@ -767,9 +815,12 @@ window.location.href= "${redirect}";
             pointer-events: auto;
         }
 
-        .prod-category .prod-block {
+        .prod-category .prod-block:not(.is-show) {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
             border-radius: 9px;
+        }
+
+        .prod-category .prod-block {
             transition: transform 1s cubic-bezier(0.08, 0.52, 0.52, 1);
         }
 
@@ -800,7 +851,7 @@ window.location.href= "${redirect}";
             visibility: visible;
         }
 
-        .prod-category .prod-block.active::before {
+        .prod-category .prod-block.active:not(.is-show)::before {
             border-color: var(--vng-orange);
         }
 
@@ -826,9 +877,52 @@ window.location.href= "${redirect}";
             background-color: rgba(57, 81, 159, 0.3);
         }
 
-        .prod-category .prod-block:hover {
+        .prod-category .prod-block:not(.is-show):hover {
             transform: translateY(-5px);
             box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 10px;
+        }
+
+        .sub-product-menu {
+            position: absolute;
+            top: calc(var(--h) + 10px);
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            transform: scaleY(0);
+            transform-origin: top center;
+            z-index: 1;
+            transition: transform 125ms ease;
+        }
+
+        .prod-block.is-show .sub-product-menu {
+            transform: scaleY(1);
+        }
+
+        .prod-category .prod-block:not(.is-show):hover .title {
+            color: var(--vng-orange);
+            font-weight: 600;
+        }
+
+        .sub-product:hover {
+            background-color: #f4f4f4;
+        }
+
+        .prod-category .prod-block.is-show .nav-link .title {
+            color: var(--vng-orange);
+            font-weight: 600;
+        }
+
+        .prod-category .prod-block.has-child::after {
+            content: "\f107";
+            font-family: fontawesome-alloy;
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            transition: transform 300ms ease-in-out;
+        }
+
+        .prod-category .prod-block.is-show::after {
+            transform: rotate(-90deg);
         }
     }
 
@@ -1321,6 +1415,14 @@ window.location.href= "${redirect}";
         .main-locale-flag {
             margin-right: .5rem;
         }
+
+        .prod-category .prod-block.has-child .nav-link .title::after {
+            content: "\f107";
+            font-family: fontawesome-alloy;
+            position: absolute;
+            right: 10px;
+            top: 8px;
+        }
     }
 
     @media (max-width: 575.98px) {
@@ -1395,8 +1497,7 @@ window.location.href= "${redirect}";
 </#if>
 <#assign hHeader=70>
 <#assign hHScrolled=60>
-<#assign preferences=freeMarkerPortletPreferences.getPreferences("portletSetupPortletDecoratorId", "borderless" ) />
-<#assign plId=layout.getPlid()>
+<#assign preferences=freeMarkerPortletPreferences.getPreferences("portletSetupPortletDecoratorId", "borderless" ) /> <#assign plId=layout.getPlid()>
 <#assign productActive = false>
 <#assign selectedLang = {}>
 <#assign mapLang = [{"key": "vi_VN", "label": "VIE","name": "vi","icon": "vietnam.png"}, {"key": "en_US", "label": "ENG","name": "en","icon": "united-states.png"}]>
@@ -1404,8 +1505,8 @@ window.location.href= "${redirect}";
     <div class="navbar v-navbar cloud-container align-items-center h-100" id="v-navbar" style="padding-left: 15px;padding-right: 15px;">
         <div class="mobile-g-btn d-flex align-items-center position-absolute">
             <button type="button" id="nav-toggle" class="navbar-toggle d-flex" data-target="navigation-menu">
-                <img class="abs-icon" src="/documents/20126/906379/vng-cloud-icon-menu.svg" />
-                <img class="pos-icon" src="/documents/20126/906379/vng-cloud-icon-menu-color.svg" />
+            <img class="abs-icon" src="/documents/20126/906379/vng-cloud-icon-menu.svg" />
+            <img class="pos-icon" src="/documents/20126/906379/vng-cloud-icon-menu-color.svg" />
             </button>
             <div class="t-upper active-menu ml-1" id="active-menu"></div>
         </div>
@@ -1417,11 +1518,11 @@ window.location.href= "${redirect}";
         </div>
         <div class="navigation-group">
             <nav id="navigation-menu" class="navbar-collapse">
-                <a id="nav-toggle" class="navbar-toggle collapsed p-0 mobile-opacity" data-toggle="collapse"
-                    data-target="navigation-menu" aria-expanded="false" title="Toggle Menu">
+                <a id="nav-toggle" class="navbar-toggle collapsed p-0 mobile-opacity" data-toggle="collapse" data-target="navigation-menu" aria-expanded="false" title="Toggle Menu">
                     <img class="lazyload img-fluid" data-src="/documents/20126/1718708/mobile-menu-toggle-close.svg" />
                 </a>
-                <div class="toggle-logo mobile-opacity"> <img class="lazyload" data-src="/documents/20126/906379/logo-vng-cloud-color.png">
+                <div class="toggle-logo mobile-opacity">
+                    <img class="lazyload" data-src="/documents/20126/906379/logo-vng-cloud-color.png">
                 </div>
                 <ul class="menu-nav list-unstyled" id="menu-nav">
                     <#assign groupActive = "/product/iaas">
@@ -1441,110 +1542,122 @@ window.location.href= "${redirect}";
                                     <#if child_nav_item.isBrowsable()>
                                         <#assign hasChildLev2=true />
                                         <#foreach child_lev2_nav_item in child_nav_item.getBrowsableChildren()>
-                                                <#if child_lev2_nav_item.isSelected()><#assign is_nav_child_lev2_selected=true /></#if>
+                                            <#if child_lev2_nav_item.isSelected()>
+                                                <#assign is_nav_child_lev2_selected=true />
+                                            </#if>
                                         </#foreach>
                                     </#if>
                                 </#foreach>
                             </#if>
-                            <#if nav_item.isSelected() || is_nav_child_selected><#assign activeMenu=nav_item.getName()></#if>
+                            <#if nav_item.isSelected() || is_nav_child_selected>
+                                <#assign activeMenu=nav_item.getName()>
+                            </#if>
                             <li class="nav-item<#if nav_item.isSelected() || is_nav_child_selected> active</#if><#if hasChild> has-child</#if><#if megaMenu> product-menu</#if>">
                                 <#if hasChild>
                                     <a class="nav-link menu-main d-flex align-items-center transition-all t-upper" aria-labelledby="layout_${nav_item.getLayoutId()}" href="javascript:void(0)" ${nav_item.getTarget()} role="menuitem" id="dropdown_${nav_item.getLayoutId()}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="position-relative">${nav_item.getName()}</span>
                                     </a>
                                 <#else>
-                                <a class="nav-link menu-main d-flex align-items-center transition-all t-upper" aria-labelledby="layout_${nav_item.getLayoutId()}" href="${nav_item.getURL()}" ${nav_item.getTarget()} role="menuitem"><span class="position-relative">${nav_item.getName()}</span></a>
+                                    <a class="nav-link menu-main d-flex align-items-center transition-all t-upper" aria-labelledby="layout_${nav_item.getLayoutId()}" href="${nav_item.getURL()}" ${nav_item.getTarget()} role="menuitem">
+                                        <span class="position-relative">${nav_item.getName()}</span>
+                                    </a>
                                 </#if>
                                 <#if hasChild>
-                                    <div class="child-nav d-block dropdown-menu m-0 p-0 border-0<#if megaMenu> cloud-container child-nav__full-screen</#if>" id="child-nav" aria-labelledby="dropdown_${nav_item.getLayoutId()}">
+                                    <div class="child-nav d-block dropdown-menu header-dropdown m-0 p-0 border-0<#if megaMenu> cloud-container child-nav__full-screen</#if>" id="child-nav" aria-labelledby="dropdown_${nav_item.getLayoutId()}">
                                         <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
                                             <span>${nav_item.getName()}</span>
                                         </h3>
-                                    <#if megaMenu>
+                                        <#if megaMenu>
                                         <div class="menu-prod-wrapper d-md-flex align-items-md-start">
                                             <div class="nav flex-column prod-group nav-pills p-md-3 h-100" id="prod-tab" role="tablist" aria-orientation="vertical">
-                                                <#foreach child_nav_item in nav_item.getBrowsableChildren()>
-                                                    <#assign is_nav_child_selected=child_nav_item.isSelected()>
-                                                    <#assign childNavLayoutId = child_nav_item.getLayoutId()>
-                                                    <#assign active = child_nav_item.getLayout().getFriendlyURL() == groupActive>
-                                                    <div class="category mb-md-3 mt-sm-3 position-relative<#if active> show</#if>">
-                                                        <a class="nav-link category-link p-3 pb-md-2 transition-all<#if active> active show</#if>" id="${childNavLayoutId}-tab"
-                                                            data-toggle="pill" href="#${childNavLayoutId}" role="tab" aria-controls="${childNavLayoutId}"
-                                                            aria-selected="false">${child_nav_item.getName()}
-                                                        </a>
-                                                        <div class="category-desc p-md-3">
-                                                            <div class="d-lg-flex align-items-center">
-                                                                <div class="img pl-1">
-                                                                    <#assign pathImage=child_nav_item.getLayout().getExpandoBridge().getAttribute("Image")!''>
-                                                                    <img class="lazyload hidden-xs" data-src="${pathImage}" width="90px" />
-                                                                </div>
-                                                                <div class="desc position-relative">${child_nav_item.getLayout().getDescription(themeDisplay.getLanguageId())}</div>
+                                            <#foreach child_nav_item in nav_item.getBrowsableChildren()>
+                                                <#assign is_nav_child_selected=child_nav_item.isSelected()>
+                                                <#assign childNavLayoutId = child_nav_item.getLayoutId()>
+                                                <#assign active = child_nav_item.getLayout().getFriendlyURL() == groupActive>
+                                                <div class="category mb-md-3 mt-sm-3 position-relative<#if active> show</#if>">
+                                                    <a class="nav-link category-link p-3 pb-md-2 transition-all<#if active> active show</#if>" id="${childNavLayoutId}-tab" data-toggle="pill" href="#${childNavLayoutId}" role="tab" aria-controls="${childNavLayoutId}" aria-selected="false">${child_nav_item.getName()} </a>
+                                                    <div class="category-desc p-md-3">
+                                                        <div class="d-lg-flex align-items-center">
+                                                            <div class="img pl-1">
+                                                            <#assign pathImage=child_nav_item.getLayout().getExpandoBridge().getAttribute("Image")!''>
+                                                                <img class="lazyload hidden-xs" data-src="${pathImage}" width="90px" />
                                                             </div>
+                                                            <div class="desc position-relative">${child_nav_item.getLayout().getDescription(themeDisplay.getLanguageId())}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </#foreach>
+                                            </div>
+                                            <div class="tab-content w-100" id="prod-tabContent">
+                                            <#assign notCategory=["saas"]>
+                                            <#assign inlineCategory=["database", "container"]>
+                                            <#foreach child_nav_item in nav_item.getBrowsableChildren()>
+                                                <#assign is_nav_child_selected=child_nav_item.isSelected()>
+                                                <#assign childNavLayoutId = child_nav_item.getLayoutId()>
+                                                <#assign active = child_nav_item.getLayout().getFriendlyURL() == groupActive>
+                                                <div class="tab-pane w-100 fade row<#if active> active show</#if>" id="${childNavLayoutId}" role="tabpanel" aria-labelledby="${childNavLayoutId}-tab"> <#foreach prodCategory in child_nav_item.getBrowsableChildren()>
+                                                    <div class="prod-category mb-md-3 col-<#if inlineCategory?seq_index_of(prodCategory.getName()?lower_case?trim) lt 0>12<#else>sm-4 inline d-sm-flex flex-column</#if>">  
+                                                    <#if notCategory?seq_index_of(prodCategory.getName()?lower_case?trim) gte 0>
+                                                        <div class="category-name not-category">&nbsp;</div>
+                                                        <#else>
+                                                        <div class="category-name">${prodCategory.getName()}</div>
+                                                        </#if>
+                                                        <div class="prod-block__wrapper">
+                                                        <#foreach product in prodCategory.getBrowsableChildren()>
+                                                            <#assign prodActive = product.isSelected()>
+                                                            <#if prodActive> <#assign productActive = true> </#if>
+                                                            <#assign hasSubProduct=false>
+                                                            <#if product.hasBrowsableChildren()> <#assign hasSubProduct=true> </#if>
+                                                            <div class="prod-block position-relative bg-white nav-child-item<#if prodActive> active</#if><#if hasSubProduct> has-child</#if>" data-dropdown-product>
+                                                                <a class="nav-link" ${product.getTarget()} aria-labelledby="layout_${product.getLayoutId()}" href="<#if !hasSubProduct>${product.getURL()}<#else>#</#if>" role="menuitem" title="${product.getName()}" <#if hasSubProduct>data-dropdown-sub-product</#if>>
+                                                                    <div class="title transition-all" title="${product.getName()}"> ${product.getName()?split('|')[0]} </div>
+                                                                    <div class="description pt-1 mb-md-2">${product.getName()?split('|')[1]!''}</div>
+                                                                </a>
+                                                                <#if hasSubProduct>
+                                                                <div class="sub-product-menu">
+                                                                    <#foreach subProduct in product.getBrowsableChildren()>
+                                                                        <#assign subProdActive = subProduct.isSelected()>
+                                                                        <div class="sub-product<#if subProdActive> active</#if>">
+                                                                            <a class="d-block h-100" ${subProduct.getTarget()} aria-labelledby="layout_${subProduct.getLayoutId()}" href="${subProduct.getURL()}" role="menuitem" title="${subProduct.getName()}">
+                                                                                <div class="title transition-all" title="${subProduct.getName()}"> ${subProduct.getName()?split('|')[0]} </div> <div class="description pt-1 mb-md-2">${subProduct.getName()?split('|')[1]!''}</div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </#foreach>
+                                                                </div>
+                                                            </#if>
+                                                            </div>
+                                                        </#foreach>
                                                         </div>
                                                     </div>
                                                 </#foreach>
+                                                </div>
+                                            </#foreach>
                                             </div>
-                                            <div class="tab-content w-100" id="prod-tabContent">
-                                                <#assign notCategory=["saas"]>
-                                                <#assign inlineCategory=["database", "container"]>
-                                                <#foreach child_nav_item in nav_item.getBrowsableChildren()>
-                                                    <#assign is_nav_child_selected=child_nav_item.isSelected()>
-                                                    <#assign childNavLayoutId = child_nav_item.getLayoutId()>
-                                                    <#assign active = child_nav_item.getLayout().getFriendlyURL() == groupActive>
-                                                    <div class="tab-pane w-100 fade row<#if active> active show</#if>" id="${childNavLayoutId}" role="tabpanel" aria-labelledby="${childNavLayoutId}-tab">
-                                                        <#foreach prodCategory in child_nav_item.getBrowsableChildren()>
-                                                            <div class="prod-category mb-md-3 col-<#if inlineCategory?seq_index_of(prodCategory.getName()?lower_case?trim) lt 0>12<#else>sm-4 inline d-sm-flex flex-column</#if>">
-                                                                <#if notCategory?seq_index_of(prodCategory.getName()?lower_case?trim) gte 0>
-                                                                <div class="category-name not-category">&nbsp;</div>
-                                                                <#else>
-                                                                <div class="category-name">${prodCategory.getName()}</div>
-                                                                </#if>
-                                                                <div class="prod-block__wrapper">
-                                                                    <#foreach product in prodCategory.getBrowsableChildren()>
-                                                                    <#assign prodActive = product.isSelected()>
-                                                                    <#if prodActive>
-                                                                        <#assign productActive = true>
-                                                                    </#if>
-                                                                    <div class="prod-block position-relative bg-white nav-child-item<#if prodActive> active</#if>">
-                                                                        <a class="nav-link h-100" ${product.getTarget()} aria-labelledby="layout_${product.getLayoutId()}" href="${product.getURL()}" role="menuitem" title="${product.getName()}">
-                                                                            <div class="title transition-all" title="${product.getName()}">
-                                                                                ${product.getName()?split('|')[0]}
-                                                                            </div>
-                                                                            <div class="description pt-1 mb-md-2">${product.getName()?split('|')[1]!''}</div>
-                                                                        </a>
-                                                                    </div>
-                                                                    </#foreach>
-                                                                </div>
+                                        </div>
+                                        <#else>
+                                            <#foreach child_nav_item in nav_item.getBrowsableChildren()>
+                                                <#assign is_nav_child_selected=false />
+                                                <#if child_nav_item.isSelected()> <#assign is_nav_child_selected=true /> </#if>
+                                                <div nav-url="${child_nav_item.getRegularURL()}" nav-target="${child_nav_item.getTarget()}" nav-name="${child_nav_item.getName()}" class="nav-child-item <#if child_nav_item.hasBrowsableChildren()> has-child-2</#if>">
+                                                    <a class="nav-link<#if is_nav_child_selected> active</#if>" aria-labelledby="layout_${child_nav_item.getLayoutId()}" href="<#if child_nav_item.hasBrowsableChildren()>javascript:void(0)<#else>${child_nav_item.getURL()}</#if>" ${child_nav_item.getTarget()} role="menuitem">
+                                                        <span style="font-size: 16px">${child_nav_item.getName()}</span>
+                                                    </a>
+                                                    <#if child_nav_item.hasBrowsableChildren()>
+                                                    <div class="child-nav-2">
+                                                        <#foreach child_lev2_nav_item in child_nav_item.getBrowsableChildren()>
+                                                            <#assign is_nav_child2_selected=false />
+                                                            <#if child_lev2_nav_item.isSelected()> <#assign is_nav_child2_selected=true /> </#if>
+                                                            <div nav-url="${child_lev2_nav_item.getRegularURL()}" nav-target="${child_lev2_nav_item.getTarget()}" nav-name="${child_lev2_nav_item.getName()}" class="nav-child-item">
+                                                                <a class="nav-link <#if is_nav_child2_selected> active</#if>" aria-labelledby="layout_${child_lev2_nav_item.getLayoutId()}" href="${child_lev2_nav_item.getURL()}" ${child_lev2_nav_item.getTarget()} role="menuitem">
+                                                                    <span style="font-size: 16px">${child_lev2_nav_item.getName()}</span>
+                                                                </a>
                                                             </div>
                                                         </#foreach>
                                                     </div>
-                                                </#foreach>
-                                            </div>
-                                        </div>
-                                    <#else>
-                                    <#foreach child_nav_item in nav_item.getBrowsableChildren()>
-                                        <#assign is_nav_child_selected=false />
-                                        <#if child_nav_item.isSelected()> <#assign is_nav_child_selected=true /> </#if>
-                                        <div nav-url="${child_nav_item.getRegularURL()}" nav-target="${child_nav_item.getTarget()}" nav-name="${child_nav_item.getName()}" class="nav-child-item <#if child_nav_item.hasBrowsableChildren()> has-child-2</#if>">
-                                            <a class="nav-link<#if is_nav_child_selected> active</#if>" aria-labelledby="layout_${child_nav_item.getLayoutId()}" href="<#if child_nav_item.hasBrowsableChildren()>javascript:void(0)<#else>${child_nav_item.getURL()}</#if>" ${child_nav_item.getTarget()} role="menuitem">
-                                                <span style="font-size: 16px">${child_nav_item.getName()}</span>
-                                            </a>
-                                            <#if child_nav_item.hasBrowsableChildren()>
-                                                <div class="child-nav-2">
-                                                <#foreach child_lev2_nav_item in child_nav_item.getBrowsableChildren()>
-                                                    <#assign is_nav_child2_selected=false />
-                                                    <#if child_lev2_nav_item.isSelected()> <#assign is_nav_child2_selected=true /> </#if>
-                                                    <div nav-url="${child_lev2_nav_item.getRegularURL()}" nav-target="${child_lev2_nav_item.getTarget()}" nav-name="${child_lev2_nav_item.getName()}" class="nav-child-item">
-                                                        <a class="nav-link <#if is_nav_child2_selected> active</#if>" aria-labelledby="layout_${child_lev2_nav_item.getLayoutId()}" href="${child_lev2_nav_item.getURL()}" ${child_lev2_nav_item.getTarget()} role="menuitem">
-                                                            <span style="font-size: 16px">${child_lev2_nav_item.getName()}</span>
-                                                        </a>
-                                                    </div>
-                                                </#foreach>
+                                                    </#if>
                                                 </div>
-                                            </#if>
-                                        </div>
-                                    </#foreach>
-                                    </#if>
+                                            </#foreach>
+                                        </#if>
                                     </div>
                                 </#if>
                             </li>
@@ -1563,22 +1676,22 @@ window.location.href= "${redirect}";
                             </div>
                             <div class="selected-lang pl-1 pr-2 position-relative" data-target="site-wrap">${selectedLang.label}</div>
                         </a>
-                        <div class="site-menu dropdown-menu m-0 p-0 border-0 child-nav d-block" id="site-content" aria-labelledby="dropdown_locale">
+                        <div class="site-menu dropdown-menu header-dropdown m-0 p-0 border-0 child-nav d-block" id="site-content" aria-labelledby="dropdown_locale">
                             <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
                                 <span>${selectedLang.label}</span>
                             </h3>
                             <#list mapLang as lang>
-                                <div class="site-item-wrap d-flex align-items-center <#if lang.key == themeDisplay.getLanguageId()>selected<#else>site-item</#if>" data-href="/c/portal/update_language?p_l_id=${plId}&redirect=${themeDisplay.getURLCurrent()}&languageId=${lang.key}" data-lang="${lang.name}">
-                                    <span class="nav-site-icon"><img class="img-fluid" src="/documents/20126/960997/${lang.icon}" width="20px"/></span>
+                                <div class="site-item-wrap d-flex align-items-center <#if lang.key == themeDisplay.getLanguageId()>selected<#else>site-item</#if>" data-href="/c/portal/update_language?p_l_id=${plId}&redirect=${themeDisplay.getLayoutFriendlyURL(layout)}&languageId=${lang.key}" data-lang="${lang.name}">
+                                    <span class="nav-site-icon">
+                                        <img class="img-fluid" src="/documents/20126/960997/${lang.icon}" width="20px"/>
+                                    </span>
                                     <div class="nav-site-lang pl-2">${lang.label}</div>
                                 </div>
                             </#list>
                         </div>
                     </li>
                     <li class="nav-item nav-item-btn flex-center pl-3">
-                        <a class="nav-link flex-center btn btn-default btn-login pt-1 pb-1 pl-3 pr-3 t-upper" aria-labelledby="layout_908828" href="https://my.vngcloud.vn?hl=<#if themeDisplay.getLanguageId()=='vi_VN'>vi<#else>en</#if>" target="_blank" role="menuitem">
-                        <#if themeDisplay.getLanguageId()=='vi_VN'>Đăng nhập<#else>Login</#if>
-                        </a>
+                        <a class="nav-link flex-center btn btn-default btn-login pt-1 pb-1 pl-3 pr-3 t-upper" aria-labelledby="layout_908828" href="https://my.vngcloud.vn?hl=<#if themeDisplay.getLanguageId()=='vi_VN'>vi<#else>en</#if>" target="_blank" role="menuitem"> <#if themeDisplay.getLanguageId()=='vi_VN'>Đăng nhập<#else>Login</#if> </a>
                     </li>
                 </ul>
                 <div class="copyright">© VNG Cloud 2021</div>
@@ -1591,7 +1704,8 @@ window.location.href= "${redirect}";
                         <#assign catLocalService=serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
                         <#assign promotionsArticle=journalArticleLocalService.getArticles(groupId, 1664034)>
                         <#assign promotionsArticle=promotionsArticle?sort_by('createDate')?reverse>
-                        <#assign exceptCat=['New', 'new']>
+                        <#assign allowedCat=['New', 'new']>
+                        <#assign exceptCat=['Test', 'test']>
                         <#assign promotionId = ''>
                         <#assign countPromotion=0>
                         <#assign arrPromotion=[]>
@@ -1600,11 +1714,10 @@ window.location.href= "${redirect}";
                             <#assign nextArticleResourcePrimKey=promotion.getResourcePrimKey()>
                             <#assign nextArticleAssetEntry=assetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", nextArticleResourcePrimKey)>
                             <#assign nextArticleAssetEntryEntryId=nextArticleAssetEntry.getEntryId()>
-                            <#assign nextCategories=catLocalService.getEntryCategories(nextArticleAssetEntryEntryId)>
-                            <#assign allowed = false>
+                            <#assign nextCategories=catLocalService.getEntryCategories(nextArticleAssetEntryEntryId)> <#assign allowed = false>
                             <#if nextCategories?size gt 0>
                                 <#list nextCategories as cat>
-                                    <#if exceptCat?seq_index_of(cat.getName()) gte 0>
+                                    <#if allowedCat?seq_index_of(cat.getName()) gte 0>
                                         <#assign allowed = true>
                                         <#break>
                                     </#if>
@@ -1633,17 +1746,19 @@ window.location.href= "${redirect}";
                                     <div class="badge badge-danger number promotion-number flex-center" id="promotion-number">${index}</div>
                                 </#if>
                             </a>
-                            <ul class="dropdown-menu m-0 p-0 border-0 dropdown-ext" aria-labelledby="dropdown_promotion">
-                                <li class="dropdown-ext__header d-flex align-items-center justify-content-between position-relative"><div class="primary-color"><b>Promotion <span>(${index})</span></b></div></li>
+                            <ul class="dropdown-menu header-dropdown m-0 p-0 border-0 dropdown-ext" aria-labelledby="dropdown_promotion">
+                                <li class="dropdown-ext__header d-flex align-items-center justify-content-between position-relative">
+                                    <div class="primary-color"><b>Promotion <span>(${index})</span></b></div>
+                                </li>
                                 <#list arrPromotion as newPromotion>
                                     <li class="p-0">
-                                        <a target="_blank" href="/promotions/${newPromotion.url}">
-                                            <div class="promotion-icon flex-center position-absolute">
+                                        <a class="d-flex mb-2 p-2" target="_blank" href="/promotions/${newPromotion.url}">  
+                                            <div class="promotion-icon position-relative">
                                                 <img class="lazyload position-relative" data-src="/documents/20126/906379/icon-notify-promotion.png" width="30px" height="30px" />
                                             </div>
-                                            <div class="promotion-desc">
-                                                <div class="text-truncate" title="${newPromotion.title}">${newPromotion.title}</div>
-                                                <p title="${newPromotion.desc}">${newPromotion.desc}</p>
+                                            <div class="promotion-desc pl-1">
+                                                <div title="${newPromotion.title}">${newPromotion.title}</div>
+                                                <p title="${newPromotion.desc}" class="d-none">${newPromotion.desc}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -1656,4 +1771,174 @@ window.location.href= "${redirect}";
         </div>
     </div>
 </div>
-<#if !menuFixed><div class="v-header-mask">&nbsp;</div></#if>
+<#if !menuFixed>
+<div class="v-header-mask">&nbsp;</div>
+</#if>
+<script type="text/javascript" src="/o/vng-cloud-theme/js/wow_1_1_2.min.js" defer></script>
+<script type="text/javascript">
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.customMedia = {
+        '--small': '(max-width: 480px)',
+        '--medium': '(max-width: 1599.98px)',
+        '--large': '(min-width: 1600px)'
+    };
+</script>
+<script type="text/javascript" defer>
+    $(document).ready(function() {
+        var wow = new WOW({
+            boxClass: "wow",
+            animateClass: "animated",
+            offset: 0,
+            mobile: true,
+            live: true
+        });
+        wow.init();
+        var activeMenu = "${activeMenu}",
+            hHeader = parseInt("${hHeader}");
+        if (activeMenu == "" || ["trang ch\u1ee7", "home"].includes(activeMenu.toLowerCase().trim()))
+            activeMenu = "Menu";
+        document.getElementById("active-menu").innerHTML = activeMenu;
+        const vHeader = $(".v-header"),
+            prodTab = document.querySelector("#prod-tab"),
+            categoryItems = $(prodTab).find('a'),
+            subProduction = document.querySelectorAll(".prod-block.has-child"),
+            prodTabContent = document.querySelector("#prod-tabContent"),
+            productMenu = document.querySelector(".child-nav__full-screen"),
+            subProductActive = document.querySelector(".sub-product.active");
+        changeProductMenu();
+        $('body').append("<div class='overlay'></div>")
+        "${productActive?c}" === "true" && ($('.product-menu').addClass('active'));
+        $(window).bind("scroll", function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > hHeader) {
+                vHeader.addClass("scrolled white-bg");
+                vHeader.get(0).style.setProperty("--height-header", "${hHScrolled}" + "px");
+            } else {
+                vHeader.removeClass("scrolled");
+                vHeader.get(0).style.setProperty("--height-header", hHeader + "px");
+                !hasDropdownOpened($('.navigation-group'));
+            }
+        });
+        $(window).bind("resize", function () {
+            changeProductMenu();
+        });
+        initLang(${jsonFactoryUtil.looseSerializeDeep(selectedLang)});
+        subProductActive && subProductActive.parentNode.parentNode.classList.add("active");
+        $(".navigation-group").on({
+            mouseenter: function () {
+                (!vHeader.hasClass("scrolled")) && (vHeader.addClass("white-bg"));
+            },
+            mouseleave: function () {
+                !vHeader.hasClass("scrolled") && hasDropdownOpened($(this));
+            }
+        });
+        $(".v-header").on('click', '.header-dropdown', function (e) {
+            e.stopPropagation();
+        });
+        $('#prod-tab a.category-link').on('click', function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) return;
+            categoryItems.removeClass("active show").parent().removeClass("show");
+            setTimeout(function () {
+                $(this).tab('show') && ($(this).parent().addClass("show"));
+            }.bind(this), 300)
+        });
+        $(".navbar-toggle").on("click", function (e) {
+            e.preventDefault();
+            let target = document.getElementById($(this).attr("data-target"));
+            target && (target.classList.toggle("show"));
+            if (target.classList.contains("show")) {
+                $('.overlay').fadeIn();
+                $('body').addClass("no-scroll");
+            } else {
+                $('.overlay').fadeOut();
+                $('body').removeClass("no-scroll");
+            }
+            document.addEventListener('click', clickOutsiteNavigation, true);
+        });
+        $(".site-item").on("click", function (e) {
+            e.preventDefault();
+            setCookie("lang", $(this).attr("data-lang"), 1E4);
+            let path = "${path}";
+            if (path !== "" && path.indexOf("${friendlyURL}") < 0) window.location.href = path;
+            else window.location.href = $(this).attr("data-href");
+        });
+        $(".menu__header").on("click", function (e) {
+            e.preventDefault();
+            $(this).parent().removeClass("show").parent().removeClass("show");
+        });
+        productMenu && productMenu.addEventListener("click", function (e) {
+            const isDropdownSubProduct = e.target.parentNode.matches("[data-dropdown-sub-product]") || e
+                .target.classList.contains("nav-link");
+            if (!isDropdownSubProduct && e.target.closest('[data-dropdown-product]') !== null) return;
+            let currentDropdown;
+            if (isDropdownSubProduct) {
+                currentDropdown = e.target.closest('[data-dropdown-product]');
+                currentDropdown.classList.toggle("is-show");
+                prodTabContent.classList.toggle("mask");
+                var navLink = $(currentDropdown).find(".nav-link");
+                navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
+                    .clientHeight + "px"))
+            }
+            var opened = false;
+            document.querySelectorAll('[data-dropdown-product].is-show').forEach(function (dropdown) {
+                if (dropdown === currentDropdown) {
+                    opened = true;
+                    return;
+                }
+                dropdown.classList.remove("is-show");
+            }) if (!opened) prodTabContent.classList.remove("mask");
+        })
+        function hasDropdownOpened(target, remove = true) {
+            let hasChild = target.find(".has-child").filter("[class*='show']");
+            remove && hasChild.length == 0 && (vHeader.removeClass("white-bg"));
+            return hasChild.length > 0;
+        }
+
+        function changeProductMenu() {
+            if (window.innerWidth < 768) {
+                const tabContent = document.querySelector("#prod-tabContent");
+                if (tabContent) {
+                    $.each(tabContent.children, function (index, tab) {
+                        categoryItems.filter("[href='#" + tab.id + "']").parent().find('.category-desc')
+                            .append(tab.innerHTML);
+                    })
+                }
+                vHeader.removeClass("hidden");
+            } else {
+                $('.overlay').fadeOut();
+                $('body').removeClass('no-scroll');
+                categoryItems.parent().find('.prod-category').remove();
+            }
+        }
+
+        function clickOutsiteNavigation(selector) {
+            let navMenu = document.getElementById('navigation-menu');
+            if (!navMenu || navMenu.contains(selector.target)) return;
+            $('.overlay').fadeOut() && (navMenu.classList.remove('show'));
+            $('body').removeClass('no-scroll');
+            document.removeEventListener('click', clickOutsiteNavigation, true);
+        }
+
+        function initLang(locale) {
+            let cookieLang = getCookie("lang");
+            if (cookieLang == null) setCookie("lang", locale["name"], 1E4);
+        }
+
+        function getCookie(e) {
+            for (var a = e + "\x3d", n = document.cookie.split(";"), t = 0; t < n.length; t++) {
+                for (var i = n[t];
+                    " " == i.charAt(0);) i = i.substring(1, i.length);
+                if (0 == i.indexOf(a)) return i.substring(a.length, i.length)
+            }
+            return null
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date;
+            d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1E3);
+            var expires = "expires\x3d" + d.toUTCString();
+            document.cookie = cname + "\x3d" + cvalue + ";" + expires + ";path\x3d/;domain\x3d.vngcloud.vn"
+        };
+    });
+</script>

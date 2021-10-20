@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>eVPS Banner</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/vngcloud3.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/css/header.css"> -->
+    <link href="../../assets/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/custom-header.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/product-iaas-banner.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section id="prod-intro">
+        <div class="pro-iaas-banner flex-center bg-cover lazyload"
+            data-bgset="https://vngcloud.vn/documents/20126/1773605/vng-cloud-product-evps-banner-xs.jpg [(max-width: 576px)] | https://vngcloud.vn/documents/20126/1773605/vng-cloud-product-evps-banner.jpg [(max-width: 1600px)] | https://vngcloud.vn/documents/20126/1773605/vng-cloud-product-evps-banner.jpg">
+            <div class="cloud-container f-height">
+                <div class="row f-height">
+                    <div class="col-lg-7 banner-text">
+                        <div class="f-mont c-white">
+                            <div class="position-relative pt-sm-3">
+                                <h4 class="desc-title d-inline-block wow fadeIn">eVPS - Máy chủ ảo thông minh</h4>
+                                <h1 class="banner-title f-600 pt-4 mb-3 wow fadeIn" data-wow-delay=".2s" style="text-transform: inherit;">Giải pháp hạ tầng <br>dành cho ứng dụng nhẹ</h1>
+                                <div class="banner-desc pr-md-5 wow fadeIn" data-wow-delay=".2s">
+                                    <p class="mb-2">Trải nghiệm dịch vụ máy chủ ảo thông minh lần đầu ra mắt - eVPS, sở hữu bộ xử lý thế hệ mới <span class="f-600">Intel® Xeon® Gold 6226R và Silver 4210</span>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner-btn pt-4 pb-3 wow fadeIn pl-0 mt-0 f-mont" data-wow-delay=".4s">
+                            <a href="#pricing" class="btn t-upper btn-secondary-color f-600 mr-3">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style type="text/css">
+        .banner-btn .btn {
+            border-radius: 6px;
+            font-size: 20px;
+        }
+
+        .banner-text .desc-title {
+            border: 1px solid;
+            border-radius: 10px;
+            padding: .5rem 1rem;
+            line-height: 1;
+        }
+        @media(min-width:1200px) and (max-width: 1599.98px) {
+            .banner-title {
+                font-size: 2.5rem;
+                line-height: 1;
+            }
+        }
+
+        @media(min-width: 576px) {
+            .banner-btn .btn {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .banner-desc {max-width: 80%;}
+        }
+
+        @media (min-width: 1600px) {
+            .banner-title {
+                font-size: 3.5rem;
+                line-height: 1.2;
+            }
+            .banner-text .desc-title {font-size: 2rem;}
+
+            .banner-btn .btn,
+            .banner-desc {
+                font-size: 2rem;
+            }
+
+            .banner-btn .btn {
+                width: 40%;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .banner-title {
+                font-size: 25px;
+            }
+            .banner-text .desc-title {font-size: 1.2rem;}
+            .banner-btn .btn {
+                width: 100%;
+            }
+            .pro-iaas-banner::before {
+                opacity: .8;
+            }
+        }
+    </style>
+    <script src="../../assets/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="../../assets/js/lodash.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/wow.min.js"></script>
+    <script src="../../assets/js/lazysizes.min.js" async></script>
+    <script src="../../assets/js/ls.blur-up.min.js" async></script>
+    <script src="../../assets/js/ls.object-fit.min.js" async></script>
+    <script src="../../assets/js/ls.parent-fit.min.js" async></script>
+    <script src="../../assets/js/ls.bgset.min.js" async></script>
+    <script src="../../assets/js/jquery.fancybox.min.js" defer></script>
+    <script type="text/javascript">
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.customMedia = {
+            '--small': '(max-width: 480px)',
+            '--medium': '(max-width: 1599.98px)',
+            '--large': '(min-width: 1600px)',
+        };
+    </script>
+    <script type="text/javascript" defer>
+        $(document).ready(function () {
+            var wow = new WOW({
+                boxClass: "wow",
+                animateClass: "animated",
+                offset: 0,
+                mobile: true,
+                live: true
+            })
+            wow.init();
+        });
+    </script>
+    <script type="text/javascript" defer>
+
+    </script>
+</body>

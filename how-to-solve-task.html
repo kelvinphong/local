@@ -116,6 +116,35 @@
 				</li>
 			</ul>
 		</li>
+		<li>
+			<h3>NOC request sai thông tin Tape Backup</h3>
+			<p>Viết query update lại thông tin <i>asset_code</i> trên 2 bảng</p>
+			<ul class="list-unstyled">
+				<li>
+					<p><u><i>vc_noc</i></u></p>
+					<p>db.noc_orders.update({"tape_label.name": "..."}, {$set: {"asset_code": "..."}}, {upsert: false, multi: false})</p>
+				</li>
+				<li>
+					<p><u><i>vc_cmdb</i></u></p>
+					<p>db.cmdb_backup_tapes.update({"code": "..."}, {$set: {"asset_code": "..."}}, {upsert: false, multi: false})</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<h3>Lỗi broken pipe or closed connection</h3>
+			<p><u>Lý do</u>: Lỗi chung chung của RabbitMQ có thể bị RabbitMQ ko truy cập được hoặc quá trình kết nối từ code xuống có vấn đề</p>
+			<p>Cách xử lý: mấy cái này có thể thực hiện gọi tính lại SLA cho task liên quan rồi xoá job luôn.</p>
+		</li>
+		<li>
+			<h3>Request Dedicated Servers - Request sai server</h3>
+			<p><u>Lý do</u>: SE chọn sai service</p>
+			<p>Cách xử lý: Yêu cầu SE cung cấp Serial Number để cập nhật vào Order.</p>
+			<ul class="list-unstyled">
+				<li>- Tìm thông tin ticket theo ticket_id ở vc_itsm/itsm_tickets, lấy thông tin Order ID ở related.request</li>
+				<li>- Dùng Order ID vừa lấy được update lại "serial_number" trong bảng vc_server_provisioning/serv_prov_orders</li>
+				<li>- Cập nhật "serial_number" trên bảng vc_itsm/itsm_tickets theo ticket_id.</li>
+			</ul>
+		</li>
 	</ul>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
