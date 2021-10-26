@@ -13,7 +13,8 @@
 }
 
 body {
-    color: var(--text-body)
+    color: var(--text-body);
+    font-family: "Montserrat", sans-serif;
 }
 
 .f-mont {

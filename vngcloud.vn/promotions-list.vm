@@ -1,0 +1,277 @@
+#set ($catLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService"))
+#set ($assetEntryLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService"))
+#set ($exceptCat=['New', 'new'])
+#set ($prefixUrl='/promotions/')
+<section id="promotions">
+    <div class="cloud-container v-section-inner">
+        #set ( $numBlogMain = 1 )
+        #if (!$entries.isEmpty())
+            #set ( $mapCat = {} )
+            #foreach ($entry in $entries)
+                #set( $categories = $catLocalService.getEntryCategories($entry.getEntryId()) )
+                #set( $cat = $categories.get(0) )
+                #set ($arrArticle = $mapCat.get($cat) )
+
+                #if( !$arrArticle )
+                    #set ($arrArticle = [] )
+                #end
+                #set( $all = $arrArticle.add($entry) )
+                #set ($allow = $mapCat.put($cat, $arrArticle))
+            #end
+            <div class="promotion blog-widget row pb-3 mt-sm-5 mb-sm-4">
+                #set ($latestBlogEntry = $entries.get(0))
+                #set($renderer = $latestBlogEntry.getAssetRenderer())
+                #set( $journalArticle = $renderer.getArticle() )
+                #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                #set( $rootElement = $document.getRootElement() )
+
+                #set( $xPathTitle = $saxReaderUtil.createXPath("dynamic-element[@name='title']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+
+                #set ($xPathUrl = $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathDesc = $saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $desc = $xPathDesc.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathImage = $saxReaderUtil.createXPath("dynamic-element[@name='thumbnailImage']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+
+                #if (!$image.isEmpty())
+                    #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+ $imgJson.name +"/"+$imgJson.uuid)
+                #else
+                    #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+                #end
+                <div class="col-xl-7 col-md-6">
+                    <a class="promotion__thumb blog-img" href="$prefixUrl$url">
+                        <div class="promotion-img lazyload bg-cover h-100" data-bgset="$urlImage"></div>
+                    </a>
+                </div>
+                <div class="col-xl-5 col-md-6 promotion__content padding-xs">
+                    <div class="blog-heading f-medium">
+                        #set ($categories = $catLocalService.getEntryCategories($latestBlogEntry.getEntryId()))
+                        #if ($categories.size() > 0)
+                            <div class="blog-category">
+                                #foreach($cat in $categories)
+                                    #if (!$exceptCat.contains($cat.getName()))
+                                        #set ($arrCatName = $cat.getName().toLowerCase().trim().split(' '))
+                                        #set ($catName = "")
+                                        #foreach ($a in $arrCatName)
+                                            #set ($catName = $catName + $a)
+                                        #end
+                                        <a href="/search-tag?tag=$catName" target="_blank">$cat.getName()</a> 
+                                    #end
+                                #end
+                            </div>
+                        #end
+                    </div>
+                    <a class="promotion__title blog-widget-title vertical-truncate transition-all f-bold" href="$prefixUrl$url" title="$title">$title</a>
+                    <p class="promotion__desc mt-2 vertical-truncate" title="$desc">$desc</p>
+                    <div><a class="btn btn-white-color t-upper read-more f-bold" href="#if ($url.isEmpty())javascript::void(0)#else$prefixUrl$url#end">Read Article</a></div>
+                </div>
+            </div>
+            #set ( $maxBlogOnceLoad = 6 )
+            #set( $moreBlogs = $jsonFactoryUtil.createJSONArray())
+            #set ($index = 1)
+            #set( $size = $entries.size() - 1 )
+            #if ($size ge $index)
+                #set ($count = 0)
+                <div class="group-blog">
+                    <div class="all-block" id="all-block">
+                        #foreach ($number in [$index..$size])
+                            #set($renderer = $entries.get($number).getAssetRenderer() )
+                            #set($blog=$entries.get($number))
+                            #set($className = $renderer.getClassName() )
+                            #set ($image = "")
+                            #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+
+                            #if( $className == "com.liferay.journal.model.JournalArticle" )
+                                #set( $journalArticle = $renderer.getArticle() )
+                                #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                                #set( $rootElement = $document.getRootElement() )
+
+                                #set( $xPathTitle = $saxReaderUtil.createXPath("dynamic-element[@name='title']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+
+                                #set( $xPathDescription = $saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                #set( $description = $xPathDescription.selectSingleNode($rootElement).getStringValue())
+
+                                #set ($xPathUrl = $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+
+                                #set( $xPathImage = $saxReaderUtil.createXPath("dynamic-element[@name='thumbnailImage']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                                #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+
+                                #if (!$image.isEmpty())
+                                    #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+$imgJson.name+"/"+$imgJson.uuid)
+                                #end
+                                #set( $articleTmp = $jsonFactoryUtil.createJSONObject() )
+                                #set ($v = $articleTmp.put("user", $blog.getUserName()))
+                                #set ($v = $articleTmp.put("date", $dateTool.format('MMMM dd, yyyy', $blog.getModifiedDate())))
+                                #set ($v = $articleTmp.put("title", $title))
+                                #set ($v = $articleTmp.put("desc", $description))
+                                #set ($v = $articleTmp.put("url", $url))
+                                #set ($v = $articleTmp.put("image", $urlImage))
+                                #set ($assetEntry = $assetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", $journalArticle.getResourcePrimKey()))
+                                #set ($viewCountMore = $getterUtil.getInteger($assetEntry.getViewCount()) / 2)
+                                #set ($v = $articleTmp.put("view", $viewCountMore))
+                                
+                                #set ($blogCategories = $catLocalService.getEntryCategories($blog.getEntryId()))
+                                #if ($blogCategories.size() > 0)
+                                    #set( $tempCat = $jsonFactoryUtil.createJSONArray())
+                                    #foreach($cat in $blogCategories)
+                                        #if (!$exceptCat.contains($cat.getName()))
+                                        #set ($v = $tempCat.put($cat.getName()))
+                                        #end
+                                    #end
+                                    #set ($v = $articleTmp.put('categories', $tempCat))
+                                #end
+                                #if ($count < 3)
+                                <div class="blog-widget blog-top mb-lg-4">
+                                    <div class="blog-widget-img blog-img">
+                                        <a class="d-block h-100" title="$title" href="$prefixUrl$url">
+                                            <img class="lazyload img-cover" alt="Promotions Thumbnail" data-src="$urlImage" />
+                                        </a>
+                                    </div>
+                                    <div class="article-meta pt-md-3">
+                                        #if ($blogCategories.size() > 0)
+                                            <div class="blog-heading f-medium">
+                                                <p class="blog-time mb-2 pr-3">$dateTool.format('MMMM dd, yyyy', $blog.getModifiedDate())</p>
+                                                <div class="blog-category mb-2 mr-sm-3 text-truncate position-relative">
+                                                    #foreach($cat in $blogCategories)
+                                                        #if (!$exceptCat.contains($cat.getName()))
+                                                            #set ($arrCatName = $cat.getName().toLowerCase().trim().split(' '))
+                                                            #set ($catName = "")
+                                                            #foreach ($a in $arrCatName)
+                                                                #set ($catName = $catName + $a)
+                                                            #end
+                                                            <a href="/search-tag?tag=$catName" target="_blank" title="$cat.getName()">$cat.getName()</a>
+                                                        #end
+                                                    #end
+                                                </div>
+                                            </div>
+                                        #end
+                                        <div class="title transition-all vertical-truncate" title="$title">
+                                            <a class="d-block f-bold" href="$prefixUrl$url">$title</a>
+                                        </div>
+                                        <div class="article-desc pt-2 vertical-truncate d-lg-none" title="$description">$description</div>
+                                    </div>
+                                </div>
+                                #elseif ($count < $maxBlogOnceLoad + 3)
+                                    <div class="blog-widget d-flex">
+                                        <div class="block-left">
+                                            <a class="d-block bg-cover position-relative h-100 lazyload" href="$prefixUrl$url" data-bgset="$urlImage"></a>
+                                        </div>
+                                        <div class="block-right ml-lg-4">
+                                            <div class="blog-heading d-lg-none f-medium">
+                                                <p class="blog-time mb-2 pr-3">$dateTool.format('MMMM dd, yyyy', $blog.getModifiedDate())</p>
+                                                #if ($blogCategories.size() > 0)
+                                                <div class="blog-category mb-2 mr-sm-3 text-truncate position-relative">
+                                                    #foreach($cat in $blogCategories)
+                                                        #if (!$exceptCat.contains($cat.getName()))
+                                                            #set ($arrCatName = $cat.getName().toLowerCase().trim().split(' '))
+                                                            #set ($catName = "")
+                                                            #foreach ($a in $arrCatName)
+                                                                #set ($catName = $catName + $a)
+                                                            #end
+                                                            <a href="/search-tag?tag=$catName" target="_blank" title="$cat.getName()">$cat.getName()</a>
+                                                        #end
+                                                    #end
+                                                </div>
+                                                #end
+                                            </div>
+                                            <div class="blog-widget-title mb-1 f-bold vertical-truncate">
+                                                <a href="$prefixUrl$url">$title</a>
+                                            </div>
+                                            <div class="blog-heading d-none d-lg-block f-medium">
+                                                <p class="blog-time mb-2 pr-3">$dateTool.format('MMMM dd, yyyy', $blog.getModifiedDate())</p>
+                                                #if ($blogCategories.size() > 0)
+                                                    <div class="blog-category mb-2 mr-sm-3 text-truncate position-relative">
+                                                        #foreach($cat in $blogCategories)
+                                                            #if (!$exceptCat.contains($cat.getName()))
+                                                                #set ($arrCatName = $cat.getName().toLowerCase().trim().split(' '))
+                                                                #set ($catName = "")
+                                                                #foreach ($a in $arrCatName)
+                                                                    #set ($catName = $catName + $a)
+                                                                #end
+                                                                <a href="/search-tag?tag=$catName" target="_blank" title="$cat.getName()">$cat.getName()</a>
+                                                            #end
+                                                        #end
+                                                    </div>
+                                                #end
+                                            </div>
+                                            <div class="article-meta">
+                                                <div class="article-desc vertical-truncate" title="$description">$description</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                #else
+                                    #set ($v = $moreBlogs.put($articleTmp))
+                                #end
+                                #set ($count = $count + 1)
+                            #end
+                        #end
+                    </div>
+                    #if ($entries.size() > $maxBlogOnceLoad + 4)
+                    <div class="blog-widget-more blog-widget-padding">
+                        <a class="btn mt-3" href="#" id="load-more">
+                            #if ($themeDisplay.getLanguageId() == 'vi_VN')Xem thêm #else Load More Article #end
+                            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36185 4.32192L5.94426 0.958948L6.91878 0L12 5L6.91878 10L5.94426 9.04105L9.36185 5.67808L0 5.67808V4.32192L9.36185 4.32192Z" fill="#fff"></path> </svg>
+                        </a>
+                    </div>
+                    #end
+                </div>
+            #end
+        #end
+        <div class="s-margin-height">&nbsp;</div>
+    </div>
+</section>
+<style type="text/css"> .blog-img { width: 100%; display: block; overflow: hidden; background-color: #c4c4c4; border-radius: 8px; } .blog-img img, .promotion-img { -webkit-transition: transform .5s ease; -moz-transition: transform .5s ease; -o-transition: transform .5s ease; -ms-transition: transform .5s ease; transition: transform .5s ease } .blog-widget .block-left { overflow: hidden; background-color: #c4c4c4; border-radius: 8px; flex-shrink: 0; } .blog-time {float: left;} .block-left a { -webkit-transition: transform .5s ease; -moz-transition: transform .5s ease; -o-transition: transform .5s ease; -ms-transition: transform .5s ease; transition: transform .5s ease } .blog-img:hover img { transform: scale(1.05) } .blog-heading { font-size: 14px; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .blog-widget .blog-heading { color: #aaa; } .blog-heading .blog-category a {color: inherit} .blog-heading .blog-category a:not(:last-child) { margin-right: .5rem; } .blog-heading .blog-category a:hover {color: var(--vng-orange)} .promotion .promotion__title { font-size: 25px } .article-meta { color: #4d4d4d } .vertical-truncate { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } .blog-widget-title, .blog-widget-title a, .blog-top .title { color: var(--text-headline) } .promotion .read-more { border-color: #747474; font-size: 15px; font-weight: bold; color: inherit } .promotion .read-more:hover { border-color: var(--vng-orange); color: #fff !important } .blog-widget__thumb { height: 100%; position: relative; display: block; cursor: pointer; overflow: hidden } .promotion__title a { color: #fff } .promotion__title:hover a { text-decoration: none } .all-block { --columns: 3; display: grid; grid-template-columns: repeat(var(--columns), minmax(0, 1fr)); gap: 20px; } .all-block>div:not(.blog-top) { padding-bottom: 20px; } .blog-widget-more.hidden { display: none } .blog-widget-more .btn { color: #fff; font-size: 15px; border: 1px solid var(--vng-orange); background-color: var(--vng-orange); text-transform: uppercase } .blog-widget-more .btn svg { margin-left: 5px } .blog-widget-more .btn:hover { box-shadow: 0 2px 3px rgba(0, 0, 0, 0.11) } .blog-widget-more span { font-size: 22px; font-weight: 600; cursor: pointer } .blog-widget-img { height: 150px } .blog-top a { color: inherit; } .blog-widget-content { padding-left: 20px } .blog-img:hover img, .promotion__thumb:hover .promotion-img { transform: scale(1.1) } .blog-widget a:hover, .blog-widget .blog-widget-title:hover, .blog-top .title:hover { color: var(--vng-orange); text-decoration: none } .group-blog .blog-widget { border-bottom: .5px solid #ebebeb } @media(min-width:1200px) { .promotion .promotion__thumb { height: 350px } .blog-widget-img { height: 200px } .block-left { width: 25%; } } @media(min-width:992px) { .promotion .promotion__title { font-size: 30px } .all-block>div:not(.blog-top) { grid-column: 1/ span var(--columns); } .block-left { height: 150px; } } @media(min-width:768px) { .promotion .read-more { margin-top: 1rem } .promotion__content { padding-left: 20px } .blog-top { border-bottom: 0 !important } .blog-top .title, .blog-widget-title { font-size: 18px } } @media(max-width:1199.98px) { .promotion__thumb { height: 250px } } @media(min-width:992px) and (max-width:1199.98px) { .block-left {width: 30%;} } @media(min-width:576px) and (max-width:991.98px) { .promotion .promotion__thumb { height: 200px } .all-block { --columns: 2; } } @media(min-width:768px) and (max-width:991.98px) { .blog-widget .block-left { height: 150px } .block-right .blog-heading {padding-top: 1rem;} } @media (max-width: 991.98px) { .all-block>div:not(.blog-top) { flex-direction: column; } } @media(max-width:767.98px) { .blog-widget-padding { padding: 0 10px; margin-bottom: 20px } .blog-widget .block-left, .blog-top .blog-widget-img { height: 200px } .blog-widget .blog-heading { padding-top: 10px } .group-blog .blog-widget { padding-bottom: 30px } } @media(min-width:576px) { .block-left { float: left } } @media(max-width:575.98px) { .promotion { margin: 0 -15px 25px -15px } .promotion .promotion__thumb { height: 200px; border-radius: 0; } .all-block {--columns: 1} .group-blog { border-top: 2px solid var(--vng-orange); padding-top: 15px } .blog-category p { margin-bottom: .5rem } .blog-top, .blog-widget-padding { padding-left: 0; padding-right: 0 } .blog-top .title { font-weight: bold } } </style>
+<script type="text/javascript" defer>
+    $(document).ready(function (e) {
+        var page = 1,
+            limit = parseInt('${maxBlogOnceLoad}'),
+            blogs = ${moreBlogs};
+        $('#load-more').on('click', function (e) {
+            e.preventDefault();
+            if (((page - 1) * limit) + 1 > blogs.length) return;
+            for (var i = 0; i < limit; i++) {
+                var index = ((page - 1) * limit) + i;
+                appendBlog(blogs[index]);
+                if (index + 1 >= blogs.length) {
+                    $(".blog-widget-more").remove();
+                    break
+                }
+            }
+            page++;
+        });
+
+        function appendBlog(blog) {
+            let url = blog['url'] !== "" ? "${prefixUrl}" + blog['url'] : "javascript::void(0)",
+                categories = _.get(blog, 'categories', []),
+                txtCat = "<div class='blog-category mb-2 mr-sm-3 text-truncate position-relative'>",
+                result = "";
+            if (!_.isEmpty(categories)) {
+                categories.forEach(element => {
+                    let arrCat = element.toLowerCase().trim().split(' ').join('');
+                    txtCat += "<a href='/search-tag?tag=" + arrCat + "'>" + element + "</a>"
+                });
+            }
+            txtCat += "</div>";
+            let html = "<div class='blog-widget d-flex'><div class='block-left'>" +
+                "<a class='d-block position-relative bg-cover h-100 lazyload' href='" + url + "' data-bgset='" +
+                blog['image'] + "'></a></div>" +
+                "<div class='block-right ml-lg-4'><div class='blog-heading d-lg-none f-medium'><p class='blog-time mb-2 pr-3'>" +
+                blog['date'] + "</p>" + txtCat + "</div>" +
+                "<div class='blog-widget-title mb-1 f-bold vertical-truncate'><a href='" + url + "'>" + blog[
+                    'title'] + "</a> </div>" +
+                "<div class='blog-heading d-none d-lg-block f-medium'><p class='blog-time mb-sm-2 pr-3'>" +
+                blog['date'] + "</p>" + txtCat + "</div>" +
+                "<div class='article-meta'><div class='article-desc vertical-truncate' title='" + blog['desc'] +
+                "'>" + blog['desc'] + "</div>" + "</div></div></div>";
+            $("#all-block").append(html);
+        }
+    });
+</script>

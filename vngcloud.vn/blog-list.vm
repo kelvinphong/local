@@ -1,0 +1,1117 @@
+#set ($catLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService"))
+#set ($assetEntryLocalService = $serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService"))
+<section id="s-blog">
+    <div class="cloud-container v-section-inner">
+        #set ( $numBlogMain = 1 )
+        #if (!$entries.isEmpty())
+            #set ( $mapCat = {} )
+            #set ($defaultCat = "all")
+            #foreach ($entry in $entries)
+                #set( $categories = $catLocalService.getEntryCategories($entry.getEntryId()) )
+                #set( $cat = $categories.get(0) )
+                #set ($arrArticle = $mapCat.get($cat) )
+
+                #if( !$arrArticle )
+                    #set ($arrArticle = [] )
+                #end
+                #set( $all = $arrArticle.add($entry) )
+                #set ($allow = $mapCat.put($cat, $arrArticle))
+            #end
+            <div class="latest-blog d-sm-flex mt-sm-5 mb-sm-4">
+                #set ($latestBlogEntry = $entries.get(0))
+                #set($renderer = $latestBlogEntry.getAssetRenderer())
+                #set( $journalArticle = $renderer.getArticle() )
+                #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                #set( $rootElement = $document.getRootElement() )
+
+                #set( $xPathTitle = $saxReaderUtil.createXPath("dynamic-element[@name='BlogTitle']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+
+                #set ($xPathUrl = $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathDesc = $saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $desc = $xPathDesc.selectSingleNode($rootElement).getStringValue())
+
+                #set( $xPathImage = $saxReaderUtil.createXPath("dynamic-element[@name='thumbnailImage']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+
+                #if (!$image.isEmpty())
+                    #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+ $imgJson.name +"/"+$imgJson.uuid)
+                #else
+                    #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+                #end
+                <div class="latest-blog__left">
+                    <a class="latest-blog__thumb blog-img" href="/blog/$url">
+                        <img class="img-cover lazyload" data-src="$urlImage" alt="" />
+                    </a>
+                </div>
+                <div class="latest-blog__content pl-md-4">
+                    #set ($categories = $catLocalService.getEntryCategories($latestBlogEntry.getEntryId()))
+                    #if ($categories.size() > 0)
+                    <div class="blog-heading">
+                        <div class="blog-category"> #foreach($cat in $categories) <p class="t-upper">$cat.getName()</p> #end </div>
+                    </div>
+                    #end
+                    <a class="blog-title f-bold" href="/blog/$url" title="$title">$title</a>
+                    <p class="latest-blog__desc" title="$desc">$desc</p>
+                    <div>
+                        <a class="btn btn-white-color t-upper read-more f-bold" href="/blog/$url">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            #set ( $maxBlogOnceLoad = 6 )
+            #set( $moreBlogs = $jsonFactoryUtil.createJSONArray())
+            #set ($index = 1)
+            #set( $size = $entries.size() - 1 )
+            #if ($size ge $index)
+                #set ($count = 0)
+                #set ($concat ="-tab")
+                #set ($prefix ="-block")
+                #set($tabs = [ { "label": "All article", "name": $defaultCat, "cat": $defaultCat }, { "label": "Trends", "name": "trends", "cat": "Trends" }, { "label": "AI", "name": "ai", "cat": "AI" }, { "label": "Computing", "name": "computing", "cat": "Computing" }, { "label": "Database", "name": "database", "cat": "Database" }, { "label": "Netwoking", "name": "netwoking", "cat": "Netwoking" }, { "label": "Storage", "name": "storage", "cat": "Storage" }, { "label": "Security", "name": "security", "cat": "Security" }, { "label": "IoT", "name": "iot", "cat": "IoT" } ])
+                <div class="group-blog">
+                    <ul class="nav nav-tabs position-relative mb-4" id="blog-tab" role="tablist">
+                        #foreach ($tab in $tabs)
+                        #set ($catId = $tab.cat)
+                        #set ($catId = $catId.toLowerCase())
+                        
+                        <li class="nav-item text-center">
+                            <a class="nav-link #if ($tab.name == $defaultCat) active#end" data-tab="$catId" id="$tab.name$concat" data-toggle="tab" href="#$tab.name" role="tab" aria-controls="$tab.name" aria-selected="true">$tab.label</a>
+                        </li>
+                        #end
+                        <li class="nav-item search-blog__wrapper position-absolute flex-center">
+                            <div id="search-blog" class="search-blog flex-center position-relative">
+                                <i class="icon-search mr-2 pl-3"></i>
+                                <input class="h-100" id="search-blog-input" placeholder="Search..." type="search" value="" name="search">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="primary-color g-topic d-block d-sm-none">Topics</div>
+                        <div class="select-category position-relative mt-2 mb-4 d-flex d-sm-none">
+                            <select class="blog-select-category" id="blog-select-category">
+                            #foreach ($tab in $tabs)
+                                <option #if ($tab.name == $defaultCat) selected #end value="$tab.cat" data-href="$tab.name">$tab.label</option>
+                            #end
+                            </select>
+                            <div class="search-blog">
+                            <i class="icon-search mr-2 pl-3">&nbsp;</i>
+                                <input type="search" class="h-100" id="search-blog-input" placeholder="Search..." name="search">
+                            </div>
+                        </div>
+                        <div class="blog-filter">
+                            <div class="blog-filter-search fa-icon hidden" id="blog-filter-search" title="Remove Filter">
+                            </div>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="$defaultCat" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="all-block" id="$defaultCat$prefix">
+                                #foreach ($number in [$index..$size])
+                                    #set($renderer = $entries.get($number).getAssetRenderer() )
+                                    #set($blog=$entries.get($number))
+                                    #set($className = $renderer.getClassName() )
+                                    #set ($image = "")
+                                    #set( $urlImage = '/documents/20126/906379/default-placeholder.jpg')
+
+                                    #if( $className == "com.liferay.journal.model.JournalArticle" )
+                                        #set( $journalArticle = $renderer.getArticle() )
+                                        #set( $document = $saxReaderUtil.read($journalArticle.getContent()) )
+                                        #set( $rootElement = $document.getRootElement() )
+
+                                        #set( $xPathTitle = $saxReaderUtil.createXPath("dynamic-element[@name='BlogTitle']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $title = $xPathTitle.selectSingleNode($rootElement).getStringValue())
+
+                                        #set( $xPathDescription = $saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $description = $xPathDescription.selectSingleNode($rootElement).getStringValue())
+
+                                        #set ($xPathUrl = $saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $url= $xPathUrl.selectSingleNode($rootElement).getStringValue())
+
+                                        #set( $xPathImage = $saxReaderUtil.createXPath("dynamic-element[@name='thumbnailImage']/dynamic-content[@language-id='$themeDisplay.getLanguageId()']"))
+                                        #set( $image = $xPathImage.selectSingleNode($rootElement).getStringValue())
+                                        #set( $imgJson = $jsonFactoryUtil.createJSONObject($image) )
+
+                                        #if (!$image.isEmpty())
+                                            #set ($urlImage = "/documents/"+ $imgJson.groupId +"/" +$imgJson.fileEntryId +"/"+$imgJson.name+"/"+$imgJson.uuid)
+                                        #end
+                                        #set( $articleTmp = $jsonFactoryUtil.createJSONObject() )
+                                        #set ($v = $articleTmp.put("index", $count))
+                                        #set ($v = $articleTmp.put("user", $blog.getUserName()))
+                                        #set ($v = $articleTmp.put("date", $dateTool.format('MMMM dd, yyyy', $blog.getModifiedDate())))
+                                        #set ($v = $articleTmp.put("title", $title))
+                                        #set ($v = $articleTmp.put("desc", $description))
+                                        #set ($v = $articleTmp.put("url", $url))
+                                        #set ($v = $articleTmp.put("image", $urlImage))
+                                        #set ($assetEntry = $assetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", $journalArticle.getResourcePrimKey()))
+                                        #set ($viewCountMore = $getterUtil.getInteger($assetEntry.getViewCount()) / 2)
+                                        #set ($v = $articleTmp.put("view", $viewCountMore))
+                                        
+                                        #set ($blogCategories = $catLocalService.getEntryCategories($blog.getEntryId()))
+                                        #if ($blogCategories.size() > 0)
+                                            #set( $tempCat = $jsonFactoryUtil.createJSONArray())
+                                            #foreach($cat in $blogCategories)
+                                                #set ($v = $tempCat.put($cat.getName()))
+                                            #end
+                                            #set ($v = $articleTmp.put('categories', $tempCat))
+                                        #end
+                                        #set ($v = $moreBlogs.put($articleTmp))
+                                        #if ($count < 3)
+                                            <div class="blog-widget blog-top">
+                                                <div class="blog-widget-img blog-img">
+                                                    <a title="$title" class="h-100 position-relative" href="/blog/$url">
+                                                        <img class="img-cover lazyload" alt="Blog Image" data-src="$urlImage"/>
+                                                    </a>
+                                                </div>
+                                                <div class="article-meta">
+                                                    <div class="blog-heading">
+                                                    #if ($blogCategories.size() > 0)
+                                                        <div class="blog-category position-relative">
+                                                            #foreach($cat in $blogCategories)
+                                                                #set ($arrCatName = $cat.getName().toLowerCase().trim().split(' '))
+                                                                #set ($catName = "")
+                                                                #foreach ($a in $arrCatName)
+                                                                    #set ($catName = $catName + $a)
+                                                                #end
+                                                                <a href="/search-tag?tag=$catName" target="_blank" title="$cat.getName()">$cat.getName()</a>
+                                                            #end
+                                                        </div>
+                                                    #end
+                                                        <p class="blog-time">$dateTool.format('MMMM dd, yyyy', $blog.getModifiedDate())</p>
+                                                    </div>
+                                                    <div class="title f-bold">
+                                                        <a class="blog-title" title="$title" href="/blog/$url">$title</a>
+                                                    </div>
+                                                    <div class="article-desc d-lg-none" title="$description">$description</div>
+                                                </div>
+                                            </div>
+                                        #elseif ($count < $maxBlogOnceLoad + 3)
+                                            <div class="blog-widget d-flex blog-widget-padding">
+                                                <div class="block-left">
+                                                    <a class="blog-img position-relative" href="/blog/$url">
+                                                        <img class="img-cover lazyload" data-src="$urlImage" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="block-right">
+                                                    <div class="blog-heading d-flex d-lg-none">
+                                                    #if ($blogCategories.size() > 0)
+                                                        <div class="blog-category">
+                                                            #foreach($cat in $blogCategories) $cat.getName() #break #end
+                                                        </div>
+                                                    #end
+                                                        <p class="blog-time">$dateTool.format('MMMM dd, yyyy', $blog.getCreateDate())</p>
+                                                    </div>
+                                                    <div class="blog-widget-title mb-1 f-bold">
+                                                        <a class="blog-title" href="/blog/$url">$title</a>
+                                                    </div>
+                                                    <div class="blog-heading d-none d-lg-flex">
+                                                        #if ($blogCategories.size() > 0)
+                                                            <div class="blog-category">
+                                                            #foreach($cat in $blogCategories)
+                                                                #set ($arrCatName = $cat.getName().toLowerCase().trim().split(' '))
+                                                                #set ($catName = "")
+                                                                #foreach ($a in $arrCatName)
+                                                                    #set ($catName = $catName + $a)
+                                                                #end
+                                                                <a href="/search-tag?tag=$catName" target="_blank" title="$cat.getName()">$cat.getName()</a>
+                                                            #end
+                                                            </div>
+                                                        #end
+                                                        <p class="blog-time">$dateTool.format('MMMM dd, yyyy', $blog.getCreateDate())</p>
+                                                    </div>
+                                                    <div class="article-meta">
+                                                        <div class="article-desc" title="$description">$description</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        #end
+                                        #set ($count = $count + 1)
+                                    #end
+                                #end
+                            </div>
+                            #if ($entries.size() > $maxBlogOnceLoad + $index)
+                            <div class="blog-widget-more blog-widget-padding">
+                                <a class="btn mt-3" href="#" id="latest-blog-load-more">#if ($themeDisplay.getLanguageId() == 'vi_VN')Xem thêm #else Load More Article #end
+                                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36185 4.32192L5.94426 0.958948L6.91878 0L12 5L6.91878 10L5.94426 9.04105L9.36185 5.67808L0 5.67808V4.32192L9.36185 4.32192Z" fill="#fff"></path> </svg>
+                                </a>
+                            </div>
+                            #end
+                        </div>
+                        #set ($sizeTab = $tabs.size() - 1)
+                        #foreach($indexTab in [1..$sizeTab])
+                            #set ($tab = $tabs.get($indexTab))
+                            <div class="tab-pane fade" id="$tab.name" role="tabpanel" aria-labelledby="$tab.name$concat">
+                                <div class="row all-block" id="$tab.name$prefix"></div>
+                            </div>
+                        #end
+                    </div>
+                </div>
+            #end
+        #end
+        <div class="s-margin-height">&nbsp;</div>
+    </div>
+</section>
+<style type="text/css">
+        @media screen and (min-width:1200px) {
+            section#s-blog .cloud-container {
+                max-width: 1200px
+            }
+        }
+
+        .latest-blog__thumb {
+            height: 250px
+        }
+
+        .blog-img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #c4c4c4
+        }
+
+        .blog-img img {
+            -webkit-transition: transform 1s ease;
+            -moz-transition: transform 1s ease;
+            -o-transition: transform 1s ease;
+            -ms-transition: transform 1s ease;
+            transition: transform 1s ease
+        }
+
+        .latest-blog__header {
+            color: #747474
+        }
+
+        .blog-widget .blog-heading {
+            display: flex;
+            align-items: center;
+            color: #999;
+            font-family: 'Sarabun Medium', sans-serif
+        }
+
+        .blog-heading .blog-category {
+            position: relative;
+            display: flex
+        }
+
+        .blog-heading .blog-category {
+            padding-right: 15px;
+            margin-bottom: .5rem
+        }
+
+        .blog-heading .blog-category a {
+            color: inherit
+        }
+
+        .blog-heading .blog-category a:not(:last-child) {
+            magin-right: .5rem
+        }
+
+        .blog-heading .blog-category a:hover {
+            color: var(--vng-orange)
+        }
+
+        .blog-category::after {
+            content: '';
+            position: absolute;
+            right: 5px;
+            width: 6px;
+            height: 1px;
+            background: #999;
+            top: calc(50% + 1px)
+        }
+
+        .blog-heading {
+            font-size: 14px
+        }
+
+        .latest-blog .blog-title {
+            font-size: 25px;
+            line-height: 1.3
+        }
+
+        .latest-blog .latest-blog__desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-top: .5rem
+        }
+
+        .latest-blog .read-more {
+            border-color: #747474;
+            font-size: 15px;
+            color: inherit
+        }
+
+        .latest-blog .read-more:hover {
+            background-color: var(--vng-orange);
+            border-color: var(--vng-orange);
+            color: #fff !important
+        }
+
+        .blog-widget__thumb {
+            height: 100%;
+            position: relative;
+            display: block;
+            cursor: pointer;
+            overflow: hidden
+        }
+
+        .group-blog .nav-tabs {
+            border: 1px solid #ebebeb;
+            border-left: 0;
+            border-right: 0;
+            flex-wrap: nowrap
+        }
+
+        .group-blog .nav-tabs .nav-link {
+            border: 0;
+            background-color: transparent;
+            color: var(--text-body);
+            padding: 10px;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s
+        }
+
+        .group-blog .nav-tabs .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            border-radius: 2px;
+            background-color: var(--dark-blue-2);
+            transform: scale(0);
+            -webkit-transition: transform 125ms;
+            -moz-transition: transform 125ms;
+            -ms-transition: transform 125ms;
+            -o-transition: transform 125ms;
+            transition: transform 125ms
+        }
+
+        .group-blog .nav-tabs .nav-link.active {
+            font-family: "Sarabun Bold", sans-serif;
+            color: var(--dark-blue-2)
+        }
+
+        .group-blog .nav-tabs .nav-link.active::after {
+            transform: scale(1)
+        }
+
+        .group-blog .nav-tabs .nav-link:hover {
+            color: var(--dark-blue-2)
+        }
+
+        .blog-filter {
+            margin-bottom: 20px
+        }
+
+        .blog-filter .blog-filter-search {
+            padding-left: 1.5rem;
+            padding-right: 1rem;
+            background: var(--dark-blue-2);
+            color: #fff;
+            border-radius: 16px;
+            position: relative;
+            display: inline-block;
+            font-size: 15px;
+            padding-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .blog-filter-search::before {
+            content: "\f002";
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            font-size: 11px;
+        }
+
+        .blog-filter-search::after {
+            content: "x";
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--dark-blue-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 1px solid #fff;
+            opacity: 0;
+            padding-bottom: 4px;
+            cursor: pointer;
+            -webkit-transition: opacity 125ms linear;
+            -moz-transition: opacity 125ms linear;
+            -ms-transition: opacity 125ms linear;
+            -o-transition: opacity 125ms linear;
+            transition: opacity 125ms linear;
+        }
+
+        .blog-filter-search:hover::after {
+            opacity: 1;
+        }
+
+        .blog-filter .blog-filter-search.hidden {
+            display: none
+        }
+
+        .blog-filter .blog-filter-search i {
+            margin-left: 5px;
+            font-size: 13px
+        }
+
+        .all-block {
+            --columns: 3;
+            --spacing: 20px;
+            display: grid;
+            grid-template-columns: repeat(var(--columns), 1fr);
+            gap: var(--spacing)
+        }
+
+        .blog-widget-more.hidden {
+            display: none
+        }
+
+        .blog-widget-more .btn {
+            color: #fff;
+            font-size: 15px;
+            border: 1px solid var(--vng-orange);
+            background-color: var(--vng-orange);
+            text-transform: uppercase
+        }
+
+        .blog-widget-more .btn svg {
+            margin-left: 5px
+        }
+
+        .blog-widget-more .btn:hover {
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.11)
+        }
+
+        .blog-widget-more span {
+            font-size: 22px;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        .blog-widget-img {
+            height: 150px
+        }
+
+        .blog-top a {
+            color: inherit;
+            display: block
+        }
+
+        .blog-title {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            color: var(--text-headline);
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -ms-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s
+        }
+
+        .blog-top .article-desc {
+            margin-top: .5rem
+        }
+
+        .article-desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: #747474;
+            font-family: "Sarabun Light", sans-serif
+        }
+
+        .search-blog__wrapper {
+            top: 0;
+            bottom: 0;
+            right: 0
+        }
+
+        .search-blog {
+            width: 200px;
+            height: 70%;
+            border-radius: 24px;
+            color: #747474;
+            background-color: #f4f4f4
+        }
+
+        .search-blog.is-opened input {
+            width: 300px;
+            height: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border-radius: 16px
+        }
+
+        .search-blog.is-opened input,
+        .search-blog.is-opened .icon-search {
+            right: 0
+        }
+
+        .search-blog.is-opened .icon-search {
+            width: 30px
+        }
+
+        .search-blog input {
+            background: 0;
+            flex: 1;
+            padding: 5px 10px;
+            border: 0;
+            z-index: 1;
+            -webkit-appearance: none
+        }
+
+        .search-blog input:focus {
+            outline: 0
+        }
+
+        .search-blog input::placeholder {
+            color: #747474 !important;
+            font-size: 16px
+        }
+
+        .search-blog .icon-search {
+            width: 20px;
+            flex-shrink: 0
+        }
+
+        .blog-widget {
+            display: flex
+        }
+
+        .blog-img:hover img {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1)
+        }
+
+        .blog-title:hover {
+            color: var(--vng-orange)
+        }
+
+        .search-blog.search-blog-open,
+        .no-js .sb-search {
+            width: 100%
+        }
+
+        .blog-widget>li {
+            list-style: none
+        }
+
+        .blog-widget .block-left {
+            overflow: hidden;
+            background-color: #c4c4c4;
+            border-radius: 8px;
+            flex-shrink: 0
+        }
+
+        .block-left .blog-img {
+            padding-top: 56.25%;
+            height: 100%
+        }
+
+        .block-left img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0
+        }
+
+        .group-blog .blog-widget:not(.blog-top) {
+            border-bottom: 1px solid #ebebeb;
+            padding-bottom: var(--spacing)
+        }
+
+        .event-loading .placeholder {
+            border-radius: .25rem;
+            margin-bottom: 5px;
+            background-color: #ccc;
+            animation: skeleton-loading 1s linear infinite alternate
+        }
+
+        .event-loading .block-right .placeholder {
+            width: 100%;
+            height: 15px;
+            margin-bottom: 5px
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                opacity: .2
+            }
+
+            50% {
+                opacity: .4
+            }
+
+            100% {
+                opacity: .2
+            }
+        }
+
+        @media(min-width:1200px) {
+            .latest-blog__thumb {
+                height: 300px
+            }
+
+            .blog-top .blog-img {
+                height: 200px
+            }
+
+            .blog-widget .block-left {
+                width: 25%
+            }
+        }
+
+        @media(min-width:992px) {
+            .latest-blog .blog-title {
+                font-size: 30px
+            }
+
+            .event-loading .block-left {
+                height: 180px
+            }
+
+            .latest-blog__left {
+                width: 50%
+            }
+
+            .group-blog .blog-widget:not(.blog-top) {
+                grid-column: 1 / span 3
+            }
+
+            .blog-top .title {
+                padding-bottom: 1rem
+            }
+
+            .blog-widget.blog-top {
+                flex-direction: column
+            }
+
+            .blog-top .article-meta {
+                padding-top: 1rem
+            }
+
+            .block-right {
+                margin-left: 20px
+            }
+        }
+
+        @media(max-width:991.98px) {
+            .blog-top {
+                border-bottom: 1px solid #ebebeb
+            }
+
+            .blog-widget {
+                flex-direction: column
+            }
+        }
+
+        @media(min-width:992px) and (max-width:1199.98px) {
+            .block-left {
+                width: 30%
+            }
+        }
+
+        @media(min-width:576px) and (max-width:991.98px) {
+            .latest-blog__left {
+                width: 60%
+            }
+
+            .event-list .block-left a,
+            .event-loading .block-left {
+                height: 150px
+            }
+
+            .search-blog__wrapper .search-blog {
+                position: absolute;
+                right: 0
+            }
+
+            .search-blog input,
+            .search-blog .icon-search {
+                right: 0
+            }
+
+            .all-block {
+                --columns: 2;
+                --spacing: 30px
+            }
+
+            .group-blog .nav>li {
+                position: unset
+            }
+
+            .blog-top {
+                padding-bottom: 20px
+            }
+
+            .blog-widget .block-left,
+            .blog-widget-img {
+                height: 180px
+            }
+
+            .blog-widget .blog-heading {
+                padding-top: 1rem
+            }
+        }
+
+        @media(min-width:768px) {
+            .latest-blog .read-more {
+                margin-top: 1rem
+            }
+
+            .group-blog .nav-tabs .nav-link {
+                padding: 15px 10px
+            }
+
+            .blog-widget .blog-title {
+                font-size: 18px
+            }
+        }
+
+        @media(max-width:767.98px) {
+            .latest-blog__header {
+                margin-top: 20px
+            }
+
+            .blog-widget-padding {
+                padding: 0 10px;
+                margin-bottom: 20px
+            }
+
+            .blog-top .blog-widget-img {
+                height: 200px
+            }
+
+            .blog-widget-content {
+                display: flex;
+                flex-direction: column-reverse
+            }
+
+            .blog-widget .blog-heading {
+                padding-top: 10px
+            }
+
+            .blog-top .title {
+                font-size: 18px;
+                line-height: 25px
+            }
+
+            .blog-top .title.visible-xs-block {
+                display: -webkit-box !important
+            }
+        }
+
+        @media(min-width:576px) {
+            .latest-blog__left {
+                flex-shrink: 0
+            }
+
+            .latest-blog__content {
+                flex: 1
+            }
+
+            .blog-heading .blog-time {
+                margin-right: 30px
+            }
+
+            .blog-heading p {
+                margin-bottom: .5rem
+            }
+        }
+
+        @media(max-width:575.98px) {
+            .latest-blog__content {
+                padding-top: 15px;
+                padding-left: 15px;
+                padding-right: 15px
+            }
+
+            .latest-blog__thumb {
+                height: auto;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0
+            }
+
+            .latest-blog__thumb img:not(.lazyloaded) {
+                height: 200px
+            }
+
+            .latest-blog {
+                margin: 0 -15px 25px -15px
+            }
+
+            .all-block {
+                --columns: 1
+            }
+
+            .group-blog {
+                padding-top: 15px;
+                border-top: 2px solid var(--vng-orange)
+            }
+
+            .group-blog .blog-widget {
+                padding-bottom: var(--spacing)
+            }
+
+            .blog-heading .blog-time {
+                margin-right: 20px
+            }
+
+            .blog-widget-content {
+                padding-left: 10px
+            }
+
+            .group-blog .nav-tabs {
+                display: none
+            }
+
+            .blog-top .blog-img img {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0
+            }
+
+            .blog-heading p {
+                margin-bottom: .5rem
+            }
+
+            .event-loading .block-right {
+                margin-top: .5rem
+            }
+        }
+    </style>
+<script type="text/javascript" defer>
+    $(document).ready(function (e) {
+        var numBlog = parseInt('${count}'),
+            offset = parseInt('${maxBlogOnceLoad}'),
+            limit = parseInt('${maxBlogOnceLoad}'),
+            blogs = ${moreBlogs},
+            page = 1,
+            flag = 0,
+            activeTab = "${defaultCat}",
+            prefix = "${prefix}",
+            keySearch = "",
+            htmlPost = initRenderBlog();
+        const searchBlog = document.getElementById("search-blog-input"),
+                blogFilter = document.querySelector("#blog-filter-search"),
+                btnMore = document.querySelector(".blog-widget-more");
+            var blogWrapper = document.querySelector(`#${activeTab}${prefix}`);
+            searchBlog && searchBlog.addEventListener("keypress", typeHandler);
+
+            btnMore && btnMore.addEventListener("click", function (e) {
+                e.preventDefault();
+                page++;
+
+                btnMore.classList.add("hidden");
+                loading(1);
+                setTimeout(function (e) {
+                    const loadingEle = document.querySelectorAll(".event-loading");
+                    loadingEle && $(loadingEle).remove();
+                    btnMore.classList.remove("hidden");
+                    reRendered(_.cloneDeep(blogs));
+                }, 500);
+            });
+
+            $("#blog-tab a").on("click", function (e) {
+                e.preventDefault();
+                activeTab = $(this).attr("data-tab");
+                handleChangeCategory(activeTab);
+                $(this).tab("show")
+            });
+
+            $("#blog-filter-search").on("click", function (e) {
+                e.preventDefault();
+                keySearch = "";
+                reset(true);
+                $(this).addClass("hidden");
+            });
+
+            function initRenderBlog() {
+                let result = renderTopBlog(_.take(blogs, 3));
+                for (var index = 3; index < offset + 3; index++) result += appendBlog(blogs[index], false);
+                return result
+            }
+
+            function handleChangeCategory(id) {
+                blogWrapper = document.querySelector(`#${id}${prefix}`);
+                reset(keySearch === "");
+            }
+
+            function handleClickOutside(e) {
+                let target = document.getElementById("search-blog");
+                if (target && !target.contains(e.target)) {
+                    target.classList.remove("is-opened");
+                    document.removeEventListener("click", (e) => handleClickOutside(e))
+                }
+            }
+
+            function typeHandler(e) {
+                let value = _.escape(e.target.value.trim());
+                let keycode = e.keyCode ? e.keyCode : e.which;
+                if (keycode == "13") {
+                    keySearch = value;
+                    if (blogFilter) {
+                        blogFilter.classList.remove("hidden");
+                        blogFilter.textContent = value;
+                    }
+
+                    e.target.value = "";
+                    reset();
+                }
+            }
+
+            function reset(isReset = false) {
+                blogWrapper.textContent = "";
+                btnMore.classList.add("hidden");
+
+                flag = 0;
+                page = 1;
+                if (isReset) {
+                    activeTab === "all" ? blogWrapper.innerHTML = htmlPost : reRendered(_.cloneDeep(blogs));
+                    btnMore.classList.remove("hidden");
+                } else {
+                    loading();
+                    setTimeout(function (e) {
+                        const loadingEle = document.querySelectorAll(".event-loading");
+                        loadingEle && $(loadingEle).remove();
+                        btnMore.classList.remove("hidden");
+                        reRendered(_.cloneDeep(blogs));
+                    }, 500);
+                }
+            }
+
+            function reRendered(data) {
+                let count = 0;
+                flag = flag > 0 ? flag : (page - 1) * offset;
+
+                while (count < offset) {
+                    if (flag < numBlog) {
+                        let event = data[flag];
+                        if (shouldShowItem(event, keySearch)) {
+                            appendBlog(event);
+                            count++;
+                        }
+                        flag++;
+                    } else {
+                        btnMore.classList.add("hidden");
+                        count = offset + 1;
+                    }
+                }
+            }
+
+            function shouldShowItem(item, searchingKeyword) {
+                if (activeTab !== "all" && _.get(item, "categories", []).map(cat => cat.toLowerCase()).indexOf(activeTab) < 0)
+                    return false;
+                let isMatch = false;
+
+                if (!searchingKeyword || _.trim(searchingKeyword) === "") return true;
+
+                _.forEach(["title"], (field, index) => {
+                    if (_.toLower(_.trim(item[field])).indexOf(_.toLower(_.trim(searchingKeyword))) > -1) {
+                        isMatch = true;
+                        return false
+                    }
+                });
+                return isMatch
+            }
+
+            function renderTopBlog(blogs) {
+                let blogHtml =
+                    "";
+                for (var i = 0; i < _.size(blogs); i++) {
+                    let blog = blogs[i];
+                    let url = "/blog/" + blog["url"],
+                        categories = _.get(blog, "categories", []),
+                        txtCat = "";
+                    if (!_.isEmpty(categories)) {
+                        txtCat = "<div class='blog-category'>";
+                        categories.forEach((element) => {
+                            let arrCat = element.toLowerCase().trim().split(" ").join("");
+                            txtCat += "<a href='/search-tag?tag=" + arrCat +
+                                "' target='_blank'>" + element + "</a>"
+                        });
+                        txtCat += "</div>"
+                    }
+                    blogHtml += "<div class='blog-widget blog-top'>" +
+                        "<div class='blog-widget-img blog-img'>" +
+                        "<a title='" + blog["title"] + "' class='h-100 position-relative' href='" +
+                        url + "'>" +
+                        "<img class='img-cover lazyload' alt='Blog Image' data-src='" + blog[
+                            "image"] + "'>" + "</a>" + "</div>" +
+                        "<div class='article-meta'>" + "<div class='blog-heading'>" + txtCat +
+                        "<p class='blog-time'>" + blog["date"] + "</p>" + "</div>" +
+                        "<div class='title f-bold'>" + "<a class='blog-title' title='" + blog[
+                            "title"] + "' href='" + blog["url"] + "'>" +
+                        blog["title"] + "</a>" + "</div>" +
+                        "<div class='article-desc d-lg-none' title='" + blog["desc"] + "'>" + blog[
+                            "desc"] + "</div>" + "</div></div>"
+                }
+                return blogHtml
+            }
+
+            function appendBlog(blog, isAppened = true) {
+                let url = "/blog/" + blog["url"],
+                    categories = _.get(blog, "categories", []),
+                    txtCat = "",
+                    result = "";
+                if (!_.isEmpty(categories)) {
+                    txtCat = "<div class='blog-category'>", categories.forEach((element) => {
+                        let arrCat = element.toLowerCase().trim().split(" ").join("");
+                        txtCat +=
+                            "<a href='/search-tag?tag=" + arrCat + "' target='_blank'>" +
+                            element + "</a>"
+                    });
+                    txtCat += "</div>"
+                }
+                let html = "<div class='blog-widget'><div class='block-left'>" +
+                    "<a class='blog-img position-relative' href='/blog/" + url +
+                    "'><img class='img-cover lazyload' data-src='" + blog["image"] +
+                    "' alt='' /></a></div>" +
+                    "<div class='block-right'><div class='blog-heading d-flex d-lg-none'>" +
+                    txtCat + "<p class='blog-time'>" +
+                    blog["date"] +
+                    "</p></div><div class='blog-widget-title mb-2 f-bold'><a class='blog-title' href='" +
+                    url + "'>" + blog["title"] + "</a></div>" +
+                    "<div class='blog-heading d-none d-lg-flex'>" + txtCat +
+                    "<p class='blog-time'>" + blog["date"] + "</p></div>" +
+                    "<div class='article-meta'><div class='article-desc' title='" + blog[
+                        "desc"] + "'>" + blog["desc"] + "</div></div></div></div>";
+
+                if (isAppened) $(blogWrapper).append(html);
+                return html
+            }
+
+            function loading(num = 6) {
+                let html = "<div class='event-loading blog-widget d-flex'>" +
+                    "<div class='placeholder block-left mb-0'></div>" +
+                    "<div class='block-right' style='flex: 1'><div class='placeholder' style='width: 70%'></div>" +
+                    "<div class='d-flex'><div class='placeholder mr-2' style='width: 10%'></div>" +
+                    "<div class='placeholder' style='width: 20%'></div></div></div></div>";
+                for (let i = 0; i < num; i++) {
+                    $(blogWrapper).append(html);
+                }
+            }
+    });
+</script>

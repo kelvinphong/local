@@ -308,7 +308,15 @@ window.location.href= "${redirect}";
         top: -8px;
         font-size: 10px;
     }
-
+    .promotion-number {
+        opacity: 0;
+        -webkit-transition: opacity 300ms ease-in-out;
+        -moz-transition: opacity 300ms ease-in-out;
+        -ms-transition: opacity 300ms ease-in-out;
+        -o-transition: opacity 300ms ease-in-out;
+        transition: opacity 300ms ease-in-out;
+    }
+    .promotion-number.show {opacity: 1}
     .menu-prod-wrapper .tab-content {
         overflow: auto;
         background-color: #f5f6f6;
@@ -1706,62 +1714,66 @@ window.location.href= "${redirect}";
                         <#assign promotionsArticle=promotionsArticle?sort_by('createDate')?reverse>
                         <#assign allowedCat=['New', 'new']>
                         <#assign exceptCat=['Test', 'test']>
-                        <#assign promotionId = ''>
                         <#assign countPromotion=0>
                         <#assign arrPromotion=[]>
-                        <#assign index=0>
-                        <#list promotionsArticle as promotion>
-                            <#assign nextArticleResourcePrimKey=promotion.getResourcePrimKey()>
-                            <#assign nextArticleAssetEntry=assetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", nextArticleResourcePrimKey)>
-                            <#assign nextArticleAssetEntryEntryId=nextArticleAssetEntry.getEntryId()>
-                            <#assign nextCategories=catLocalService.getEntryCategories(nextArticleAssetEntryEntryId)> <#assign allowed = false>
-                            <#if nextCategories?size gt 0>
-                                <#list nextCategories as cat>
-                                    <#if allowedCat?seq_index_of(cat.getName()) gte 0>
-                                        <#assign allowed = true>
-                                        <#break>
-                                    </#if>
-                                </#list>
-                            </#if>
-                            <#if allowed>
-                                <#if !promotion?has_next || promotionsArticle[promotion?index + 1].getArticleId() != promotion.getArticleId()>
-                                    <#assign countPromotion++>
-                                    <#assign document=saxReaderUtil.read(promotion.getContent())>
-                                    <#assign rootElementNext=document.getRootElement()>
-                                    <#assign xPathTitle=saxReaderUtil.createXPath("dynamic-element[@name='title']/dynamic-content[@language-id='${locale}']")>
-                                    <#assign title=xPathTitle.selectSingleNode(rootElementNext).getStringValue()>
-                                    <#assign xPathDesc=saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='${locale}']")>
-                                    <#assign desc=xPathDesc.selectSingleNode(rootElementNext).getStringValue()>
-                                    <#assign xPathUrl=saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='${locale}']")>
-                                    <#assign url=xPathUrl.selectSingleNode(rootElementNext).getStringValue()>
-                                    <#assign arrPromotion += [{"title": title, "desc": desc, "url": url}]>
-                                    <#assign index++>
-                                </#if>
+                        <#list promotionsArticle as promotion01>
+                            <#if !promotion01?has_next || promotion01.getArticleId() != promotionsArticle[promotion01?index + 1].getArticleId()>
+                                <#assign arrPromotion+= [promotion01]>
                             </#if>
                         </#list>
                         <li class="dropdown-promotion">
                             <a href="javascript:void(0)" class="flex-center position-relative pl-xl-3 pr-xl-3" aria-labelledby="dropdown_promotion" id="dropdown_promotion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="icon-promotion lazyload" data-src="/documents/20126/906379/icon-notify-promotion.png">
-                                <#if index gt 0>
-                                    <div class="badge badge-danger number promotion-number flex-center" id="promotion-number">${index}</div>
-                                </#if>
+                                <div class="badge badge-danger number promotion-number flex-center" id="promotion-number">&nbsp;</div>
+                            </a>
+                            <a href="/promotions" class="flex-center position-relative pl-xl-3 pr-xl-3 promotion-target d-none">
+                                <img class="icon-promotion lazyload" data-src="/documents/20126/906379/icon-notify-promotion.png">
+                                <div class="badge badge-danger number promotion-number flex-center" id="promotion-number">&nbsp;</div>
                             </a>
                             <ul class="dropdown-menu header-dropdown m-0 p-0 border-0 dropdown-ext" aria-labelledby="dropdown_promotion">
                                 <li class="dropdown-ext__header d-flex align-items-center justify-content-between position-relative">
-                                    <div class="primary-color"><b>Promotion <span>(${index})</span></b></div>
+                                    <div class="primary-color"><b>Promotion (<span class="promotion-number">&nbsp;</span>)</b></div>
                                 </li>
-                                <#list arrPromotion as newPromotion>
-                                    <li class="p-0">
-                                        <a class="d-flex mb-2 p-2" target="_blank" href="/promotions/${newPromotion.url}">  
-                                            <div class="promotion-icon position-relative">
-                                                <img class="lazyload position-relative" data-src="/documents/20126/906379/icon-notify-promotion.png" width="30px" height="30px" />
-                                            </div>
-                                            <div class="promotion-desc pl-1">
-                                                <div title="${newPromotion.title}">${newPromotion.title}</div>
-                                                <p title="${newPromotion.desc}" class="d-none">${newPromotion.desc}</p>
-                                            </div>
-                                        </a>
-                                    </li>
+                                <#assign promotionTest=[]>
+                                <#list arrPromotion as promotion>
+                                    <#assign nextArticleResourcePrimKey=promotion.getResourcePrimKey()>
+                                    <#assign nextArticleAssetEntry=assetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", nextArticleResourcePrimKey)>
+                                    <#assign nextArticleAssetEntryEntryId=nextArticleAssetEntry.getEntryId()>
+                                    <#assign nextCategories=catLocalService.getEntryCategories(nextArticleAssetEntryEntryId)>
+                                    <#assign allowed = false>
+                                    <#if nextCategories?size gt 0>
+                                        <#list nextCategories as cat>
+                                            <#if exceptCat?seq_index_of(cat.getName()) gte 0>
+                                                <#assign allowed = false>
+                                                <#break>
+                                            </#if>
+                                            <#if allowedCat?seq_index_of(cat.getName()) gte 0>
+                                                <#assign allowed = true>
+                                            </#if>
+                                        </#list>
+                                    </#if>
+                                    <#if allowed == true>
+                                        <#assign document=saxReaderUtil.read(promotion.getContent())>
+                                        <#assign rootElementNext=document.getRootElement()>
+                                        <#assign xPathTitle=saxReaderUtil.createXPath("dynamic-element[@name='title']/dynamic-content[@language-id='${locale}']")>
+                                        <#assign title=xPathTitle.selectSingleNode(rootElementNext).getStringValue()>
+                                        <#assign xPathDesc=saxReaderUtil.createXPath("dynamic-element[@name='Description']/dynamic-content[@language-id='${locale}']")>
+                                        <#assign desc=xPathDesc.selectSingleNode(rootElementNext).getStringValue()>
+                                        <#assign xPathUrl=saxReaderUtil.createXPath("dynamic-element[@name='urlDetail']/dynamic-content[@language-id='${locale}']")>
+                                        <#assign url=xPathUrl.selectSingleNode(rootElementNext).getStringValue()>
+                                        <li class="p-0">
+                                            <a class="d-flex mb-2 p-2" target="_blank" href="/promotions/${url}">  
+                                                <div class="promotion-icon position-relative">
+                                                    <img class="lazyload position-relative" data-src="/documents/20126/906379/icon-notify-promotion.png" width="30px" height="30px" />
+                                                </div>
+                                                <div class="promotion-desc pl-1">
+                                                    <div title="${title}">${title}</div>
+                                                    <p title="${desc}" class="d-none">${desc}</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <#assign countPromotion++>
+                                    </#if>
                                 </#list>
                             </ul>
                         </li>
@@ -1772,7 +1784,7 @@ window.location.href= "${redirect}";
     </div>
 </div>
 <#if !menuFixed>
-<div class="v-header-mask">&nbsp;</div>
+    <div class="v-header-mask">&nbsp;</div>
 </#if>
 <script type="text/javascript" src="/o/vng-cloud-theme/js/wow_1_1_2.min.js" defer></script>
 <script type="text/javascript">
@@ -1782,163 +1794,4 @@ window.location.href= "${redirect}";
         '--medium': '(max-width: 1599.98px)',
         '--large': '(min-width: 1600px)'
     };
-</script>
-<script type="text/javascript" defer>
-    $(document).ready(function() {
-        var wow = new WOW({
-            boxClass: "wow",
-            animateClass: "animated",
-            offset: 0,
-            mobile: true,
-            live: true
-        });
-        wow.init();
-        var activeMenu = "${activeMenu}",
-            hHeader = parseInt("${hHeader}");
-        if (activeMenu == "" || ["trang ch\u1ee7", "home"].includes(activeMenu.toLowerCase().trim()))
-            activeMenu = "Menu";
-        document.getElementById("active-menu").innerHTML = activeMenu;
-        const vHeader = $(".v-header"),
-            prodTab = document.querySelector("#prod-tab"),
-            categoryItems = $(prodTab).find('a'),
-            subProduction = document.querySelectorAll(".prod-block.has-child"),
-            prodTabContent = document.querySelector("#prod-tabContent"),
-            productMenu = document.querySelector(".child-nav__full-screen"),
-            subProductActive = document.querySelector(".sub-product.active");
-        changeProductMenu();
-        $('body').append("<div class='overlay'></div>")
-        "${productActive?c}" === "true" && ($('.product-menu').addClass('active'));
-        $(window).bind("scroll", function () {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > hHeader) {
-                vHeader.addClass("scrolled white-bg");
-                vHeader.get(0).style.setProperty("--height-header", "${hHScrolled}" + "px");
-            } else {
-                vHeader.removeClass("scrolled");
-                vHeader.get(0).style.setProperty("--height-header", hHeader + "px");
-                !hasDropdownOpened($('.navigation-group'));
-            }
-        });
-        $(window).bind("resize", function () {
-            changeProductMenu();
-        });
-        initLang(${jsonFactoryUtil.looseSerializeDeep(selectedLang)});
-        subProductActive && subProductActive.parentNode.parentNode.classList.add("active");
-        $(".navigation-group").on({
-            mouseenter: function () {
-                (!vHeader.hasClass("scrolled")) && (vHeader.addClass("white-bg"));
-            },
-            mouseleave: function () {
-                !vHeader.hasClass("scrolled") && hasDropdownOpened($(this));
-            }
-        });
-        $(".v-header").on('click', '.header-dropdown', function (e) {
-            e.stopPropagation();
-        });
-        $('#prod-tab a.category-link').on('click', function (e) {
-            e.preventDefault();
-            if ($(this).hasClass('active')) return;
-            categoryItems.removeClass("active show").parent().removeClass("show");
-            setTimeout(function () {
-                $(this).tab('show') && ($(this).parent().addClass("show"));
-            }.bind(this), 300)
-        });
-        $(".navbar-toggle").on("click", function (e) {
-            e.preventDefault();
-            let target = document.getElementById($(this).attr("data-target"));
-            target && (target.classList.toggle("show"));
-            if (target.classList.contains("show")) {
-                $('.overlay').fadeIn();
-                $('body').addClass("no-scroll");
-            } else {
-                $('.overlay').fadeOut();
-                $('body').removeClass("no-scroll");
-            }
-            document.addEventListener('click', clickOutsiteNavigation, true);
-        });
-        $(".site-item").on("click", function (e) {
-            e.preventDefault();
-            setCookie("lang", $(this).attr("data-lang"), 1E4);
-            let path = "${path}";
-            if (path !== "" && path.indexOf("${friendlyURL}") < 0) window.location.href = path;
-            else window.location.href = $(this).attr("data-href");
-        });
-        $(".menu__header").on("click", function (e) {
-            e.preventDefault();
-            $(this).parent().removeClass("show").parent().removeClass("show");
-        });
-        productMenu && productMenu.addEventListener("click", function (e) {
-            const isDropdownSubProduct = e.target.parentNode.matches("[data-dropdown-sub-product]") || e
-                .target.classList.contains("nav-link");
-            if (!isDropdownSubProduct && e.target.closest('[data-dropdown-product]') !== null) return;
-            let currentDropdown;
-            if (isDropdownSubProduct) {
-                currentDropdown = e.target.closest('[data-dropdown-product]');
-                currentDropdown.classList.toggle("is-show");
-                prodTabContent.classList.toggle("mask");
-                var navLink = $(currentDropdown).find(".nav-link");
-                navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
-                    .clientHeight + "px"))
-            }
-            var opened = false;
-            document.querySelectorAll('[data-dropdown-product].is-show').forEach(function (dropdown) {
-                if (dropdown === currentDropdown) {
-                    opened = true;
-                    return;
-                }
-                dropdown.classList.remove("is-show");
-            }) if (!opened) prodTabContent.classList.remove("mask");
-        })
-        function hasDropdownOpened(target, remove = true) {
-            let hasChild = target.find(".has-child").filter("[class*='show']");
-            remove && hasChild.length == 0 && (vHeader.removeClass("white-bg"));
-            return hasChild.length > 0;
-        }
-
-        function changeProductMenu() {
-            if (window.innerWidth < 768) {
-                const tabContent = document.querySelector("#prod-tabContent");
-                if (tabContent) {
-                    $.each(tabContent.children, function (index, tab) {
-                        categoryItems.filter("[href='#" + tab.id + "']").parent().find('.category-desc')
-                            .append(tab.innerHTML);
-                    })
-                }
-                vHeader.removeClass("hidden");
-            } else {
-                $('.overlay').fadeOut();
-                $('body').removeClass('no-scroll');
-                categoryItems.parent().find('.prod-category').remove();
-            }
-        }
-
-        function clickOutsiteNavigation(selector) {
-            let navMenu = document.getElementById('navigation-menu');
-            if (!navMenu || navMenu.contains(selector.target)) return;
-            $('.overlay').fadeOut() && (navMenu.classList.remove('show'));
-            $('body').removeClass('no-scroll');
-            document.removeEventListener('click', clickOutsiteNavigation, true);
-        }
-
-        function initLang(locale) {
-            let cookieLang = getCookie("lang");
-            if (cookieLang == null) setCookie("lang", locale["name"], 1E4);
-        }
-
-        function getCookie(e) {
-            for (var a = e + "\x3d", n = document.cookie.split(";"), t = 0; t < n.length; t++) {
-                for (var i = n[t];
-                    " " == i.charAt(0);) i = i.substring(1, i.length);
-                if (0 == i.indexOf(a)) return i.substring(a.length, i.length)
-            }
-            return null
-        }
-
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date;
-            d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1E3);
-            var expires = "expires\x3d" + d.toUTCString();
-            document.cookie = cname + "\x3d" + cvalue + ";" + expires + ";path\x3d/;domain\x3d.vngcloud.vn"
-        };
-    });
 </script>

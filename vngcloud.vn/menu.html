@@ -37,8 +37,8 @@
                                 class="vng-cloud-logo-sub img-fluid lazyloaded"
                                 data-src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png" alt="" width="150px"
                                 src="https://vngcloud.vn/documents/20126/906379/logo-vng-cloud-color.png"> </a> </div>
-                    <div class="navigation-group">
-                        <nav id="navigation-menu" class="navbar-collapse"> <a id="nav-toggle"
+                    <div class="navigation-group" data-navigation-group>
+                        <nav id="navigation-menu" class="navbar-collapse" data-navigation> <a id="nav-toggle"
                                 class="navbar-toggle collapsed p-0 mobile-opacity" data-toggle="collapse"
                                 data-target="navigation-menu" aria-expanded="false" title="Toggle Menu"> <img
                                     class="lazyload img-fluid"
@@ -113,12 +113,12 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="nav-item active has-child product-menu show"> <a
+                                <li class="nav-item has-child product-menu"> <a
                                         class="nav-link menu-main d-flex align-items-center transition-all t-upper"
                                         aria-labelledby="layout_632377" href="javascript:void(0)" role="menuitem"
                                         id="dropdown_632377" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="true"> <span class="position-relative">Products</span> </a>
-                                    <div class="child-nav d-block dropdown-menu header-dropdown m-0 p-0 border-0 cloud-container child-nav__full-screen show"
+                                    <div class="child-nav d-block dropdown-menu header-dropdown m-0 p-0 border-0 cloud-container child-nav__full-screen"
                                         id="child-nav" aria-labelledby="dropdown_632377">
                                         <h3 class="menu__header mb-0 align-items-center position-relative t-upper">
                                             <span>Products</span> </h3>
@@ -503,7 +503,7 @@
                                                                         eApp</div>
                                                                 </a>
                                                                 <div class="sub-product-menu">
-                                                                    <div class="sub-product active"> <a
+                                                                    <div class="sub-product"> <a
                                                                             class="d-block h-100"
                                                                             aria-labelledby="layout_1773876"
                                                                             href="https://admin.vngcloud.vn/en/web/guest/product/evps"
@@ -709,21 +709,21 @@
                         <div class="options-menu d-flex align-items-center">
                             <div class="menu-right">
                                 <ul class="list-unstyled m-0 p-0">
-                                    <li class="dropdown-promotion"> <a href="javascript:void(0)"
+                                    <li class="dropdown-promotion">
+                                        <a href="javascript:void(0)"
                                             class="flex-center position-relative pl-xl-3 pr-xl-3"
                                             aria-labelledby="dropdown_promotion" id="dropdown_promotion"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img
                                                 class="icon-promotion lazyloaded"
                                                 data-src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png"
                                                 src="https://vngcloud.vn/documents/20126/906379/icon-notify-promotion.png">
-                                            <div class="badge badge-danger number promotion-number flex-center"
-                                                id="promotion-number">5</div>
+                                                <div class="badge badge-danger number promotion-number flex-center" id="promotion-number">&nbsp;</div>
                                         </a>
                                         <ul class="dropdown-menu header-dropdown m-0 p-0 border-0 dropdown-ext"
                                             aria-labelledby="dropdown_promotion">
                                             <li
                                                 class="dropdown-ext__header d-flex align-items-center justify-content-between position-relative">
-                                                <div class="primary-color"><b>Promotion <span>(5)</span></b></div>
+                                                <div class="primary-color"><b>Promotion (<span class="promotion-number">&nbsp;</span>)</b></div>
                                             </li>
                                             <li class="p-0"> <a class="d-flex mb-2 p-2" target="_blank"
                                                     href="/promotions/tang-mot-tram-phan-tram-phi-dich-vu-thu-nghiem-combo-promotion">
@@ -824,6 +824,7 @@
                                                             cloud.</p>
                                                     </div>
                                                 </a> </li>
+                                            <li class="d-none" data-count="11"></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -846,7 +847,7 @@
     <script src="assets/js/ls.parent-fit.min.js" async></script>
     <script src="assets/js/ls.bgset.min.js" async></script>
     <script src="assets/js/jquery.fancybox.min.js" defer></script>
-    <script type="text/javascript" src="/o/vng-cloud-theme/js/wow_1_1_2.min.js" defer></script>
+    <script type="text/javascript" src="https://vngcloud.vn/o/vng-cloud-theme/js/wow_1_1_2.min.js" defer></script>
     <script type="text/javascript">
         window.lazySizesConfig = window.lazySizesConfig || {};
         window.lazySizesConfig.customMedia = {
@@ -855,16 +856,9 @@
             '--large': '(min-width: 1600px)',
         };
     </script>
+    <script>new WOW().init();</script>
     <script type="text/javascript" defer>
         $(document).ready(function () {
-            var wow = new WOW({
-                boxClass: "wow",
-                animateClass: "animated",
-                offset: 0,
-                mobile: true,
-                live: true
-            });
-            wow.init();
             var activeMenu = "${activeMenu}",
                 hHeader = parseInt("${hHeader}");
             if (activeMenu == "" || ["trang ch\u1ee7", "home"].includes(activeMenu.toLowerCase().trim()))
@@ -876,9 +870,11 @@
                 subProduction = document.querySelectorAll(".prod-block.has-child"),
                 prodTabContent = document.querySelector("#prod-tabContent"),
                 productMenu = document.querySelector(".child-nav__full-screen"),
-                subProductActive = document.querySelector(".sub-product.active");
+                subProductActive = document.querySelector(".sub-product.active"),
+                menuMobile = document.querySelector("#navigation-menu"),
+                promotionsCount = document.querySelectorAll(".promotion-number");
             changeProductMenu();
-            $('body').append("<div class='overlay'></div>")
+
             "${productActive?c}" === "true" && ($('.product-menu').addClass('active'));
             $(window).bind("scroll", function () {
                 var scrollTop = $(window).scrollTop();
@@ -926,7 +922,6 @@
                     $('.overlay').fadeOut();
                     $('body').removeClass("no-scroll");
                 }
-                document.addEventListener('click', clickOutsiteNavigation, true);
             });
             $(".site-item").on("click", function (e) {
                 e.preventDefault();
@@ -948,12 +943,14 @@
                 let currentDropdown;
                 if (isDropdownSubProduct) {
                     currentDropdown = e.target.closest('[data-dropdown-product]');
-                    currentDropdown.classList.toggle("is-show");
+                    currentDropdown && currentDropdown.classList.toggle("is-show");
                     prodTabContent.classList.toggle("mask");
 
-                    var navLink = $(currentDropdown).find(".nav-link");
-                    navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
+                    if (currentDropdown) {
+                        var navLink = $(currentDropdown).find(".nav-link");
+                        navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
                         .clientHeight + "px"))
+                    }
                 }
 
                 var opened = false;
@@ -969,7 +966,7 @@
 
                 if (!opened) prodTabContent.classList.remove("mask");
             })
-
+            promotionsCount && handleDropdownPromotions();
             function hasDropdownOpened(target, remove = true) {
                 let hasChild = target.find(".has-child").filter("[class*='show']");
                 remove && hasChild.length == 0 && (vHeader.removeClass("white-bg"));
@@ -993,17 +990,41 @@
                 }
             }
 
-            function clickOutsiteNavigation(selector) {
-                let navMenu = document.getElementById('navigation-menu');
-                if (!navMenu || navMenu.contains(selector.target)) return;
-                $('.overlay').fadeOut() && (navMenu.classList.remove('show'));
-                $('body').removeClass('no-scroll');
-                document.removeEventListener('click', clickOutsiteNavigation, true);
-            }
+            document.addEventListener("click", function(e) {
+                if (menuMobile.classList.contains("show")) {
+                    if (e.target.closest(".mobile-g-btn") !== null ||
+                        e.target.closest("[data-navigation]") !== null) return;
+                    
+                    $('.overlay').fadeOut() && (menuMobile.classList.remove("show"));
+                    $('body').removeClass('no-scroll');
+                    let navItems = $(menuMobile).find(".nav-item");
+                    navItems.length > 0 && navItems.removeClass("show");
+                }
+            })
 
             function initLang(locale) {
                 let cookieLang = getCookie("lang");
                 if (cookieLang == null) setCookie("lang", locale["name"], 1E4);
+            }
+
+            function handleDropdownPromotions() {
+                let countPromo = parseInt(document.querySelector("[data-count]").getAttribute("data-count"));
+
+                if (countPromo > 0) {
+                    promotionsCount.forEach(function (ele) {
+                        ele.classList.add("show");
+                        if (countPromo > 9 && ele.closest("#dropdown_promotion") !== null) {
+                            ele.textContent = "9+";
+                        } else {
+                            ele.textContent = countPromo;
+                        }
+                    });
+                } else {
+                    document.querySelector("#dropdown_promotion").classList.add("d-none");
+                    document.querySelector(".promotion-target").classList.remove("d-none");
+                }
+
+                return true;
             }
 
             function getCookie(e) {

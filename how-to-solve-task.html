@@ -10,8 +10,9 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		* {
 			margin: 0;
@@ -29,31 +30,62 @@
 		a {text-decoration: none;color: #3850a1;}
 		a:hover {text-decoration: underline;}
 		p {margin-bottom: .5rem;}
+		pre {
+			margin: 1em 1em 1em 1.6em;
+			padding: 8px;
+			background-color: #fafafa;
+			border: 1px solid #e2e2e2;
+			border-radius: 3px;
+			width: auto;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
 		.text-center {text-align: center;}
-		.h {font-weight: 600;margin-bottom: .5rem;}
+		h3 {font-weight: 600;margin-bottom: .5rem;}
 		.list-unstyled>li{
 			list-style: none;
 		}
+		.f-500 {font-weight: 500;}
+		.f-600 {font-weight: 600;}
+		.f-700 {font-weight: 700;}
+		.f-800 {font-weight: 800;}
 		ul {
 			margin-left: 1em;
 			margin-top: 0;
 			margin-bottom: 1rem;
 			padding-left: 40px;
 		}
-		ul.list-unstyled {
-			padding-left: 0;
-    		list-style: none;
-		}
 		ul.list>li {padding-bottom: 1rem;margin-bottom: 1rem;border-bottom: 1px dashed;}
-		.mb-0 {margin-bottom: 0;}
-		
+		.icon::before {
+			content: "";
+			display: inline-block;
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			margin-right: .5rem;
+		}
+		.code {
+			display: flex;
+			align-items: center;
+			font-weight: 500;
+		}
+		.code::before {
+			content: "\f121";
+		}
+		.result::before {
+			content: "\f10d";
+			color: #999;
+			transform: translateY(-5px);
+		}
 	</style>
 </head>
 
 <body>
 	<ul class="list-unstyled list">
 		<li>
-			<h3 class="h">Để 1 sản phẩm có thể request trên New Farm/Singapore có 2 cách:</h3>
+			<h3>Để 1 sản phẩm có thể request trên New Farm/Singapore có 2 cách:</h3>
 			<div>
 				<p>- Cách 1. Đánh dấu sản phẩm đó lên version v2 bằng url: <a
 						href="#">https://vc_cmdb.vng.com.vn/v1/syncher/mark-product-v2/{product_code}</a></p>
@@ -71,7 +103,7 @@
 			</div>
 		</li>
 		<li>
-			<h3 class="h">Bổ sung thêm tape mới</h3>
+			<h3>Bổ sung thêm tape mới</h3>
 			<p>Chạy Query bên dưới trên <b>vc_noc</b> của project <b>iPortal Production</b></p>
 			<p><u>Lý do</u>: bổ sung tape mới</p>
 			<p><b>Sample</b> <a href="https://sdkpm.vng.com.vn/issues/4934" target="_blank">https://sdkpm.vng.com.vn/issues/4934</a></p>
@@ -98,20 +130,13 @@
 			<ul class="list-unstyled">
 				<li>- Liên hệ Product coi giữ lại NIC nào rồi nhờ SNS hỗ trợ remove bớt 1 card, sau đó release IP.</li>
 				<li><p>- Viết query update lại field nic cho server</p>
-					<div style="border: 1px solid;display: inline-block;padding: .5rem">
-						<div>db.cmdb_servers.update(</div>
-						<div style="padding-left: 1rem;">
-							<div>{"code": "..."},</div>
-							<div>{ $set: {</div>
-							<div style="padding-left: 1rem;">
-								<div>"nics": [</div>
-								<div style="padding-left: 1rem">{(danh sách nics)}</div>
-								<div>]</div>
-							</div>
-							<div>}</div>
-							<div>{upsert: false, multi: false}</div>
-						</div>
-						<div>)</div>
+					<div>
+						<pre>
+db.cmdb_servers.update(
+	{"code": "..."},
+	{ $set: { "nics": [] } },
+	{upsert: false, multi: false}
+)</pre>
 					</div>
 				</li>
 			</ul>
@@ -122,11 +147,11 @@
 			<ul class="list-unstyled">
 				<li>
 					<p><u><i>vc_noc</i></u></p>
-					<p>db.noc_orders.update({"tape_label.name": "..."}, {$set: {"asset_code": "..."}}, {upsert: false, multi: false})</p>
+					<pre>db.noc_orders.update({"tape_label.name": "..."}, {$set: {"asset_code": "..."}}, {upsert: false, multi: false})</pre>
 				</li>
 				<li>
 					<p><u><i>vc_cmdb</i></u></p>
-					<p>db.cmdb_backup_tapes.update({"code": "..."}, {$set: {"asset_code": "..."}}, {upsert: false, multi: false})</p>
+					<pre>db.cmdb_backup_tapes.update({"code": "..."}, {$set: {"asset_code": "..."}}, {upsert: false, multi: false})</pre>
 				</li>
 			</ul>
 		</li>
@@ -144,6 +169,205 @@
 				<li>- Dùng Order ID vừa lấy được update lại "serial_number" trong bảng vc_server_provisioning/serv_prov_orders</li>
 				<li>- Cập nhật "serial_number" trên bảng vc_itsm/itsm_tickets theo ticket_id.</li>
 			</ul>
+		</li>
+		<li>
+			<h3>Change VLAN owner</h3>
+			<p>DB: <u>vc_cmdb</u></p>
+			<pre> db.getCollection("cmdb_vlans").update(
+	{
+		"_id": ObjectId("61651a1b4f491e50735bc521"),
+		"vlan_id": "201",
+		"vlan_ip_range" : "49.213.104.228/30",
+		"deleted": false
+	},
+	{
+		$set: {
+			"products" : [ DBRef("cmdb_products", ObjectId("5358e0ec0ed4ec171cda4bda"), "vc_cmdb")],
+			"allocation_rates" : { "5358e0ec0ed4ec171cda4bda" : 100.0 }
+		}
+	}, {multi: false, upsert: false}
+)
+			</pre>
+		</li>
+		<li>
+			<h3>Request VLAN Private Oldfarm (10.111.0.0/24 -> 10.111.0.0/16)</h3>
+			<p>Trước khi làm mở change trên ITSMv2</p>
+			<p><b><u>Bước 1:</u></b> Kiểm tra tất cả subnet thuộc IP RANGE 10.111.0.0/16 đã được cấp phát chưa.</p>
+			<div class="pl-3">
+				<p>Chạy route này sẽ lấy được danh sách 65535 subnets con của Subnet 10.111.0.0/16 <a href="https://vc_noc.vng.com.vn/v1/test/subnet/child/10.111.0.0/16" target="_blank">https://vc_noc.vng.com.vn/v1/test/subnet/child/10.111.0.0/16</a></p>
+				<div class="pl-3">
+					<p>- Khi cấp 1 subnet, thì toàn bộ subnet con của nó phải free (chưa được cấp phát)</p>
+				<p>- Để đảm bảo 10.111.0.0/16 cấp phát được, chúng ta phải kiểm tra mật độ sử dụng của 65535 subnets này, đảm bảo chưa cấp cho bất kỳ sản phẩm nào. Tuy nhiên số lượng 65534 subnets quá lớn, và hiện trạng subnet private chỉ cấp subnet/24</p>
+				<p class="pl-3 icon result">Do đó thay vì kiểm tra toàn bộ 65535 subnets, chúng ta chỉ đi kiểm tra 256 subnet/24 là con của subnet 10.111.0.0/16 này</p>
+				</div>
+				<p class="icon code">Query kiểm tra:</p>
+				<pre>db.noc_subnet_allocation.find({ "root": "10.0.0.0/8", deleted: false, used_density: 0, "node": {"$in": [
+	'10.111.0.0/24','10.111.1.0/24','10.111.2.0/24','10.111.3.0/24','10.111.4.0/24','10.111.5.0/24',
+	'10.111.6.0/24','10.111.7.0/24','10.111.8.0/24','10.111.9.0/24','10.111.10.0/24','10.111.11.0/24',
+	'10.111.12.0/24','10.111.13.0/24','10.111.14.0/24','10.111.15.0/24','10.111.16.0/24','10.111.17.0/24',
+	'10.111.18.0/24','10.111.19.0/24','10.111.20.0/24','10.111.21.0/24','10.111.22.0/24','10.111.23.0/24',
+	'10.111.24.0/24','10.111.25.0/24','10.111.26.0/24','10.111.27.0/24','10.111.28.0/24','10.111.29.0/24',
+	'10.111.30.0/24','10.111.31.0/24','10.111.32.0/24','10.111.33.0/24','10.111.34.0/24','10.111.35.0/24',
+	'10.111.36.0/24','10.111.37.0/24','10.111.38.0/24','10.111.39.0/24','10.111.40.0/24','10.111.41.0/24',
+	'10.111.42.0/24','10.111.43.0/24','10.111.44.0/24','10.111.45.0/24','10.111.46.0/24','10.111.47.0/24',
+	'10.111.48.0/24','10.111.49.0/24','10.111.50.0/24','10.111.51.0/24','10.111.52.0/24','10.111.53.0/24',
+	'10.111.54.0/24','10.111.55.0/24','10.111.56.0/24','10.111.57.0/24','10.111.58.0/24','10.111.59.0/24',
+	'10.111.60.0/24','10.111.61.0/24','10.111.62.0/24','10.111.63.0/24','10.111.64.0/24','10.111.65.0/24',
+	'10.111.66.0/24','10.111.67.0/24','10.111.68.0/24','10.111.69.0/24','10.111.70.0/24','10.111.71.0/24',
+	'10.111.72.0/24','10.111.73.0/24','10.111.74.0/24','10.111.75.0/24','10.111.76.0/24','10.111.77.0/24',
+	'10.111.78.0/24','10.111.79.0/24','10.111.80.0/24','10.111.81.0/24','10.111.82.0/24','10.111.83.0/24',
+	'10.111.84.0/24','10.111.85.0/24','10.111.86.0/24','10.111.87.0/24','10.111.88.0/24','10.111.89.0/24',
+	'10.111.90.0/24','10.111.91.0/24','10.111.92.0/24','10.111.93.0/24','10.111.94.0/24','10.111.95.0/24',
+	'10.111.96.0/24','10.111.97.0/24','10.111.98.0/24','10.111.99.0/24','10.111.100.0/24','10.111.101.0/24',
+	'10.111.102.0/24','10.111.103.0/24','10.111.104.0/24','10.111.105.0/24','10.111.106.0/24','10.111.107.0/24',
+	'10.111.108.0/24','10.111.109.0/24','10.111.110.0/24','10.111.111.0/24','10.111.112.0/24','10.111.113.0/24',
+	'10.111.114.0/24','10.111.115.0/24','10.111.116.0/24','10.111.117.0/24','10.111.118.0/24','10.111.119.0/24',
+	'10.111.120.0/24','10.111.121.0/24','10.111.122.0/24','10.111.123.0/24','10.111.124.0/24','10.111.125.0/24',
+	'10.111.126.0/24','10.111.127.0/24','10.111.128.0/24','10.111.129.0/24','10.111.130.0/24','10.111.131.0/24',
+	'10.111.132.0/24','10.111.133.0/24','10.111.134.0/24','10.111.135.0/24','10.111.136.0/24','10.111.137.0/24',
+	'10.111.138.0/24','10.111.139.0/24','10.111.140.0/24','10.111.141.0/24','10.111.142.0/24','10.111.143.0/24',
+	'10.111.144.0/24','10.111.145.0/24','10.111.146.0/24','10.111.147.0/24','10.111.148.0/24','10.111.149.0/24',
+	'10.111.150.0/24','10.111.151.0/24','10.111.152.0/24','10.111.153.0/24','10.111.154.0/24','10.111.155.0/24',
+	'10.111.156.0/24','10.111.157.0/24','10.111.158.0/24','10.111.159.0/24','10.111.160.0/24','10.111.161.0/24',
+	'10.111.162.0/24','10.111.163.0/24','10.111.164.0/24','10.111.165.0/24','10.111.166.0/24','10.111.167.0/24',
+	'10.111.168.0/24','10.111.169.0/24','10.111.170.0/24','10.111.171.0/24','10.111.172.0/24','10.111.173.0/24',
+	'10.111.174.0/24','10.111.175.0/24','10.111.176.0/24','10.111.177.0/24','10.111.178.0/24','10.111.179.0/24',
+	'10.111.180.0/24','10.111.181.0/24','10.111.182.0/24','10.111.183.0/24','10.111.184.0/24','10.111.185.0/24',
+	'10.111.186.0/24','10.111.187.0/24','10.111.188.0/24','10.111.189.0/24','10.111.190.0/24','10.111.191.0/24',
+	'10.111.192.0/24','10.111.193.0/24','10.111.194.0/24','10.111.195.0/24','10.111.196.0/24','10.111.197.0/24',
+	'10.111.198.0/24','10.111.199.0/24','10.111.200.0/24','10.111.201.0/24','10.111.202.0/24','10.111.203.0/24',
+	'10.111.204.0/24','10.111.205.0/24','10.111.206.0/24','10.111.207.0/24','10.111.208.0/24','10.111.209.0/24',
+	'10.111.210.0/24','10.111.211.0/24','10.111.212.0/24','10.111.213.0/24','10.111.214.0/24','10.111.215.0/24',
+	'10.111.216.0/24','10.111.217.0/24','10.111.218.0/24','10.111.219.0/24','10.111.220.0/24','10.111.221.0/24',
+	'10.111.222.0/24','10.111.223.0/24','10.111.224.0/24','10.111.225.0/24','10.111.226.0/24','10.111.227.0/24',
+	'10.111.228.0/24','10.111.229.0/24','10.111.230.0/24','10.111.231.0/24','10.111.232.0/24','10.111.233.0/24',
+	'10.111.234.0/24','10.111.235.0/24','10.111.236.0/24','10.111.237.0/24','10.111.238.0/24','10.111.239.0/24',
+	'10.111.240.0/24','10.111.241.0/24','10.111.242.0/24','10.111.243.0/24','10.111.244.0/24','10.111.245.0/24',
+	'10.111.246.0/24','10.111.247.0/24','10.111.248.0/24','10.111.249.0/24','10.111.250.0/24','10.111.251.0/24',
+	'10.111.252.0/24','10.111.253.0/24','10.111.254.0/24','10.111.255.0/24'  
+	]}});</pre>
+	<p>Query này trả về 255 subnets/24 chưa sử dụng => thiếu 1 subnet =>  subnet đó chính là 10.111.0.0/24 do NOC đã tạo REQ0128701 để cấp tạm subnet 10.111.0.0/24 này</p>
+	<p><b>=> subnet 10.111.0.0/16 khả dụng, có thể cấp phát được</b></p>
+			</div>
+			<p><b><u>Bước 2:</u></b> Tham khảo tài liệu tích hợp giữa VC_ITSM và ACTIVITI, chúng ta nhận thấy để cấp 1 SUBNET, sau khi NOC đã chọn Subnet và VLAN để cấp, ACTIVITI sẽ inform trạng thái "update_cmdb" về VC_ITSM</p>
+			<div class="pl-3">
+				<pre>{
+	"automation_info" : {
+		// ...
+		"update_cmdb" : {
+			"library" : "App\\Libraries\\TicketUtilities", 
+			"function" : "addVlanV1", 
+			"implement_status" : "update_cmdb", 
+			"next_status" : "closed", 
+			"asynchronous" : false
+		}
+	}
+}</pre>
+			   <p>Xem xử lý tại file <u>App\Libraries\TicketUtilities::addVlanV1()</u>, chúng ta thấy function này làm 2 nhiệm vụ:</p>
+			   <div class="pl-3">
+				   <p>(1) Gọi API của vc_noc để khai báo subnet mới vừa được cấp: <span class="f-600">{{vc_noc}}/v1/subnet-allocation/store</span> </p>
+				   <p>(2) Gọi CMDB để thêm VLAN mới với Subnet tương ứng</p>
+			   </div>
+			   <p><b>=> Để cấp 10.111.0.0/16 chúng ta cũng phải thực hiện các thao thác tương tự.</b></p>
+			   <p>Tuy nhiên subnet con của nó đã được cấp (10.111.0.0/24) => trước tiên chúng ta thu hồi nó trước:</p>
+			   <pre>
+cd /var/www/html/vc_noc/
+php artisan subnet:return "10.111.0.0/24" 
+</pre>
+				<p>Kết quả của command này: Subnet 10.111.0.0/24 sẽ được thu hồi, lúc này subnet 10.111.0.0/16 sẽ có used_density = 0 </p>
+				<p>Tiếp tục chạy command sau</p>
+				<pre>cd /var/www/html/vc_noc/
+php artisan subnet:allocate "10.111.0.0/16" 
+</pre>
+				<p>Kết quả của command này:</p>
+				<div class="pl-3">
+					<p>- Đánh dấu toàn bộ 65535 subnet ngoại trừ 10.111.0.0/16 qua trạng thái không thể cấp phát do node cha 10.111.0.0/16 đã được cấp.</p>
+					<p>- Cập nhật subnet 10.111.0.0/16 qua trạng thái đã cấp phát</p>
+				</div>
+				<p>Chạy query sau trên vc_noc để cập nhập thêm thông tin VLAN ID và PRODUCT</p>
+				<pre>db.noc_subnet_allocation.update(
+	{
+		root: '10.0.0.0/8',
+		node: '10.111.0.0/16'
+	},
+	{ 
+		"$set" : {  
+			"vlan_type" : "private", 
+			"vlan_id" : "1111", 
+			"product_id" : "60a4880245d9b8a303e9f51b"
+		} 
+	},
+	{ multi: true, upsert: false }
+);</pre>
+				<p>Cập nhật VLAN ID 1111 thuộc location HCM_QTSC_T1 trên VC_CMDB</p>
+				<pre>db.cmdb_vlans.update(
+	{
+		"_id" : ObjectId("61655dd648af9825e71fc25b"), 
+		"vlan_id" : "1111", 
+		"vlan_type" : "private"
+	},
+	{ 
+		"$set" : {  
+			"vlan_ip_range" : "10.111.0.0/16", 
+			"vlan_ip_ranges" : [
+				{
+					"ip_range" : "10.111.0.0/16", 
+					"min_long" : NumberInt(175046656), 
+					"max_long" : NumberInt(175112192), 
+					"total_ip" : NumberInt(65536), 
+					"usable_ip" : NumberInt(65533)
+				}
+			]
+		} 
+	},
+	{ multi: false, upsert: false }
+);</pre>
+			</div>
+			<p><b><u>Bước 3:</u></b> Chỉnh sửa thông tin Ticket và Order tương ứng, thay đổi 10.111.0.0/24 -> 10.111.0.0/16</p>
+				<p class="icon code"><u>vc_noc</u></p>
+				<pre>db.noc_orders.update(
+	{
+		"_id": ObjectId("61652ed04f491e46c1224fc9"),
+			"order_id" : "NOC0007909"
+	},
+	{
+		$set: {
+			"selected_subnets" : [
+				{
+					"name" : "10.111.0.0/16", 
+					"node" : "10.111.0.0/16", 
+					"reserved_products" : []
+				}
+			],
+			"ip_quantity" : {
+				"subnet" : "/16", 
+				"number_ip" : NumberInt(256), 
+				"is_default" : false, 
+				"name" : "254 - Subnet /16"
+			}
+		}
+	},
+	{ multi: false, upsert: false }
+);</pre>
+			<p class="icon code"><u>vc_itsm</u></p>
+			<pre>db.itsm_tickets.update(
+	{
+		"_id": ObjectId("61652ed44f491e1acb565f83"),
+		"request_id" : "REQ0128701"
+	},
+	{
+		$set: {
+			"selected_subnets" : [
+				{
+					"name" : "10.111.0.0/16", 
+					"node" : "10.111.0.0/16", 
+					"reserved_products" : []
+				}
+			]
+		}
+	},
+	{ multi: false, upsert: false }
+);</pre>
 		</li>
 	</ul>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

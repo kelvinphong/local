@@ -1,159 +1,168 @@
 <script type="text/javascript" defer>
-    $(document).ready(function () {
-        var wow = new WOW({
-            boxClass: "wow",
-            animateClass: "animated",
-            offset: 0,
-            mobile: true,
-            live: true
-        });
-        wow.init();
-        var activeMenu = "${activeMenu}",
-            hHeader = parseInt("${hHeader}");
-        if (activeMenu == "" || ["trang ch\u1ee7", "home"].includes(activeMenu.toLowerCase().trim()))
-            activeMenu = "Menu";
-        document.getElementById("active-menu").innerHTML = activeMenu;
-        const vHeader = $(".v-header"),
-            prodTab = document.querySelector("#prod-tab"),
-            categoryItems = $(prodTab).find('a'),
-            subProduction = document.querySelectorAll(".prod-block.has-child"),
-            prodTabContent = document.querySelector("#prod-tabContent"),
-            productMenu = document.querySelector(".child-nav__full-screen"),
-            subProductActive = document.querySelector(".sub-product.active");
-        changeProductMenu();
-        $('body').append("<div class='overlay'></div>")
-        "${productActive?c}" === "true" && ($('.product-menu').addClass('active'));
-        $(window).bind("scroll", function () {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > hHeader) {
-                vHeader.addClass("scrolled white-bg");
-                vHeader.get(0).style.setProperty("--height-header", "${hHScrolled}" + "px");
-            } else {
-                vHeader.removeClass("scrolled");
-                vHeader.get(0).style.setProperty("--height-header", hHeader + "px");
-                !hasDropdownOpened($('.navigation-group'));
-            }
-        });
-        $(window).bind("resize", function () {
-            changeProductMenu();
-        });
-        initLang(${jsonFactoryUtil.looseSerializeDeep(selectedLang)});
-        subProductActive && subProductActive.parentNode.parentNode.classList.add("active");
-        $(".navigation-group").on({
-            mouseenter: function () {
-                (!vHeader.hasClass("scrolled")) && (vHeader.addClass("white-bg"));
-            },
-            mouseleave: function () {
-                !vHeader.hasClass("scrolled") && hasDropdownOpened($(this));
-            }
-        });
-        $(".v-header").on('click', '.header-dropdown', function (e) {
-            e.stopPropagation();
-        });
-        $('#prod-tab a.category-link').on('click', function (e) {
-            e.preventDefault();
-            if ($(this).hasClass('active')) return;
-            categoryItems.removeClass("active show").parent().removeClass("show");
-            setTimeout(function () {
-                $(this).tab('show') && ($(this).parent().addClass("show"));
-            }.bind(this), 300)
-        });
-        $(".navbar-toggle").on("click", function (e) {
-            e.preventDefault();
-            let target = document.getElementById($(this).attr("data-target"));
-            target && (target.classList.toggle("show"));
-            if (target.classList.contains("show")) {
-                $('.overlay').fadeIn();
-                $('body').addClass("no-scroll");
-            } else {
-                $('.overlay').fadeOut();
-                $('body').removeClass("no-scroll");
-            }
-            document.addEventListener('click', clickOutsiteNavigation, true);
-        });
-        $(".site-item").on("click", function (e) {
-            e.preventDefault();
-            setCookie("lang", $(this).attr("data-lang"), 1E4);
-            let path = "${path}";
-            if (path !== "" && path.indexOf("${friendlyURL}") < 0) window.location.href = path;
-            else window.location.href = $(this).attr("data-href");
-        });
-        $(".menu__header").on("click", function (e) {
-            e.preventDefault();
-            $(this).parent().removeClass("show").parent().removeClass("show");
-        });
-        productMenu && productMenu.addEventListener("click", function (e) {
-            const isDropdownSubProduct = e.target.parentNode.matches("[data-dropdown-sub-product]") || e
-                .target.classList.contains("nav-link");
-            if (!isDropdownSubProduct && e.target.closest('[data-dropdown-product]') !== null) return;
-            let currentDropdown;
-            if (isDropdownSubProduct) {
-                currentDropdown = e.target.closest('[data-dropdown-product]');
-                currentDropdown.classList.toggle("is-show");
-                prodTabContent.classList.toggle("mask");
-                var navLink = $(currentDropdown).find(".nav-link");
-                navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
-                    .clientHeight + "px"))
-            }
-            var opened = false;
-            document.querySelectorAll('[data-dropdown-product].is-show').forEach(function (dropdown) {
-                if (dropdown === currentDropdown) {
-                    opened = true;
-                    return;
-                }
-                dropdown.classList.remove("is-show");
-            }) if (!opened) prodTabContent.classList.remove("mask");
-        })
-        function hasDropdownOpened(target, remove = true) {
-            let hasChild = target.find(".has-child").filter("[class*='show']");
-            remove && hasChild.length == 0 && (vHeader.removeClass("white-bg"));
-            return hasChild.length > 0;
-        }
+     $(document).ready(function () {
+         var activeMenu = "${activeMenu}",
+             hHeader = parseInt("${hHeader}");
+         if (activeMenu == "" || ["trang ch\u1ee7", "home"].includes(activeMenu.toLowerCase().trim()))
+             activeMenu = "Menu";
+         document.getElementById("active-menu").innerHTML = activeMenu;
+         const vHeader = $(".v-header"),
+             prodTab = document.querySelector("#prod-tab"),
+             categoryItems = $(prodTab).find('a'),
+             subProduction = document.querySelectorAll(".prod-block.has-child"),
+             prodTabContent = document.querySelector("#prod-tabContent"),
+             productMenu = document.querySelector(".child-nav__full-screen"),
+             subProductActive = document.querySelector(".sub-product.active"),
+             promotionsCount = document.querySelectorAll(".promotion-number");
+         changeProductMenu();
+         
+         "${productActive?c}" === "true" && ($('.product-menu').addClass('active'));
+         $(window).bind("scroll", function () {
+             var scrollTop = $(window).scrollTop();
+             if (scrollTop > hHeader) {
+                 vHeader.addClass("scrolled white-bg");
+                 vHeader.get(0).style.setProperty("--height-header", "${hHScrolled}" + "px");
+             } else {
+                 vHeader.removeClass("scrolled");
+                 vHeader.get(0).style.setProperty("--height-header", hHeader + "px");
+                 !hasDropdownOpened($('.navigation-group'));
+             }
+         });
+         $(window).bind("resize", function () {
+             changeProductMenu();
+         });
+         initLang(${jsonFactoryUtil.looseSerializeDeep(selectedLang)});
+         subProductActive && subProductActive.parentNode.parentNode.classList.add("active");
+         $(".navigation-group").on({
+             mouseenter: function () {
+                 (!vHeader.hasClass("scrolled")) && (vHeader.addClass("white-bg"));
+             },
+             mouseleave: function () {
+                 !vHeader.hasClass("scrolled") && hasDropdownOpened($(this));
+             }
+         });
+         $(".v-header").on('click', '.header-dropdown', function (e) {
+             e.stopPropagation();
+         });
+         $('#prod-tab a.category-link').on('click', function (e) {
+             e.preventDefault();
+             if ($(this).hasClass('active')) return;
+             categoryItems.removeClass("active show").parent().removeClass("show");
+             setTimeout(function () {
+                 $(this).tab('show') && ($(this).parent().addClass("show"));
+             }.bind(this), 300)
+         });
+         $(".navbar-toggle").on("click", function (e) {
+             e.preventDefault();
+             let target = document.getElementById($(this).attr("data-target"));
+             target && (target.classList.toggle("show"));
+             if (target.classList.contains("show")) {
+                 $('.overlay').fadeIn();
+                 $('body').addClass("no-scroll");
+             } else {
+                 $('.overlay').fadeOut();
+                 $('body').removeClass("no-scroll");
+             }
+             document.addEventListener('click', clickOutsiteNavigation, true);
+         });
+         $(".site-item").on("click", function (e) {
+             e.preventDefault();
+             setCookie("lang", $(this).attr("data-lang"), 1E4);
+             let path = "${path}";
+             if (path !== "" && path.indexOf("${friendlyURL}") < 0) window.location.href = path;
+             else window.location.href = $(this).attr("data-href");
+         });
+         $(".menu__header").on("click", function (e) {
+             e.preventDefault();
+             $(this).parent().removeClass("show").parent().removeClass("show");
+         });
+         productMenu && productMenu.addEventListener("click", function (e) {
+             const isDropdownSubProduct = e.target.parentNode.matches("[data-dropdown-sub-product]") ||
+                 e.target.classList.contains("nav-link");
+             if (!isDropdownSubProduct && e.target.closest('[data-dropdown-product]') !== null) return;
+             let currentDropdown;
+             if (isDropdownSubProduct) {
+                 currentDropdown = e.target.closest('[data-dropdown-product]');
+                 currentDropdown.classList.toggle("is-show");
+                 prodTabContent.classList.toggle("mask");
+                 var navLink = $(currentDropdown).find(".nav-link");
+                 navLink.length > 0 && (currentDropdown.style.setProperty("--h", navLink[0]
+                     .clientHeight + "px"))
+             }
+             var opened = false;
+             document.querySelectorAll('[data-dropdown-product].is-show').forEach(function (dropdown) {
+                 if (dropdown === currentDropdown) {
+                     opened = true;
+                     return;
+                 }
+                 dropdown.classList.remove("is-show");
+             });
+             if (!opened) prodTabContent.classList.remove("mask");
+         });
+         promotionsCount && handleDropdownPromotions();
 
-        function changeProductMenu() {
-            if (window.innerWidth < 768) {
-                const tabContent = document.querySelector("#prod-tabContent");
-                if (tabContent) {
-                    $.each(tabContent.children, function (index, tab) {
-                        categoryItems.filter("[href='#" + tab.id + "']").parent().find('.category-desc')
-                            .append(tab.innerHTML);
-                    })
-                }
-                vHeader.removeClass("hidden");
-            } else {
-                $('.overlay').fadeOut();
-                $('body').removeClass('no-scroll');
-                categoryItems.parent().find('.prod-category').remove();
-            }
-        }
+         function hasDropdownOpened(target, remove = true) {
+             let hasChild = target.find(".has-child").filter("[class*='show']");
+             remove && hasChild.length == 0 && (vHeader.removeClass("white-bg"));
+             return hasChild.length > 0;
+         }
 
-        function clickOutsiteNavigation(selector) {
-            let navMenu = document.getElementById('navigation-menu');
-            if (!navMenu || navMenu.contains(selector.target)) return;
-            $('.overlay').fadeOut() && (navMenu.classList.remove('show'));
-            $('body').removeClass('no-scroll');
-            document.removeEventListener('click', clickOutsiteNavigation, true);
-        }
+         function changeProductMenu() {
+             if (window.innerWidth < 768) {
+                 const tabContent = document.querySelector("#prod-tabContent");
+                 if (tabContent) {
+                     $.each(tabContent.children, function (index, tab) {
+                         categoryItems.filter("[href='#" + tab.id + "']").parent().find(
+                             '.category-desc').append(tab.innerHTML);
+                     })
+                 }
+                 vHeader.removeClass("hidden");
+             } else {
+                 $('.overlay').fadeOut();
+                 $('body').removeClass('no-scroll');
+                 categoryItems.parent().find('.prod-category').remove();
+             }
+         }
 
-        function initLang(locale) {
-            let cookieLang = getCookie("lang");
-            if (cookieLang == null) setCookie("lang", locale["name"], 1E4);
-        }
+         function clickOutsiteNavigation(selector) {
+             let navMenu = document.getElementById('navigation-menu');
+             if (!navMenu || navMenu.contains(selector.target)) return;
+             $('.overlay').fadeOut() && (navMenu.classList.remove('show'));
+             $('body').removeClass('no-scroll');
+             document.removeEventListener('click', clickOutsiteNavigation, true);
+         }
 
-        function getCookie(e) {
-            for (var a = e + "\x3d", n = document.cookie.split(";"), t = 0; t < n.length; t++) {
-                for (var i = n[t];
-                    " " == i.charAt(0);) i = i.substring(1, i.length);
-                if (0 == i.indexOf(a)) return i.substring(a.length, i.length)
-            }
-            return null
-        }
+         function initLang(locale) {
+             let cookieLang = getCookie("lang");
+             if (cookieLang == null) setCookie("lang", locale["name"], 1E4);
+         }
 
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date;
-            d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1E3);
-            var expires = "expires\x3d" + d.toUTCString();
-            document.cookie = cname + "\x3d" + cvalue + ";" + expires + ";path\x3d/;domain\x3d.vngcloud.vn"
-        };
-    });
-</script>
+         function handleDropdownPromotions() {
+             if (parseInt("${countPromotion}") > 0) {
+                 promotionsCount.forEach(function (ele) {
+                     ele.classList.add("show");
+                     ele.textContent = "${countPromotion}";
+                 });
+             } else {
+                 document.querySelector("#dropdown_promotion").classList.add("d-none");
+                 document.querySelector(".promotion-target").classList.remove("d-none");
+             }
+             return true;
+         }
+
+         function getCookie(e) {
+             for (var a = e + "\x3d", n = document.cookie.split(";"), t = 0; t < n.length; t++) {
+                 for (var i = n[t];
+                     " " == i.charAt(0);) i = i.substring(1, i.length);
+                 if (0 == i.indexOf(a)) return i.substring(a.length, i.length)
+             }
+             return null
+         }
+
+         function setCookie(cname, cvalue, exdays) {
+             var d = new Date;
+             d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1E3);
+             var expires = "expires\x3d" + d.toUTCString();
+             document.cookie = cname + "\x3d" + cvalue + ";" + expires + ";path\x3d/;domain\x3d.vngcloud.vn"
+         };
+     });
+ </script>
